@@ -35,7 +35,7 @@
   :root {
     --text: #000000;
     --text-h: #f3f4f6;
-    --bg: #16171d;
+    --bg: #ffffff;
     --border: #2e303a;
     --code-bg: #1f2028;
     --accent: #c084fc;
@@ -54,16 +54,6 @@ body {
   margin: 0;
 }
 
-#root {
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
 
 h1,
 h2 {
@@ -105,6 +95,5 @@ code,
 code {
   font-size: 15px;
   line-height: 135%;
-  padding: 4px 8px;
   background: var(--code-bg);
 }
