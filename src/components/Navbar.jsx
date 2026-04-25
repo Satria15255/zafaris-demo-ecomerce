@@ -21,7 +21,7 @@ function Navbar() {
             className={`fixed top-0 z-20 md:px-4 py-2 h-20 w-full grid grid-cols-3 transition-all duration-500 ease-in-out
   ${scrolled ? " shadow-md rounded-b-xl bg-white" : "bg-white"}`}
         >
-            <div className="font-semibold gap-4 hidden md:flex justify-start items-center">
+            <div className=" gap-4 hidden md:flex justify-start items-center">
                 <p onClick={() => navigate("/")} className="cursor-pointer text-lg hover:text-yellow-500 transition duration-100">
                     HOME
                 </p>
