@@ -43,7 +43,7 @@ const Bestseller = () => {
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
-                                <p className="text-xs text-gray-400"> 4.9 (120 Reviews)</p>
+                                <p className="text-xs text-gray-400">  4.9 (120 Reviews)</p>
                             </div>
                             <div className="flex justify-between items-center ">
                                 <p className=" text-yellow-500 text-sm lg:text-lg font-bold">${product.price}.00</p>

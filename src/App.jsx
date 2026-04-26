@@ -2,6 +2,7 @@ import MainLayout from './layout/MainLayout'
 
 import Hero from './pages/Hero'
 import BestSeller from './pages/BestSeller'
+import DiscountSection from './pages/Discount'
 
 import { Routes, Route } from 'react-router-dom'
 
@@ -15,6 +16,7 @@ function App() {
             <div>
               <Hero />
               <BestSeller />
+              <DiscountSection />
             </div>
           } />
         </Route>
