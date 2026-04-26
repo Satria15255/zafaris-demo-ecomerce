@@ -5,6 +5,7 @@ import { FaCartPlus, FaStar } from "react-icons/fa";
 const Bestseller = () => {
     const [products, setProducts] = useState([]);
 
+
     const fetchProducts = async () => {
         try {
             const res = await getBestSellingProducts();
@@ -19,6 +20,9 @@ const Bestseller = () => {
         fetchProducts();
     }, []);
 
+    const { discountPercent, discountPrice } = products;
+
+    const isDiscount = discountPercent && discountPrice;
     return (
         <div className="my-12">
             <header className="flex flex-col items-center py-4">
@@ -46,7 +50,18 @@ const Bestseller = () => {
                                 <p className="text-xs text-gray-400">  4.9 (120 Reviews)</p>
                             </div>
                             <div className="flex justify-between items-center ">
-                                <p className=" text-yellow-500 text-sm lg:text-lg font-bold">${product.price}.00</p>
+                                <div className="flex h-[40px] items-center">
+                                    {isDiscount ? (
+                                        <div className="flex gap-1">
+                                            <p className=" text-sm lg:text-lg line-through">${product.price.toFixed(2)}</p>
+                                            <p className="text-sm lg:text-lg text-yellow-500 font-bold">${discountPrice.toFixed(2)}</p>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <p className="text-sm lg:text-lg text-yellow-500 font-bold">${product.price.toFixed(2)}</p>
+                                        </>
+                                    )}
+                                </div>
                                 <p className="text-xs md:text-sm cursor-pointer lg:text-md h-10 px-5 font-sans bg-black rounded-full text-white flex items-center gap-3 hover:text-black hover:bg-white border border-gray-500 transition duration-300">
                                     <span className="text">Add to Cart</span><FaCartPlus />
                                 </p>
