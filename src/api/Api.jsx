@@ -14,6 +14,10 @@ API.interceptors.request.use((config) => {
     return config;
 });
 
+// 👤 AUTH
+// =======================
+export const login = (data) => API.post("/api/auth/login", data);
+export const register = (data) => API.post("/api/auth/register", data);
 // 🛒 CART
 // =======================
 export const addToCart = (productId, quantity = 1, size) => API.post("/api/cart/add", { productId, quantity, size });
