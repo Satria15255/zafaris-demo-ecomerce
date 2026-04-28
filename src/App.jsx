@@ -7,6 +7,8 @@ import NewArrival from './pages/NewArrival'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import ProductsPages from './pages/ProductPages'
+import CallAction from './pages/CallAction'
+import CategoryCollection from './pages/CategorySection'
 
 import { addToCart, getCart } from "./api/Api";
 import { Routes, Route } from 'react-router-dom'
@@ -83,6 +85,8 @@ function App() {
               <BestSeller />
               <DiscountSection />
               <NewArrival />
+              <CallAction />
+              <CategoryCollection />
             </div>
           } />
           <Route path='/login' element={<Login setUser={setUser} />} />

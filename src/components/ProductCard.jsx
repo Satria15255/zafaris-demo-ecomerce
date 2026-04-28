@@ -35,7 +35,7 @@ function ProductCard({ product }) {
                     <div className="flex justify-between items-center ">
                         <div className="flex h-[40px] items-center">
                             {isDiscount ? (
-                                <div className="flex gap-1">
+                                <div className="flex flex-col gap-1">
                                     <p className=" text-sm lg:text-lg line-through">${product.price.toFixed(2)}</p>
                                     <p className="text-sm lg:text-lg text-yellow-500 font-bold">${discountPrice.toFixed(2)}</p>
                                 </div>
