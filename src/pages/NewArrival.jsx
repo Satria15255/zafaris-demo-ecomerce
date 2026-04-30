@@ -3,9 +3,11 @@ import ProductCard from "../components/ProductCard";
 import { getLatestProducts, addToCart } from "../api/Api";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function ProductList() {
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate()
 
     const fetchProducts = async () => {
         try {
@@ -49,7 +51,7 @@ function ProductList() {
             </motion.div>
             <main className="grid py-2 h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
                 {products.map((products) => (
-                    <ProductCard key={products.id} product={products} addToCart={() => addToCartItems(products._id)} />
+                    <ProductCard key={products.id} product={products} productDetails={() => navigate(`/product/${products._id}`)} addToCart={() => addToCartItems(products._id)} />
                 ))}
             </main>
         </div>

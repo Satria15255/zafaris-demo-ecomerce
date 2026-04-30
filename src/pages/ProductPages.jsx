@@ -5,6 +5,7 @@ import bgProductPages from "../assets/hero3.png";
 import { MdFilterList } from "react-icons/md";
 import FilterMobile from "../components/FilterMobile";
 import FilterSidebar from "../components/FilterSidebar";
+import { useNavigate } from "react-router-dom";
 
 function ProductPages({ onAddToCart, onOpenModal }) {
     const [products, setProducts] = useState([]);
@@ -22,6 +23,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     const productsPerPage = 12;
     const categories = ["All", "Basketball", "Sneakers", "Running", "Casual"];
     const size = ["All", 38, 39, 40, 41, 42, 43, 44];
+    const navigate = useNavigate
 
     // Function Fetch All Products
     const fetchProducts = useCallback(async () => {

@@ -9,16 +9,27 @@ import Register from './pages/Register'
 import ProductsPages from './pages/ProductPages'
 import CallAction from './pages/CallAction'
 import CategoryCollection from './pages/CategorySection'
+import ProductDetail from './components/ProductDetails'
 
 import { addToCart, getCart } from "./api/Api";
 import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { jwtDecode } from "jwt-decode";
+import { useParams } from 'react-router-dom'
 
 
 function App() {
   // User
   const [user, setUser] = useState(null);
+
+  // ProductsModals
+  const [currentProduct, setCurrentProduct] = useState(null);
+  const { id } = useParams()
+
+
+  // UI State
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Clear expired session
   useEffect(() => {
@@ -75,6 +86,12 @@ function App() {
     setIsModalOpen(true);
   };
 
+  // Function Close Product Modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setCurrentProduct(null);
+  };
+
   return (
     <div>
       <Routes>
@@ -82,9 +99,9 @@ function App() {
           <Route path="/" element={
             <div>
               <Hero />
-              <BestSeller />
-              <DiscountSection />
-              <NewArrival />
+              <BestSeller onOpenModal={handleOpenModal} />
+              <DiscountSection onOpenModal={handleOpenModal} />
+              <NewArrival onOpenModal={handleOpenModal} />
               <CallAction />
               <CategoryCollection />
             </div>
@@ -92,6 +109,7 @@ function App() {
           <Route path='/login' element={<Login setUser={setUser} />} />
           <Route path='/register' element={<Register />} />
           <Route path="/products" element={<ProductsPages onAddToCart={handleAddToCart} onOpenModal={handleOpenModal} />} />
+          <Route path='/product/:id' element={<ProductDetail />} />
         </Route>
       </Routes>
     </div>

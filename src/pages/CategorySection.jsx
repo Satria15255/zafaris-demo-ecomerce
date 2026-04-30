@@ -29,7 +29,7 @@ const collection = [
 
 const CategoryCollection = () => {
     return (
-        <div className='h-auto py-12 px-4 w-full bg-[#FAFAFA]'>
+        <div className='h-auto py-12 px-4 w-full'>
             <div className='flex justify-around'>
                 {collection.map((c) => (
                     <div className='w-80'>

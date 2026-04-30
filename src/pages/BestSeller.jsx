@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { getBestSellingProducts } from "../api/Api";
 import { FaCartPlus, FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Bestseller = () => {
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate()
 
 
     const fetchProducts = async () => {
@@ -63,7 +65,7 @@ const Bestseller = () => {
                                     )}
                                 </div>
                                 <p className="text-xs md:text-sm cursor-pointer lg:text-md h-10 px-5 font-sans bg-black rounded-full text-white flex items-center gap-3 hover:text-black hover:bg-white border border-gray-500 transition duration-300">
-                                    <span className="text">Add to Cart</span><FaCartPlus />
+                                    <span onClick={() => navigate(`/product/${product._id}`)} className="text">Add to Cart</span><FaCartPlus />
                                 </p>
                             </div>
                         </div>

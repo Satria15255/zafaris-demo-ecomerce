@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { FaCartPlus, FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
-function ProductCard({ product }) {
+function ProductCard({ product, productDetails }) {
     const { discountPercent, discountPrice } = product;
+    const navigate = useNavigate
 
     const isDiscount = discountPercent && discountPrice;
 
@@ -46,7 +48,7 @@ function ProductCard({ product }) {
                             )}
                         </div>
                         <p className="text-xs md:text-sm cursor-pointer lg:text-md h-10 px-5 font-sans bg-black rounded-full text-white flex items-center gap-3 hover:text-black hover:bg-white border border-gray-500 transition duration-300">
-                            <span className="text">Add to Cart</span><FaCartPlus />
+                            <span onClick={() => productDetails(product)} className="text">Add to Cart</span><FaCartPlus />
                         </p>
                     </div>
                 </div>
