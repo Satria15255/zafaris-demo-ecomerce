@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { FaCartPlus, FaStar } from "react-icons/fa";
 import { getProductById } from "../api/Api";
 import { toast } from "react-toastify";
 
@@ -59,50 +60,77 @@ function ProductModal({ onClose, onAddToCart }) {
     };
 
     return (
-        <div className="bg-white p-6 rounded-lg w-full h-full md:w-4/5 md:h-auto flex-row md:flex-col items-center overflow-y-auto">
-            <div >
-                <div className="flex flex-row md:hidden justify-between">
-                    <h2 className="lg:text-3xl md:text-lg pb-4 lg:pb-4 font-bold w-full border-bottom ">{product.name}</h2>
-                    <button onClick={onClose} className="text-gray-500 -mt-6 text-lg hover:text-gray-700 top-0">
-                        ×
-                    </button>
+        <div className="mt-12 bg-white p-6 rounded-lg w-full h-full md:h-auto flex-row md:flex-col items-center overflow-y-auto">
+            <div className="flex justify-center">
+                <div className="w-full h-full flex justify-center p-3">
+                    <img src={product.image} alt={product.name} className=" w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2" />
                 </div>
-                <div className="flex justify-center items-center md:items-start">
-                    <img src={product.image} alt={product.name} className=" md:w-full h-auto object-cover flex justify-center items-center rounded-md mt-2" />
-                </div>
-                <div className="flex justify-arround flex-col">
-                    <div className="flex flex-row justify-between hidden md:flex">
-                        <h2 className="lg:text-3xl md:text-lg pb-3 lg:pb-4 font-bold w-full border-bottom ">{product.name}</h2>
-                        <button onClick={onClose} className="text-gray-500 -mt-6 text-lg hover:text-gray-700 top-0">
-                            ×
-                        </button>
-                    </div>
+
+                <div className="w-full flex justify-arround flex-col">
                     <div className="mt-4">
+                        <div className="flex flex-col gap-3">
+                            <p className="text-lg text-gray-500">{product.brand} / {product.category}</p>
+                            <p className="text-5xl font-semibold">{product.name}</p>
+                            <div className="flex items-center text-lg">
+                                <FaStar className="text-yellow-500" />
+                                <FaStar className="text-yellow-500" />
+                                <FaStar className="text-yellow-500" />
+                                <FaStar className="text-yellow-500" />
+                                <FaStar className="text-yellow-500" />
+                                <FaStar className="text-yellow-500" />
+                                <p className="text-lg text-gray-400 pl-4">  4.9 (120 Reviews)</p>
+                            </div>
+                        </div>
+
+                        <div className="mt-9">
+                            <p className="text-2xl font-semibold">Product Description</p>
+                            <p className="py-3 text-sm lg:text-lg border-bottom w-full ">{product.description}</p>
+                        </div>
+
+                        <div className="mt-9">
+                            <p className="text-2xl font-semibold">Size Charts</p>
+                            <div className="mt-6">
+
+                                <div className="flex flex-wrap gap-3">
+                                    {product?.sizes?.length > 0 ? (
+                                        product.sizes.map((size) => (
+                                            <button
+                                                key={size}
+                                                type="button"
+                                                onClick={() => setSelectedSize(size)}
+                                                className={`px-4 py-2 border rounded-md transition 
+                    ${selectedSize === size
+                                                        ? "bg-black text-white border-black"
+                                                        : "bg-white hover:bg-gray-100"}`}
+                                            >
+                                                {size}
+                                            </button>
+                                        ))
+                                    ) : (
+                                        <p className="text-gray-400 text-sm">Size not available</p>
+                                    )}
+                                </div>
+
+                                {!selectedSize && (
+                                    <p className="text-red-500 text-sm mt-2">Please select a size</p>
+                                )}
+                            </div>
+                        </div>
                         <div className="flex items-center">
                             {isDiscount ? (
                                 <div className="flex gap-2">
-                                    <p className="text-sm lg:text-lg font-bold line-through">${product.price}</p>
-                                    <p className="text-sm lg:text-lg text-yellow-500 font-bold">$diskon</p>
+                                    <p className="text-sm lg:text-3xl font-bold line-through">${product.price}</p>
+                                    <p className="text-sm lg:text-3xl text-yellow-500 font-bold">${product.discountPrice}</p>
                                 </div>
                             ) : (
                                 <>
-                                    <p className="text-sm lg:text-lg text-yellow-500 font-bold">${product.price}</p>
+                                        <p className="text-sm lg:text-3xl text-yellow-500 font-bold">${product.price}</p>
                                 </>
                             )}
                         </div>
                     </div>
-                    <p className="py-3 text-sm lg:text-lg border-bottom w-full ">{product.description}</p>
-                    <select value={selectedSize} onChange={(e) => setSelectedSize(e.target.value)} className="border px-2 py-1 rounded" required>
-                        <option value="">Pilih Ukuran</option>
-                        {product.sizes?.map((size) => {
-                            return (
-                                <option key={size} value={size}>
-                                    {size}
-                                </option>
-                            );
-                        })}
-                    </select>
-                    <div className="mt-auto flex flex-col justify-arround hidden xl:flex items-end ">
+
+                    <div className="mt-auto flex gap-4 justify-arround hidden xl:flex items-end ">
                         <button onClick={() => onAddToCart(product, selectedSize, discountPrice)} className="mt-3 w-full px-2 py-3 bg-gray-200  hover:text-white rounded-md hover:bg-black transition">
                             Add to Cart
                         </button>
@@ -117,7 +145,7 @@ function ProductModal({ onClose, onAddToCart }) {
                         </button>
                     </div>
                 </div>
-                <div className="mt-auto flex flex-col justify-arround xl:hidden items-end ">
+                {/* <div className="mt-auto flex flex-col justify-arround xl:hidden items-end ">
                     <button onClick={() => onAddToCart(product, selectedSize)} className="mt-3 w-full px-2 py-3 bg-gray-200  hover:text-white rounded-md hover:bg-black transition">
                         Add to Cart
                     </button>
@@ -129,7 +157,7 @@ function ProductModal({ onClose, onAddToCart }) {
                     >
                         Chekout
                     </button>
-                </div>
+                </div> */}
             </div>
         </div>
     );
