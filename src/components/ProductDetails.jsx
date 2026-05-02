@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaCartPlus, FaStar } from "react-icons/fa";
-import { getProductById } from "../api/Api";
+import { getProductById, getAllProducts } from "../api/Api";
 import { toast } from "react-toastify";
+import ProductCard from "./ProductCard"
+import CallAction from "../pages/CallAction"
 
 function ProductModal({ onClose, onAddToCart }) {
     const [product, setProduct] = useState([])
+    const [recommended, setRecommended] = useState([])
     const [selectedSize, setSelectedSize] = useState("");
     const navigate = useNavigate();
     const { id } = useParams()
@@ -17,6 +20,10 @@ function ProductModal({ onClose, onAddToCart }) {
             const res = await getProductById(id)
             setProduct(res.data)
             console.log(res.data)
+
+            const { data: products } = await getAllProducts();
+            const shuffled = products.sort(() => 0.5 - Math.random());
+            setRecommended(shuffled.slice(0, 4));
         } catch (error) {
             console.log(error)
         }
@@ -24,7 +31,7 @@ function ProductModal({ onClose, onAddToCart }) {
 
     useEffect(() => {
         fetchProduct()
-    }, [])
+    }, [id])
 
     const { discountPercent, discountPrice } = product;
     const isDiscount = discountPercent && discountPrice;
@@ -59,9 +66,11 @@ function ProductModal({ onClose, onAddToCart }) {
         navigate("/chekout", { state: { chekoutItems: [selectedItem] } });
     };
 
+
+
     return (
-        <div className="mt-12 bg-white p-6 rounded-lg w-full h-full md:h-auto flex-row md:flex-col items-center overflow-y-auto">
-            <div className="flex justify-center">
+        <div className="mt-12 bg-white p-6 rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto">
+            <div className="flex justify-center px-6">
                 <div className="w-full h-full flex justify-center p-3">
                     <img src={product.image} alt={product.name} className=" w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2" />
                 </div>
@@ -82,6 +91,18 @@ function ProductModal({ onClose, onAddToCart }) {
                             </div>
                         </div>
 
+                        <div className="flex items-center mt-9">
+                            {isDiscount ? (
+                                <div className="flex gap-2">
+                                    <p className="text-sm lg:text-3xl font-bold line-through">USD {product.price}.00</p>
+                                    <p className="text-sm lg:text-3xl  font-bold">USD {product.discountPrice}.00</p>
+                                </div>
+                            ) : (
+                                <>
+                                    <p className="text-sm lg:text-3xl font-bold">USD {product.price}.00</p>
+                                </>
+                            )}
+                        </div>
                         <div className="mt-9">
                             <p className="text-2xl font-semibold">Product Description</p>
                             <p className="py-3 text-sm lg:text-lg border-bottom w-full ">{product.description}</p>
@@ -116,35 +137,25 @@ function ProductModal({ onClose, onAddToCart }) {
                                 )}
                             </div>
                         </div>
-                        <div className="flex items-center">
-                            {isDiscount ? (
-                                <div className="flex gap-2">
-                                    <p className="text-sm lg:text-3xl font-bold line-through">${product.price}</p>
-                                    <p className="text-sm lg:text-3xl text-yellow-500 font-bold">${product.discountPrice}</p>
-                                </div>
-                            ) : (
-                                <>
-                                        <p className="text-sm lg:text-3xl text-yellow-500 font-bold">${product.price}</p>
-                                </>
-                            )}
-                        </div>
                     </div>
 
-                    <div className="mt-auto flex gap-4 justify-arround hidden xl:flex items-end ">
-                        <button onClick={() => onAddToCart(product, selectedSize, discountPrice)} className="mt-3 w-full px-2 py-3 bg-gray-200  hover:text-white rounded-md hover:bg-black transition">
-                            Add to Cart
+                    <div className="mt-auto flex gap-4 justify-arround items-end ">
+                        <button onClick={() => onAddToCart(product, selectedSize, discountPrice)} className="mt-3 flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition">
+                            Add to Cart <FaCartPlus />
                         </button>
                         <button
                             onClick={() => {
                                 handleChekoutNow();
                                 // closed();
                             }}
-                            className="mt-2 w-full px-2 py-3 bg-gray-200  hover:text-white rounded-md hover:bg-black transition"
+                            className="mt-2 w-full px-2 py-3 bg-white border  hover:text-white rounded-md hover:bg-black transition"
                         >
                             Chekout
                         </button>
                     </div>
                 </div>
+
+
                 {/* <div className="mt-auto flex flex-col justify-arround xl:hidden items-end ">
                     <button onClick={() => onAddToCart(product, selectedSize)} className="mt-3 w-full px-2 py-3 bg-gray-200  hover:text-white rounded-md hover:bg-black transition">
                         Add to Cart
@@ -158,6 +169,19 @@ function ProductModal({ onClose, onAddToCart }) {
                         Chekout
                     </button>
                 </div> */}
+            </div>
+
+            <div className="mt-8 px-6 w-full">
+                <p className="text-2xl font-semibold pb-4">Recommended for You :</p>
+                <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
+                    {recommended.map((product) => (
+                        <ProductCard key={product._id} productDetails={() => navigate(`/product/${product._id}`)} product={product} />
+                    ))}
+                </div>
+            </div>
+
+            <div>
+                <CallAction />
             </div>
         </div>
     );

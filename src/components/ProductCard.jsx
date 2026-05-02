@@ -23,7 +23,7 @@ function ProductCard({ product, productDetails }) {
                 </div>
                 <div className="mt-2 p-2 flex flex-col space-y-4 lg:justify-center">
                     <div>
-                        <p className="text-sm md:text-[15px] lg:text-xl"> {product.name}</p>
+                        <p className="text-sm h-12 md:text-[15px] lg:text-xl"> {product.name}</p>
                     </div>
                     <div className="flex">
                         <FaStar className="text-yellow-500" />
