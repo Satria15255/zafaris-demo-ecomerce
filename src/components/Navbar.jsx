@@ -2,7 +2,7 @@ import { FaBars, FaShoppingBag, FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function Navbar() {
+function Navbar({ handleOpenCart }) {
     const [scrolled, setScrolled] = useState(false);
     const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ function Navbar() {
                 </p>
             </div>
             <div className="flex justify-end items-center">
-                <p onClick={() => navigate("/cart")} className="relative px-2  hover:text-yellow-500 transition duration-100">
+                <p onClick={handleOpenCart} className="relative px-2  hover:text-yellow-500 transition duration-100">
                     <FaShoppingBag size={30} />
                     {/* {cartCount > 0 && <span className="absolute top-2 right-4 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">{cartCount}</span>} */}
                 </p>

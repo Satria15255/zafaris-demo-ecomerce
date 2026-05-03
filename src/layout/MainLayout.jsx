@@ -2,10 +2,10 @@ import Navbar from '../components/Navbar';
 import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 
-const MainLayout = () => {
+const MainLayout = ({ handleOpenCart }) => {
     return (
         <>
-            <Navbar />
+            <Navbar handleOpenCart={handleOpenCart} />
             <Outlet />
             <Footer />
         </>

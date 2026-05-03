@@ -9,6 +9,8 @@ import Register from './pages/Register'
 import ProductsPages from './pages/ProductPages'
 import CallAction from './pages/CallAction'
 import CategoryCollection from './pages/CategorySection'
+
+import ShoppingCart from './components/ShoppingCart'
 import ProductDetail from './components/ProductDetails'
 
 import { addToCart, getCart } from "./api/Api";
@@ -26,10 +28,10 @@ function App() {
   const [currentProduct, setCurrentProduct] = useState(null);
   const { id } = useParams()
 
-
   // UI State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [shoppingCartOpen, setShoppingCartOpen] = useState(false)
 
   // Clear expired session
   useEffect(() => {
@@ -95,7 +97,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route element={<MainLayout />} >
+        <Route element={<MainLayout handleOpenCart={() => setShoppingCartOpen(true)} />} >
           <Route path="/" element={
             <div>
               <Hero />
@@ -112,6 +114,8 @@ function App() {
           <Route path='/product/:id' element={<ProductDetail />} />
         </Route>
       </Routes>
+
+      {shoppingCartOpen && <ShoppingCart closeShoppingCart={() => setShoppingCartOpen(false)} />}
     </div>
   )
 }
