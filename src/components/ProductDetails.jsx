@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaCartPlus, FaStar } from "react-icons/fa";
-import { getProductById, getAllProducts } from "../api/Api";
+import { getProductById, getAllProducts, } from "../api/Api";
 import { toast } from "react-toastify";
+import { useCart } from "../context/CartContext";
 import ProductCard from "./ProductCard"
 import CallAction from "../pages/CallAction"
 
@@ -11,6 +12,7 @@ function ProductModal({ onClose, onAddToCart }) {
     const [product, setProduct] = useState([])
     const [recommended, setRecommended] = useState([])
     const [selectedSize, setSelectedSize] = useState("");
+    const { handleAddToCart } = useCart()
     const navigate = useNavigate();
     const { id } = useParams()
 
@@ -140,7 +142,7 @@ function ProductModal({ onClose, onAddToCart }) {
                     </div>
 
                     <div className="mt-auto flex gap-4 justify-arround items-end ">
-                        <button onClick={() => onAddToCart(product, selectedSize, discountPrice)} className="mt-3 flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition">
+                        <button onClick={() => handleAddToCart(product, selectedSize, discountPrice)} className="mt-3 flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition">
                             Add to Cart <FaCartPlus />
                         </button>
                         <button

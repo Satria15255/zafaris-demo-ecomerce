@@ -1,24 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { getCart, addToCart, updateCartQuantity, removeCartItem, clearCart } from '../api/Api'
+import { useCart } from "../context/CartContext";
 import { useEffect, useState } from "react";
 
 const ShoppingCart = ({ closeShoppingCart }) => {
-    const [cart, setCart] = useState([]);
+    const { cart, removeCartItems, updateQty, totalPrice } = useCart()
     const navigate = useNavigate();
 
-    const fetchCartItems = async () => {
-        try {
-            const res = await getCart()
-            setCart(res.data)
-            console.logt(res.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    useEffect(() => {
-        fetchCartItems()
-    })
+    console.log("Carty isinya ", cart)
 
     return (
         <div className="fixed bg-black/20 inset-0 w-full z-50 h-screen flex justify-end ">
@@ -72,15 +60,15 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                                                     {/* Quantity */}
                                                     <td className="flex-col items-center text-center md:table-cell">
                                                         <div className="flex items-center justify-center">
-                                                            <button className="text-xs lg:text-sm px-2 py-1 border rounded" onClick={() => updateQuantity(item.productId._id, item.size, item.quantity - 1)}>
+                                                            <button className="text-xs lg:text-sm px-2 py-1 border rounded" onClick={() => updateQty(item.productId._id, item.size, item.quantity - 1)}>
                                                                 -
                                                             </button>
                                                             <span className="text-xs lg:text-sm px-2 md:px-4">{item.quantity}</span>
-                                                            <button className="text-xs lg:text-sm px-2 py-1 border rounded" onClick={() => updateQuantity(item.productId._id, item.size, item.quantity + 1)}>
+                                                            <button className="text-xs lg:text-sm px-2 py-1 border rounded" onClick={() => updateQty(item.productId._id, item.size, item.quantity + 1)}>
                                                                 +
                                                             </button>
                                                         </div>
-                                                        <button onClick={() => removeItem(item.productId._id, item.size)} className="text-xs md:text-sm text-gray-500 hover:text-red-500 md:mt-1">
+                                                        <button onClick={() => removeCartItems(item.productId._id, item.size)} className="text-xs md:text-sm text-gray-500 hover:text-red-500 md:mt-1">
                                                             Remove
                                                         </button>
                                                     </td>

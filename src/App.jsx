@@ -18,6 +18,7 @@ import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { jwtDecode } from "jwt-decode";
 import { useParams } from 'react-router-dom'
+import { CartProvider } from './context/CartContext'
 
 
 function App() {
@@ -96,6 +97,8 @@ function App() {
 
   return (
     <div>
+      <CartProvider>
+
       <Routes>
         <Route element={<MainLayout handleOpenCart={() => setShoppingCartOpen(true)} />} >
           <Route path="/" element={
@@ -116,6 +119,8 @@ function App() {
       </Routes>
 
       {shoppingCartOpen && <ShoppingCart closeShoppingCart={() => setShoppingCartOpen(false)} />}
+      </CartProvider>
+
     </div>
   )
 }
