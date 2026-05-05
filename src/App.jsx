@@ -9,6 +9,7 @@ import Register from './pages/Register'
 import ProductsPages from './pages/ProductPages'
 import CallAction from './pages/CallAction'
 import CategoryCollection from './pages/CategorySection'
+import CheckoutPages from './pages/CheckoutPages'
 
 import ShoppingCart from './components/ShoppingCart'
 import ProductDetail from './components/ProductDetails'
@@ -99,26 +100,27 @@ function App() {
     <div>
       <CartProvider>
 
-      <Routes>
-        <Route element={<MainLayout handleOpenCart={() => setShoppingCartOpen(true)} />} >
-          <Route path="/" element={
-            <div>
-              <Hero />
-              <BestSeller onOpenModal={handleOpenModal} />
-              <DiscountSection onOpenModal={handleOpenModal} />
-              <NewArrival onOpenModal={handleOpenModal} />
-              <CallAction />
-              <CategoryCollection />
-            </div>
-          } />
-          <Route path='/login' element={<Login setUser={setUser} />} />
-          <Route path='/register' element={<Register />} />
-          <Route path="/products" element={<ProductsPages onAddToCart={handleAddToCart} onOpenModal={handleOpenModal} />} />
-          <Route path='/product/:id' element={<ProductDetail />} />
-        </Route>
-      </Routes>
+        <Routes>
+          <Route element={<MainLayout handleOpenCart={() => setShoppingCartOpen(true)} />} >
+            <Route path="/" element={
+              <div>
+                <Hero />
+                <BestSeller onOpenModal={handleOpenModal} />
+                <DiscountSection onOpenModal={handleOpenModal} />
+                <NewArrival onOpenModal={handleOpenModal} />
+                <CallAction />
+                <CategoryCollection />
+              </div>
+            } />
+            <Route path='/login' element={<Login setUser={setUser} />} />
+            <Route path='/register' element={<Register />} />
+            <Route path="/products" element={<ProductsPages onAddToCart={handleAddToCart} onOpenModal={handleOpenModal} />} />
+            <Route path='/product/:id' element={<ProductDetail />} />
+            <Route path='/checkout' element={<CheckoutPages />} />
+          </Route>
+        </Routes>
 
-      {shoppingCartOpen && <ShoppingCart closeShoppingCart={() => setShoppingCartOpen(false)} />}
+        {shoppingCartOpen && <ShoppingCart closeShoppingCart={() => setShoppingCartOpen(false)} />}
       </CartProvider>
 
     </div>

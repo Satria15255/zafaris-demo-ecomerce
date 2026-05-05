@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
     const fetchCart = async () => {
         try {
             const res = await getCart()
-            setCart(res.data.items)
+            setCart(res.data.items || [])
         } catch (err) {
             console.log(err)
         }
@@ -25,7 +25,7 @@ export const CartProvider = ({ children }) => {
     const handleAddToCart = async (product, size) => {
         try {
             const res = await addToCart(product._id, 1, size)
-            setCart(res.data.items)
+            await fetchCart()
             toast.success("Product added to cart")
         } catch (err) {
             console.log(err)
@@ -36,8 +36,8 @@ export const CartProvider = ({ children }) => {
     // Update Product Quantity
     const updateQty = async (productId, size, quantity) => {
         try {
-            const res = await updateCartQuantity(productId, size, quantity)
-            setCart(res.data.items)
+            await updateCartQuantity(productId, size, quantity)
+            await fetchCart()
         } catch (err) {
             console.log(err)
         }
@@ -47,7 +47,7 @@ export const CartProvider = ({ children }) => {
     const removeCartItems = async (productId, size) => {
         try {
             const res = await removeCartItem(productId, size)
-            setCart(res.data.items)
+            await fetchCart()
         } catch (err) {
             console.log(err)
         }
@@ -65,7 +65,7 @@ export const CartProvider = ({ children }) => {
 
 
     // Total Price
-    const totalPrice = cart.reduce(
+    const totalPrice = (cart || []).reduce(
         (acc, item) => acc + item.finalPrice * item.quantity,
         0
     )

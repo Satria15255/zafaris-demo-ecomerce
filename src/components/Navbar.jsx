@@ -1,10 +1,14 @@
 import { FaBars, FaShoppingBag, FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useCart } from "../context/CartContext";
 
 function Navbar({ handleOpenCart }) {
     const [scrolled, setScrolled] = useState(false);
+    const { cart } = useCart()
     const navigate = useNavigate();
+
+    console.log("Cart di navbar", cart)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,6 +19,8 @@ function Navbar({ handleOpenCart }) {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0)
 
     return (
         <div
@@ -40,7 +46,7 @@ function Navbar({ handleOpenCart }) {
             <div className="flex justify-end items-center">
                 <p onClick={handleOpenCart} className="relative px-2  hover:text-yellow-500 transition duration-100">
                     <FaShoppingBag size={30} />
-                    {/* {cartCount > 0 && <span className="absolute top-2 right-4 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">{cartCount}</span>} */}
+                    {totalItems > 0 && (<span className="absolute top-2 right-4 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full"><p>{totalItems}</p></span>)}
                 </p>
                 <button className="relative  hidden md:flex px-2 hover:text-yellow-500 transition duration-100">
                     <FaUserCircle size={30} />

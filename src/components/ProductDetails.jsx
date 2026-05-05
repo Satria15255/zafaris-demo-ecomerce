@@ -77,8 +77,8 @@ function ProductModal({ onClose, onAddToCart }) {
                     <img src={product.image} alt={product.name} className=" w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2" />
                 </div>
 
-                <div className="w-full flex justify-arround flex-col">
-                    <div className="mt-4">
+                <div className="w-full flex justify-around flex-col">
+                    <div className="">
                         <div className="flex flex-col gap-3">
                             <p className="text-lg text-gray-500">{product.brand} / {product.category}</p>
                             <p className="text-5xl font-semibold">{product.name}</p>
@@ -92,56 +92,55 @@ function ProductModal({ onClose, onAddToCart }) {
                                 <p className="text-lg text-gray-400 pl-4">  4.9 (120 Reviews)</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div className="flex items-center mt-9">
-                            {isDiscount ? (
-                                <div className="flex gap-2">
-                                    <p className="text-sm lg:text-3xl font-bold line-through">USD {product.price}.00</p>
-                                    <p className="text-sm lg:text-3xl  font-bold">USD {product.discountPrice}.00</p>
-                                </div>
-                            ) : (
-                                <>
-                                    <p className="text-sm lg:text-3xl font-bold">USD {product.price}.00</p>
-                                </>
-                            )}
-                        </div>
-                        <div className="mt-9">
-                            <p className="text-2xl font-semibold">Product Description</p>
-                            <p className="py-3 text-sm lg:text-lg border-bottom w-full ">{product.description}</p>
-                        </div>
 
-                        <div className="mt-9">
-                            <p className="text-2xl font-semibold">Size Charts</p>
-                            <div className="mt-6">
+                    <div className="flex items-center ">
+                        {isDiscount ? (
+                            <div className="flex gap-2">
+                                <p className="text-sm lg:text-3xl font-bold line-through">USD {product.price}.00</p>
+                                <p className="text-sm lg:text-3xl  font-bold">USD {product.discountPrice}.00</p>
+                            </div>
+                        ) : (
+                            <>
+                                <p className="text-sm lg:text-3xl font-bold">USD {product.price}.00</p>
+                            </>
+                        )}
+                    </div>
 
-                                <div className="flex flex-wrap gap-3">
-                                    {product?.sizes?.length > 0 ? (
-                                        product.sizes.map((size) => (
-                                            <button
-                                                key={size}
-                                                type="button"
-                                                onClick={() => setSelectedSize(size)}
-                                                className={`px-4 py-2 border rounded-md transition 
+                    <div className="">
+                        <p className="text-2xl font-semibold">Size Charts</p>
+                        <div className="mt-6">
+
+                            <div className="flex flex-wrap gap-3">
+                                {product?.sizes?.length > 0 ? (
+                                    product.sizes.map((size) => (
+                                        <button
+                                            key={size}
+                                            type="button"
+                                            onClick={() => setSelectedSize(size)}
+                                            className={`px-4 py-2 border rounded-md transition 
                     ${selectedSize === size
-                                                        ? "bg-black text-white border-black"
-                                                        : "bg-white hover:bg-gray-100"}`}
-                                            >
-                                                {size}
-                                            </button>
-                                        ))
-                                    ) : (
-                                        <p className="text-gray-400 text-sm">Size not available</p>
-                                    )}
-                                </div>
-
-                                {!selectedSize && (
-                                    <p className="text-red-500 text-sm mt-2">Please select a size</p>
+                                                    ? "bg-black text-white border-black"
+                                                    : "bg-white hover:bg-gray-100"}`}
+                                        >
+                                            {size}
+                                        </button>
+                                    ))
+                                ) : (
+                                    <p className="text-gray-400 text-sm">Size not available</p>
                                 )}
                             </div>
+
+                            {!selectedSize && (
+                                <p className="text-red-500 text-sm mt-2">Please select a size</p>
+                            )}
                         </div>
                     </div>
 
-                    <div className="mt-auto flex gap-4 justify-arround items-end ">
+
+
+                    <div className=" flex gap-4 justify-arround ">
                         <button onClick={() => handleAddToCart(product, selectedSize, discountPrice)} className="mt-3 flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition">
                             Add to Cart <FaCartPlus />
                         </button>
@@ -171,6 +170,11 @@ function ProductModal({ onClose, onAddToCart }) {
                         Chekout
                     </button>
                 </div> */}
+            </div>
+
+            <div className="mt-9 px-6">
+                <p className="text-2xl font-semibold">Product Description</p>
+                <p className="py-3 text-sm lg:text-lg border-bottom w-full ">{product.description}</p>
             </div>
 
             <div className="mt-8 px-6 w-full">

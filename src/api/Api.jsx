@@ -33,3 +33,11 @@ export const getProductById = (id) => API.get(`/api/products/${id}`);
 export const getLatestProducts = () => API.get("/api/products/latest");
 export const getBestSellingProducts = () => API.get("/api/products/best-seller");
 export const getDiscountProducts = () => API.get("api/products/discounts/today");
+
+// =======================
+// 💳 TRANSACTIONS
+// =======================
+export const createTransaction = (data) => API.post("/api/transactions", data);
+export const getAllTransactions = () => API.get("/api/transactions");
+export const updateTransactionStatus = (orderId, newStatus) => API.put(`/api/transactions/${orderId}/status`, { status: newStatus });
+export const getNewTransactions = () => API.get("/api/transactions/latest");
