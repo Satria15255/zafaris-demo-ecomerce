@@ -10,6 +10,7 @@ import ProductsPages from './pages/ProductPages'
 import CallAction from './pages/CallAction'
 import CategoryCollection from './pages/CategorySection'
 import CheckoutPages from './pages/CheckoutPages'
+import SuccessOrderPages from './pages/SuccessOrder'
 
 import ShoppingCart from './components/ShoppingCart'
 import ProductDetail from './components/ProductDetails'
@@ -117,6 +118,7 @@ function App() {
             <Route path="/products" element={<ProductsPages onAddToCart={handleAddToCart} onOpenModal={handleOpenModal} />} />
             <Route path='/product/:id' element={<ProductDetail />} />
             <Route path='/checkout' element={<CheckoutPages />} />
+            <Route path='/success-order' element={<SuccessOrderPages />} />
           </Route>
         </Routes>
 

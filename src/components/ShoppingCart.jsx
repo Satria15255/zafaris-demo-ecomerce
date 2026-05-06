@@ -8,21 +8,6 @@ const ShoppingCart = ({ closeShoppingCart }) => {
 
     console.log("Carty isinya ", cart)
 
-    const handleCheckout = () => {
-        const checkoutItems = cart.map((item) => ({
-            id: item.productId._id,
-            name: item.productId.name,
-            image: item.productId.image,
-            size: item.size,
-            quantity: item.quantity,
-            finalPrice: item.finalPrice,
-            discountPercent: item.discountPercent,
-        }));
-
-        navigate("/checkout", { state: { checkoutItems } });
-        closeShoppingCart();
-    };
-
     return (
         <div className="fixed bg-black/20 inset-0 w-full z-50 h-screen flex justify-end ">
             <div className="bg-white w-2/5 flex flex-col items-center">
