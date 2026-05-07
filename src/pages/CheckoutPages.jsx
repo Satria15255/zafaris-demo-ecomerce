@@ -20,7 +20,7 @@ const CheckoutPage = ({ onClearCart }) => {
         address: "",
         phone: "",
         message: "",
-        paymentMethod: "cod",
+        paymentMethod: "Transfer",
         shippingMethod: "JNE",
     });
 
@@ -156,10 +156,10 @@ const CheckoutPage = ({ onClearCart }) => {
                                 <div className="flex flex-col gap-2">
                                     <p className="text-lg mb-1 font-medium">Payment Methode</p>
                                     <label className="text-lg">
-                                        <input className="pl-2" type="checkbox" name="paymentMethod" checked={formData.paymentMethod === "cod"} value="cod" onChange={handleChange} /> Cash On Delivery(COD)
+                                        <input className="pl-2" type="checkbox" name="paymentMethod" checked={formData.paymentMethod === "Cash on Delivery"} value="Cash on Delivery" onChange={handleChange} /> Cash On Delivery(COD)
                                     </label>
                                     <label className="text-lg">
-                                        <input type="radio" name="paymentMethod" checked={formData.paymentMethod === "bank"} value="bank" onChange={handleChange} /> Transfer
+                                        <input type="radio" name="paymentMethod" checked={formData.paymentMethod === "Transfer"} value="Transfer" onChange={handleChange} /> Transfer
                                     </label>
                             </div>
 
