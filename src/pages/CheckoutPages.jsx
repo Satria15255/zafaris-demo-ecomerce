@@ -1,16 +1,16 @@
 import React, { useState, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { createTransaction, clearCart } from "../api/Api";
+import { createTransaction } from "../api/Api";
 import { useCart } from "../context/CartContext"
 import { toast } from "react-toastify";
 
-const CheckoutPage = ({ onClearCart }) => {
+const CheckoutPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { handleClearCart } = useCart()
 
     const items = useMemo(() => {
-        return location.state?.chekoutItems || [];
+        return location.state?.checkoutItems || [];
     }, [location.state])
     // Checkout No Cart Items
 
@@ -71,14 +71,14 @@ const CheckoutPage = ({ onClearCart }) => {
                 paymentMethod: formData.paymentMethod,
                 shippingAddress: formData.address,
                 voucherCode: "",
-                status: "pending_confirmation",
+                status: "Waiting Confirmation",
             };
 
-            await createTransaction(payload);
+            const response =  await createTransaction(payload);
+            const transactionId = response.data.transaction._id
             await handleClearCart();
-            handleClearCart();
             toast.success("Transaction success");
-            navigate("/success-order");
+            navigate(`/success-order/${transactionId}`);
         } catch (error) {
             console.error("Failed to submit order:", error);
             alert("Transaction failed");
@@ -133,7 +133,7 @@ const CheckoutPage = ({ onClearCart }) => {
                             </div>
 
                             <div>
-                                    <input name="message" value={formData.message} required onChange={handleChange} placeholder="Message (Optional)" className="w-full border-b text-lg px-3 py-2 rounded" />
+                                    <input name="message" value={formData.message}  onChange={handleChange} placeholder="Message (Optional)" className="w-full border-b text-lg px-3 py-2 rounded" />
                             </div>
 
                             <div>
@@ -142,7 +142,7 @@ const CheckoutPage = ({ onClearCart }) => {
 
                             {/* Metode Pembayaran */}
                                 <div className="flex flex-col gap-2">
-                                    <p className="text-lg mb-1 font-medium">Shipping Methode</p>
+                                    <p className="text-lg mb-1 font-medium">Shipping Method</p>
                                     <label className="text-lg">
                                         <input type="radio" name="shippingMethod" checked={formData.shippingMethod === "JNT"} onChange={handleChange} value="JNT" />JNT
                                     </label>
@@ -154,9 +154,9 @@ const CheckoutPage = ({ onClearCart }) => {
                             </div>
 
                                 <div className="flex flex-col gap-2">
-                                    <p className="text-lg mb-1 font-medium">Payment Methode</p>
+                                    <p className="text-lg mb-1 font-medium">Payment Method</p>
                                     <label className="text-lg">
-                                        <input className="pl-2" type="checkbox" name="paymentMethod" checked={formData.paymentMethod === "Cash on Delivery"} value="Cash on Delivery" onChange={handleChange} /> Cash On Delivery(COD)
+                                        <input className="pl-2" type="radio" name="paymentMethod" checked={formData.paymentMethod === "Cash on Delivery"} value="Cash on Delivery" onChange={handleChange} /> Cash On Delivery(COD)
                                     </label>
                                     <label className="text-lg">
                                         <input type="radio" name="paymentMethod" checked={formData.paymentMethod === "Transfer"} value="Transfer" onChange={handleChange} /> Transfer

@@ -101,7 +101,7 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                             onClick={() => {
                                 navigate("/checkout", {
                                     state: {
-                                        chekoutItems: cart.map((item) => ({
+                                        checkoutItems: cart.map((item) => ({
                                             id: item.productId._id,
                                             name: item.productId.name,
                                             image: item.productId.image,

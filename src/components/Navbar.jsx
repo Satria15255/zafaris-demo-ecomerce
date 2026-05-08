@@ -8,7 +8,6 @@ function Navbar({ handleOpenCart }) {
     const { cart } = useCart()
     const navigate = useNavigate();
 
-    console.log("Cart di navbar", cart)
 
     useEffect(() => {
         const handleScroll = () => {

@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
-import { getNewTransactions, getAllProducts } from "../api/Api";
+import { getTransactionById, getAllProducts } from "../api/Api";
 import { FcApproval } from "react-icons/fc";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const SuccesTransaction = () => {
     const [latestOrder, setlatestOrder] = useState([]);
     const [recommended, setRecommended] = useState([]);
+    const { id } = useParams()
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: order } = await getNewTransactions();
+                const { data: order } = await getTransactionById(id);
                 setlatestOrder(order);
+                console.log("isinya order", order)
 
                 const { data: products } = await getAllProducts();
                 const shuffled = products.sort(() => 0.5 - Math.random());
@@ -88,7 +90,7 @@ const SuccesTransaction = () => {
                         <button onClick={() => navigate("/")} className="text-lg font-semibold h-12 w-full md:w-1/5 border border-gray-300 rounded-xl hover:bg-black hover:text-white">
                             My Orders
                         </button>
-                        <button onClick={() => navigate("/")} className="text-lg font-semibold h-12 w-full md:w-1/5 border border-gray-300 rounded-xl hover:bg-black hover:text-white">
+                        <button onClick={() => navigate(`/paymentOrder/${latestOrder._id}`)} className="text-lg font-semibold h-12 w-full md:w-1/5 border border-gray-300 rounded-xl hover:bg-black hover:text-white">
                             Paid Now
                         </button>
                     </div>

@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
-import { getNewTransactions, getAllProducts } from "../api/Api";
-import { useNavigate } from "react-router-dom";
+import { getTransactionById, getAllProducts, payTransaction } from "../api/Api";
+import { useNavigate, useParams } from "react-router-dom";
 
-const SuccesTransaction = () => {
-    const [latestOrder, setlatestOrder] = useState([]);
+const PaymentPages = () => {
+    const [latestOrder, setLatestOrder] = useState(null);
     const [recommended, setRecommended] = useState([]);
+    const [selectedTransfer, setSelectedTransfer] = useState("Paypal")
+    const [timeLeft, setTimeLeft] = useState("")
+    const { id } = useParams()
+    const [paymentData, setPaymentData] = useState({
+        cardName: "",
+        cardNumber: "",
+        cvv: "",
+        expiredDate: ""
+    })
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: order } = await getNewTransactions();
-                setlatestOrder(order);
+                const { data: order } = await getTransactionById(id);
+                setLatestOrder(order);
+                console.log("isi order", order)
 
                 const { data: products } = await getAllProducts();
                 const shuffled = products.sort(() => 0.5 - Math.random());
@@ -25,9 +35,56 @@ const SuccesTransaction = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        if (!latestOrder?.paymentExpiredAt) return
+
+        const interval = setInterval(() => {
+            const now = new Date()
+            const expired = new Date(latestOrder.paymentExpiredAt)
+
+            const diff = expired - now
+
+            if (diff <= 0) {
+                setTimeLeft("Payment Expired")
+                clearInterval(interval)
+                return
+            }
+
+            const hours = Math.floor(diff / (1000 * 60 * 60))
+            const minutes = Math.floor((diff / (1000 * 60)) % 60)
+            const seconds = Math.floor((diff / 1000) % 60)
+
+            setTimeLeft(
+                `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+            );
+        }, 1000)
+
+        return () => clearInterval(interval)
+    }, [latestOrder])
+
+    const handlePayment = async () => {
+        try {
+            if (
+                !paymentData.cardName ||
+                !paymentData.cardNumber ||
+                !paymentData.cvv ||
+                !paymentData.expiredDate
+            ) {
+                return alert("Please complete payment form");
+            }
+
+            await payTransaction(latestOrder._id)
+            navigate(`/succes-payment/${latestOrder._id}`)
+        } catch (error) {
+            console.log(error.message)
+            console.log(error.response)
+        }
+    }
+
+
     return (
         <div className="mt-16 p-2 md:p-4 ">
-            <p className="text-4xl font-bold pb-6 text-green-600">🎉 Order Success!</p>
+            <p className="text-4xl font-bold pb-6 text-green-600">💳 Complete Your Payment</p>
 
             {latestOrder ? (
                 <div className="mb-8 p-4 border flex rounded-lg shadow">
@@ -78,6 +135,9 @@ const SuccesTransaction = () => {
                             <p className="flex justify-between">
                                 <strong>Payment Method:</strong> {latestOrder.paymentMethod}
                             </p>
+                            <p className="flex justify-between">
+                                <strong>Payment Expired:</strong> {timeLeft}
+                            </p>
                         </div>
                     </div>
 
@@ -88,28 +148,40 @@ const SuccesTransaction = () => {
                         <div className="mt-5 p-4">
                             <p className="text-lg ">Transfer Method</p>
                             <div className="flex justify-center gap-5 mt-3">
-                                <button className="rounded-full h-12 w-1/2 border border-gray-700 hover:bg-gray-600 transition duration-300">Paypal</button>
-                                <button className="rounded-full h-12 w-1/2 border border-gray-700 hover:bg-gray-600 transition duration-300">Wise</button>
+                                <button onClick={() => setSelectedTransfer("Paypal")} className={`
+rounded-full h-12 w-1/2 border transition duration-300
+${selectedTransfer === "Paypal"
+                                        ? "bg-white text-black"
+                                        : "border-gray-700 hover:bg-gray-600"
+                                    }
+`}>Paypal</button>
+                                <button onClick={() => setSelectedTransfer("Wise")} className={`
+rounded-full h-12 w-1/2 border transition duration-300
+${selectedTransfer === "Wise"
+                                        ? "bg-white text-black"
+                                        : "border-gray-700 hover:bg-gray-600"
+                                    }
+`}>Wise</button>
                             </div>
                         </div>
                         <div className="p-4 flex flex-col justify-around space-y-5">
                             <div>
-                                <input type="text" name="Card Name" required placeholder="Your Card Name" className="w-full border-b bg-black text-lg px-3 py-2 rounded" />
+                                <input value={paymentData.cardName} onChange={(e) => setPaymentData({ ...paymentData, cardName: e.target.value })} type="text" name="Card Name" required placeholder="Your Card Name" className="w-full border-b bg-black text-lg px-3 py-2 rounded" />
                             </div>
 
                             <div>
-                                <input name="Card Number" required placeholder="Card Number" className="w-full h-12 text-lg border-b px-3 rounded" />
+                                <input value={paymentData.cardNumber} onChange={(e) => setPaymentData({ ...paymentData, cardNumber: e.target.value })} type="text" name="Card Number" required placeholder="Card Number" className="w-full h-12 text-lg border-b px-3 rounded" />
                             </div>
 
                             <div>
-                                <input name="CVV" required placeholder="CVV" className="w-full border-b text-lg px-3 py-2 rounded" />
+                                <input value={paymentData.cvv} onChange={(e) => setPaymentData({ ...paymentData, cvv: e.target.value })} name="CVV" required placeholder="CVV" className="w-full border-b text-lg px-3 py-2 rounded" />
                             </div>
 
                             <div>
-                                <input type="text" name="Expired Date" required placeholder="Expired Date" className="w-full text-lg border-b px-3 py-2 rounded" />
+                                <input value={paymentData.expiredDate} onChange={(e) => setPaymentData({ ...paymentData, expiredDate: e.target.value })} type="text" name="Expired Date" required placeholder="Expired Date" className="w-full text-lg border-b px-3 py-2 rounded" />
                             </div>
                         </div>
-                        <button type="submit" className="bg-white text-black w-full py-2 text-xl px-4 rounded-lg  hover:bg-gray-100">
+                        <button onClick={handlePayment} className="bg-white text-black w-full py-2 text-xl px-4 rounded-lg  hover:bg-gray-100">
                             Paid Now
                         </button>
                     </div>
@@ -138,4 +210,4 @@ const SuccesTransaction = () => {
     );
 };
 
-export default SuccesTransaction;
+export default PaymentPages;
