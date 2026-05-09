@@ -122,7 +122,7 @@ const CheckoutPage = () => {
 
                     {/* Form Pembeli */}
                         <div className="w-3/5 pt-8 bg-black rounded-xl p-4">
-                            <p className="text-3xl text-white font-semibold">Order Details</p>
+                            <p className="text-3xl text-white pb-4 font-semibold">Order Details</p>
                             <form onSubmit={handleSubmit} className="space-y-4 text-xs text-white">
                             <div>
                                     <input type="text" name="name" required onChange={handleChange} placeholder="Your Name" className="w-full border-b bg-black text-lg px-3 py-2 rounded" />

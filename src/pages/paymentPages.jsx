@@ -73,7 +73,7 @@ const PaymentPages = () => {
                 return alert("Please complete payment form");
             }
 
-            await payTransaction(latestOrder._id)
+            await payTransaction(latestOrder._id, { transferProvider: selectedTransfer })
             navigate(`/succes-payment/${latestOrder._id}`)
         } catch (error) {
             console.log(error.message)
@@ -99,8 +99,8 @@ const PaymentPages = () => {
                                         <div key={i}>
                                             <div className="flex items-center mt-3 border-b border-gray-300 pb-3">
                                                 <div className="flex items-center w-full">
-                                                    <img src={item.product.image} alt={item.name} className="w-20 h-full object-cover rounded mr-4" />
-                                                    <p className="text-lg  w-40 font-semibold">{item.product.name} </p>
+                                                    <img src={item.image} alt={item.name} className="w-20 h-full object-cover rounded mr-4" />
+                                                    <p className="text-lg  w-40 font-semibold">{item.name} </p>
                                                 </div>
                                                 <div className="flex justify-between gap-4 w-full">
                                                     <p>
