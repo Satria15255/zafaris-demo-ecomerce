@@ -74,7 +74,7 @@ const PaymentPages = () => {
             }
 
             await payTransaction(latestOrder._id, { transferProvider: selectedTransfer })
-            navigate(`/succes-payment/${latestOrder._id}`)
+            navigate(`/payment-success/${latestOrder._id}`)
         } catch (error) {
             console.log(error.message)
             console.log(error.response)
@@ -91,6 +91,7 @@ const PaymentPages = () => {
                     {/* Order Details */}
                     <div className="flex flex-col w-4/5">
                         <p className="text-xl w-full font-semibold mb-2">🧾 Order Details:</p>
+                        <div className="h-full flex flex-col justify-between">
                         <div className="mt-3 w-full p-3">
                             <p className="font-semibold">Product:</p>
                             {latestOrder.products && latestOrder.products.length > 0 ? (
@@ -118,7 +119,7 @@ const PaymentPages = () => {
                                 <p>No product</p>
                             )}
                         </div>
-                        <div className="w-full p-3">
+                            <div className="w-full border-t border-gray-300 p-3">
                             <p className="flex justify-between">
                                 <strong>ID Transaction:</strong>
                                 <p>{latestOrder._id}</p>
@@ -139,6 +140,7 @@ const PaymentPages = () => {
                                 <strong>Payment Expired:</strong> {timeLeft}
                             </p>
                         </div>
+                        </div>
                     </div>
 
 
@@ -148,20 +150,8 @@ const PaymentPages = () => {
                         <div className="mt-5 p-4">
                             <p className="text-lg ">Transfer Method</p>
                             <div className="flex justify-center gap-5 mt-3">
-                                <button onClick={() => setSelectedTransfer("Paypal")} className={`
-rounded-full h-12 w-1/2 border transition duration-300
-${selectedTransfer === "Paypal"
-                                        ? "bg-white text-black"
-                                        : "border-gray-700 hover:bg-gray-600"
-                                    }
-`}>Paypal</button>
-                                <button onClick={() => setSelectedTransfer("Wise")} className={`
-rounded-full h-12 w-1/2 border transition duration-300
-${selectedTransfer === "Wise"
-                                        ? "bg-white text-black"
-                                        : "border-gray-700 hover:bg-gray-600"
-                                    }
-`}>Wise</button>
+                                <button onClick={() => setSelectedTransfer("Paypal")} className={`rounded-full h-12 w-1/2 border transition duration-300 ${selectedTransfer === "Paypal" ? "bg-white text-black" : "border-gray-700 hover:bg-gray-600"}`}>Paypal</button>
+                                <button onClick={() => setSelectedTransfer("Wise")} className={`rounded-full h-12 w-1/2 border transition duration-300 ${selectedTransfer === "Wise" ? "bg-white text-black" : "border-gray-700 hover:bg-gray-600"}`}>Wise</button>
                             </div>
                         </div>
                         <div className="p-4 flex flex-col justify-around space-y-5">

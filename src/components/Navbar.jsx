@@ -47,7 +47,7 @@ function Navbar({ handleOpenCart }) {
                     <FaShoppingBag size={30} />
                     {totalItems > 0 && (<span className="absolute top-2 right-4 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full"><p>{totalItems}</p></span>)}
                 </p>
-                <button className="relative  hidden md:flex px-2 hover:text-yellow-500 transition duration-100">
+                <button onClick={() => navigate("/login")} className="relative  hidden md:flex px-2 hover:text-yellow-500 transition duration-100">
                     <FaUserCircle size={30} />
                 </button>
                 {/* Hamburger icon */}

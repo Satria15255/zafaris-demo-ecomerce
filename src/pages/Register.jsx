@@ -32,7 +32,7 @@ const Register = () => {
                 >
                     ×
                 </button>
-                <h2 className="text-lg md:text-2xl text-center font-bold mb-2 md:mb-4">Register</h2>
+                <p className="text-lg md:text-2xl text-center font-bold mb-2 md:mb-4">Register</p>
                 <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4 flex flex-col justify-center">
                     <input type="text" placeholder="Name" value={name} className="w-full text-sm md:text-lg rounded-lg p-2 border" onChange={(e) => setName(e.target.value)} />
                     <input type="email" placeholder="Email" value={email} className="w-full text-sm md:text-lg rounded-lg p-2 border" onChange={(e) => setEmail(e.target.value)} />

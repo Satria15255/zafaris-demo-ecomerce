@@ -34,7 +34,7 @@ const Login = ({ setUser }) => {
                 >
                     ×
                 </button>
-                <h2 className="text-lg md:text-2xl text-center font-bold mb-2 md:mb-4">Login</h2>
+                <p className="text-lg md:text-2xl text-center font-bold mb-2 md:mb-4">Login</p>
                 <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4 flex px-3 flex-col justify-center">
                     <input type="email" placeholder="Email" value={email} className="w-full text-sm md:text-lg rounded-lg p-2 border" onChange={(e) => setEmail(e.target.value)} />
                     <input type="password" placeholder="Password" value={password} className="w-full text-sm md:text-lg rounded-lg p-2 border" onChange={(e) => setPassword(e.target.value)} />

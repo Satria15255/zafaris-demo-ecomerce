@@ -12,6 +12,7 @@ import CategoryCollection from './pages/CategorySection'
 import CheckoutPages from './pages/CheckoutPages'
 import SuccessOrderPages from './pages/SuccessOrder'
 import PaymentOrderPages from './pages/paymentPages'
+import PaymentSuccessPages from './pages/PaymentSuccess'
 
 import ShoppingCart from './components/ShoppingCart'
 import ProductDetail from './components/ProductDetails'
@@ -121,6 +122,7 @@ function App() {
             <Route path='/checkout' element={<CheckoutPages />} />
             <Route path='/success-order/:id' element={<SuccessOrderPages />} />
             <Route path='/paymentOrder/:id' element={<PaymentOrderPages />} />
+            <Route path='/payment-success/:id' element={<PaymentSuccessPages/>}/>
           </Route>
         </Routes>
 
