@@ -18,7 +18,7 @@ const CheckoutPage = () => {
     const [formData, setFormData] = useState({
         name: "",
         address: "",
-        phone: "",
+        phoneNumber: "",
         message: "",
         paymentMethod: "Transfer",
         shippingMethod: "JNE",
@@ -66,6 +66,8 @@ const CheckoutPage = () => {
 
             const payload = {
                 products,
+                name: formData.name,
+                phoneNumber: formData.phoneNumber,
                 message: formData.message,
                 shippingMethod: formData.shippingMethod,
                 paymentMethod: formData.paymentMethod,
@@ -137,7 +139,7 @@ const CheckoutPage = () => {
                             </div>
 
                             <div>
-                                    <input type="tel" name="phone" required onChange={handleChange} placeholder="Phone Number" className="w-full text-lg border-b px-3 py-2 rounded" />
+                                    <input type="tel" name="phoneNumber" required onChange={handleChange} placeholder="Phone Number" className="w-full text-lg border-b px-3 py-2 rounded" />
                             </div>
 
                             {/* Metode Pembayaran */}
@@ -150,7 +152,8 @@ const CheckoutPage = () => {
                                         <input type="radio" name="shippingMethod" checked={formData.shippingMethod === "JNE"} onChange={handleChange} value="JNE" />JNE
                                     </label>
                                     <label className="text-lg">
-                                        <input type="radio" name="shippingMethod" checked={formData.shippingMethod === "TIKI"} onChange={handleChange} value="TIKI" />TIKI                                    </label>
+                                        <input type="radio" name="shippingMethod" checked={formData.shippingMethod === "TIKI"} onChange={handleChange} value="TIKI" />TIKI
+                                    </label>
                             </div>
 
                                 <div className="flex flex-col gap-2">

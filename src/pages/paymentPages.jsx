@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { getTransactionById, getAllProducts, payTransaction } from "../api/Api";
 import { useNavigate, useParams } from "react-router-dom";
@@ -33,7 +33,7 @@ const PaymentPages = () => {
         };
 
         fetchData();
-    }, []);
+    }, [id]);
 
     useEffect(() => {
         if (!latestOrder?.paymentExpiredAt) return
@@ -62,8 +62,22 @@ const PaymentPages = () => {
         return () => clearInterval(interval)
     }, [latestOrder])
 
+    const handleChange = ((e) => {
+        setPaymentData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    })
+
     const handlePayment = async () => {
         try {
+            const paymentInfo = {
+                paymentMethod: selectedTransfer,
+                paymentDetails: {
+                    cardName: paymentData.cardName,
+                    cardNumber: paymentData.cardNumber,
+                    cvv: paymentData.cvv,
+                    expiredDate: paymentData.expiredDate,
+                }
+            }
+
             if (
                 !paymentData.cardName ||
                 !paymentData.cardNumber ||
@@ -73,7 +87,7 @@ const PaymentPages = () => {
                 return alert("Please complete payment form");
             }
 
-            await payTransaction(latestOrder._id, { transferProvider: selectedTransfer })
+            await payTransaction(latestOrder._id, paymentInfo)
             navigate(`/payment-success/${latestOrder._id}`)
         } catch (error) {
             console.log(error.message)
@@ -120,25 +134,25 @@ const PaymentPages = () => {
                             )}
                         </div>
                             <div className="w-full border-t border-gray-300 p-3">
-                            <p className="flex justify-between">
+                                <div className="flex justify-between">
                                 <strong>ID Transaction:</strong>
                                 <p>{latestOrder._id}</p>
-                            </p>
-                            <p className="flex justify-between">
+                                </div>
+                                <div className="flex justify-between">
                                 <strong>Status:</strong> {latestOrder.status}
-                            </p>
-                            <p className="flex justify-between">
+                                </div>
+                                <div className="flex justify-between">
                                 <strong>Total Price:</strong> ${latestOrder.totalPrice}
-                            </p>
-                            <p className="flex justify-between">
+                                </div>
+                                <div className="flex justify-between">
                                 <strong>Address:</strong> {latestOrder.shippingAddress}
-                            </p>
-                            <p className="flex justify-between">
+                                </div>
+                                <div className="flex justify-between">
                                 <strong>Payment Method:</strong> {latestOrder.paymentMethod}
-                            </p>
-                            <p className="flex justify-between">
+                                </div>
+                                <div className="flex justify-between">
                                 <strong>Payment Expired:</strong> {timeLeft}
-                            </p>
+                                </div>
                         </div>
                         </div>
                     </div>
@@ -156,19 +170,19 @@ const PaymentPages = () => {
                         </div>
                         <div className="p-4 flex flex-col justify-around space-y-5">
                             <div>
-                                <input value={paymentData.cardName} onChange={(e) => setPaymentData({ ...paymentData, cardName: e.target.value })} type="text" name="Card Name" required placeholder="Your Card Name" className="w-full border-b bg-black text-lg px-3 py-2 rounded" />
+                                <input name="cardName" value={paymentData.cardName} onChange={handleChange} type="text" required placeholder="Your Card Name" className="w-full border-b bg-black text-lg px-3 py-2 rounded" />
                             </div>
 
                             <div>
-                                <input value={paymentData.cardNumber} onChange={(e) => setPaymentData({ ...paymentData, cardNumber: e.target.value })} type="text" name="Card Number" required placeholder="Card Number" className="w-full h-12 text-lg border-b px-3 rounded" />
+                                <input name="cardNumber" value={paymentData.cardNumber} onChange={handleChange} type="text" required placeholder="Card Number" className="w-full h-12 text-lg border-b px-3 rounded" />
                             </div>
 
                             <div>
-                                <input value={paymentData.cvv} onChange={(e) => setPaymentData({ ...paymentData, cvv: e.target.value })} name="CVV" required placeholder="CVV" className="w-full border-b text-lg px-3 py-2 rounded" />
+                                <input name="cvv" value={paymentData.cvv} onChange={handleChange} type="text" required placeholder="CVV" className="w-full border-b text-lg px-3 py-2 rounded" />
                             </div>
 
                             <div>
-                                <input value={paymentData.expiredDate} onChange={(e) => setPaymentData({ ...paymentData, expiredDate: e.target.value })} type="text" name="Expired Date" required placeholder="Expired Date" className="w-full text-lg border-b px-3 py-2 rounded" />
+                                <input name="expiredDate" value={paymentData.expiredDate} onChange={handleChange} type="date" required placeholder="Expired Date" className="w-full text-lg border-b px-3 py-2 rounded" />
                             </div>
                         </div>
                         <button onClick={handlePayment} className="bg-white text-black w-full py-2 text-xl px-4 rounded-lg  hover:bg-gray-100">
