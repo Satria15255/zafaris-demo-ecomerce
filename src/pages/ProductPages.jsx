@@ -23,7 +23,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     const productsPerPage = 12;
     const categories = ["All", "Basketball", "Sneakers", "Running", "Casual"];
     const size = ["All", 38, 39, 40, 41, 42, 43, 44];
-    const navigate = useNavigate
+    const navigate = useNavigate()
 
     // Function Fetch All Products
     const fetchProducts = useCallback(async () => {
@@ -141,7 +141,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                     <div className="flex flex-col justify-between md:w-4/5 min-h-[100vh]">
                         <div className="grid grid-cols-2 items-center md:grid-cols-3 gap-3">
                             {currentProducts.length === 0 && <p className="text-center col-span-3">No products found.</p>}
-                            {currentProducts.length > 0 && currentProducts.map((products) => <ProductCard key={products._id} product={products} onAddToCart={onAddToCart} onOpenModal={onOpenModal} />)}
+                            {currentProducts.length > 0 && currentProducts.map((products) => <ProductCard product={products} onAddToCart={onAddToCart} productDetails={() => navigate(`/product/${products._id}`)} />)}
                         </div>
                         <div className="flex justify-between w-full py-4">
                             <button className="font-semibold text-xs md:text-lg w-25 rounded h-[5vh] hover:shadow-md transition duration-200" onClick={() => setCurrentPages((prev) => Math.max(prev - 1, 1))} disabled={currentPages === 1}>
