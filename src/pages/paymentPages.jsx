@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const PaymentPages = () => {
     const [latestOrder, setLatestOrder] = useState(null);
     const [recommended, setRecommended] = useState([]);
-    const [selectedTransfer, setSelectedTransfer] = useState("Paypal")
+    const [selectedTransfer, setSelectedTransfer] = useState("Visa")
     const [timeLeft, setTimeLeft] = useState("")
     const { id } = useParams()
     const [paymentData, setPaymentData] = useState({
@@ -68,15 +68,6 @@ const PaymentPages = () => {
 
     const handlePayment = async () => {
         try {
-            const paymentInfo = {
-                paymentMethod: selectedTransfer,
-                paymentDetails: {
-                    cardName: paymentData.cardName,
-                    cardNumber: paymentData.cardNumber,
-                    cvv: paymentData.cvv,
-                    expiredDate: paymentData.expiredDate,
-                }
-            }
 
             if (
                 !paymentData.cardName ||
@@ -87,7 +78,7 @@ const PaymentPages = () => {
                 return alert("Please complete payment form");
             }
 
-            await payTransaction(latestOrder._id, paymentInfo)
+            await payTransaction(latestOrder._id, { transferProvider: selectedTransfer })
             navigate(`/payment-success/${latestOrder._id}`)
         } catch (error) {
             console.log(error.message)
@@ -164,8 +155,8 @@ const PaymentPages = () => {
                         <div className="mt-5 p-4">
                             <p className="text-lg ">Transfer Method</p>
                             <div className="flex justify-center gap-5 mt-3">
-                                <button onClick={() => setSelectedTransfer("Paypal")} className={`rounded-full h-12 w-1/2 border transition duration-300 ${selectedTransfer === "Paypal" ? "bg-white text-black" : "border-gray-700 hover:bg-gray-600"}`}>Paypal</button>
-                                <button onClick={() => setSelectedTransfer("Wise")} className={`rounded-full h-12 w-1/2 border transition duration-300 ${selectedTransfer === "Wise" ? "bg-white text-black" : "border-gray-700 hover:bg-gray-600"}`}>Wise</button>
+                                <button onClick={() => setSelectedTransfer("Visa")} className={`rounded-full h-12 w-1/2 border transition duration-300 ${selectedTransfer === "Visa" ? "bg-white text-black" : "border-gray-700 hover:bg-gray-600"}`}>Visa</button>
+                                <button onClick={() => setSelectedTransfer("Mastercard")} className={`rounded-full h-12 w-1/2 border transition duration-300 ${selectedTransfer === "Mastercard" ? "bg-white text-black" : "border-gray-700 hover:bg-gray-600"}`}>Mastercard</button>
                             </div>
                         </div>
                         <div className="p-4 flex flex-col justify-around space-y-5">

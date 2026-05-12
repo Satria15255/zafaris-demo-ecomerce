@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { getTransactionById, getAllProducts } from "../api/Api";
 import { FcApproval } from "react-icons/fc";
+import { formatDate } from "../utils/FormatedDate"
 import { useNavigate, useParams } from "react-router-dom";
 
 const SuccesTransaction = () => {
@@ -39,12 +40,12 @@ const SuccesTransaction = () => {
                     </div>
                     {/* Purchase Details */}
                     <div className="flex flex-col justify-center w-full">
-                        <p className="text-xl w-full font-semibold mb-2">🧾 Purchase Details:</p>
                         {/* Product Details\ */}
-                        <div className="mt-3 w-full p-3">
-                            <p className="font-semibold">Product:</p>
+                        <div className="mt-3 w-full">
+                            <p className="font-semibold text-xl border-b pb-4">📦 Product Order:</p>
+                            <div className="p-3">
                             {latestOrder.products && latestOrder.products.length > 0 ? (
-                                <ul className="list-disc list-inside border-t mt-1">
+                                    <ul className="list-disc list-inside  mt-1">
                                     {latestOrder.products.map((item, i) => (
                                         <div key={i}>
                                             <div className="flex items-center mt-3 border-b border-gray-300 pb-3">
@@ -67,55 +68,69 @@ const SuccesTransaction = () => {
                             ) : (
                                 <p>No product</p>
                             )}
+                            </div>
                         </div>
                         {/* Order Details */}
-                        <div className="mt-3 w-full p-3">
-                            <p className="font-semibold">Order Details:</p>
-                            <p className="flex justify-between">
-                                <strong>Order ID:</strong>
-                                <p>{latestOrder._id}</p>
-                            </p>
-                            <p className="flex justify-between">
-                                <strong>Order Time:</strong> {latestOrder.createdAt}
-                            </p>
-                            <p className="flex justify-between">
-                                <strong>Order Status:</strong> {latestOrder.status}
-                            </p>
-                        </div>
-                        {/* Payment Details */}
-                        <div className="mt-3 w-full p-3">
-                            <p className="font-semibold">Payment Details:</p>
-                            <p className="flex justify-between">
-                                <strong>Total Price:</strong> ${latestOrder.totalPrice}
-                            </p>
-                            <p className="flex justify-between">
-                                <strong>Payment Method:</strong> {latestOrder.paymentMethod} ({latestOrder.transferProvider})
-                            </p>
-                            <p className="flex justify-between">
-                                <strong>Payment Status:</strong> {latestOrder.paymentStatus}
-                            </p>
-                            <p className="flex justify-between">
-                                <strong>Paid  At:</strong> {latestOrder.paidAt}
-                            </p>
-                        </div>
-                        {/* Contact Details */}
-                        <div className="mt-3 w-full p-3">
-                            <p className="font-semibold">Contact Details:</p>
-                            <p className="flex justify-between">
-                                <strong>Address:</strong> {latestOrder.shippingAddress}
-                            </p>
-                            
+                        <div className="bg-black text-white p-5 rounded-3xl">
+                            <div className="mt-3 w-full">
+                                <p className="text-xl font-semibold">🧾 Order Details:</p>
+                                <div className="p-3">
+                                    <p className="flex justify-between">
+                                        <span>Order ID:</span>
+                                        <p>{latestOrder._id}</p>
+                                    </p>
+                                    <p className="flex justify-between">
+                                        <span>Order Time:</span>{formatDate(latestOrder.createdAt)}
+                                    </p>
+                                    <p className="flex justify-between">
+                                        <span>Order Status:</span> {latestOrder.status}
+                                    </p>
+                                </div>
+                            </div>
+                            {/* Payment Details */}
+                            <div className="mt-3 w-full ">
+                                <p className="font-semibold text-xl">💳 Payment Details:</p>
+                                <div className="p-3">
+                                    <p className="flex justify-between">
+                                        <span>Total Price:</span> ${latestOrder.totalPrice}
+                                    </p>
+                                    <p className="flex justify-between">
+                                        <span>Payment Method:</span> {latestOrder.paymentMethod} ({latestOrder.transferProvider})
+                                    </p>
+                                    <p className="flex justify-between">
+                                        <span>Payment Status:</span> {latestOrder.paymentStatus}
+                                    </p>
+                                    <p className="flex justify-between">
+                                        <span>Paid  At:</span> {formatDate(latestOrder.paidAt)}
+                                    </p>
+                                </div>
+                            </div>
+                            {/* Contact Details */}
+                            <div className="mt-3 w-full">
+                                <p className="font-semibold text-xl">👤 Contact Details:</p>
+                                <div className="p-3">
+                                    <p className="flex justify-between">
+                                        <span>Name :</span> {latestOrder.name}
+                                    </p>
+                                    <p className="flex justify-between">
+                                        <span>Address :</span> {latestOrder.shippingAddress}
+                                    </p>
+                                    <p className="flex justify-between">
+                                        <span>Phone Number :</span> {latestOrder.phoneNumber}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="flex gap-4 md:justify-end md:items-center w-full">
+                                <button onClick={() => navigate("/")} className="text-lg  font-semibold h-12 w-1/4 border border-gray-300 rounded-xl hover:bg-white hover:text-black transition duration-300">
+                                    Home
+                                </button>
+                                <button onClick={() => navigate(`/my-orders`)} className="text-lg  text-center font-semibold h-12  w-1/4 border border-gray-300 rounded-xl hover:bg-white hover:text-black transition duration-300">
+                                    My Orders
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="flex gap-4 md:justify-end md:items-center w-full">
-                        <button onClick={() => navigate("/")} className="text-lg font-semibold h-12 w-full w-1/2 border border-gray-300 rounded-xl hover:bg-black hover:text-white">
-                            Home
-                        </button>
-                        <button onClick={() => navigate(`/my-orders`)} className="text-lg font-semibold h-12 w-full w-1/2 border border-gray-300 rounded-xl hover:bg-black hover:text-white">
-                            My Orders
-                        </button>
-                    </div>
                 </div>
             ) : (
                 <p>Loading transaction details...</p>
@@ -123,7 +138,7 @@ const SuccesTransaction = () => {
 
 
             <div className="mt-8">
-                <h2 className="text-xl font-bold mb-4">Recommended Products for You</h2>
+                <p className="text-2xl text-center font-semibold pb-4">You Might Like</p>
                 <div className="grid grid-cols-2 items-center md:grid-cols-4 gap-3">
                     {recommended.map((product) => (
                         <ProductCard key={product._id} product={product} />
