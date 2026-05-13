@@ -7,11 +7,11 @@ import "swiper/css/effect-fade";
 
 const Hero = () => {
     return (
-        <div className="w-full flex justify-center h-auto">
+        <div className="w-full p-6 pt-16 flex justify-center h-auto">
             <Swiper modules={[Autoplay, EffectFade]} effect="fade" autoplay={{ delay: 4000 }} loop className=" h-full">
                 <SwiperSlide>
                     <div className="relative flex justify-center items-center">
-                        <img src={Slide1} className="w-full h-screen object-cover " />
+                        <img src={Slide1} className="w-full h-screen object-cover rounded-lg " />
                         <div className="absolute inset-0 bg-black/30 flex flex-col gap-8 items-center justify-center ">
                             <p className="text-lg font-semibold text-uppercase text-white">LOREM IPSUM DOLOR SIT</p>
                             <p className="text-5xl text-white font-semibold">Lorem ipsum dolor sit amet.</p>
@@ -21,7 +21,7 @@ const Hero = () => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className="relative flex justify-center items-center">
-                        <img src={Slide2} className="w-full h-screen object-cover " />
+                        <img src={Slide2} className="w-full h-screen object-cover rounded-lg" />
                         <div className="absolute inset-0 bg-black/30 flex flex-col gap-8 items-center justify-center">
                             <p className="text-lg font-semibold text-white">LOREM IPSUM DOLOR SIT</p>
                             <p className="text-5xl text-white font-semibold"> Walk in Comfort, Step in Style.</p>

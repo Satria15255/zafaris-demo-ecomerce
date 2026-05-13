@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login } from "../api/Api";
+import { useAuth } from "../context/AuthContext";
 
-const Login = ({ setUser }) => {
+const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { setUser } = useAuth()
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {

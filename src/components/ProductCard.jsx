@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
 import { FaCartPlus, FaStar } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
 
 function ProductCard({ product, productDetails }) {
     const { discountPercent, discountPrice } = product;
-    const navigate = useNavigate
 
     const isDiscount = discountPercent && discountPrice;
 
@@ -16,22 +14,28 @@ function ProductCard({ product, productDetails }) {
             transition={{ duration: 1.0 }} // Animasi selama 1 detik
             viewport={{ once: true }}
         >
-            <div key={product.id} className="flex flex-col justify-center w-70 h-auto md:rounded-5 lg:rounded-lg mt-2 ">
+            <div key={product.id} className="relative flex flex-col justify-center w-70 h-auto md:rounded-5 lg:rounded-lg mt-2 ">
                 <div>
                     <img src={product.image} alt={product.name} className="w-full h-auto object-cover rounded-md md:rounded-xl md:rounded-bottom-5 object-center" />
-
+                    {product.isBestSeller === true && (
+                        <div>
+                            <p className="absolute top-2 left-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">Best Seller</p>
+                        </div>
+                    )}
                 </div>
                 <div className="mt-2 p-2 flex flex-col space-y-4 lg:justify-center">
                     <div>
                         <p className="text-sm h-12 md:text-[15px] lg:text-xl"> {product.name}</p>
                     </div>
-                    <div className="flex">
+                    <div className="flex justify-between">
+                        <div className="flex">
                         <FaStar className="text-yellow-500" />
                         <FaStar className="text-yellow-500" />
                         <FaStar className="text-yellow-500" />
                         <FaStar className="text-yellow-500" />
                         <FaStar className="text-yellow-500" />
                         <FaStar className="text-yellow-500" />
+                        </div>
                         <p className="text-xs text-gray-400">  4.9 (120 Reviews)</p>
                     </div>
                     <div className="flex justify-between items-center ">
