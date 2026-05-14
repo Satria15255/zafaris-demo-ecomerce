@@ -5,14 +5,16 @@ import { FaCartPlus, FaStar } from "react-icons/fa";
 import { getProductById, getAllProducts, } from "../api/Api";
 import { toast } from "react-toastify";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 import ProductCard from "./ProductCard"
 import CallAction from "../pages/CallAction"
 
-function ProductModal({ onClose, onAddToCart }) {
+function ProductModal() {
     const [product, setProduct] = useState([])
     const [recommended, setRecommended] = useState([])
     const [selectedSize, setSelectedSize] = useState("");
     const { handleAddToCart } = useCart()
+    const { user } = useAuth()
     const navigate = useNavigate();
     const { id } = useParams()
 
@@ -39,17 +41,18 @@ function ProductModal({ onClose, onAddToCart }) {
     const isDiscount = discountPercent && discountPrice;
     // Fungsi Checkout product
     const handleChekoutNow = () => {
-        const token = localStorage.getItem("token");
-        if (!token) {
-            onClose();
+        try {
+
+            if (!user) {
             navigate("/login");
             return;
         }
         if (!selectedSize) {
             toast.warning("Please select a size before adding to cart.");
             return;
-        } else {
-            onClose();
+            }
+        } catch (error) {
+            console.log(error)
         }
 
         const finalPrice = product.discountPercent > 0 ? product.price - (product.price * product.discountPercent) / 100 : product.price;
@@ -59,19 +62,18 @@ function ProductModal({ onClose, onAddToCart }) {
             name: product.name,
             image: product.image,
             size: selectedSize,
-            finalPrice,
-            originalPrice: product.price,
-            discountPercent: product.discountPercent,
             quantity: 1,
+            finalPrice,
+            discountPercent: product.discountPercent,
         };
 
-        navigate("/chekout", { state: { chekoutItems: [selectedItem] } });
+        navigate("/checkout", { state: { checkoutItems: [selectedItem] } });
     };
 
 
 
     return (
-        <div className="mt-12 bg-white p-6 rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto">
+        <div className="mt-16 pt-10 bg-white p-6 rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto">
             <div className="flex justify-center px-6">
                 <div className="w-full h-full flex justify-center p-3">
                     <img src={product.image} alt={product.name} className=" w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2" />
@@ -141,7 +143,7 @@ function ProductModal({ onClose, onAddToCart }) {
 
 
                     <div className=" flex gap-4 justify-arround ">
-                        <button onClick={() => handleAddToCart(product, selectedSize, discountPrice)} className="mt-3 flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition">
+                        <button onClick={() => handleAddToCart(product, selectedSize, discountPrice)} className="mt-2 flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition">
                             Add to Cart <FaCartPlus />
                         </button>
                         <button

@@ -79,7 +79,7 @@ const PaymentPages = () => {
             }
 
             await payTransaction(latestOrder._id, { transferProvider: selectedTransfer })
-            navigate(`/payment-success/${latestOrder._id}`)
+            navigate(`/completed-order/${latestOrder._id}`)
         } catch (error) {
             console.log(error.message)
             console.log(error.response)

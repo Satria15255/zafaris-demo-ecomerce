@@ -80,7 +80,11 @@ const CheckoutPage = () => {
             const transactionId = response.data.transaction._id
             await handleClearCart();
             toast.success("Transaction success");
-            navigate(`/success-order/${transactionId}`);
+            if (formData.paymentMethod === "Cash on Delivery") {
+                navigate(`/completed-order/${transactionId}`);
+            } else {
+                navigate(`/success-order/${transactionId}`);
+            } 
         } catch (error) {
             console.error("Failed to submit order:", error);
             alert("Transaction failed");

@@ -51,7 +51,7 @@ function App() {
             <Route path='/checkout' element={<CheckoutPages />} />
             <Route path='/success-order/:id' element={<SuccessOrderPages />} />
             <Route path='/paymentOrder/:id' element={<PaymentOrderPages />} />
-            <Route path='/payment-success/:id' element={<PaymentSuccessPages/>}/>
+            <Route path='/completed-order/:id' element={<PaymentSuccessPages />} />
           </Route>
         </Routes>
 

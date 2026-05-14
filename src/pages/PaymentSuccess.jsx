@@ -29,6 +29,8 @@ const SuccesTransaction = () => {
         fetchData();
     }, []);
 
+    const cashOnDeliveryPayment = latestOrder.paymentMethod === "Cash on Delivery"
+
     return (
         <div className="mt-16 flex flex-col items-center p-2 md:p-4 ">
             {latestOrder ? (
@@ -36,7 +38,13 @@ const SuccesTransaction = () => {
                     <div className="flex flex-col items-center">
                         <p className="text-8xl"><FcApproval /></p>
                         <p className="text-4xl font-bold pb-3 text-green-600">Thank You</p>
-                        <p className="text-xl font-bold pb-6 text-green-600">Your Order Payment has been Successful</p>
+                        {cashOnDeliveryPayment ? (
+                            <p className="text-xl font-bold pb-6 text-green-600">Your order has been processed</p>
+
+                        ) : (
+
+                            <p className="text-xl font-bold pb-6 text-green-600">Your payment was successful and your order is being processed.</p>
+                        )}
                     </div>
                     {/* Purchase Details */}
                     <div className="flex flex-col justify-center w-full">
@@ -80,7 +88,7 @@ const SuccesTransaction = () => {
                                         <p>{latestOrder._id}</p>
                                     </p>
                                     <p className="flex justify-between">
-                                        <span>Order Time:</span>{formatDate(latestOrder.createdAt)}
+                                        <span>Order Time:</span>{formatDate(latestOrder?.createdAt)}
                                     </p>
                                     <p className="flex justify-between">
                                         <span>Order Status:</span> {latestOrder.status}
@@ -101,7 +109,7 @@ const SuccesTransaction = () => {
                                         <span>Payment Status:</span> {latestOrder.paymentStatus}
                                     </p>
                                     <p className="flex justify-between">
-                                        <span>Paid  At:</span> {formatDate(latestOrder.paidAt)}
+                                        <span>Paid  At:</span> {formatDate(latestOrder?.paidAt)}
                                     </p>
                                 </div>
                             </div>
