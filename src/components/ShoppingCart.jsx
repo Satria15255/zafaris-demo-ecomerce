@@ -41,10 +41,10 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                                                 <tr key={`${item.productId._id} - ${item.size}`} className="border-b">
                                                     {/* Produk */}
                                                     <td className="flex items-center py-4">
-                                                        <img src={item.productId.image} alt={item.productId.name} className="w-14 h-14 md:w-20 md:h-20 lg:w-30 lg:h-30 object-cover rounded mr-1 md:mr-4" />
+                                                        <img src={item.productId.image} alt={item.productId.name} className="w-14 h-14 md:w-20 md:h-20 lg:w-20 lg:h-20 object-cover rounded mr-1 md:mr-4" />
                                                         <div>
-                                                            <p className="text-[10px] md:text-xl text-sm max-w-sm font-medium">{item.productId.name}</p>
-                                                            <p className="text-xs lg:text-lg text-gray-600 font-semibold">Size: {item.size}</p>
+                                                            <p className="text-[10px] md:text-lg text-sm max-w-sm font-medium">{item.productId.name}</p>
+                                                            <p className="text-xs lg:text-sm text-gray-600 font-semibold">Size: {item.size}</p>
                                                             <div className="flex gap-2 items-center">
                                                                 {item.discountPercent > 0 && (
                                                                     <div className="flex gap-2">
@@ -52,7 +52,7 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                                                                         <p className="text-sm line-through">${item.price}.00 </p>
                                                                     </div>
                                                                 )}
-                                                                <p className="text-yellow-500 text-lg font-semibold">${item.finalPrice}.00</p>
+                                                                <p className="text-yellow-500 text-sm text-lg font-semibold">${item.finalPrice}.00</p>
                                                             </div>
                                                         </div>
                                                     </td>
