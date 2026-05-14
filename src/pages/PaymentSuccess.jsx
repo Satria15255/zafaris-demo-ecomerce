@@ -88,7 +88,7 @@ const SuccesTransaction = () => {
                                         <p>{latestOrder._id}</p>
                                     </p>
                                     <p className="flex justify-between">
-                                        <span>Order Time:</span>{formatDate(latestOrder?.createdAt)}
+                                        <span>Order Time:</span>{new Date(latestOrder.createdAt).toLocaleString()}
                                     </p>
                                     <p className="flex justify-between">
                                         <span>Order Status:</span> {latestOrder.status}
@@ -103,14 +103,18 @@ const SuccesTransaction = () => {
                                         <span>Total Price:</span> ${latestOrder.totalPrice}
                                     </p>
                                     <p className="flex justify-between">
-                                        <span>Payment Method:</span> {latestOrder.paymentMethod} ({latestOrder.transferProvider})
+                                        <span>Payment Method:</span> {latestOrder.paymentMethod} {latestOrder.transferProvider}
                                     </p>
-                                    <p className="flex justify-between">
+                                    {latestOrder.paymentMethod === "Transfer" && (
+                                        <>
+                                            <p className="flex justify-between">
                                         <span>Payment Status:</span> {latestOrder.paymentStatus}
                                     </p>
                                     <p className="flex justify-between">
-                                        <span>Paid  At:</span> {formatDate(latestOrder?.paidAt)}
+                                                <span>Paid  At:</span> {new Date(latestOrder.paidAt).toLocaleString()}
                                     </p>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                             {/* Contact Details */}
