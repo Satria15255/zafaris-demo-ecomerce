@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 const ShoppingCart = ({ closeShoppingCart }) => {
     const { cart, removeCartItems, updateQty, totalPrice } = useCart()
+    const { user } = useAuth()
     const navigate = useNavigate();
 
     console.log("Carty isinya ", cart)
@@ -97,7 +98,14 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                                 )}
                             </div>
                         </div>
-                        <button
+                        <div>
+                            {cart.length === 0 ? (
+                                <button className="text-lg flex justify-center items-center mt-3 w-full h-12  bg-gray-200 text-white "
+                                >
+                                    Chek Out Now
+                                </button>
+                            ) : (
+                                    <button
                             onClick={() => {
                                 navigate("/checkout", {
                                     state: {
@@ -115,10 +123,13 @@ const ShoppingCart = ({ closeShoppingCart }) => {
 
                                 closeShoppingCart()
                             }}
-                            className="text-lg flex justify-center items-center mt-3 w-full h-12 border bg-black text-white border-black  hover:text-black hover:bg-white transition "
+                                        className="text-lg flex justify-center items-center mt-3 w-full h-12 border bg-black text-white border-black  hover:text-black hover:bg-white transition duration-300 "
                         >
                             Chek Out Now
                         </button>
+                            )}
+                        </div>
+
                     </div>
                 </div>
             </div>

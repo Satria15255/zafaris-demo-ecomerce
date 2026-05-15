@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import brandLogo from "../assets/logo/brandLogo.png";
+import SidebarMobile from "./SidebarMobile";
 
 function Navbar({ handleOpenCart, onToggleSidebar }) {
     const [scrolled, setScrolled] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const { cart } = useCart()
     const { user } = useAuth()
     const navigate = useNavigate();
@@ -34,12 +36,17 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
             {/* Top Section */}
             <div className="flex justify-between items-center">
                 <div className="flex justify-center items-center">
-                    <img src={brandLogo} className="w-50 h-auto" />
+                    {/* Hamburger icon */}
+                    <button onClick={() => setIsSidebarOpen(true)} className="relative md:hidden   px-2 hover:text-yellow-500 transition duration-100">
+                        <FaBars />
+                    </button>
+                    <img src={brandLogo} className="hidden md:flex w-50 h-auto" />
                 </div>
-                <div className="flex justify-center w-3/5">
+                <div className="hidden md:flex justify-center w-3/5">
                     <input type="text" placeholder="Search Products..." className="w-full px-2 h-[5vh] text-sm border border-gray-300 rounded-xl" />
                 </div>
                 <div className="flex justify-end gap-6 items-center">
+                    <div className="hidden md:flex">
                     {user ? (
                         <button onClick={onToggleSidebar} className="relative flex items-center gap-2 hidden md:flex px-2 hover:text-yellow-500 transition duration-100">
                             <PiUserCircle size={30} /> <span>Hi {user.name}</span>
@@ -47,17 +54,15 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     ) : (
                         <p onClick={() => navigate("/login")} className="cursor-pointer hover:underline mb-2 text-lg"> Login / Register</p>
                     )}
-                    <button className="relative text-gray-700 hidden md:flex px-2 hover:text-yellow-500 transition duration-100">
+                    </div>
+                    <button className="relative text-gray-700  flex px-2 hover:text-yellow-500 transition duration-100">
                         <MdOutlineFavoriteBorder size={30} />
                     </button>
                     <p onClick={handleOpenCart} className="relative px-2  hover:text-yellow-500 transition duration-100">
                         <MdOutlineShoppingCart size={30} />
                         {totalItems > 0 && (<span className="absolute top-2 right-4 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full"><p>{totalItems}</p></span>)}
                     </p>
-                    {/* Hamburger icon */}
-                    <button className="relative md:hidden   px-2 hover:text-yellow-500 transition duration-100">
-                        <FaBars />
-                    </button>
+
                 </div>
             </div>
             {/* Bottom Section */}
@@ -80,7 +85,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     </p>
                 </div>
             </div>
-
+            {isSidebarOpen && <SidebarMobile user={user} onClose={() => setIsSidebarOpen(false)} />}
         </div>
     );
 }
