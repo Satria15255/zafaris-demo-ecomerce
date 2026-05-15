@@ -15,7 +15,7 @@ const Hero = () => {
                         <div className="absolute inset-0 bg-black/30 flex flex-col gap-5 items-center justify-center ">
                             <p className="text-md font-semibold text-uppercase text-white">Comfort, speed, and unstoppable style</p>
                             <p className="text-5xl text-white font-bold">NEW ERA OF MOTION</p>
-                            <button className='bg-black w-40 h-10 font-bold text-sm text-white hover:border border-white hover:bg-transparent transition duration-300'>Shop Now</button>
+                            <button className='bg-black w-40 h-10 font-bold text-sm text-white hover:border border-white hover:bg-transparent transition duration-300'>SHOP NOW</button>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -25,7 +25,7 @@ const Hero = () => {
                         <div className="absolute inset-0 bg-black/30 flex flex-col gap-5 items-center justify-center">
                             <p className="text-md font-semibold text-white">Made for sport. Designed for lifestyle.</p>
                             <p className="text-5xl text-white font-bold">PLAY HARD. LOOK GOOD.</p>
-                            <button className='bg-black w-40 h-10 font-bold text-sm text-white hover:border border-white hover:bg-transparent transition duration-300'>Shop Now</button>
+                            <button className='bg-black w-40 h-10 font-bold text-sm text-white hover:border border-white hover:bg-transparent transition duration-300'>SHOP NOW</button>
                         </div>
                     </div>
                 </SwiperSlide>

@@ -61,10 +61,10 @@ function OnSale({ onOpenModal }) {
                             <img src={product.image} onClick={() => onOpenModal(product)} className="w-full h-auto  rounded-4 px-1" />
                         </div>
                         <div className="px-2 lg:px-4 flex flex-col justify-center">
-                            <h2 onClick={() => onOpenModal(product)} className="font-bold text-white text-sm md:text-xl lg:text-2xl md:py-3">
+                            <p onClick={() => onOpenModal(product)} className="font-bold text-white text-sm md:text-xl lg:text-2xl md:py-3">
                                 {" "}
                                 {product.name}
-                            </h2>
+                            </p>
                             <div className="flex gap-2">
                                 <p className="font-bold text-[10px] md:text-[12px] lg:text-lg text-yellow-500 line-through">${product.price}.00</p>
                                 <p className="font-bold text-[10px] md:text-[12px] lg:text-lg text-yellow-500">${product.discountPrice.toFixed(2)}</p>

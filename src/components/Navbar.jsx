@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
+import brandLogo from "../assets/logo/brandLogo.png";
 
 function Navbar({ handleOpenCart, onToggleSidebar }) {
     const [scrolled, setScrolled] = useState(false);
@@ -33,9 +34,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
             {/* Top Section */}
             <div className="flex justify-between items-center">
                 <div className="flex justify-center items-center">
-                    <p onClick={() => navigate("/")} className="  font-sans text-sm md:text-xl lg:text-3xl ">
-                        ZAFARIS<span className="text-yellow-500">.CO</span>
-                    </p>
+                    <img src={brandLogo} className="w-50 h-auto" />
                 </div>
                 <div className="flex justify-center w-3/5">
                     <input type="text" placeholder="Search Products..." className="w-full px-2 h-[5vh] text-sm border border-gray-300 rounded-xl" />
