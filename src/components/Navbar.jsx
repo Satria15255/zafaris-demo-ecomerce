@@ -30,8 +30,8 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-20  border-b border-gray-200 pb-5  md:px-4 py-4 h-auto w-full flex flex-col gap-4 transition-all duration-500 ease-in-out
-  ${scrolled ? " shadow-md rounded-b-xl bg-white" : "bg-white"}`}
+            className={`fixed top-0 z-20  border-b border-gray-200 md:pb-5  md:px-4 py-2 md:py-4 md:h-auto w-full flex flex-col justify-center gap-4 transition-all duration-500 ease-in-out
+  ${scrolled ? " shadow-md  bg-white" : "bg-white"}`}
         >
             {/* Top Section */}
             <div className="flex justify-between items-center">
@@ -67,7 +67,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
             </div>
             {/* Bottom Section */}
             <div>
-                <div className=" gap-7   hidden md:flex justify-start font-semibold text-md items-center">
+                <div className=" gap-7 hidden md:flex justify-start font-semibold text-md items-center">
                     <p onClick={() => navigate("/")} className="cursor-pointer hover:text-yellow-500 transition duration-100">
                         RUNNING
                     </p>
