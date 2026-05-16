@@ -35,7 +35,7 @@ const Bestseller = () => {
                     Best <span className="text-yellow-500">Deals </span>
                 </p>
             </header>
-            <main className=" w-full mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 grid grid-cols-1 md:grid-cols-4 place-items-center ">
+            <main className=" w-full mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 grid grid-cols-2 md:grid-cols-4 place-items-center ">
                 {bestSellingProducts.map((products) => (
                     <ProductCard key={products.id} product={products} productDetails={() => navigate(`/product/${products._id}`)} addToCart={() => handleAddToCart(products._id)} />
                 ))}
