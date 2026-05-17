@@ -1,4 +1,4 @@
-import actionImage from '../assets/hero/action.jpg'
+import actionImage from '../assets/heroSection/action.jpg'
 
 const CallAction = () => {
     return (

@@ -13,6 +13,7 @@ import CheckoutPages from './pages/CheckoutPages'
 import SuccessOrderPages from './pages/SuccessOrder'
 import PaymentOrderPages from './pages/paymentPages'
 import PaymentSuccessPages from './pages/PaymentSuccess'
+import OrderPages from './pages/MyOrderPages'
 
 import ShoppingCart from './components/ShoppingCart'
 import ProductDetail from './components/ProductDetails'
@@ -52,6 +53,7 @@ function App() {
             <Route path='/success-order/:id' element={<SuccessOrderPages />} />
             <Route path='/paymentOrder/:id' element={<PaymentOrderPages />} />
             <Route path='/completed-order/:id' element={<PaymentSuccessPages />} />
+            <Route path='/my-orders' element={<OrderPages />} />
           </Route>
         </Routes>
 

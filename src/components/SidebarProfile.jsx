@@ -55,7 +55,7 @@ const SidebarProfile = ({ closeSidebar }) => {
                                 <MdOutlineFavoriteBorder />
                                 <span>WishList</span>
                             </button>
-                            <button onClick={() => handleNavigate("/orders")} className="flex font-bold items-center text-sm gap-2 hover:text-gray-300 py-2 px-1 mt-1">
+                            <button onClick={() => handleNavigate("/my-orders")} className="flex font-bold items-center text-sm gap-2 hover:text-gray-300 py-2 px-1 mt-1">
                                 <FaCreditCard />
                                 <span>My Orders</span>
                             </button>

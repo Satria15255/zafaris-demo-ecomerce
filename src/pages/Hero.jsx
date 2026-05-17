@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, EffectFade } from "swiper/modules"
-import Slide1 from '../assets/hero/hero1.jpg'
-import Slide2 from '../assets/hero/hero2.jpg'
+import Slide1 from '../assets/heroSection/hero12.jpg'
+import Slide2 from '../assets/heroSection/hero2.jpg'
 import "swiper/css";
 import "swiper/css/effect-fade";
 

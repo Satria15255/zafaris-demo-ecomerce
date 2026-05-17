@@ -42,3 +42,10 @@ export const getAllTransactions = () => API.get("/api/transactions");
 export const updateTransactionStatus = (orderId, newStatus) => API.put(`/api/transactions/${orderId}/status`, { status: newStatus });
 export const getTransactionById = (id) => API.get(`/api/transactions/${id}`)
 export const payTransaction = (id, data) => API.patch(`/api/transactions/${id}/payment`, data)
+
+// =======================
+// 💳 ORDERS
+// =======================
+export const getMyOrders = () => API.get("/api/transactions/mytransactions");
+export const confirmOrderReceived = (Id) => API.patch(`/api/transactions/${Id}/confirm`);
+export const cancelOrder = (Id) => API.put(`/api/transactions/cancel/${Id}`);
