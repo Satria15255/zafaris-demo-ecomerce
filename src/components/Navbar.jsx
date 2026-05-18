@@ -30,14 +30,14 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-20  border-b border-gray-200 md:pb-5  md:px-4 py-2 md:py-4 md:h-auto w-full flex flex-col justify-center gap-4 transition-all duration-500 ease-in-out
+            className={`fixed top-0 z-20  border-b border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 md:h-auto w-full flex flex-col justify-center transition-all duration-500 ease-in-out
   ${scrolled ? " shadow-md  bg-white" : "bg-white"}`}
         >
             {/* Top Section */}
             <div className="flex justify-between items-center">
                 <div className="flex justify-center items-center">
                     {/* Hamburger icon */}
-                    <button onClick={() => setIsSidebarOpen(true)} className="relative md:hidden   px-2 hover:text-yellow-500 transition duration-100">
+                    <button onClick={() => setIsSidebarOpen(true)} className="relative md:hidden text-lg px-2 hover:text-yellow-500 transition duration-100">
                         <FaBars />
                     </button>
                     <img src={brandLogo} className="hidden md:flex w-50 h-auto" />
@@ -45,7 +45,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 <div className="hidden md:flex justify-center w-3/5">
                     <input type="text" placeholder="Search Products..." className="w-full px-2 h-[5vh] text-sm border border-gray-300 rounded-xl" />
                 </div>
-                <div className="flex justify-end gap-6 items-center">
+                <div className="flex justify-end gap-3 md:gap-6 items-center">
                     <div className="hidden md:flex">
                     {user ? (
                         <button onClick={onToggleSidebar} className="relative flex items-center gap-2 hidden md:flex px-2 hover:text-yellow-500 transition duration-100">
@@ -55,18 +55,18 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <p onClick={() => navigate("/login")} className="cursor-pointer hover:underline mb-2 text-lg"> Login / Register</p>
                     )}
                     </div>
-                    <button className="relative text-gray-700  flex px-2 hover:text-yellow-500 transition duration-100">
-                        <MdOutlineFavoriteBorder size={30} />
+                    <button className="relative text-2xl text-gray-700  flex px-2 hover:text-yellow-500 transition duration-100">
+                        <MdOutlineFavoriteBorder />
                     </button>
-                    <p onClick={handleOpenCart} className="relative px-2  hover:text-yellow-500 transition duration-100">
-                        <MdOutlineShoppingCart size={30} />
+                    <p onClick={handleOpenCart} className="relative text-2xl px-2  hover:text-yellow-500 transition duration-100">
+                        <MdOutlineShoppingCart />
                         {totalItems > 0 && (<span className="absolute top-2 right-4 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full"><p>{totalItems}</p></span>)}
                     </p>
 
                 </div>
             </div>
             {/* Bottom Section */}
-            <div>
+            {/* <div>
                 <div className=" gap-7 hidden md:flex justify-start font-semibold text-md items-center">
                     <p onClick={() => navigate("/products")} className="cursor-pointer hover:text-yellow-500 transition duration-100">
                         RUNNING
@@ -84,7 +84,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         FOOTBALL
                     </p>
                 </div>
-            </div>
+            </div> */}
             {isSidebarOpen && <SidebarMobile user={user} onClose={() => setIsSidebarOpen(false)} />}
         </div>
     );

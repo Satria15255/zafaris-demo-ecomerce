@@ -35,7 +35,7 @@ const Bestseller = () => {
 
     const isDiscount = discountPercent && discountPrice;
     return (
-        <div className="my-12">
+        <div className="md:my-12">
             <header className="flex flex-col items-center py-4">
                 <p className="text-center text-lg md:text-sm lg:text-3xl px-4 font-semibold text-underline">
                     Best <span className="text-yellow-500">Deals </span>
