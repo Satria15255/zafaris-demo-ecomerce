@@ -50,7 +50,8 @@ const Bestseller = () => {
                 <div className="w-full mt-2 lg:mt-4 px-2 md:px-3">
 
                     {/* Slider */}
-                    <div className="md:hidden overflow-hidden">
+                    <div className="md:hidden">
+                        <div className=" overflow-hidden">
 
                         <div
                             className="flex transition-transform duration-500 ease-in-out"
@@ -99,6 +100,7 @@ const Bestseller = () => {
                             />
                         ))}
 
+                    </div>
                     </div>
 
                 </div>

@@ -47,13 +47,13 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 </div>
                 <div className="flex justify-end gap-3 md:gap-6 items-center">
                     <div className="hidden md:flex">
-                    {user ? (
-                        <button onClick={onToggleSidebar} className="relative flex items-center gap-2 hidden md:flex px-2 hover:text-yellow-500 transition duration-100">
-                            <PiUserCircle size={30} /> <span>Hi {user.name}</span>
-                        </button>
-                    ) : (
-                        <p onClick={() => navigate("/login")} className="cursor-pointer hover:underline mb-2 text-lg"> Login / Register</p>
-                    )}
+                        {user ? (
+                            <button onClick={onToggleSidebar} className="relative flex items-center gap-2 hidden md:flex px-2 hover:text-yellow-500 transition duration-100">
+                                <PiUserCircle size={30} /> <span>Hi {user.name}</span>
+                            </button>
+                        ) : (
+                            <p onClick={() => navigate("/login")} className="cursor-pointer hover:underline mb-2 text-lg"> Login / Register</p>
+                        )}
                     </div>
                     <button className="relative text-2xl text-gray-700  flex px-2 hover:text-yellow-500 transition duration-100">
                         <MdOutlineFavoriteBorder />
@@ -66,8 +66,8 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 </div>
             </div>
             {/* Bottom Section */}
-            {/* <div>
-                <div className=" gap-7 hidden md:flex justify-start font-semibold text-md items-center">
+            <div>
+                <div className=" gap-7 hidden md:flex justify-start font-semibold text-md mt-3 items-center">
                     <p onClick={() => navigate("/products")} className="cursor-pointer hover:text-yellow-500 transition duration-100">
                         RUNNING
                     </p>
@@ -84,7 +84,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         FOOTBALL
                     </p>
                 </div>
-            </div> */}
+            </div>
             {isSidebarOpen && <SidebarMobile user={user} onClose={() => setIsSidebarOpen(false)} />}
         </div>
     );

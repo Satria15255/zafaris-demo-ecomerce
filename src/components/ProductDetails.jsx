@@ -73,25 +73,25 @@ function ProductModal() {
 
 
     return (
-        <div className="mt-16 pt-10 bg-white p-6 rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto">
-            <div className="flex justify-center px-6">
+        <div className="md:mt-16 pt-10 bg-white md:p-6 rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto">
+            <div className="flex flex-col md:flex-row justify-center px-3 md:px-6">
                 <div className="w-full h-full flex justify-center p-3">
-                    <img src={product.image} alt={product.name} className=" w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2" />
+                    <img src={product.image} alt={product.name} className="w-full md:w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2" />
                 </div>
 
-                <div className="w-full flex justify-around flex-col">
+                <div className="w-full p-3 flex justify-around flex-col">
                     <div className="">
                         <div className="flex flex-col gap-3">
-                            <p className="text-lg text-gray-500">{product.brand} / {product.category}</p>
-                            <p className="text-5xl font-semibold">{product.name}</p>
-                            <div className="flex items-center text-lg">
+                            <p className="text-sm md:text-lg text-gray-500">{product.brand} / {product.category}</p>
+                            <p className="text-3xl md:text-5xl font-semibold">{product.name}</p>
+                            <div className="flex items-center text-sm md:text-lg">
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
-                                <p className="text-lg text-gray-400 pl-4">  4.9 (120 Reviews)</p>
+                                <p className="text-sm md:text-lg text-gray-400 pl-4">  4.9 (120 Reviews)</p>
                             </div>
                         </div>
                     </div>
@@ -100,19 +100,19 @@ function ProductModal() {
                     <div className="flex items-center ">
                         {isDiscount ? (
                             <div className="flex gap-2">
-                                <p className="text-sm lg:text-3xl font-bold line-through">USD {product.price}.00</p>
-                                <p className="text-sm lg:text-3xl  font-bold">USD {product.discountPrice}.00</p>
+                                <p className="text-lg lg:text-3xl font-bold line-through">USD {product.price}.00</p>
+                                <p className="text-lg lg:text-3xl  font-bold">USD {product.discountPrice}.00</p>
                             </div>
                         ) : (
                             <>
-                                <p className="text-sm lg:text-3xl font-bold">USD {product.price}.00</p>
+                                    <p className="text-lg lg:text-3xl font-bold">USD {product.price}.00</p>
                             </>
                         )}
                     </div>
 
                     <div className="">
-                        <p className="text-2xl font-semibold">Size Charts</p>
-                        <div className="mt-6">
+                        <p className="text-lg md:text-2xl font-semibold">Size Charts</p>
+                        <div className="mt-3 md:mt-6">
 
                             <div className="flex flex-wrap gap-3">
                                 {product?.sizes?.length > 0 ? (
@@ -158,20 +158,6 @@ function ProductModal() {
                     </div>
                 </div>
 
-
-                {/* <div className="mt-auto flex flex-col justify-arround xl:hidden items-end ">
-                    <button onClick={() => onAddToCart(product, selectedSize)} className="mt-3 w-full px-2 py-3 bg-gray-200  hover:text-white rounded-md hover:bg-black transition">
-                        Add to Cart
-                    </button>
-                    <button
-                        onClick={() => {
-                            handleChekoutNow();
-                        }}
-                        className="mt-2 w-full px-2 py-3 bg-gray-200  hover:text-white rounded-md hover:bg-black transition"
-                    >
-                        Chekout
-                    </button>
-                </div> */}
             </div>
 
             <div className="mt-9 px-6">
@@ -179,7 +165,7 @@ function ProductModal() {
                 <p className="py-3 text-sm lg:text-lg border-bottom w-full ">{product.description}</p>
             </div>
 
-            <div className="mt-8 px-6 w-full">
+            <div className="mt-8 px-3 md:px-6 w-full">
                 <p className="text-2xl font-semibold pb-4">Recommended for You :</p>
                 <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
                     {recommended.map((product) => (

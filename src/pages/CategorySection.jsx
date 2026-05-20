@@ -49,7 +49,7 @@ const CategoryCollection = () => {
             </div>
 
             {/* Mobile Ver */}
-            <div className='nd:hidden h-auto py-12 px-4 w-full overflow-hidden'>
+            <div className='md:hidden h-auto py-12 px-4 w-full overflow-hidden'>
 
                 {/* Slider */}
                 <div

@@ -7,7 +7,7 @@ import "swiper/css/effect-fade";
 
 const Hero = () => {
     return (
-        <div className="w-full p-2 md:p-6 pt-16 md:mt-16 flex justify-center h-auto">
+        <div className="w-full p-2 md:p-8 pt-16 md:mt-16 flex justify-center h-auto">
             <Swiper modules={[Autoplay, EffectFade]} effect="fade" autoplay={{ delay: 4000 }} loop className=" h-full">
                 <SwiperSlide>
                     <div className="relative flex justify-center items-center">
