@@ -73,7 +73,7 @@ const SuccesTransaction = () => {
                         </div>
                         <div className="w-full p-3">
                             <p className="flex justify-between">
-                                <strong>ID Transaction:</strong>
+                                <strong>Order Id:</strong>
                                 <p>{latestOrder._id}</p>
                             </p>
                             <p className="flex justify-between">
@@ -82,7 +82,7 @@ const SuccesTransaction = () => {
                             <p className="flex justify-between">
                                 <strong>Total Price:</strong> ${latestOrder.totalPrice}
                             </p>
-                            <p className="flex justify-between">
+                            <p className="flex h-auto justify-between">
                                 <strong>Address:</strong> {latestOrder.shippingAddress}
                             </p>
                             <p className="flex justify-between">

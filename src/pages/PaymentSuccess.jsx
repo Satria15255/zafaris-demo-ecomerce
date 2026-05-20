@@ -34,16 +34,16 @@ const SuccesTransaction = () => {
     return (
         <div className="mt-16 flex flex-col items-center p-2 md:p-4 ">
             {latestOrder ? (
-                <div className="mb-8 p-4 flex flex-col w-4/5 justify-center rounded-lg ">
-                    <div className="flex flex-col items-center">
+                <div className="mb-8 p-4 flex flex-col w-full md:w-4/5 justify-center rounded-lg ">
+                    <div className="flex flex-col justify-center items-center">
                         <p className="text-8xl"><FcApproval /></p>
                         <p className="text-4xl font-bold pb-3 text-green-600">Thank You</p>
                         {cashOnDeliveryPayment ? (
-                            <p className="text-xl font-bold pb-6 text-green-600">Your order has been processed</p>
+                            <p className="text-xl text-center font-bold pb-6 text-green-600">Your order has been processed</p>
 
                         ) : (
 
-                            <p className="text-xl font-bold pb-6 text-green-600">Your payment was successful and your order is being processed.</p>
+                                <p className="text-xl text-center font-bold pb-6 text-green-600">Your payment was successful and your order is being processed.</p>
                         )}
                     </div>
                     {/* Purchase Details */}
@@ -59,9 +59,14 @@ const SuccesTransaction = () => {
                                             <div className="flex items-center mt-3 border-b border-gray-300 pb-3">
                                                 <div className="flex items-center w-full">
                                                     <img src={item.image} alt={item.name} className="w-20 h-full object-cover rounded mr-4" />
-                                                    <p className="text-lg  w-40 font-semibold">{item.name} </p>
+                                                    <p className="text-md lg:text-lg w-30 md:w-40 font-semibold">{item.name} </p>
                                                 </div>
-                                                <div className="flex justify-between gap-4 w-full">
+                                                <div className="md:hidden w-20">
+                                                    <p className="text-gray-500 text-md md:text-sm">
+                                                        {item.size} x {item.quantity}
+                                                    </p>
+                                                </div>
+                                                <div className="hidden md:flex justify-between gap-4 w-full">
                                                     <p>
                                                         Size:<span className="font-bold">{item.size}</span>{" "}
                                                     </p>
@@ -79,7 +84,7 @@ const SuccesTransaction = () => {
                             </div>
                         </div>
                         {/* Order Details */}
-                        <div className="bg-black text-white p-5 rounded-3xl">
+                        <div className="bg-black text-white p-2 md:p-5 rounded-3xl">
                             <div className="mt-3 w-full">
                                 <p className="text-xl font-semibold">🧾 Order Details:</p>
                                 <div className="p-3">
@@ -124,7 +129,7 @@ const SuccesTransaction = () => {
                                     <p className="flex justify-between">
                                         <span>Name :</span> {latestOrder.name}
                                     </p>
-                                    <p className="flex justify-between">
+                                    <p className="flex h-auto justify-between">
                                         <span>Address :</span> {latestOrder.shippingAddress}
                                     </p>
                                     <p className="flex justify-between">
@@ -132,11 +137,11 @@ const SuccesTransaction = () => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="flex gap-4 md:justify-end md:items-center w-full">
-                                <button onClick={() => navigate("/")} className="text-lg  font-semibold h-12 w-1/4 border border-gray-300 rounded-xl hover:bg-white hover:text-black transition duration-300">
+                            <div className="flex gap-4 md:justify-end md:items-center w-full pb-1">
+                                <button onClick={() => navigate("/")} className="text-lg  font-semibold h-12 w-1/2 md:w-1/4 border border-gray-300 rounded-2xl hover:bg-white hover:text-black transition duration-300">
                                     Home
                                 </button>
-                                <button onClick={() => navigate(`/my-orders`)} className="text-lg  text-center font-semibold h-12  w-1/4 border border-gray-300 rounded-xl hover:bg-white hover:text-black transition duration-300">
+                                <button onClick={() => navigate(`/my-orders`)} className="text-lg  text-center font-semibold h-12 w-1/2 md:w-1/4 border border-gray-300 rounded-2xl hover:bg-white hover:text-black transition duration-300">
                                     My Orders
                                 </button>
                             </div>
