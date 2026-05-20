@@ -92,31 +92,31 @@ const CheckoutPage = () => {
     };
 
     return (
-        <div className="mt-16 p-6">
+        <div className="mt-9 md:mt-16 p-6">
             {items.length === 0 ? (
                 <div className="h-4/5 border-t">
                     <p>No Product</p>
                 </div>
             ) : (
-                <div className="flex w-full">
+                    <div className="flex flex-col md:flex-row w-full">
                     {/* Rincian Cart */}
-                    <div className="w-full mb-6 p-8">
+                        <div className="w-full mb-6 p-2 md:p-8">
                             <p className="text-3xl font-semibold">Shopping Cart</p>
                             <ul className="space-y-2 mt-7">
                             {items.map((item) => (
                                 <li key={item.id + item.size} className="flex justify-between items-center border-b py-2">
                                     <div className="flex items-center gap-2">
-                                        <div className="w-10 h-10 md:w-20 md:h-20">
+                                        <div className="w-20 h-20 md:w-20 md:h-20">
                                             <img src={item.image} alt={item.name} className="w-full rounded-lg" />
                                         </div>
                                         <div className=" justify-between">
-                                            <p className="font-semibold text-xs md:text-lg">{item.name}</p>
+                                            <p className="font-semibold text-md w-30 md:text-lg">{item.name}</p>
                                             <p className="text-gray-500 text-xs md:text-sm">
                                                 {item.size} x {item.quantity}
                                             </p>
                                         </div>
                                     </div>
-                                    <span className="text-yellow-500 font-bold text-xs md:text-lg">$ {(item.finalPrice * item.quantity).toFixed(2)}</span>
+                                    <span className="text-yellow-500 font-bold text-lg md:text-lg">$ {(item.finalPrice * item.quantity).toFixed(2)}</span>
                                 </li>
                             ))}
                         </ul>
@@ -127,7 +127,7 @@ const CheckoutPage = () => {
                     </div>
 
                     {/* Form Pembeli */}
-                        <div className="w-3/5 pt-8 bg-black rounded-xl p-4">
+                        <div className="w-full md:w-3/5 pt-8 bg-black rounded-xl p-4">
                             <p className="text-3xl text-white pb-4 font-semibold">Order Details</p>
                             <form onSubmit={handleSubmit} className="space-y-4 text-xs text-white">
                             <div>

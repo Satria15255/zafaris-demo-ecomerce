@@ -11,8 +11,8 @@ const ShoppingCart = ({ closeShoppingCart }) => {
 
     return (
         <div className="fixed bg-black/20 inset-0 w-full z-50 h-screen flex justify-end ">
-            <div className="bg-white w-2/5 flex flex-col items-center">
-                <div className="w-full">
+            <div className="bg-white w-full md:w-2/5 flex flex-col  items-center">
+                <div className="w-full h-full flex flex-col justify-between">
                     {/* Tombol Close */}
                     <div className="flex justify-between p-5 border-b border-gray-400">
 
@@ -22,7 +22,7 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                         <p className="text-md mt-3 lg:text-2xl font-semibold mb-4 md:mb-6">Your cart</p>
                     </div>
                     {/* Tabel Cart */}
-                    <div className="w-full h-100">
+                    <div className="w-full h-full">
                         <div className="w-full p-1  bg-white lg:p-6 overflow-x-hidden overflow-y-auto max-h-[60vh] md:max-h-[40vh] lg:max-h-[62vh]">
                             {cart.length === 0 ? (
                                 <p className="text-gray-500 text-center">Your cart is empty</p>
@@ -39,12 +39,12 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                                     <tbody>
                                         {cart.map((item) => {
                                             return (
-                                                <tr key={`${item.productId._id} - ${item.size}`} className="border-b">
+                                                <tr key={`${item.productId._id} - ${item.size}`} className="border-b border-gray-300">
                                                     {/* Produk */}
-                                                    <td className="flex items-center py-4">
-                                                        <img src={item.productId.image} alt={item.productId.name} className="w-14 h-14 md:w-20 md:h-20 lg:w-20 lg:h-20 object-cover rounded mr-1 md:mr-4" />
+                                                    <td className="flex items-center py-4 px-2">
+                                                        <img src={item.productId.image} alt={item.productId.name} className="w-25 h-25 md:w-20 md:h-20 lg:w-20 lg:h-20 object-cover rounded mr-1 md:mr-4" />
                                                         <div>
-                                                            <p className="text-[10px] md:text-lg text-sm max-w-sm font-medium">{item.productId.name}</p>
+                                                            <p className="text-sm md:text-lg text-sm max-w-sm font-medium">{item.productId.name}</p>
                                                             <p className="text-xs lg:text-sm text-gray-600 font-semibold">Size: {item.size}</p>
                                                             <div className="flex gap-2 items-center">
                                                                 {item.discountPercent > 0 && (
@@ -87,7 +87,7 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                         </div>
                     </div>
                     {/* Total Harga Keseluruhan & chekout */}
-                    <div className="w-full border-t border-gray-400 p-4 mt-4 ">
+                    <div className="fixed bottom-0 w-full border-t border-gray-400 p-4 mt-4 ">
                         <div className="grid grid-cols-2">
                             <p className="text-[16px] md:text-lg font-semibold text-left">Sub Total</p>
                             <div className="text-right">

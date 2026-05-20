@@ -29,7 +29,7 @@ const SuccesTransaction = () => {
     }, []);
 
     return (
-        <div className="mt-16 p-2 md:p-4 ">
+        <div className="mt-8 md:mt-16 p-2 md:p-4 ">
             {latestOrder ? (
                 <div className="mb-8 p-4 flex flex-col rounded-lg ">
                     <div className="flex flex-col items-center">
@@ -46,11 +46,16 @@ const SuccesTransaction = () => {
                                     {latestOrder.products.map((item, i) => (
                                         <div key={i}>
                                             <div className="flex items-center mt-3 border-b border-gray-300 pb-3">
-                                                <div className="flex items-center w-full">
+                                                <div className="flex items-center  w-full">
                                                     <img src={item.image} alt={item.name} className="w-20 h-full object-cover rounded mr-4" />
-                                                    <p className="text-lg  w-40 font-semibold">{item.name} </p>
+                                                    <p className="text-md w-30 md:w-40 font-semibold">{item.name} </p>
                                                 </div>
-                                                <div className="flex justify-between gap-4 w-full">
+                                                <div className="md:hidden w-20">
+                                                    <p className="text-gray-500 text-md md:text-sm">
+                                                        {item.size} x {item.quantity}
+                                                    </p>
+                                                </div>
+                                                <div className="hidden md:flex justify-between gap-4 w-full">
                                                     <p>
                                                         Size:<span className="font-bold">{item.size}</span>{" "}
                                                     </p>
