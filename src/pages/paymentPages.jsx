@@ -92,9 +92,9 @@ const PaymentPages = () => {
             <p className="text-4xl font-bold pb-6 text-green-600">💳 Complete Your Payment</p>
 
             {latestOrder ? (
-                <div className="mb-8 p-4 border flex rounded-lg shadow">
+                <div className="mb-8 p-4 border flex flex-col md:flex-row rounded-lg shadow">
                     {/* Order Details */}
-                    <div className="flex flex-col w-4/5">
+                    <div className="flex flex-col w-full md:w-4/5">
                         <p className="text-xl w-full font-semibold mb-2">🧾 Order Details:</p>
                         <div className="h-full flex flex-col justify-between">
                         <div className="mt-3 w-full p-3">
@@ -106,9 +106,14 @@ const PaymentPages = () => {
                                             <div className="flex items-center mt-3 border-b border-gray-300 pb-3">
                                                 <div className="flex items-center w-full">
                                                     <img src={item.image} alt={item.name} className="w-20 h-full object-cover rounded mr-4" />
-                                                    <p className="text-lg  w-40 font-semibold">{item.name} </p>
+                                                    <p className="text-md lg:text-lg w-30 md:w-40 font-semibold">{item.name} </p>
                                                 </div>
-                                                <div className="flex justify-between gap-4 w-full">
+                                                <div className="md:hidden w-20">
+                                                    <p className="text-gray-500 text-md md:text-sm">
+                                                        {item.size} x {item.quantity}
+                                                    </p>
+                                                </div>
+                                                <div className="hidden md:flex justify-between gap-4 w-full">
                                                     <p>
                                                         Size:<span className="font-bold">{item.size}</span>{" "}
                                                     </p>
@@ -150,7 +155,7 @@ const PaymentPages = () => {
 
 
                     {/* Payment Details */}
-                    <div className="bg-black w-2/5 h-150 flex flex-col justify-around p-4 text-white rounded-xl">
+                    <div className="bg-black w-full md:w-2/5 h-150 flex flex-col justify-around p-4 text-white rounded-xl">
                         <p className="text-xl w-full font-semibold mb-2">🧾 Payment Details:</p>
                         <div className="mt-5 p-4">
                             <p className="text-lg ">Transfer Method</p>
