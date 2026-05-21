@@ -67,7 +67,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
             </div>
             {/* Bottom Section */}
             <div>
-                <div className=" gap-7 hidden md:flex justify-start font-semibold text-md mt-3 items-center">
+                <div className=" gap-7 hidden md:flex justify-start font-semibold text-sm lg:text-md mt-3 items-center">
                     <p onClick={() => navigate("/products")} className="cursor-pointer hover:text-yellow-500 transition duration-100">
                         RUNNING
                     </p>
