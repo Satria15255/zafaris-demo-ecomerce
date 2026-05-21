@@ -32,16 +32,16 @@ const CategoryCollection = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     return (
-        <div className='h-auto py-12 px-4 w-full'>
-            <div className='hidden md:flex flex-col md:flex-row justify-around'>
+        <div className='h-auto py-12 px-2 lg:px-4 w-full'>
+            <div className='hidden md:flex flex-col gap-2 md:flex-row justify-around'>
                 {collection.map((c) => (
-                    <div className='w-80'>
+                    <div className='w-50 lg:w-80'>
                         <div className='overflow-hidden'>
                             <img src={c.image} className='hover:scale-110 transition duration-300' />
                         </div>
                         <div className='flex flex-col gap-5 mt-6'>
-                            <p className='text-lg font-semibold'>{c.title}</p>
-                            <p className='text-sm text-gray-500'>{c.desc}</p>
+                            <p className='text-sm lg:text-lg font-semibold'>{c.title}</p>
+                            <p className='text-xs lg:text-sm text-gray-500'>{c.desc}</p>
                             <p className='underline pb-7 text-sm font-semibold'>SHOP NOW</p>
                         </div>
                     </div>
