@@ -4,7 +4,7 @@ import { MdAutoAwesome, MdOutlineExpandMore, MdSell } from "react-icons/md";
 const FilterSidebar = ({ categories, size, filter, setFilter }) => {
   return (
     <div>
-      <div className="md:flex hidden flex-col md:w-full space-y-2 pr-3">
+      <div className="lg:flex hidden flex-col md:w-4/5 space-y-2 pr-3">
         <div className="">
           <button className="flex  md:text-sm lg:text-lg items-center justify-between rounded-xl w-full text-left py-2 text-lg rounded-md text-left font-semibold">
             Category

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getBestSellingProducts, getAllProducts } from "../api/Api";
+import { getAllProducts } from "../api/Api";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { useCart } from "../context/CartContext";
@@ -31,24 +31,25 @@ const Bestseller = () => {
         groupedProducts.push(bestSellingProducts.slice(i, i + 2));
     }
 
-    const { discountPercent, discountPrice } = products;
 
-    const isDiscount = discountPercent && discountPrice;
     return (
-        <div className="md:my-12">
-            <header className="flex flex-col items-center py-4">
-                <p className="text-center text-lg md:text-sm lg:text-3xl px-4 font-semibold text-underline">
+        <div className="my-6 lg:my-12">
+            <header className="flex justify-between px-3 items-center py-4">
+                <p className="text-center text-lg md:text-lg lg:text-3xl px-4 font-semibold ">
                     Best <span className="text-yellow-500">Deals </span>
                 </p>
+                <p onClick={() => navigate("/products")} className="hidden md:flex text-lg lg:text-3xl hover:underline transition duration-300 ">View More</p>
             </header>
             <main>
+                {/* Desktop Ver */}
                 <div className="hidden w-full mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
                 {bestSellingProducts.map((products) => (
                     <ProductCard key={products.id} product={products} productDetails={() => navigate(`/product/${products._id}`)} addToCart={() => handleAddToCart(products._id)} />
                 ))}
                 </div>
-                <div className="w-full mt-2 lg:mt-4 px-2 md:px-3">
 
+                {/* Mobile Ver */}
+                <div className="w-full mt-2 lg:mt-4 px-2 md:px-3">
                     {/* Slider */}
                     <div className="md:hidden">
                         <div className=" overflow-hidden">
@@ -84,8 +85,7 @@ const Bestseller = () => {
 
                         </div>
 
-                    </div>
-
+                        </div>
                     {/* Slide Indicator */}
                     <div className="flex justify-center gap-2 mt-4">
 
