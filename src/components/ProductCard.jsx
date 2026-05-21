@@ -14,7 +14,7 @@ function ProductCard({ product, productDetails }) {
             transition={{ duration: 1.0 }} // Animasi selama 1 detik
             viewport={{ once: true }}
         >
-            <div key={product.id} className="relative flex flex-col justify-center w-45 md:w-70 h-auto md:rounded-5 lg:rounded-lg mt-2 ">
+            <div key={product.id} className="relative flex flex-col justify-center w-45 lg:w-70 h-auto md:rounded-5 lg:rounded-lg mt-2 ">
                 <div className="w-full">
                     <img src={product.image} alt={product.name} className="w-full h-auto object-cover rounded-md md:rounded-xl md:rounded-bottom-5 object-center" />
                     {product.isBestSeller === true && (
@@ -27,7 +27,7 @@ function ProductCard({ product, productDetails }) {
                     <div>
                         <p className="text-sm h-10 md:h-12 md:text-[15px] lg:text-xl"> {product.name}</p>
                     </div>
-                    <div className="flex flex-col md:flex-row justify-between">
+                    <div className="flex flex-col lg:flex-row justify-between">
                         <div className="flex">
                         <FaStar className="text-yellow-500" />
                         <FaStar className="text-yellow-500" />
@@ -51,8 +51,8 @@ function ProductCard({ product, productDetails }) {
                                 </>
                             )}
                         </div>
-                        <p onClick={() => productDetails(product)} className="text-xs md:text-sm cursor-pointer lg:text-md h-8 md:h-10 px-5 font-sans bg-black rounded-full text-white flex items-center gap-3 hover:text-black hover:bg-white border border-gray-500 transition duration-300">
-                            <span className="hidden md:flex">Add to Cart</span><FaCartPlus />
+                        <p onClick={() => productDetails(product)} className="text-xs lg:text-sm cursor-pointer lg:text-md h-8 md:h-10 px-5 font-sans bg-black rounded-full text-white flex items-center gap-3 hover:text-black hover:bg-white border border-gray-500 transition duration-300">
+                            <span className="hidden lg:flex">Add to Cart</span><FaCartPlus />
                         </p>
                     </div>
                 </div>
