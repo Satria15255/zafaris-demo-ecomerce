@@ -89,7 +89,7 @@ const PaymentPages = () => {
 
     return (
         <div className="mt-16 p-2 md:p-4 ">
-            <p className="text-4xl font-bold pb-6 text-green-600">💳 Complete Your Payment</p>
+            <p className="text-xl lg:text-4xl md:pt-10 font-bold pb-6 text-green-600">💳 Complete Your Payment</p>
 
             {latestOrder ? (
                 <div className="mb-8 p-4 border flex flex-col md:flex-row rounded-lg shadow">
@@ -103,17 +103,17 @@ const PaymentPages = () => {
                                 <ul className="list-disc list-inside border-t mt-1">
                                     {latestOrder.products.map((item, i) => (
                                         <div key={i}>
-                                            <div className="flex items-center mt-3 border-b border-gray-300 pb-3">
+                                            <div className="flex items-center justify-around mt-3 border-b border-gray-300 pb-3">
                                                 <div className="flex items-center w-full">
                                                     <img src={item.image} alt={item.name} className="w-20 h-full object-cover rounded mr-4" />
-                                                    <p className="text-md lg:text-lg w-30 md:w-40 font-semibold">{item.name} </p>
+                                                    <p className="text-md md:text-lg lg:text-lg w-30 md:w-40 font-semibold">{item.name} </p>
                                                 </div>
                                                 <div className="md:hidden w-20">
                                                     <p className="text-gray-500 text-md md:text-sm">
                                                         {item.size} x {item.quantity}
                                                     </p>
                                                 </div>
-                                                <div className="hidden md:flex justify-between gap-4 w-full">
+                                                <div className="hidden md:flex justify-around gap-4 w-full">
                                                     <p>
                                                         Size:<span className="font-bold">{item.size}</span>{" "}
                                                     </p>
@@ -131,7 +131,7 @@ const PaymentPages = () => {
                         </div>
                             <div className="w-full border-t border-gray-300 p-3">
                                 <div className="flex justify-between">
-                                <strong>ID Transaction:</strong>
+                                    <strong>Order Id:</strong>
                                 <p>{latestOrder._id}</p>
                                 </div>
                                 <div className="flex justify-between">
@@ -159,29 +159,29 @@ const PaymentPages = () => {
                         <p className="text-xl w-full font-semibold mb-2">🧾 Payment Details:</p>
                         <div className="mt-5 p-4">
                             <p className="text-lg ">Transfer Method</p>
-                            <div className="flex justify-center gap-5 mt-3">
-                                <button onClick={() => setSelectedTransfer("Visa")} className={`rounded-full h-12 w-1/2 border transition duration-300 ${selectedTransfer === "Visa" ? "bg-white text-black" : "border-gray-700 hover:bg-gray-600"}`}>Visa</button>
-                                <button onClick={() => setSelectedTransfer("Mastercard")} className={`rounded-full h-12 w-1/2 border transition duration-300 ${selectedTransfer === "Mastercard" ? "bg-white text-black" : "border-gray-700 hover:bg-gray-600"}`}>Mastercard</button>
+                            <div className="flex justify-center gap-2 lg:gap-5 mt-3">
+                                <button onClick={() => setSelectedTransfer("Visa")} className={`rounded-full text-sm px-2 h-12 w-1/2 border transition duration-300 ${selectedTransfer === "Visa" ? "bg-white text-black" : "border-gray-700 hover:bg-gray-600"}`}>Visa</button>
+                                <button onClick={() => setSelectedTransfer("Mastercard")} className={`rounded-full text-sm px-2 h-12 w-1/2 border transition duration-300 ${selectedTransfer === "Mastercard" ? "bg-white text-black" : "border-gray-700 hover:bg-gray-600"}`}>Mastercard</button>
                             </div>
                         </div>
-                        <div className="p-4 flex flex-col justify-around space-y-5">
+                        <div className="p-4 flex flex-col text-sm lg:text-lg justify-around space-y-5">
                             <div>
-                                <input name="cardName" value={paymentData.cardName} onChange={handleChange} type="text" required placeholder="Your Card Name" className="w-full border-b bg-black text-lg px-3 py-2 rounded" />
+                                <input name="cardName" value={paymentData.cardName} onChange={handleChange} type="text" required placeholder="Your Card Name" className="w-full border-b bg-black   px-3 py-2 rounded" />
                             </div>
 
                             <div>
-                                <input name="cardNumber" value={paymentData.cardNumber} onChange={handleChange} type="text" required placeholder="Card Number" className="w-full h-12 text-lg border-b px-3 rounded" />
+                                <input name="cardNumber" value={paymentData.cardNumber} onChange={handleChange} type="text" required placeholder="Card Number" className="w-full h-12   border-b px-3 rounded" />
                             </div>
 
                             <div>
-                                <input name="cvv" value={paymentData.cvv} onChange={handleChange} type="text" required placeholder="CVV" className="w-full border-b text-lg px-3 py-2 rounded" />
+                                <input name="cvv" value={paymentData.cvv} onChange={handleChange} type="text" required placeholder="CVV" className="w-full border-b  px-3 py-2 rounded" />
                             </div>
 
                             <div>
-                                <input name="expiredDate" value={paymentData.expiredDate} onChange={handleChange} type="date" required placeholder="Expired Date" className="w-full text-lg border-b px-3 py-2 rounded" />
+                                <input name="expiredDate" value={paymentData.expiredDate} onChange={handleChange} type="date" required placeholder="Expired Date" className="w-full  border-b px-3 py-2 rounded" />
                             </div>
                         </div>
-                        <button onClick={handlePayment} className="bg-white text-black w-full py-2 text-xl px-4 rounded-lg  hover:bg-gray-100">
+                        <button onClick={handlePayment} className="bg-white text-black w-full py-2 text-lg lg:text-xl px-4 rounded-lg  hover:bg-gray-100">
                             Paid Now
                         </button>
                     </div>

@@ -11,10 +11,10 @@ const Footer = () => {
 
                 <div className="flex flex-col  gap-5">
                     <div>
-                        <img src={brandLogo} className="w-60 h-auto" />
+                        <img src={brandLogo} className="w-40 lg:w-60 h-auto" />
                     </div>
                     <div>
-                        <p className="text-[10px] max-w-sm lg:text-xs ">
+                        <p className="text-[10px] max-w-xs lg:text-xs ">
                             From casual looks to streetwear, every pair is crafted to support your active and confident lifestyle.
                         </p>
                     </div>
@@ -32,7 +32,7 @@ const Footer = () => {
                 </div>
 
                 <div className="flex flex-col space-y-1">
-                    <p className="text-lg font-bold pb-5">SHOP</p>
+                    <p className="text-lg font-bold pb-5">Shop</p>
                     <p className="text-xs  md:text-[10px] lg:text-sm">Best Seller</p>
                     <p className="text-xs  md:text-[10px] lg:text-sm">Latest Arrival</p>
                     <p className="text-xs  md:text-[10px] lg:text-sm">On Promo</p>
@@ -40,7 +40,7 @@ const Footer = () => {
                     <p className="text-xs  md:text-[10px] lg:text-sm">Product Category</p>
                 </div>
                 <div className="flex flex-col space-y-1">
-                    <p className="text-lg font-bold pb-5">SUPPORT</p>
+                    <p className="text-lg font-bold pb-5">Support</p>
                     <p className="text-xs  md:text-[10px] lg:text-sm">How to Shop</p>
                     <p className="text-xs  md:text-[10px] lg:text-sm">FAQ</p>
                     <p className="text-xs  md:text-[10px] lg:text-sm">Return Policy</p>
@@ -49,15 +49,15 @@ const Footer = () => {
                 </div>
 
                 <div className="space-y-3">
-                    <p className="text-lg font-bold pb-5">CONTACT</p>
+                    <p className="text-lg font-bold pb-5">Contact</p>
                     <div className="space-y-1 text-sm text-gray-600">
-                        <p>support@stridezone.com</p>
+                        <p>support@zafaris.com</p>
                         <p>+62 812-3456-7890</p>
                     </div>
                 </div>
             </div>
 
-            <div className="flex items-center border-t border-gray-400 justify-between px-16">
+            <div className="flex flex-col md:flex-row items-center border-t border-gray-400 justify-between px-10 lg:px-16">
                 <div>
                     <p className="text-[6px] md:text-[8px] lg:text-xs  md:pb-3">Copyright© 2025 Zafaris.Co All rights reserved.</p>
                 </div>

@@ -61,7 +61,7 @@ const OrderDetails = ({ order, handleCancel, handleConfirm }) => {
                 <button
                   onClick={() => handleCancel(ord._id)}
                   disabled={ord.status === "Completed" || ord.status === "Cancelled"}
-                  className="text-sm md:text-md lg:text-lg border w-1/4 md:w-1/5 py-1 rounded-md font-bold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50 
+                  className="text-sm md:text-md lg:text-lg border w-1/4 md:w-2/5 py-1 rounded-md font-bold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50 
     disabled:cursor-not-allowed
     disabled:hover:bg-transparent
     disabled:hover:text-current"
@@ -74,7 +74,7 @@ const OrderDetails = ({ order, handleCancel, handleConfirm }) => {
                     handleConfirm(ord._id);
                   }}
                   disabled={ord.status !== "Delivered"}
-                  className="text-sm md:text-md lg:text-lg border w-1/4 md:w-1/5 py-1 rounded-md font-bold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50 
+                  className="text-sm md:text-md lg:text-lg border w-1/4 md:w-2/5 py-1 rounded-md font-bold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50 
     disabled:cursor-not-allowed
     disabled:hover:bg-transparent
     disabled:hover:text-current"
