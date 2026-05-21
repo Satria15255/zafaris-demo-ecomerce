@@ -76,22 +76,22 @@ function ProductModal() {
         <div className="md:mt-16 pt-10 bg-white md:p-6 rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto">
             <div className="flex flex-col md:flex-row justify-center px-3 md:px-6">
                 <div className="w-full h-full flex justify-center p-3">
-                    <img src={product.image} alt={product.name} className="w-full md:w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2" />
+                    <img src={product.image} alt={product.name} className="w-full lg:w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2" />
                 </div>
 
                 <div className="w-full p-3 flex justify-around flex-col">
                     <div className="">
                         <div className="flex flex-col gap-3">
                             <p className="text-sm md:text-lg text-gray-500">{product.brand} / {product.category}</p>
-                            <p className="text-3xl md:text-5xl font-semibold">{product.name}</p>
-                            <div className="flex items-center text-sm md:text-lg">
+                            <p className="text-3xl lg:text-5xl font-semibold">{product.name}</p>
+                            <div className="flex items-center text-sm lg:text-lg">
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
                                 <FaStar className="text-yellow-500" />
-                                <p className="text-sm md:text-lg text-gray-400 pl-4">  4.9 (120 Reviews)</p>
+                                <p className="text-sm lg:text-lg text-gray-400 pl-4">  4.9 (120 Reviews)</p>
                             </div>
                         </div>
                     </div>
@@ -111,9 +111,8 @@ function ProductModal() {
                     </div>
 
                     <div className="">
-                        <p className="text-lg md:text-2xl font-semibold">Size Charts</p>
-                        <div className="mt-3 md:mt-6">
-
+                        <p className="text-lg lg:text-2xl font-semibold">Size Charts</p>
+                        <div className="mt-3 lg:mt-6">
                             <div className="flex flex-wrap gap-3">
                                 {product?.sizes?.length > 0 ? (
                                     product.sizes.map((size) => (
@@ -165,7 +164,7 @@ function ProductModal() {
                 <p className="py-3 text-sm lg:text-lg border-bottom w-full ">{product.description}</p>
             </div>
 
-            <div className="mt-8 px-3 md:px-6 w-full">
+            <div className="mt-8 px-1 lg:px-6 w-full">
                 <p className="text-2xl font-semibold pb-4">Recommended for You :</p>
                 <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
                     {recommended.map((product) => (
