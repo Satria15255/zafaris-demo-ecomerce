@@ -6,6 +6,10 @@ import { toast } from "react-toastify";
 const OrderPages = () => {
     const [orders, setOrders] = useState([]);
     const [pagination, setPagination] = useState(6)
+    const [filter, setFilter] = useState({
+        status: "All"
+    })
+    const ordersStatus = ["All", "Waiting for Payment", "Processing", "Shipped", "Delivered", "Completed", "Cancelled"]
 
     const fetchMyOrders = async () => {
         const res = await getMyOrders();
@@ -17,9 +21,7 @@ const OrderPages = () => {
         fetchMyOrders();
     }, []);
 
-    const sortedOrder = orders.sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    )
+
 
     const handleConfirmReceived = async (id) => {
         try {
@@ -42,23 +44,65 @@ const OrderPages = () => {
         }
     };
 
-    if (!Array.isArray(sortedOrder) || sortedOrder.length === 0) return <p>Belum ada order.</p>;
+    // FILTER ORDER
+    const filteredOrders = orders.filter((order) => {
+
+        const matchStatus =
+            filter.status === "All" ||
+            order.status === filter.status;
+
+        return matchStatus;
+    });
+
+    // SORT ORDER (NEWEST FIRST)
+    const sortedOrder = [...filteredOrders].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+
 
     return (
         <div className="pt-16 mt-13">
-            {/* Filter Orders */}
             <div>
+                {/* Filter Orders */}
+                <div className="flex flex-wrap gap-3 mb-6">
+                    {ordersStatus.map((ord) => (
+                        <button
+                            key={ord}
+                            onClick={() =>
+                                setFilter((prev) => ({
+                                    ...prev,
+                                    status: ord
+                                }))
+                            }
+                            className={`
+                            px-4 py-2 rounded border
+                            ${filter.status === ord
+                                    ? "bg-black text-white"
+                                    : "bg-white text-black"
+                                }
+                        `}
+                        >
+                            {ord}
+                        </button>
 
+                    ))}
             </div>
             <div className="w-full">
-                {sortedOrder.slice(0, pagination).map((order) => (
-                    <OrderDetails order={order} handleCancel={handleCancel} handleConfirm={handleConfirmReceived} />
-                ))}
+                    {sortedOrder.length === 0 ? (
+                        <p className="pt-20 text-center">
+                            Belum ada order.
+                        </p>
+                    ) : (
+                        sortedOrder.slice(0, pagination).map((order) => (
+                            <OrderDetails order={order} handleCancel={handleCancel} handleConfirm={handleConfirmReceived} />
+                        ))
+                    )}
             </div>
             <div className="flex justify-center p-3">
                 <p onClick={() => setPagination(pagination + 6)} className="text-sm lg:text-xl hover:underline transition duration-300">View More</p>
             </div>
         </div>
+        </div >
     );
 };
 
