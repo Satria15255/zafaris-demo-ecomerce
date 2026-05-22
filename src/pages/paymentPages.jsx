@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { getTransactionById, getAllProducts, payTransaction } from "../api/Api";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const PaymentPages = () => {
     const [latestOrder, setLatestOrder] = useState(null);
@@ -79,6 +80,7 @@ const PaymentPages = () => {
             }
 
             await payTransaction(latestOrder._id, { transferProvider: selectedTransfer })
+            toast.success("Payment Success!!")
             navigate(`/completed-order/${latestOrder._id}`)
         } catch (error) {
             console.log(error.message)

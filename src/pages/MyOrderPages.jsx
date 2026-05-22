@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 const OrderPages = () => {
     const [orders, setOrders] = useState([]);
+    const [pagination, setPagination] = useState(6)
 
     const fetchMyOrders = async () => {
         const res = await getMyOrders();
@@ -15,6 +16,10 @@ const OrderPages = () => {
     useEffect(() => {
         fetchMyOrders();
     }, []);
+
+    const sortedOrder = orders.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    )
 
     const handleConfirmReceived = async (id) => {
         try {
@@ -37,9 +42,22 @@ const OrderPages = () => {
         }
     };
 
+    if (!Array.isArray(sortedOrder) || sortedOrder.length === 0) return <p>Belum ada order.</p>;
+
     return (
-        <div className="mt-10 md:mt-16 pt-10">
-            <OrderDetails order={orders} handleCancel={handleCancel} handleConfirm={handleConfirmReceived} />
+        <div className="pt-16 mt-13">
+            {/* Filter Orders */}
+            <div>
+
+            </div>
+            <div className="w-full">
+                {sortedOrder.slice(0, pagination).map((order) => (
+                    <OrderDetails order={order} handleCancel={handleCancel} handleConfirm={handleConfirmReceived} />
+                ))}
+            </div>
+            <div className="flex justify-center p-3">
+                <p onClick={() => setPagination(pagination + 6)} className="text-sm lg:text-xl hover:underline transition duration-300">View More</p>
+            </div>
         </div>
     );
 };

@@ -14,6 +14,7 @@ import SuccessOrderPages from './pages/SuccessOrder'
 import PaymentOrderPages from './pages/paymentPages'
 import PaymentSuccessPages from './pages/PaymentSuccess'
 import OrderPages from './pages/MyOrderPages'
+import UserDashboard from './pages/UserDashboard'
 
 import ShoppingCart from './components/ShoppingCart'
 import ProductDetail from './components/ProductDetails'
@@ -22,6 +23,7 @@ import SidebarProfile from './components/SidebarProfile'
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import { CartProvider } from './context/CartContext'
+import { ToastContainer } from 'react-toastify'
 
 
 function App() {
@@ -54,6 +56,7 @@ function App() {
             <Route path='/paymentOrder/:id' element={<PaymentOrderPages />} />
             <Route path='/completed-order/:id' element={<PaymentSuccessPages />} />
             <Route path='/my-orders' element={<OrderPages />} />
+            <Route path='/dashboard' element={<UserDashboard />} />
           </Route>
         </Routes>
 
@@ -66,7 +69,16 @@ function App() {
             />
           </>
         )}
-
+        <ToastContainer position="top-center"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme="light" />
       </CartProvider>
 
     </div>

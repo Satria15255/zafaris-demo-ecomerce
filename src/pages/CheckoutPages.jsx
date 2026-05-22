@@ -79,7 +79,7 @@ const CheckoutPage = () => {
             const response =  await createTransaction(payload);
             const transactionId = response.data.transaction._id
             await handleClearCart();
-            toast.success("Transaction success");
+            toast.success("Order success");
             if (formData.paymentMethod === "Cash on Delivery") {
                 navigate(`/completed-order/${transactionId}`);
             } else {

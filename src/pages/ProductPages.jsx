@@ -114,8 +114,8 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                 <p className="text-4xl md:text-8xl font-bold text-white">Product</p>
                 <div className="hidden md:flex justify-between items-center gap-2 w-[50vh] md:w-4/5 lg:w-[180vh] rounded-t-2xl bg-white  h-[6vh] lg:h-[9vh] px-3">
                     <p className="hidden lg:flex font-bold text-xs md:text-sm lg:text-lg">Give All You Want</p>
-                    <div className="flex justify-center w-full lg:w-1/5 mt-3">
-                        <input type="text" placeholder="Search Products..." value={filter.search} onChange={(e) => setFilter((prev) => ({ ...prev, search: e.target.value }))} className="w-full px-2 h-[5vh] text-sm border rounded-xl" />
+                    <div className="flex justify-center w-full lg:w-3/5 mt-3">
+                        <input type="text" placeholder="Search Products..." value={filter.search} onChange={(e) => setFilter((prev) => ({ ...prev, search: e.target.value }))} className="w-full px-2 h-[5vh] lg:h-7vh text-sm border border-gray-300 rounded-xl" />
                     </div>
                     <button onClick={() => setFilterOpen(true)} className="hidden md:flex lg:hidden p-4 mt-3 items-center text-sm  border rounded-lg ">
                         <span className="flex items-center">

@@ -55,9 +55,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <p onClick={() => navigate("/login")} className="cursor-pointer hover:underline mb-2 text-lg"> Login / Register</p>
                         )}
                     </div>
-                    <button className="relative text-2xl text-gray-700  flex px-2 hover:text-yellow-500 transition duration-100">
-                        <MdOutlineFavoriteBorder />
-                    </button>
+
                     <p onClick={handleOpenCart} className="relative text-2xl px-2  hover:text-yellow-500 transition duration-100">
                         <MdOutlineShoppingCart />
                         {totalItems > 0 && (<span className="absolute top-2 right-4 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full"><p>{totalItems}</p></span>)}
@@ -67,7 +65,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
             </div>
             {/* Bottom Section */}
             <div>
-                <div className=" gap-7 hidden md:flex justify-start font-semibold text-sm lg:text-md mt-3 items-center">
+                <div className=" gap-7 hidden md:flex justify-start font-semibold text-sm lg:text-md mt-5 items-center">
                     <p onClick={() => navigate("/products")} className="cursor-pointer hover:text-yellow-500 transition duration-100">
                         RUNNING
                     </p>
