@@ -24,7 +24,6 @@ const UserDashboard = () => {
             <div className=" w-1/4 flex flex-col items-start p-3 gap-3 ">
                 <div className="pb-5 border-b w-full">
                     <p className="text-lg">Hello</p>
-                    <p className="text-4xl font-bold">{user.name}</p>
                 </div>
                 <button className={`w-4/5 rounded-3xl text-left flex justify-between items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "profile" ? "bg-black text-white" : ""}`} onClick={() => setSearchParams({ tab: "profile" })}>Profile<FaUserCircle size={20} /></button>
                 <button className={`w-4/5 rounded-3xl text-left flex justify-between items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "my-orders" ? "bg-black text-white" : ""}`} onClick={() => setSearchParams({ tab: "my-orders" })}>My Orders<FaCreditCard size={20} /></button>
