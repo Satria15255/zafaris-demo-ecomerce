@@ -15,6 +15,9 @@ const OrderPages = () => {
         const res = await getMyOrders();
         setOrders(res.data);
         console.log(res.data);
+        if (!orders) {
+            return <p>Load Data</p>
+        }
     };
 
     useEffect(() => {
@@ -61,10 +64,10 @@ const OrderPages = () => {
 
 
     return (
-        <div className="pt-16 mt-13">
+        <div className="">
             <div>
                 {/* Filter Orders */}
-                <div className="flex flex-wrap gap-3 mb-6">
+                <div className="flex justify-around gap-3 pb-6 border-b border-gray-400">
                     {ordersStatus.map((ord) => (
                         <button
                             key={ord}
@@ -75,7 +78,7 @@ const OrderPages = () => {
                                 }))
                             }
                             className={`
-                            px-4 py-2 rounded border
+                            px-4 w-30 py-1 text-md rounded-3xl border border-gray-300
                             ${filter.status === ord
                                     ? "bg-black text-white"
                                     : "bg-white text-black"
@@ -86,22 +89,26 @@ const OrderPages = () => {
                         </button>
 
                     ))}
-            </div>
-            <div className="w-full">
+                </div>
+
+                {/* Order Section */}
+                <div className="w-full max-h-120 overflow-y-auto">
                     {sortedOrder.length === 0 ? (
                         <p className="pt-20 text-center">
                             Belum ada order.
                         </p>
                     ) : (
-                        sortedOrder.slice(0, pagination).map((order) => (
-                            <OrderDetails order={order} handleCancel={handleCancel} handleConfirm={handleConfirmReceived} />
-                        ))
+                            <>
+                                {sortedOrder.slice(0, pagination).map((order) => (
+                                    <OrderDetails order={order} handleCancel={handleCancel} handleConfirm={handleConfirmReceived} />
+                                ))}
+                                <div className="flex justify-center p-3">
+                                    <p onClick={() => setPagination(pagination + 6)} className="text-sm lg:text-xl hover:underline transition duration-300">View More</p>
+                                </div>
+                        </>
                     )}
+                </div>
             </div>
-            <div className="flex justify-center p-3">
-                <p onClick={() => setPagination(pagination + 6)} className="text-sm lg:text-xl hover:underline transition duration-300">View More</p>
-            </div>
-        </div>
         </div >
     );
 };
