@@ -78,7 +78,7 @@ const OrderPages = () => {
                                 }))
                             }
                             className={`
-                            px-4 w-30 py-1 text-md rounded-3xl border border-gray-300
+                            px-4 w-30 py-1 text-md rounded-3xl border border-gray-300 hover:bg-black hover:text-white transition duration-300
                             ${filter.status === ord
                                     ? "bg-black text-white"
                                     : "bg-white text-black"
@@ -103,7 +103,9 @@ const OrderPages = () => {
                                     <OrderDetails order={order} handleCancel={handleCancel} handleConfirm={handleConfirmReceived} />
                                 ))}
                                 <div className="flex justify-center p-3">
-                                    <p onClick={() => setPagination(pagination + 6)} className="text-sm lg:text-xl hover:underline transition duration-300">View More</p>
+                                    {sortedOrder.length > pagination && (
+                                        <p onClick={() => setPagination(pagination + 6)} className="text-sm lg:text-xl hover:underline transition duration-300">View More</p>
+                                    )}
                                 </div>
                         </>
                     )}
