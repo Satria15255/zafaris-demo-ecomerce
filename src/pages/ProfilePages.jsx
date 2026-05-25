@@ -2,13 +2,42 @@ import { FaUserCircle } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext";
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
-
+import { updateProfile } from "../api/Api"
+import { toast } from "react-toastify";
 
 const ProfilePages = () => {
     const { user } = useAuth()
+    const [updateForm, setUpdateForm] = useState({
+        name: user?.name || "",
+        email: user?.email || "",
+        phoneNumber: user?.phoneNumber || "",
+        address: user?.address || "",
+    })
 
+    const handleChange = (e) => {
+        setUpdateForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    }
+
+    const handleUpdateForm = async (e) => {
+        e.preventDefault()
+        try {
+            const inputForm = {
+                name: updateForm.name,
+                email: updateForm.email,
+                phoneNumber: updateForm.phoneNumber,
+                address: updateForm.address,
+            }
+
+            const res = await updateProfile(inputForm)
+            toast.success("Profile updated!")
+        }
+        catch (error) {
+            toast.error("Failed Update Profile")
+            console.error("Error updating profile:", error)
+        }
+    }
     return (
-        <div className="flex flex-col gap-8 h-full">
+        <div className="flex flex-col gap-10 px-16 h-full">
             <div className="flex justify-start items-center gap-2">
                 <div className="text-7xl">
                     <FaUserCircle />
@@ -18,24 +47,57 @@ const ProfilePages = () => {
                 </div>
             </div>
 
-            {/* User Details */}
-            <div className="grid grid-cols-2 gap-7 w-full">
-                <div>
-                    <h2>Username</h2>
-                    <p>{user.name}</p>
+            {/* User Details & Upate Form*/}
+            <div >
+                <form onSubmit={handleUpdateForm} className="grid grid-cols-2 gap-14 w-full">
+                    <div className="w-full flex flex-col ">
+                        <h2 className="text-left">Username</h2>
+                        <input
+                            type="text"
+                            name="name"
+                            value={updateForm.name}
+                            onChange={handleChange}
+                            className="w-full border border-gray-300 p-3 rounded-xl"
+                        />
+                    </div>
+                    <div className="w-full flex flex-col ">
+                        <h2>Email</h2>
+                        <input
+                            type="email"
+                            name="email"
+                            value={updateForm.email}
+                            onChange={handleChange}
+                            className="w-full border border-gray-300 p-3 rounded-xl"
+
+                        />
+                    </div>
+                    <div className="w-full flex flex-col">
+                        <h2>Phone</h2>
+                        <input
+                            type="text"
+                            name="phoneNumber"
+                            value={updateForm.phoneNumber}
+                            onChange={handleChange}
+                            className="w-full border border-gray-300 p-3 rounded-xl"
+
+                        />
+                    </div>
+                    <div className="w-full flex flex-col">
+                        <h2>Address</h2>
+                        <input
+                            type="text"
+                            name="address"
+                            value={updateForm.address}
+                            onChange={handleChange}
+                            className="w-full border border-gray-300 p-3 rounded-xl"
+
+                        />
+                    </div>
+                </form>
+                <div className="w-full flex justify-center mt-10">
+                    <button type="submit" className="bg-black w-1/5 text-white px-4 py-3 rounded-xl mt-4">Update Profile</button>
                 </div>
-                <div>
-                    <h2>Email</h2>
-                    <p>{user.email}</p>
-                </div>
-                <div>
-                    <h2>Phone</h2>
-                    <p>{user.phoneNumber || "N/A"}</p>
-                </div>
-                <div>
-                    <h2>Address</h2>
-                    <p>{user.address || "N/A"}</p>
-                </div>
+
             </div>
 
         </div>
