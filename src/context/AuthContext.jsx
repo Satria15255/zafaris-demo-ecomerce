@@ -1,5 +1,6 @@
 import { useContext, createContext, useEffect, useState } from "react"
 import { jwtDecode } from "jwt-decode";
+import { getUserProfile } from "../api/Api"
 
 const AuthContext = createContext()
 
@@ -26,6 +27,20 @@ export const AuthProvider = ({ children }) => {
         } catch (err) {
             logout()
         }
+    }, [])
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const { data } = await getUserProfile()
+                setUser(data)
+            } catch (error) {
+                console.log(error)
+                localStorage.removeItem("token")
+            }
+        }
+
+        fetchUser()
     }, [])
 
     const login = (userData, token) => {

@@ -1,10 +1,11 @@
 import { FaUserCircle } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext";
+import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react";
+
 
 const ProfilePages = () => {
-    const { user } = useAuth();
-
-    console.log(user)
+    const { user } = useAuth()
 
     return (
         <div className="flex flex-col gap-8 h-full">
@@ -29,7 +30,7 @@ const ProfilePages = () => {
                 </div>
                 <div>
                     <h2>Phone</h2>
-                    <p>{user.phone || "N/A"}</p>
+                    <p>{user.phoneNumber || "N/A"}</p>
                 </div>
                 <div>
                     <h2>Address</h2>
