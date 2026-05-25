@@ -6,7 +6,7 @@ import { updateProfile } from "../api/Api"
 import { toast } from "react-toastify";
 
 const ProfilePages = () => {
-    const { user } = useAuth()
+    const { user, setUser } = useAuth()
     const [updateForm, setUpdateForm] = useState({
         name: user?.name || "",
         email: user?.email || "",
@@ -17,6 +17,18 @@ const ProfilePages = () => {
     const handleChange = (e) => {
         setUpdateForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     }
+
+    useEffect(() => {
+
+        if (user) {
+            setUpdateForm({
+                name: user.name || "",
+                email: user.email || "",
+                phoneNumber: user.phoneNumber || "",
+                address: user.address || ""
+            })
+        }
+    }, [user])
 
     const handleUpdateForm = async (e) => {
         e.preventDefault()
@@ -29,6 +41,7 @@ const ProfilePages = () => {
             }
 
             const res = await updateProfile(inputForm)
+            setUser(res.data.user)
             toast.success("Profile updated!")
         }
         catch (error) {
@@ -38,18 +51,18 @@ const ProfilePages = () => {
     }
     return (
         <div className="flex flex-col gap-10 px-16 h-full">
-            <div className="flex justify-start items-center gap-2">
+            <div className="flex justify-start items-center gap-2 px-16">
                 <div className="text-7xl">
                     <FaUserCircle />
                 </div>
                 <div>
-                    <h1 className="font-bold">{user.name}</h1>
+                    <p className="text-4xl font-bold">{user?.name}</p>
                 </div>
             </div>
 
             {/* User Details & Upate Form*/}
             <div >
-                <form onSubmit={handleUpdateForm} className="grid grid-cols-2 gap-14 w-full">
+                <form onSubmit={handleUpdateForm} className="grid grid-cols-2 gap-14 w-full px-16">
                     <div className="w-full flex flex-col ">
                         <h2 className="text-left">Username</h2>
                         <input
@@ -95,7 +108,7 @@ const ProfilePages = () => {
                     </div>
                 </form>
                 <div className="w-full flex justify-center mt-10">
-                    <button type="submit" className="bg-black w-1/5 text-white px-4 py-3 rounded-xl mt-4">Update Profile</button>
+                    <button onClick={handleUpdateForm} className="bg-black w-1/5 text-white border border-gray-300 hover:bg-white hover:text-black transition durationn-300 px-4 py-3 rounded-xl mt-4">Update Profile</button>
                 </div>
 
             </div>

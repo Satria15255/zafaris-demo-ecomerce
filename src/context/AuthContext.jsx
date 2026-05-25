@@ -30,6 +30,10 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     useEffect(() => {
+        const token = localStorage.getItem("token")
+
+        if (!token) return
+
         const fetchUser = async () => {
             try {
                 const { data } = await getUserProfile()
