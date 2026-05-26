@@ -9,7 +9,7 @@ const OrderPages = () => {
     const [filter, setFilter] = useState({
         status: "All"
     })
-    const ordersStatus = ["All", "Waiting for Payment", "Processing", "Shipped", "Delivered", "Completed", "Cancelled"]
+    const ordersStatus = ["All", "Processing", "Shipped", "Delivered", "Completed", "Cancelled"]
 
     const fetchMyOrders = async () => {
         const res = await getMyOrders();
@@ -78,7 +78,7 @@ const OrderPages = () => {
                                 }))
                             }
                             className={`
-                             px-7 text-sm lg:text-md rounded-3xl border border-gray-300 hover:bg-black hover:text-white transition duration-300
+                             px-5 h-[8vh] text-sm lg:text-md rounded-3xl border border-gray-300 hover:bg-black hover:text-white transition duration-300
                             ${filter.status === ord
                                 ? "bg-black text-white"
                                 : "bg-white text-black"
