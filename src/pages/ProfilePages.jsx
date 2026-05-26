@@ -50,19 +50,19 @@ const ProfilePages = () => {
         }
     }
     return (
-        <div className="flex flex-col gap-10 px-16 h-full">
-            <div className="flex justify-start items-center gap-2 px-16">
-                <div className="text-7xl">
+        <div className="flex flex-col items-center gap-10 lg:px-16 h-full">
+            <div className="flex flex-col md:flex-row justify-start items-center gap-2 lg:px-16">
+                <div className="text-5xl lg:text-7xl">
                     <FaUserCircle />
                 </div>
                 <div>
-                    <p className="text-4xl font-bold">{user?.name}</p>
+                    <p className="text-3xl lg:text-4xl font-bold">{user?.name}</p>
                 </div>
             </div>
 
             {/* User Details & Upate Form*/}
-            <div >
-                <form onSubmit={handleUpdateForm} className="grid grid-cols-2 gap-14 w-full px-16">
+            <div className="w-full">
+                <form onSubmit={handleUpdateForm} className="grid grid-cols-1 md:grid-cols-2 text-sm gap-7 md:gap-14 w-full px-4 lg:px-16">
                     <div className="w-full flex flex-col ">
                         <h2 className="text-left">Username</h2>
                         <input
@@ -107,8 +107,8 @@ const ProfilePages = () => {
                         />
                     </div>
                 </form>
-                <div className="w-full flex justify-center mt-10">
-                    <button onClick={handleUpdateForm} className="bg-black w-1/5 text-white border border-gray-300 hover:bg-white hover:text-black transition durationn-300 px-4 py-3 rounded-xl mt-4">Update Profile</button>
+                <div className="w-full flex justify-end lg:justify-center px-4 my-4 lg:my-10">
+                    <button onClick={handleUpdateForm} className="bg-black w-1/2 lg:w-1/5 text-white border border-gray-300 hover:bg-white hover:text-black transition durationn-300 px-4 py-3 rounded-xl mt-4">Update Profile</button>
                 </div>
 
             </div>

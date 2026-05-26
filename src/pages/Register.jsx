@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register } from "../api/Api";
+import background from "../assets/heroSection/hero12.jpg"
+
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -22,8 +24,9 @@ const Register = () => {
     };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800">
-            <div className="w-4/5 md:w-2/5 h-auto border bg-white rounded-xl p-2 md:p-4 mx-auto mt-10">
+        <div className="fixed inset-0 z-50 bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
+            <div className="inset-0 bg-black/50 flex items-center justify-center h-screen">
+                <div className="w-4/5 md:w-2/5 h-auto border bg-white rounded-xl p-2 md:p-4 mx-auto mt-10">
                 <button
                     onClick={() => {
                         navigate("/");
@@ -52,6 +55,7 @@ const Register = () => {
                         Login
                     </button>
                 </div>
+            </div>
             </div>
         </div>
     );

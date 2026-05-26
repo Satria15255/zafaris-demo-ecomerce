@@ -67,7 +67,7 @@ const OrderPages = () => {
         <div className="">
             <div>
                 {/* Filter Orders */}
-                <div className="flex justify-around gap-3 pb-6 border-b border-gray-400">
+                <div className="flex justify-around gap-3 pb-6 border-b border-gray-400 max-w-screen overflow-x-auto">
                     {ordersStatus.map((ord) => (
                         <button
                             key={ord}
@@ -78,7 +78,7 @@ const OrderPages = () => {
                                 }))
                             }
                             className={`
-                            px-4 w-30 py-1 text-md rounded-3xl border border-gray-300 hover:bg-black hover:text-white transition duration-300
+                            px-4 w-30 py-1 text-sm lg:text-md rounded-3xl border border-gray-300 hover:bg-black hover:text-white transition duration-300
                             ${filter.status === ord
                                     ? "bg-black text-white"
                                     : "bg-white text-black"

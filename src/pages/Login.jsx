@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login } from "../api/Api";
 import { useAuth } from "../context/AuthContext";
+import background from "../assets/heroSection/hero2.jpg"
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -26,7 +27,8 @@ const Login = () => {
         }
     };
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800">
+        <div className="fixed inset-0 z-50 bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
+            <div className="inset-0 bg-black/50 flex items-center justify-center h-screen">
             <div className="w-4/5 md:w-2/5 h-auto border bg-white rounded-xl p-1 md:p-4 mx-auto mt-10">
                 <button
                     onClick={() => {
@@ -55,6 +57,7 @@ const Login = () => {
                         Create Account
                     </button>
                 </div>
+            </div>
             </div>
         </div>
     );
