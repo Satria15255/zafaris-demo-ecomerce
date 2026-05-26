@@ -16,17 +16,17 @@ const SidebarMobile = ({ onClose }) => {
         <div onClick={onClose} className="fixed bg-black/20 inset-0 flex justify-start">
             <div className="w-1/2 h-screen bg-white p-5 flex flex-col space-y-6">
                 {/* Logos */}
-                <div>
+                <div onClick={() => navigate("/")} className="cursor-pointer">
                     <img src={brandLogo} className="w-40 h-auto" />
                 </div>
                 {/* User Validation */}
                 <div>
                     {user ? (
-                        <button className="relative flex items-center gap-2 flex px-2 hover:text-yellow-500 transition duration-100">
-                            <PiUserCircle size={30} /> <span>Hi {user.name}</span>
-                        </button>
+                        <p className="relative flex flex-col items-center gap-2 flex px-2 hover:text-yellow-500 transition duration-100">
+                            <PiUserCircle size={40} /> <span className="text-left">{user.name}</span>
+                        </p>
                     ) : (
-                        <p onClick={() => navigate("/login")} className="cursor-pointer hover:underline mb-2 text-lg"> Login / Register</p>
+                            <button onClick={() => navigate("/login")} className="cursor-pointer hover:underline mb-2 text-lg"> Login / Register</button>
                     )}
                 </div>
                 {/* Sidebar Menu */}
@@ -34,10 +34,10 @@ const SidebarMobile = ({ onClose }) => {
                     <div className="flex flex-col  font-semibold text-md ">
                         {user && (
                             <>
-                                <p onClick={() => navigate("/")} className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100">
+                                <p onClick={() => navigate("/dashboard?tab=profile")} className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100">
                                     PROFILE
                                 </p>
-                                <p onClick={() => navigate("/products")} className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100">
+                                <p onClick={() => navigate("/dashboard?tab=my-orders")} className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100">
                                     MY ORDERS
                                 </p>
 
@@ -63,6 +63,10 @@ const SidebarMobile = ({ onClose }) => {
                                 </p>
                             </div>
                         </div>
+                        <p onClick={() => navigate("/dashboard?tab=change-password")} className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100">
+                            SETTINGS
+                        </p>
+
                         {user && (<p onClick={handleLogout} className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100">LOGOUT</p>)}
 
                     </div>

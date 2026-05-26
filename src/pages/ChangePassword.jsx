@@ -38,10 +38,10 @@ const ChangePassword = () => {
         }
     }
     return (
-        <div className="flex flex-col gap-10 px-16 h-full">
+        <div className="flex flex-col gap-10 lg:px-16 h-auto lg:h-full pb-4">
             {/* Form*/}
             <div >
-                <form onSubmit={handleForm} className="gap-14 flex flex-col gap-7 w-full px-16">
+                <form onSubmit={handleForm} className="gap-14 flex flex-col gap-7 w-full px-4 text-sm lg:text-lg lg:px-16">
                     <div className="w-full flex flex-col">
                         <h2 className="text-left">Current Password</h2>
                         <input
@@ -66,7 +66,7 @@ const ChangePassword = () => {
 
                 </form>
                 <div className="w-full flex justify-center mt-10">
-                    <button onClick={handleForm} className="bg-black w-1/5 text-white border border-gray-300 hover:bg-white hover:text-black transition durationn-300 px-4 py-3 rounded-xl mt-4">Change Password</button>
+                    <button onClick={handleForm} className="bg-black w-1/2 text-sm lg:w-1/5 text-white border border-gray-300 hover:bg-white hover:text-black transition durationn-300 px-4 py-3 rounded-xl mt-4">Change Password</button>
                 </div>
 
             </div>

@@ -40,7 +40,9 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     <button onClick={() => setIsSidebarOpen(true)} className="relative md:hidden text-lg px-2 hover:text-yellow-500 transition duration-100">
                         <FaBars />
                     </button>
+                    <div onClick={() => navigate("/")}>
                     <img src={brandLogo} className="hidden md:flex w-40 lg:w-50 h-auto" />
+                    </div>
                 </div>
                 <div className="hidden md:flex justify-center w-2/5 lg:w-3/5">
                     <input type="text" placeholder="Search Products..." className="w-full px-2 h-[3vh] lg:h-[5vh] text-xs lg:text-sm border border-gray-300 rounded-xl" />

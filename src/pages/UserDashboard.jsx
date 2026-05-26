@@ -20,7 +20,7 @@ const UserDashboard = () => {
     };
 
     return (
-        <div className="flex min-h-screen pt-16 lg:mt-13">
+        <div className="flex lg:min-h-screen pt-16 lg:mt-13">
             {/* Sidebar */}
             <div className="hidden w-1/4 md:flex flex-col items-start p-3 gap-3 border-r border-gray-300">
                 <div className="pb-5 border-b w-full">
@@ -34,7 +34,7 @@ const UserDashboard = () => {
                 </button>
             </div>
             {/* Main Content */}
-            <div className="ml-auto w-full md:w-3/4 lg:p-5">
+            <div className="ml-auto w-full md:w-3/4 h-auto lg:p-5">
                 {tab === "profile" && <ProfilePage />}
                 {tab === "my-orders" && <MyOrdersPage />}
                 {tab === "change-password" && <ChangePassword />}

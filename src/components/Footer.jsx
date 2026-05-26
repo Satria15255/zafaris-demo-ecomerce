@@ -57,7 +57,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col md:flex-row items-center border-t border-gray-400 justify-between px-10 lg:px-16">
+            <div className="flex flex-col md:flex-row lg:items-center border-t border-gray-400 justify-between px-2 md:px-10 lg:px-16">
                 <div>
                     <p className="text-[6px] md:text-[8px] lg:text-xs  md:pb-3">Copyright© 2025 Zafaris.Co All rights reserved.</p>
                 </div>
