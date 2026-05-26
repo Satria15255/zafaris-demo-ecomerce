@@ -4,16 +4,19 @@ import { getTransactionById, getAllProducts } from "../api/Api";
 import { FcApproval } from "react-icons/fc";
 import { formatDate } from "../utils/FormatedDate"
 import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../components/Loader"
 
 const SuccesTransaction = () => {
     const [latestOrder, setlatestOrder] = useState([]);
     const [recommended, setRecommended] = useState([]);
+    const [loading, setLoading] = useState(true)
     const { id } = useParams()
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoading(true)
                 const { data: order } = await getTransactionById(id);
                 setlatestOrder(order);
                 console.log("isinya order", order)
@@ -23,6 +26,8 @@ const SuccesTransaction = () => {
                 setRecommended(shuffled.slice(0, 4));
             } catch (error) {
                 console.error("Failed get succes transaction", error);
+            } finally {
+                setLoading(false)
             }
         };
 
@@ -30,6 +35,10 @@ const SuccesTransaction = () => {
     }, []);
 
     const cashOnDeliveryPayment = latestOrder.paymentMethod === "Cash on Delivery"
+
+    if (loading) {
+        return <Loader />
+    }
 
     return (
         <div className="mt-16 flex flex-col items-center p-2 md:p-4 ">

@@ -6,6 +6,7 @@ import { getProductById, getAllProducts, } from "../api/Api";
 import { toast } from "react-toastify";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
+import Loader from "./Loader"
 import ProductCard from "./ProductCard"
 import CallAction from "../pages/CallAction"
 
@@ -13,6 +14,7 @@ function ProductModal() {
     const [product, setProduct] = useState([])
     const [recommended, setRecommended] = useState([])
     const [selectedSize, setSelectedSize] = useState("");
+    const [loading, setLoading] = useState(true)
     const { handleAddToCart } = useCart()
     const { user } = useAuth()
     const navigate = useNavigate();
@@ -21,6 +23,7 @@ function ProductModal() {
 
     const fetchProduct = async () => {
         try {
+            setLoading(true)
             const res = await getProductById(id)
             setProduct(res.data)
             console.log(res.data)
@@ -30,6 +33,8 @@ function ProductModal() {
             setRecommended(shuffled.slice(0, 4));
         } catch (error) {
             console.log(error)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -70,7 +75,9 @@ function ProductModal() {
         navigate("/checkout", { state: { checkoutItems: [selectedItem] } });
     };
 
-
+    if (loading) {
+        return <Loader />
+    }
 
     return (
         <div className="md:mt-16 pt-10 bg-white md:p-6 rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto">

@@ -19,6 +19,7 @@ import UserDashboard from './pages/UserDashboard'
 import ShoppingCart from './components/ShoppingCart'
 import ProductDetail from './components/ProductDetails'
 import SidebarProfile from './components/SidebarProfile'
+import ScrollToTop from './components/ScrollToTop'
 
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <div>
+      <ScrollToTop />
       <CartProvider>
 
         <Routes>

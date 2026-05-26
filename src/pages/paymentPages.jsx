@@ -3,12 +3,14 @@ import ProductCard from "../components/ProductCard";
 import { getTransactionById, getAllProducts, payTransaction } from "../api/Api";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader"
 
 const PaymentPages = () => {
     const [latestOrder, setLatestOrder] = useState(null);
     const [recommended, setRecommended] = useState([]);
     const [selectedTransfer, setSelectedTransfer] = useState("Visa")
     const [timeLeft, setTimeLeft] = useState("")
+    const [loading, setLoading] = useState(true)
     const { id } = useParams()
     const [paymentData, setPaymentData] = useState({
         cardName: "",
@@ -21,6 +23,7 @@ const PaymentPages = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoading(true)
                 const { data: order } = await getTransactionById(id);
                 setLatestOrder(order);
                 console.log("isi order", order)
@@ -30,6 +33,8 @@ const PaymentPages = () => {
                 setRecommended(shuffled.slice(0, 4));
             } catch (error) {
                 console.error("Failed get succes transaction", error);
+            } finally {
+                setLoading(false)
             }
         };
 
@@ -88,6 +93,9 @@ const PaymentPages = () => {
         }
     }
 
+    if (loading) {
+        return <Loader />
+    }
 
     return (
         <div className="mt-16 p-2 md:p-4 ">

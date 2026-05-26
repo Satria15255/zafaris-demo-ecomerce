@@ -2,21 +2,28 @@ import React, { useEffect, useState } from "react";
 import OrderDetails from "../components/OrderDetails";
 import { getMyOrders, confirmOrderReceived, cancelOrder } from "../api/Api";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader"
 
 const OrderPages = () => {
     const [orders, setOrders] = useState([]);
     const [pagination, setPagination] = useState(6)
+    const [loading, setLoading] = useState(true)
     const [filter, setFilter] = useState({
         status: "All"
     })
     const ordersStatus = ["All", "Processing", "Shipped", "Delivered", "Completed", "Cancelled"]
 
     const fetchMyOrders = async () => {
-        const res = await getMyOrders();
-        setOrders(res.data);
-        console.log(res.data);
-        if (!orders) {
-            return <p>Load Data</p>
+        try {
+
+            setLoading(true);
+            const res = await getMyOrders();
+            setOrders(res.data);
+            console.log(res.data);
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -61,6 +68,10 @@ const OrderPages = () => {
     const sortedOrder = [...filteredOrders].sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
     );
+
+    if (loading) {
+        return <Loader />
+    }
 
 
     return (

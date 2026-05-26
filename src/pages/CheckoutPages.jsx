@@ -3,22 +3,24 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { createTransaction } from "../api/Api";
 import { useCart } from "../context/CartContext"
 import { toast } from "react-toastify";
+import { useAuth } from "../context/AuthContext"
 
 const CheckoutPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { handleClearCart } = useCart()
+    const { user } = useAuth()
 
     const items = useMemo(() => {
         return location.state?.checkoutItems || [];
     }, [location.state])
-    // Checkout No Cart Items
 
+    console.log(user)
     // State untuk form data
     const [formData, setFormData] = useState({
-        name: "",
-        address: "",
-        phoneNumber: "",
+        name: user?.name || "",
+        email: user?.email || "",
+        phoneNumber: user?.phoneNumber || "",
         message: "",
         paymentMethod: "Transfer",
         shippingMethod: "JNE",
@@ -101,7 +103,7 @@ const CheckoutPage = () => {
                     <div className="flex flex-col md:flex-row pt-2 w-full">
                     {/* Rincian Cart */}
                         <div className="w-full mb-6 p-2 md:p-8">
-                            <p className="text-3xl md:text-xl lg:text-3xl font-semibold border-b border-gray-500 pb-3">Shopping Cart</p>
+                            <p className="text-xl md:text-xl lg:text-3xl font-semibold border-b border-gray-500 pb-3">Shopping Cart</p>
                             <ul className="space-y-2 md:mt-3 mt-7">
                             {items.map((item) => (
                                 <li key={item.id + item.size} className="flex justify-between items-center border-b border-gray-300 py-2">
@@ -120,22 +122,22 @@ const CheckoutPage = () => {
                                 </li>
                             ))}
                         </ul>
-                        <div className="mt-4 flex justify-between text-right font-bold text-sm md:text-lg">
-                            <p>Total:</p>
-                            <span className="text-yellow-500"> ${totalPrice.toFixed(2)}</span>
+                            <div className="mt-4 flex justify-between text-right ">
+                                <p className="font-bold text-lg md:text-lg">Total:</p>
+                                <span className="text-yellow-500 font-bold text-lg md:text-lg"> ${totalPrice.toFixed(2)}</span>
                         </div>
                     </div>
 
                     {/* Form Pembeli */}
                         <div className="w-full md:w-3/5 pt-8 bg-black rounded-xl p-4">
-                            <p className="text-3xl md:text-xl lg:text-3xl text-white pb-4 font-semibold">Order Details</p>
+                            <p className="text-xl md:text-xl lg:text-3xl text-white pb-4 font-semibold">Order Details</p>
                             <form onSubmit={handleSubmit} className="space-y-4 text-xs text-white">
                             <div>
-                                    <input type="text" name="name" required onChange={handleChange} placeholder="Your Name" className="w-full border-b bg-black  px-3 py-2 rounded" />
+                                    <input type="text" name="name" value={formData.name} required onChange={handleChange} placeholder="Your Name" className="w-full border-b bg-black  px-3 py-2 rounded" />
                             </div>
 
                             <div>
-                                    <input name="address" required onChange={handleChange} placeholder="Your Address" className="w-full h-12   border-b px-3 rounded"></input>
+                                    <input name="address" value={formData.address} onChange={handleChange} placeholder="Your Address" className="w-full h-12   border-b px-3 rounded"></input>
                             </div>
 
                             <div>
@@ -143,29 +145,29 @@ const CheckoutPage = () => {
                             </div>
 
                             <div>
-                                    <input type="tel" name="phoneNumber" required onChange={handleChange} placeholder="Phone Number" className="w-full  border-b px-3 py-2 rounded" />
+                                    <input type="tel" name="phoneNumber" value={formData.phoneNumber} required onChange={handleChange} placeholder="Phone Number" className="w-full  border-b px-3 py-2 rounded" />
                             </div>
 
                             {/* Metode Pembayaran */}
                                 <div className="flex flex-col gap-2">
-                                    <p className=" mb-1 text-lg">Shipping Method</p>
+                                    <p className="mb-1 text-sm lg:text-lg">Shipping Method</p>
                                     <label className="text-sm lg:text-lg">
                                         <input type="radio" name="shippingMethod" checked={formData.shippingMethod === "JNT"} onChange={handleChange} value="JNT" />JNT
                                     </label>
-                                    <label className="text-lg">
+                                    <label className="text-sm lg:text-lg">
                                         <input type="radio" name="shippingMethod" checked={formData.shippingMethod === "JNE"} onChange={handleChange} value="JNE" />JNE
                                     </label>
-                                    <label className="text-lg">
+                                    <label className="text-sm lg:text-lg">
                                         <input type="radio" name="shippingMethod" checked={formData.shippingMethod === "TIKI"} onChange={handleChange} value="TIKI" />TIKI
                                     </label>
                             </div>
 
                                 <div className="flex flex-col gap-2">
-                                    <p className="  mb-1 text-lg">Payment Method</p>
+                                    <p className="mb-1 text-sm lg:text-lg">Payment Method</p>
                                     <label className="text-sm lg:text-lg">
                                         <input type="radio" name="paymentMethod" checked={formData.paymentMethod === "Cash on Delivery"} value="Cash on Delivery" onChange={handleChange} /> Cash On Delivery(COD)
                                     </label>
-                                    <label className="text-lg">
+                                    <label className="text-sm lg:text-lg">
                                         <input type="radio" name="paymentMethod" checked={formData.paymentMethod === "Transfer"} value="Transfer" onChange={handleChange} /> Transfer
                                     </label>
                             </div>

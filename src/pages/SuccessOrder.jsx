@@ -3,16 +3,19 @@ import ProductCard from "../components/ProductCard";
 import { getTransactionById, getAllProducts } from "../api/Api";
 import { FcApproval } from "react-icons/fc";
 import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../components/Loader"
 
 const SuccesTransaction = () => {
     const [latestOrder, setlatestOrder] = useState([]);
     const [recommended, setRecommended] = useState([]);
+    const [loading, setLoading] = useState(true)
     const { id } = useParams()
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoading(true)
                 const { data: order } = await getTransactionById(id);
                 setlatestOrder(order);
                 console.log("isinya order", order)
@@ -22,11 +25,17 @@ const SuccesTransaction = () => {
                 setRecommended(shuffled.slice(0, 4));
             } catch (error) {
                 console.error("Failed get succes transaction", error);
+            } finally {
+                setLoading(false)
             }
         };
 
         fetchData();
     }, []);
+
+    if (loading) {
+        return <Loader />;
+    }
 
     return (
         <div className="mt-8 md:mt-16 p-2 md:p-4 ">
@@ -106,8 +115,8 @@ const SuccesTransaction = () => {
 
 
             <div className="mt-8">
-                <h2 className="text-xl font-bold mb-4">Recommended Products for You</h2>
-                <div className="grid grid-cols-2 items-center md:grid-cols-4 gap-3">
+                <h2 className="text-xl font-bold mb-4">You Might Like</h2>
+                <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
                     {recommended.map((product) => (
                         <ProductCard key={product._id} product={product} />
                     ))}
