@@ -63,11 +63,15 @@ const SidebarMobile = ({ onClose }) => {
                                 </p>
                             </div>
                         </div>
-                        <p onClick={() => navigate("/dashboard?tab=change-password")} className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100">
-                            SETTINGS
-                        </p>
+                        {user && (
+                            <>
+                                <p onClick={() => navigate("/dashboard?tab=change-password")} className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100">
+                                    SETTINGS
+                                </p>
+                                <p onClick={handleLogout} className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100">LOGOUT</p>
+                            </>
+                        )}
 
-                        {user && (<p onClick={handleLogout} className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100">LOGOUT</p>)}
 
                     </div>
                 </div>
