@@ -3,6 +3,7 @@ import basketballCollection from '../assets/category/basketball.png'
 import runningCollection from '../assets/category/running.png'
 import sneakersCollection from '../assets/category/sneakers.png'
 import casualCollection from '../assets/category/casual.png'
+import { useNavigate } from "react-router-dom";
 
 const collection = [
     {
@@ -30,6 +31,7 @@ const collection = [
 
 const CategoryCollection = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const navigate = useNavigate()
 
     return (
         <div className='h-auto py-12 px-2 lg:px-4 w-full'>
@@ -42,7 +44,7 @@ const CategoryCollection = () => {
                         <div className='flex flex-col gap-5 mt-6'>
                             <p className='text-sm lg:text-lg font-semibold'>{c.title}</p>
                             <p className='text-xs lg:text-sm text-gray-500'>{c.desc}</p>
-                            <p className='underline pb-7 text-sm font-semibold'>SHOP NOW</p>
+                            <p onclick={() => navigate("/products")} className='underline pb-7 text-sm font-semibold'>SHOP NOW</p>
                         </div>
                     </div>
                 ))}
