@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom'
 import actionImage from '../assets/heroSection/action.jpg'
 
 const CallAction = () => {
+    const navigate = useNavigate()
     return (
         <div className='p-3 md:p-6 h-auto overflow-hidden '>
             <div className='relative h-full md:h-90 lg:h-120 overflow-hidden group'>
@@ -15,7 +17,7 @@ const CallAction = () => {
                     <p className='text-5xl lg:text-7xl max-w-lg md:max-w-sm lg:max-w-xl'>Find Your Perfect Pair Faster</p>
                     <p className='text-sm max-w-xs lg:max-w-sm hidden md:flex'>Filter by Category and Size to Find the Perfect of Shoes</p>
                     <div>
-                        <button className='bg-black text-white h-12 px-8'>Shop Now</button>
+                        <button onClick={() => navigate("/products")} className='bg-black text-white h-12 px-8'>Shop Now</button>
                     </div>
                 </div>
 

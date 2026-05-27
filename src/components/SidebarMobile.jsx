@@ -46,7 +46,7 @@ const SidebarMobile = ({ onClose }) => {
                         <div className="text-md py-4 border-t border-gray-300">
                             <p className="cursor-pointer  hover:text-yellow-500 transition duration-100">CATEGORY :</p>
                             <div className="pl-2 flex flex-col gap-4 mt-4">
-                                <p onClick={() => navigate("/")} className="cursor-pointer hover:text-yellow-500 transition duration-100">
+                                <p onClick={() => navigate("/products")} className="cursor-pointer hover:text-yellow-500 transition duration-100">
                                     RUNNING
                                 </p>
                                 <p onClick={() => navigate("/products")} className="cursor-pointer hover:text-yellow-500 transition duration-100">
