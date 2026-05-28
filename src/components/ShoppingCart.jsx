@@ -12,17 +12,16 @@ const ShoppingCart = ({ closeShoppingCart }) => {
     return (
         <div className="fixed bg-black/20 inset-0 w-full z-50 h-screen flex justify-end ">
             <div className="bg-white w-full md:w-3/5 lg:w-2/5 flex flex-col overflow-y-auto items-center">
-                <div className="w-full h-screen flex flex-col justify-between">
-                    {/* Tombol Close */}
-                    <div className="flex justify-between p-5 border-b border-gray-400">
-
-                        <button onClick={closeShoppingCart} className="top-4 left-4 text-2xl font-bold text-gray-600 hover:text-gray-900">
-                            ×
-                        </button>
-                        <p className="text-md mt-3 lg:text-2xl font-semibold mb-4 md:mb-6">Your cart</p>
-                    </div>
+                {/* Tombol Close */}
+                <div className="w-full flex justify-between p-5 border-b border-gray-400">
+                    <button onClick={closeShoppingCart} className="top-4 left-4 text-2xl font-bold text-gray-600 hover:text-gray-900">
+                        ×
+                    </button>
+                    <p className="text-md mt-3 lg:text-2xl font-semibold mb-4 md:mb-6">Your cart</p>
+                </div>
+                <div className="relative h-screen w-full flex flex-col justify-between">
                     {/* Tabel Cart */}
-                    <div className="w-full h-screen flex flex-col justify-start">
+                    <div className="w-full h-100 flex flex-col justify-start">
                         <div className="w-full p-1  bg-white lg:p-6 overflow-x-hidden overflow-y-auto lg:max-h-[62vh]">
                             {cart.length === 0 ? (
                                 <p className="text-gray-500 text-center">Your cart is empty</p>
@@ -87,7 +86,7 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                         </div>
                     </div>
                     {/* Total Harga Keseluruhan & chekout */}
-                    <div className=" w-full border-t border-gray-400 p-4 mt-4 ">
+                    <div className="absolute z-50 bottom-0 w-full border-t border-gray-400 p-4 mt-4 ">
                         <div className="grid grid-cols-2">
                             <p className="text-[16px] md:text-lg font-semibold text-left">Sub Total</p>
                             <div className="text-right">
@@ -106,27 +105,27 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                                 </button>
                             ) : (
                                     <button
-                            onClick={() => {
-                                navigate("/checkout", {
-                                    state: {
-                                        checkoutItems: cart.map((item) => ({
-                                            id: item.productId._id,
-                                            name: item.productId.name,
-                                            image: item.productId.image,
-                                            size: item.size,
-                                            quantity: item.quantity,
-                                            finalPrice: item.finalPrice,
-                                            discountPercent: item.discountPercent,
-                                        })),
-                                    },
-                                });
+                                        onClick={() => {
+                                            navigate("/checkout", {
+                                                state: {
+                                                    checkoutItems: cart.map((item) => ({
+                                                        id: item.productId._id,
+                                                        name: item.productId.name,
+                                                        image: item.productId.image,
+                                                        size: item.size,
+                                                        quantity: item.quantity,
+                                                        finalPrice: item.finalPrice,
+                                                        discountPercent: item.discountPercent,
+                                                    })),
+                                                },
+                                            });
 
-                                closeShoppingCart()
-                            }}
+                                            closeShoppingCart()
+                                        }}
                                         className="text-lg flex justify-center items-center mt-3 w-full h-12 border bg-black text-white border-black  hover:text-black hover:bg-white transition duration-300 "
-                        >
-                            Chek Out Now
-                        </button>
+                                    >
+                                        Chek Out Now
+                                    </button>
                             )}
                         </div>
 

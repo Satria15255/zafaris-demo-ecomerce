@@ -80,12 +80,12 @@ function ProductModal() {
     }
 
     return (
-        <div className="md:mt-16 pt-10 bg-white md:p-6 rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto">
+        <div className="md:mt-16 pt-12 bg-white  rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto">
             <div className="flex flex-col md:flex-row justify-center px-4">
                 <div className="w-full h-full flex justify-center">
                     <img src={product.image} alt={product.name} className="w-full lg:w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2" />
                 </div>
-                <div className="w-full gap-3 flex justify-around flex-col">
+                <div className="w-full gap-3 flex justify-around flex-col md:pl-6 mt-3">
                     <div className="">
                         <div className="flex flex-col gap-3">
                             <p className="text-sm md:text-lg text-gray-500">{product.brand} / {product.category}</p>
