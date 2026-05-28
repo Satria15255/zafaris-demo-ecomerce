@@ -54,6 +54,14 @@ function ProductList() {
                     <ProductCard key={products.id} product={products} productDetails={() => navigate(`/product/${products._id}`)} addToCart={() => addToCartItems(products._id)} />
                 ))}
             </main>
+            <footer className="text-center py-4">
+                <button
+                    onClick={() => navigate("/products")}
+                    className="text-sm bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition"
+                >
+                    View All
+                </button>
+            </footer>
         </div>
     );
 }
