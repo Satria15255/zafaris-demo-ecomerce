@@ -1,11 +1,13 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import { addToCart, removeCartItem, getCart, updateCartQuantity, clearCart } from "../api/Api"
 import { toast } from "react-toastify"
+import { useAuth } from "./AuthContext"
 
 const CartContext = createContext()
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
+    const { user } = useAuth()
 
     // Fetch Cart Items
     const fetchCart = async () => {
@@ -23,6 +25,10 @@ export const CartProvider = ({ children }) => {
 
     // Handle Add Cart Items
     const handleAddToCart = async (product, size) => {
+        if (!user) {
+            return toast.warning("Please login to add products to cart")
+        }
+
         try {
             const res = await addToCart(product._id, 1, size)
             await fetchCart()

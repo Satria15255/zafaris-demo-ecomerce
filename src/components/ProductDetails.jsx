@@ -81,12 +81,11 @@ function ProductModal() {
 
     return (
         <div className="md:mt-16 pt-10 bg-white md:p-6 rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto">
-            <div className="flex flex-col md:flex-row justify-center px-3 md:px-6">
-                <div className="w-full h-full flex justify-center p-3">
+            <div className="flex flex-col md:flex-row justify-center px-4">
+                <div className="w-full h-full flex justify-center">
                     <img src={product.image} alt={product.name} className="w-full lg:w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2" />
                 </div>
-
-                <div className="w-full p-3 flex justify-around flex-col">
+                <div className="w-full gap-3 flex justify-around flex-col">
                     <div className="">
                         <div className="flex flex-col gap-3">
                             <p className="text-sm md:text-lg text-gray-500">{product.brand} / {product.category}</p>
@@ -111,9 +110,9 @@ function ProductModal() {
                                 <p className="text-lg lg:text-3xl  font-bold">USD {product.discountPrice}.00</p>
                             </div>
                         ) : (
-                            <>
+                                <div className="">
                                     <p className="text-lg lg:text-3xl font-bold">USD {product.price}.00</p>
-                            </>
+                                </div>
                         )}
                     </div>
 
@@ -163,16 +162,15 @@ function ProductModal() {
                         </button>
                     </div>
                 </div>
-
             </div>
 
-            <div className="mt-9 px-6">
-                <p className="text-2xl font-semibold">Product Description</p>
+            <div className="mt-9 px-4">
+                <p className="text-xl lg:text-2xl font-semibold">Product Description</p>
                 <p className="py-3 text-sm lg:text-lg border-bottom w-full ">{product.description}</p>
             </div>
 
-            <div className="mt-8 px-1 lg:px-6 w-full">
-                <p className="text-2xl font-semibold pb-4">Recommended for You :</p>
+            <div className="mt-8 px-4 w-full">
+                <p className="text-xl lg:text-2xl font-semibold pb-4">Might You Like:</p>
                 <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
                     {recommended.map((product) => (
                         <ProductCard key={product._id} productDetails={() => navigate(`/product/${product._id}`)} product={product} />
