@@ -35,7 +35,12 @@ const CategoryCollection = () => {
 
     return (
         <div className='h-auto py-12 px-2 lg:px-4 w-full'>
-            <div className='hidden md:flex flex-col gap-2 md:flex-row justify-around'>
+            {/* Headline */}
+            <div className="text-center py-2">
+                <p className="text-lg lg:text-3xl font-semibold">Featured Collection</p>
+                <p className="text-sm lg:text-lg text-gray-500">Lorem ipsum dolor sit amet consectetur.</p>
+            </div>
+            <div className='hidden md:flex flex-col gap-2 md:flex-row justify-around lg:mt-4'>
                 {collection.map((c) => (
                     <div className='w-50 lg:w-80'>
                         <div className='overflow-hidden'>
@@ -66,8 +71,7 @@ const CategoryCollection = () => {
                             key={index}
                             className='min-w-full flex justify-center'
                         >
-
-                            <div className='w-80'>
+                            <div onClick={() => navigate("/products")} className='w-90'>
 
                                 <div className='overflow-hidden'>
                                     <img

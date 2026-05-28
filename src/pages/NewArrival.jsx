@@ -35,18 +35,16 @@ function ProductList() {
     };
 
     return (
-        <div className="mt-12 md:mt-3 mb-8 h-auto">
+        <div className="pt-12 md:mt-3 mb-8 h-auto">
             <motion.div
                 initial={{ opacity: 0, y: 50 }} // Awalnya transparan dan turun 50px
                 whileInView={{ opacity: 1, y: 0 }} // Saat muncul, fade-in & naik ke atas
                 transition={{ duration: 1.0 }} // Animasi selama 0.6 detik
                 viewport={{ once: true }}
             >
-                <header className="text-center py-4">
-                    <p className="text-lg md:text-sm lg:text-3xl font-bold text-center mt-6">
-                        Latest <span className="text-yellow-500">Arrival</span>
-                    </p>
-                    <p className="text-xs md:text-sm font-semibold">Our Newest Product</p>
+                <header className="text-center  py-2">
+                    <p className="text-lg lg:text-3xl font-semibold">New Arrivals</p>
+                    <p className="text-sm lg:text-lg text-gray-500">Lorem ipsum dolor sit amet consectetur.</p>
                 </header>
             </motion.div>
             <main className="grid py-2 h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
@@ -57,7 +55,7 @@ function ProductList() {
             <footer className="text-center py-4">
                 <button
                     onClick={() => navigate("/products")}
-                    className="text-sm bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition"
+                    className="text-sm lg:text-lg bg-black text-white px-10 py-2 rounded-3xl hover:bg-white hover:text-black border border-gray-300 transition duration-200"
                 >
                     View All
                 </button>
