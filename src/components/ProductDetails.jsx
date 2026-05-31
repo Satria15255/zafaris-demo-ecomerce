@@ -42,8 +42,11 @@ function ProductModal() {
         fetchProduct()
     }, [id])
 
-    const { discountPercent, discountPrice } = product;
-    const isDiscount = discountPercent && discountPrice;
+    useEffect(() => {
+        console.log("Data product details:", product)
+    }, [product])
+
+    const isDiscount = product.discountPercent > 0
     // Fungsi Checkout product
     const handleChekoutNow = () => {
         try {
@@ -107,7 +110,7 @@ function ProductModal() {
                         {isDiscount ? (
                             <div className="flex gap-2">
                                 <p className="text-lg lg:text-3xl font-bold line-through">USD {product.price}.00</p>
-                                <p className="text-lg lg:text-3xl  font-bold">USD {product.discountPrice}.00</p>
+                                <p className="text-lg lg:text-3xl  font-bold">USD {product.discountPrice.toFixed(2)}</p>
                             </div>
                         ) : (
                                 <div className="">

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { getDiscountProducts } from "../api/Api";
+import { useNavigate } from "react-router-dom";
 
 function seededRandom(seed) {
     var x = Math.sin(seed) * 10000;
@@ -17,6 +18,7 @@ function shuffleWithSeed(array, seed) {
 
 function OnSale({ onOpenModal }) {
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate()
 
     const normalizeDiscount = (discount) => {
         return {
@@ -47,6 +49,7 @@ function OnSale({ onOpenModal }) {
     const seed = parseInt(today.toISOString().slice(0, 10).replace(/-/g, ""));
 
     const randomProduct = shuffleWithSeed(products, seed).slice(0, 1);
+    console.log("discount product pages:", randomProduct)
 
     return (
         <div className=" bg-gray-900 mt-6 flex justify-around w-full">
@@ -71,7 +74,7 @@ function OnSale({ onOpenModal }) {
                             </div>
                             <p className="hidden lg:flex mt-1 md:py-2 text-[5px] md:text-xs lg:text-xs text-white max-w-lg ">{product.description}</p>
                             <div>
-                                <button onClick={() => onOpenModal(product)} className="text-[10px] md:text-sm lg:text-lg font-bold font-sans md:py-2 text-white hover:text-color-red hover:underline transition duration-300">
+                                <button onClick={() => navigate(`/product/${product._id}`)} className="text-[10px] md:text-sm lg:text-lg font-bold font-sans md:py-2 text-white hover:text-color-red hover:underline transition duration-300">
                                     BUY NOW
                                 </button>
                             </div>
