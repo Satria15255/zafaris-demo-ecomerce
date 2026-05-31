@@ -16,7 +16,8 @@ const PaymentPages = () => {
         cardName: "",
         cardNumber: "",
         cvv: "",
-        expiredDate: ""
+        expiredMonth: "",
+        expiredYear: ""
     })
     const navigate = useNavigate();
 
@@ -79,7 +80,8 @@ const PaymentPages = () => {
                 !paymentData.cardName ||
                 !paymentData.cardNumber ||
                 !paymentData.cvv ||
-                !paymentData.expiredDate
+                !paymentData.expiredMonth ||
+                !paymentData.expiredYear
             ) {
                 return alert("Please complete payment form");
             }
@@ -102,7 +104,7 @@ const PaymentPages = () => {
             <p className="text-xl lg:text-4xl md:pt-10 font-bold pb-6 text-green-600">💳 Complete Your Payment</p>
 
             {latestOrder ? (
-                <div className="mb-8 p-4 border flex flex-col md:flex-row rounded-lg shadow">
+                <div className="mb-8 p-4 border border-gray-300 flex flex-col md:flex-row rounded-lg shadow">
                     {/* Order Details */}
                     <div className="flex flex-col w-full md:w-4/5">
                         <p className="text-xl w-full font-semibold mb-2">🧾 Order Details:</p>
@@ -139,7 +141,7 @@ const PaymentPages = () => {
                                 <p>No product</p>
                             )}
                         </div>
-                            <div className="w-full border-t border-gray-300 p-3">
+                            <div className="w-full flex flex-col gap-3 border-t border-gray-300 p-3">
                                 <div className="flex justify-between">
                                     <strong>Order Id:</strong>
                                 <p>{latestOrder._id}</p>
@@ -187,8 +189,10 @@ const PaymentPages = () => {
                                 <input name="cvv" value={paymentData.cvv} onChange={handleChange} type="text" required placeholder="CVV" className="w-full border-b  px-3 py-2 rounded" />
                             </div>
 
-                            <div>
-                                <input name="expiredDate" value={paymentData.expiredDate} onChange={handleChange} type="date" required placeholder="Expired Date" className="w-full  border-b px-3 py-2 rounded" />
+                            <div className="flex gap-3">
+                                <input name="expiredMonth" value={paymentData.expiredMonth} onChange={handleChange} type="number" required placeholder="Expired Month" className="w-1/2  border-b px-3 py-2 rounded" />
+                                <input name="expiredYear" value={paymentData.expiredYear} onChange={handleChange} type="number" required placeholder="Expired Year" className="w-1/2  border-b px-3 py-2 rounded" />
+
                             </div>
                         </div>
                         <button onClick={handlePayment} className="bg-white text-black w-full py-2 text-lg lg:text-xl px-4 rounded-lg  hover:bg-gray-100">
@@ -202,15 +206,15 @@ const PaymentPages = () => {
             ) : (
                 <p>Loading transaction details...</p>
             )}
-            <div className="flex md:justify-end md:items-center w-full">
-                <button onClick={() => navigate("/")} className="text-lg font-semibold h-10 w-full md:w-1/5 border rounded-xl hover:bg-black hover:text-white">
+            <div className="flex justify-end md:items-center w-full">
+                <button onClick={() => navigate("/")} className="text-sm lg:text-lg font-semibold h-12 lg:h-10 w-1/2 md:w-1/5 border border-gray-300 rounded-xl hover:bg-black hover:text-white">
                     Back to Home
                 </button>
             </div>
 
             <div className="mt-8">
-                <h2 className="text-xl font-bold mb-4">Recommended Products for You</h2>
-                <div className="grid grid-cols-2 items-center md:grid-cols-4 gap-3">
+                <h2 className="text-sm lg:text-xl text-center font-bold mb-4">You Might Like</h2>
+                <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
                     {recommended.map((product) => (
                         <ProductCard key={product._id} product={product} />
                     ))}

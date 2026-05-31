@@ -49,9 +49,7 @@ const SuccesTransaction = () => {
                         <p className="text-4xl font-bold pb-3 text-green-600">Thank You</p>
                         {cashOnDeliveryPayment ? (
                             <p className="text-xl text-center font-bold pb-6 text-green-600">Your order has been processed</p>
-
                         ) : (
-
                                 <p className="text-xl text-center font-bold pb-6 text-green-600">Your payment was successful and your order is being processed.</p>
                         )}
                     </div>
@@ -96,7 +94,7 @@ const SuccesTransaction = () => {
                         <div className="bg-black text-white p-2 md:p-5 rounded-3xl">
                             <div className="mt-3 w-full">
                                 <p className="text-xl font-semibold">🧾 Order Details:</p>
-                                <div className="p-3">
+                                <div className="flex flex-col gap-3 text-sm lg:text-lg p-3">
                                     <p className="flex justify-between">
                                         <span>Order ID:</span>
                                         <p>{latestOrder._id}</p>
@@ -112,7 +110,7 @@ const SuccesTransaction = () => {
                             {/* Payment Details */}
                             <div className="mt-3 w-full ">
                                 <p className="font-semibold text-xl">💳 Payment Details:</p>
-                                <div className="p-3">
+                                <div className="flex flex-col gap-3 text-sm lg:text-lg p-3">
                                     <p className="flex justify-between">
                                         <span>Total Price:</span> ${latestOrder.totalPrice}
                                     </p>
@@ -134,8 +132,8 @@ const SuccesTransaction = () => {
                             {/* Contact Details */}
                             <div className="mt-3 w-full">
                                 <p className="font-semibold text-xl">👤 Contact Details:</p>
-                                <div className="p-3">
-                                    <p className="flex justify-between">
+                                <div className="flex flex-col gap-3 text-sm lg:text-lg p-3">
+                                    <p className="flex  justify-between">
                                         <span>Name :</span> {latestOrder.name}
                                     </p>
                                     <p className="flex h-auto justify-between">
@@ -147,10 +145,10 @@ const SuccesTransaction = () => {
                                 </div>
                             </div>
                             <div className="flex gap-4 md:justify-end md:items-center w-full pb-1">
-                                <button onClick={() => navigate("/")} className="text-lg  font-semibold h-12 w-1/2 md:w-1/4 border border-gray-300 rounded-2xl hover:bg-white hover:text-black transition duration-300">
+                                <button onClick={() => navigate("/")} className="text-sm lg:text-lg  font-semibold h-12 w-1/2 md:w-1/4 border border-gray-300 rounded-2xl hover:bg-white hover:text-black transition duration-300">
                                     Home
                                 </button>
-                                <button onClick={() => navigate(`/my-orders`)} className="text-lg  text-center font-semibold h-12 w-1/2 md:w-1/4 border border-gray-300 rounded-2xl hover:bg-white hover:text-black transition duration-300">
+                                <button onClick={() => navigate(`/my-orders`)} className="text-sm lg:text-lg  text-center font-semibold h-12 w-1/2 md:w-1/4 border border-gray-300 rounded-2xl hover:bg-white hover:text-black transition duration-300">
                                     My Orders
                                 </button>
                             </div>
@@ -164,7 +162,7 @@ const SuccesTransaction = () => {
 
 
             <div className="mt-8">
-                <p className="text-2xl text-center font-semibold pb-4">You Might Like</p>
+                <p className=" text-sm lg:text-2xl text-center font-semibold pb-4">You Might Like</p>
                 <div className="grid grid-cols-2 items-center md:grid-cols-4 gap-3">
                     {recommended.map((product) => (
                         <ProductCard key={product._id} product={product} />
