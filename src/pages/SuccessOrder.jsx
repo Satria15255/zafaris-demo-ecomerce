@@ -48,7 +48,7 @@ const SuccesTransaction = () => {
                     {/* Order Details */}
                     <div className="flex flex-col w-full">
                         <p className="text-xl w-full font-semibold mb-2">🧾 Order Details:</p>
-                        <div className="mt-3 w-full p-3">
+                        <div className="mt-3 w-full p-3 ">
                             <p className="font-semibold">Product:</p>
                             {latestOrder.products && latestOrder.products.length > 0 ? (
                                 <ul className="list-disc list-inside border-t mt-1">
@@ -80,7 +80,7 @@ const SuccesTransaction = () => {
                                 <p>No product</p>
                             )}
                         </div>
-                        <div className="w-full p-3">
+                        <div className="w-full p-3 flex flex-col gap-3">
                             <p className="flex justify-between">
                                 <strong>Order Id:</strong>
                                 <p>{latestOrder._id}</p>
@@ -100,11 +100,11 @@ const SuccesTransaction = () => {
                         </div>
                     </div>
 
-                    <div className="flex gap-4 md:justify-end md:items-center w-full">
-                        <button onClick={() => navigate("/")} className="text-lg font-semibold h-12 w-full md:w-1/5 border border-gray-300 rounded-xl hover:bg-black hover:text-white">
+                    <div className="flex gap-4 md:justify-end md:items-center w-full mt-5">
+                        <button onClick={() => navigate("/")} className="text-sm lg:text-lg font-semibold h-12 w-full md:w-1/5 border border-gray-300 rounded-xl hover:bg-black hover:text-white">
                             My Orders
                         </button>
-                        <button onClick={() => navigate(`/paymentOrder/${latestOrder._id}`)} className="text-lg font-semibold h-12 w-full md:w-1/5 border border-gray-300 rounded-xl hover:bg-black hover:text-white">
+                        <button onClick={() => navigate(`/paymentOrder/${latestOrder._id}`)} className="text-sm lg:text-lg font-semibold h-12 w-full md:w-1/5 border border-gray-300 rounded-xl hover:bg-black hover:text-white">
                             Paid Now
                         </button>
                     </div>
@@ -115,7 +115,7 @@ const SuccesTransaction = () => {
 
 
             <div className="mt-8">
-                <h2 className="text-xl font-bold mb-4">You Might Like</h2>
+                <h2 className="text-sm text-center lg:text-xl font-bold mb-4">You Might Like</h2>
                 <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
                     {recommended.map((product) => (
                         <ProductCard key={product._id} product={product} />

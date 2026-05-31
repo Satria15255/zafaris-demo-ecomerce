@@ -21,6 +21,7 @@ const CheckoutPage = () => {
         name: user?.name || "",
         email: user?.email || "",
         phoneNumber: user?.phoneNumber || "",
+        address: user?.address || "",
         message: "",
         paymentMethod: "Transfer",
         shippingMethod: "JNE",

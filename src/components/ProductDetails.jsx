@@ -151,7 +151,7 @@ function ProductModal() {
 
 
                     <div className=" flex gap-4 justify-arround ">
-                        <button onClick={() => handleAddToCart(product, selectedSize, discountPrice)} className="mt-2 flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition">
+                        <button onClick={() => handleAddToCart(product, selectedSize)} className="mt-2 flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition">
                             Add to Cart <FaCartPlus />
                         </button>
                         <button

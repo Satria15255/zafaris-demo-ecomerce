@@ -28,7 +28,9 @@ export const CartProvider = ({ children }) => {
         if (!user) {
             return toast.warning("Please login to add products to cart")
         }
-
+        if (!size) {
+            return toast.error("Please Select a size")
+        }
         try {
             const res = await addToCart(product._id, 1, size)
             await fetchCart()
