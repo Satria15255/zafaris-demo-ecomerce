@@ -5,7 +5,7 @@ import runningCollection from '../assets/category/running.png'
 import sneakersCollection from '../assets/category/sneakers.png'
 import casualCollection from '../assets/category/casual.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination,Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -60,66 +60,52 @@ const CategoryCollection = () => {
             </div>
 
             {/* Mobile Ver */}
+            <div className='md:hidden h-auto py-12 px-4 w-full overflow-hidden'>
+                <Swiper
+                    modules={[Pagination, Autoplay]}
+                    slidesPerView={1}
+                    slidesPerGroup={1}
+                    autoplay={{ delay: 3000 }}
+                    pagination={{
+                        el: ".swiper-pagination",
+                        clickable: true
+                    }}
+                    className="h-full"
+                >
+                    {collection.map((c, index) => (
+                        // ✅ SwiperSlide langsung di dalam Swiper, tanpa wrapper div
+                        <SwiperSlide key={index}>
+                            <div onClick={() => navigate("/products")} className='w-85'>
 
-{/* const swiper = new Swiper('.swiper', {
-  slidesPerGroup: 2,
-  loop: true,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true
-  }
-}); */}
-                {/* Slider */}
-               <div className='md:hidden h-auto py-12 px-4 w-full overflow-hidden'>
-    <Swiper
-        modules={[ Pagination, Autoplay]}
-        slidesPerView={1}
-        slidesPerGroup={1}
-        autoplay={{ delay: 3000 }}
-        pagination={{
-            el: ".swiper-pagination",
-            clickable: true
-        }}
-        className="h-full"
-    >
-        {collection.map((c, index) => (
-            // ✅ SwiperSlide langsung di dalam Swiper, tanpa wrapper div
-            <SwiperSlide key={index}>
-                <div onClick={() => navigate("/products")} className='w-85'>
+                                <div className='overflow-hidden'>
+                                    <img
+                                        src={c.image}
+                                        className='hover:scale-110 transition duration-300'
+                                    />
+                                </div>
 
-                    <div className='overflow-hidden'>
-                        <img
-                            src={c.image}
-                            className='hover:scale-110 transition duration-300'
-                        />
-                    </div>
+                                <div className='flex flex-col gap-5 mt-6'>
+                                    <p className='text-lg font-semibold'>{c.title}</p>
+                                    <p className='text-sm text-gray-500'>{c.desc}</p>
+                                    <p className='underline pb-7 text-sm font-semibold cursor-pointer'>
+                                        SHOP NOW
+                                    </p>
+                                </div>
 
-                    <div className='flex flex-col gap-5 mt-6'>
-                        <p className='text-lg font-semibold'>{c.title}</p>
-                        <p className='text-sm text-gray-500'>{c.desc}</p>
-                        <p className='underline pb-7 text-sm font-semibold cursor-pointer'>
-                            SHOP NOW
-                        </p>
-                    </div>
+                            </div>
+                        </SwiperSlide>
+                    ))}
 
-                </div>
-            </SwiperSlide>
-        ))}
+                    {/* Navigation & Pagination */}
+                    <div className="swiper-button-prev"></div>
+                    <div className="swiper-button-next"></div>
+                    <div className="swiper-pagination"></div>
 
-        {/* Navigation & Pagination */}
-        <div className="swiper-button-prev"></div>
-        <div className="swiper-button-next"></div>
-        <div className="swiper-pagination"></div>
+                </Swiper>
+            </div>
 
-    </Swiper>
-</div>
+            {/* Indicator */}
 
-                {/* Indicator */}
-                
 
         </div>
     )

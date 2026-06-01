@@ -3,6 +3,11 @@ import { getAllProducts } from "../api/Api";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { useCart } from "../context/CartContext";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const Bestseller = () => {
     const [products, setProducts] = useState([]);
@@ -26,10 +31,7 @@ const Bestseller = () => {
         fetchProducts();
     }, []);
 
-    const groupedProducts = [];
-    for (let i = 0; i < bestSellingProducts.length; i += 2) {
-        groupedProducts.push(bestSellingProducts.slice(i, i + 2));
-    }
+
 
 
     return (
@@ -43,31 +45,27 @@ const Bestseller = () => {
             <main>
                 {/* Desktop Ver */}
                 <div className="hidden w-full mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
-                {bestSellingProducts.map((products) => (
-                    <ProductCard key={products.id} product={products} productDetails={() => navigate(`/product/${products._id}`)} addToCart={() => handleAddToCart(products._id)} />
-                ))}
+                    {bestSellingProducts.map((products) => (
+                        <ProductCard key={products.id} product={products} productDetails={() => navigate(`/product/${products._id}`)} addToCart={() => handleAddToCart(products._id)} />
+                    ))}
                 </div>
 
                 {/* Mobile Ver */}
-                <div className="w-full mt-2 lg:mt-4 px-2 md:px-3">
+                <div className="w-full h-auto flex justify-center mt-2 lg:mt-4 pb-4 px-2 md:px-3 overflow-hidden">
                     {/* Slider */}
-                    <div className="md:hidden">
-                        <div className=" overflow-hidden">
-
-                        <div
-                            className="flex transition-transform duration-500 ease-in-out"
-                            style={{
-                                transform: `translateX(-${currentSlide * 100}%)`,
-                            }}
-                        >
-
-                            {groupedProducts.map((group, index) => (
-                                <div
-                                    key={index}
-                                    className="min-w-full grid grid-cols-2 gap-3 place-items-center"
-                                >
-
-                                    {group.map((products) => (
+                    <Swiper
+                        modules={[Pagination, Autoplay]}
+                        slidesPerView={2}
+                        slidesPerGroup={2}
+                        autoplay={{ delay: 4000 }}
+                        pagination={{
+                            el: ".swiper-pagination",
+                            clickable: true
+                        }}
+                        className="h-full "
+                    >
+                        {bestSellingProducts.map((products, index) => (
+                            <SwiperSlide key={index} className="pb-6">
                                         <ProductCard
                                             key={products._id}
                                             product={products}
@@ -78,34 +76,18 @@ const Bestseller = () => {
                                                 handleAddToCart(products._id)
                                             }
                                         />
-                                    ))}
-
-                                </div>
-                            ))}
-
-                        </div>
-
-                        </div>
-                    {/* Slide Indicator */}
-                    <div className="flex justify-center gap-2 mt-4">
-
-                        {groupedProducts.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentSlide(index)}
-                                className={`h-2 rounded-full transition-all duration-300 ${currentSlide === index
-                                        ? "w-6 bg-black"
-                                        : "w-2 bg-gray-400"
-                                    }`}
-                            />
+                            </SwiperSlide>
                         ))}
 
-                    </div>
-                    </div>
+                        {/* Navigation & Pagination */}
+                        <div className="swiper-button-prev"></div>
+                        <div className="swiper-button-next"></div>
+                        <div className="swiper-pagination"></div>
 
+                    </Swiper>
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     );
 };
 
