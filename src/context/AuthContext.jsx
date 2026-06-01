@@ -1,11 +1,13 @@
 import { useContext, createContext, useEffect, useState } from "react"
 import { jwtDecode } from "jwt-decode";
 import { getUserProfile } from "../api/Api"
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
+    const navigate = useNavigate()
 
     // Check Session
     useEffect(() => {
@@ -25,6 +27,7 @@ export const AuthProvider = ({ children }) => {
                 }
             }
         } catch (err) {
+            navigate("/")
             logout()
         }
     }, [])

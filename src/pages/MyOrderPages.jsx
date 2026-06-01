@@ -78,7 +78,7 @@ const OrderPages = () => {
         <div className="">
             <div>
                 {/* Filter Orders */}
-                <div className="flex md:justify-around gap-3 pb-6 border-b border-gray-400 md:w-full max-w-sm overflow-x-auto">
+                <div className="flex md:justify-around gap-3 pb-6 border-b border-gray-400 md:w-full overflow-x-auto px-2">
                     {ordersStatus.map((ord) => (
                         <button
                             key={ord}
@@ -89,7 +89,7 @@ const OrderPages = () => {
                                 }))
                             }
                             className={`
-                               flex-shrink-0 whitespace-nowrap h-8 px-4 text-sm rounded-3xl border border-gray-300 hover:bg-black hover:text-white transition duration-300
+                               flex-shrink-0 whitespace-nowrap h-10 lg:h-12 px-6  lg:px-7 text-sm rounded-3xl border border-gray-300 hover:bg-black hover:text-white transition duration-300
                             ${filter.status === ord
                                 ? "bg-black text-white"
                                 : "bg-white text-black"

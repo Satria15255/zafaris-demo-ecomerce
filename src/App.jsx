@@ -36,7 +36,6 @@ function App() {
     <div>
       <ScrollToTop />
       <CartProvider>
-
         <Routes>
           <Route element={<MainLayout handleOpenCart={() => setShoppingCartOpen(true)} onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />} >
             <Route path="/" element={

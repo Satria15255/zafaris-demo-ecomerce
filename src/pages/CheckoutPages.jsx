@@ -112,9 +112,9 @@ const CheckoutPage = () => {
                                         <div className="w-20 h-20 md:w-20 md:h-20">
                                             <img src={item.image} alt={item.name} className="w-full rounded-lg" />
                                         </div>
-                                        <div className=" justify-between">
-                                            <p className="font-semibold text-md w-40 lg:text-lg">{item.name}</p>
-                                            <p className="text-gray-500 text-xs md:text-sm">
+                                        <div className="flex flex-col md:flex-row justify-between">
+                                            <p className="font-semibold text-md w-40 lg:w-80 lg:text-xl">{item.name}</p>
+                                            <p className="text-gray-500 text-xs md:text-sm lg:text-lg">
                                                 {item.size} x {item.quantity}
                                             </p>
                                         </div>
@@ -132,7 +132,7 @@ const CheckoutPage = () => {
                     {/* Form Pembeli */}
                         <div className="w-full md:w-3/5 pt-8 bg-black rounded-xl p-4">
                             <p className="text-xl md:text-xl lg:text-3xl text-white pb-4 font-semibold">Order Details</p>
-                            <form onSubmit={handleSubmit} className="space-y-4 text-xs text-white">
+                            <form onSubmit={handleSubmit} className="space-y-4 text-xs lg:text-lg text-white">
                             <div>
                                     <input type="text" name="name" value={formData.name} required onChange={handleChange} placeholder="Your Name" className="w-full border-b bg-black  px-3 py-2 rounded" />
                             </div>
