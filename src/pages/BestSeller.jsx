@@ -34,12 +34,11 @@ const Bestseller = () => {
 
     return (
         <div className="my-6 lg:my-12">
-            <header className="flex justify-center md:justify-between px-7 items-center py-4 border-b border-gray-300">
+            <header className="flex justify-center px-7 items-center py-4 ">
                 <header className="text-center py-2">
                     <p className="text-lg lg:text-2xl font-semibold">Best Deals</p>
-                    <p className="md:hidden text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur.</p>
+                    <p className="text-sm lg:text-lg text-gray-500">Lorem ipsum dolor sit amet consectetur.</p>
                 </header>
-                <p onClick={() => navigate("/products")} className="hidden md:flex text-lg lg:text-2xl hover:underline transition duration-300 ">View More</p>
             </header>
             <main>
                 {/* Desktop Ver */}
