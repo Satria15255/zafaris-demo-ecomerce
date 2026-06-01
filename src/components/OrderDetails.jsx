@@ -1,12 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const orderDetails = ({ order, handleCancel, handleConfirm }) => {
+  const navigate = useNavigate()
 
   return (
     <div className="p-2 pt-6 ">
       <div key={order._id} className="border border-gray-300 mb-3 p-2 h-auto md:p-4 rounded-xl shadow space-y-3">
         <div className="flex flex-col  h-full gap-4">
           {/* Product  */}
+           <p className="text-sm flex justify-between">
+            <strong>Order Id:</strong>
+            {order._id}
+          </p>
           <p className="text-sm flex justify-between">
             <strong>Order Status:</strong>
             {order.status}
@@ -73,6 +80,20 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
               >
                 Cancel
               </button>
+              {order.status === "Waiting for Payment" ?  (
+                <button
+                onClick={() => {
+                  console.log("Buttonn Clicked");
+                  navigate(`/paymentOrder/${order._id}`);
+                }}
+                disabled={order.paymentStatus === "Expired"}
+                className="text-xs md:text-md lg:text-lg border border-gray-300 w-1/4 md:w-1/5 px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50  disabled:cursor-not-allowed
+    disabled:hover:bg-transparent
+    disabled:hover:text-current"
+              >
+                Pay Now
+              </button>
+              ):(
               <button
                 onClick={() => {
                   console.log("Buttonn Clicked");
@@ -86,6 +107,7 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
               >
                 Submitted
               </button>
+              )}
             </div>
           </div>
         </div>
