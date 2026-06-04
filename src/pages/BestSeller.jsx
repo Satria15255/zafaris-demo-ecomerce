@@ -31,9 +31,6 @@ const Bestseller = () => {
         fetchProducts();
     }, []);
 
-
-
-
     return (
         <div className="my-6 lg:my-12">
             <header className="flex justify-center px-7 items-center py-4 ">
@@ -51,7 +48,7 @@ const Bestseller = () => {
                 </div>
 
                 {/* Mobile Ver */}
-                <div className="w-full h-auto flex justify-center mt-2 lg:mt-4 pb-4 px-2 md:px-3 overflow-hidden">
+                <div className="w-full md:hidden h-auto flex justify-center mt-2 lg:mt-4 pb-4 px-2 md:px-3 overflow-hidden">
                     {/* Slider */}
                     <Swiper
                         modules={[Pagination, Autoplay]}
