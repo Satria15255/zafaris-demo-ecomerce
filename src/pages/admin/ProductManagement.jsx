@@ -5,7 +5,7 @@ import ProductsUploadForm from "../components/admin/ProductsUploadForm";
 import ProductsEditForm from "../components/admin/ProductsEditForm";
 import { getAllProducts, deleteProduct } from "../../api/Api";
 
-const Product = () => {
+const ProductManagement = () => {
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
@@ -79,4 +79,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductManagement;

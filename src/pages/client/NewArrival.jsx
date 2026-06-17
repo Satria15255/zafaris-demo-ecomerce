@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/client/ProductCard";
 import { getLatestProducts, addToCart } from "../api/Api";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function ProductList() {
     const [products, setProducts] = useState([]);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const fetchProducts = async () => {
         try {
@@ -43,13 +43,24 @@ function ProductList() {
                 viewport={{ once: true }}
             >
                 <header className="text-center  py-2">
-                    <p className="text-lg lg:text-3xl font-semibold">New Arrivals</p>
-                    <p className="text-sm lg:text-lg text-gray-500">Lorem ipsum dolor sit amet consectetur.</p>
+                    <p className="text-lg lg:text-3xl font-semibold">
+                        New Arrivals
+                    </p>
+                    <p className="text-sm lg:text-lg text-gray-500">
+                        Lorem ipsum dolor sit amet consectetur.
+                    </p>
                 </header>
             </motion.div>
             <main className="grid py-2 h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
                 {products.map((products) => (
-                    <ProductCard key={products.id} product={products} productDetails={() => navigate(`/product/${products._id}`)} addToCart={() => addToCartItems(products._id)} />
+                    <ProductCard
+                        key={products.id}
+                        product={products}
+                        productDetails={() =>
+                            navigate(`/product/${products._id}`)
+                        }
+                        addToCart={() => addToCartItems(products._id)}
+                    />
                 ))}
             </main>
             <footer className="text-center py-4">

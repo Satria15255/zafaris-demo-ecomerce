@@ -1,8 +1,8 @@
 // AdminUserList.jsx
 import React, { useEffect, useState } from "react";
-import UserList from "../components/UserList";
-import UserDetail from "../components/UserDetail";
-import { getAllUsers, getUserTransactions } from "../../api/Api";
+import UserList from "@/components/UserList";
+import UserDetail from "@/components/UserDetail";
+import { getAllUsers, getUserTransactions } from "@/api/Api";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);

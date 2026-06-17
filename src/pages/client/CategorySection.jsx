@@ -14,7 +14,6 @@ const collection = [
     {
         image: `${basketballCollection}`,
         title: "Basketball Collection",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
     },
     {
         image: `${runningCollection}`,

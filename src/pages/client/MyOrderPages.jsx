@@ -1,27 +1,34 @@
 import React, { useEffect, useState } from "react";
-import OrderDetails from "../components/OrderDetails";
+import OrderDetails from "../components/client/OrderDetails";
 import { getMyOrders, confirmOrderReceived, cancelOrder } from "../api/Api";
 import { toast } from "react-toastify";
-import Loader from "../components/Loader"
+import Loader from "../components/client/Loader";
 
 const OrderPages = () => {
     const [orders, setOrders] = useState([]);
-    const [pagination, setPagination] = useState(6)
-    const [loading, setLoading] = useState(true)
+    const [pagination, setPagination] = useState(6);
+    const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState({
-        status: "All"
-    })
-    const ordersStatus = ["All","Waiting for Payment", "Processing", "Shipped", "Delivered", "Completed", "Cancelled"]
+        status: "All",
+    });
+    const ordersStatus = [
+        "All",
+        "Waiting for Payment",
+        "Processing",
+        "Shipped",
+        "Delivered",
+        "Completed",
+        "Cancelled",
+    ];
 
     const fetchMyOrders = async () => {
         try {
-
             setLoading(true);
             const res = await getMyOrders();
             setOrders(res.data);
             console.log(res.data);
         } catch (error) {
-            console.log(error)
+            console.log(error);
         } finally {
             setLoading(false);
         }
@@ -31,8 +38,6 @@ const OrderPages = () => {
         fetchMyOrders();
     }, []);
 
-
-
     const handleConfirmReceived = async (id) => {
         try {
             await confirmOrderReceived(id);
@@ -40,7 +45,9 @@ const OrderPages = () => {
             fetchMyOrders();
         } catch (err) {
             console.error(err);
-            toast.error(err.response?.data?.message || "Failed to confirm order");
+            toast.error(
+                err.response?.data?.message || "Failed to confirm order",
+            );
         }
     };
 
@@ -56,23 +63,20 @@ const OrderPages = () => {
 
     // FILTER ORDER
     const filteredOrders = orders.filter((order) => {
-
         const matchStatus =
-            filter.status === "All" ||
-            order.status === filter.status;
+            filter.status === "All" || order.status === filter.status;
 
         return matchStatus;
     });
 
     // SORT ORDER (NEWEST FIRST)
     const sortedOrder = [...filteredOrders].sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
     );
 
     if (loading) {
-        return <Loader />
+        return <Loader />;
     }
-
 
     return (
         <div className="">
@@ -85,44 +89,53 @@ const OrderPages = () => {
                             onClick={() =>
                                 setFilter((prev) => ({
                                     ...prev,
-                                    status: ord
+                                    status: ord,
                                 }))
                             }
                             className={`
                                flex-shrink-0 whitespace-nowrap h-10 lg:h-12 px-6  lg:px-7 text-sm rounded-3xl border border-gray-300 hover:bg-black hover:text-white transition duration-300
-                            ${filter.status === ord
-                                ? "bg-black text-white"
-                                : "bg-white text-black"
-                                }
+                            ${
+                                filter.status === ord
+                                    ? "bg-black text-white"
+                                    : "bg-white text-black"
+                            }
                         `}
                         >
                             {ord}
                         </button>
-
                     ))}
                 </div>
 
                 {/* Order Section */}
                 <div className="w-full h-auto lg:max-h-120 lg:overflow-y-auto">
                     {sortedOrder.length === 0 ? (
-                        <p className="pt-20 text-center">
-                            Belum ada order.
-                        </p>
+                        <p className="pt-20 text-center">Belum ada order.</p>
                     ) : (
-                            <>
-                                {sortedOrder.slice(0, pagination).map((order) => (
-                                    <OrderDetails order={order} handleCancel={handleCancel} handleConfirm={handleConfirmReceived} />
-                                ))}
-                                <div className="flex justify-center p-3">
-                                    {sortedOrder.length > pagination && (
-                                        <p onClick={() => setPagination(pagination + 6)} className="text-sm lg:text-xl hover:underline transition duration-300">View More</p>
-                                    )}
-                                </div>
+                        <>
+                            {sortedOrder.slice(0, pagination).map((order) => (
+                                <OrderDetails
+                                    order={order}
+                                    handleCancel={handleCancel}
+                                    handleConfirm={handleConfirmReceived}
+                                />
+                            ))}
+                            <div className="flex justify-center p-3">
+                                {sortedOrder.length > pagination && (
+                                    <p
+                                        onClick={() =>
+                                            setPagination(pagination + 6)
+                                        }
+                                        className="text-sm lg:text-xl hover:underline transition duration-300"
+                                    >
+                                        View More
+                                    </p>
+                                )}
+                            </div>
                         </>
                     )}
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

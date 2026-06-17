@@ -4,7 +4,7 @@ import OrdersDetails from "../components/admin/OrdersDetails";
 import { toast } from "react-toastify";
 import { getAllTransactions, updateTransactionStatus } from "../../api/Api";
 
-const Orders = () => {
+const AdminOrders = () => {
   const [order, setOrder] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
 
@@ -59,4 +59,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default AdminOrders;
