@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import basketballCollection from "../assets/category/basketball.webp";
-import runningCollection from "../assets/category/running.webp";
-import sneakersCollection from "../assets/category/sneakers.webp";
-import casualCollection from "../assets/category/casual.webp";
+import basketballCollection from "@/assets/category/basketball.webp";
+import runningCollection from "@/assets/category/running.webp";
+import sneakersCollection from "@/assets/category/sneakers.webp";
+import casualCollection from "@/assets/category/casual.webp";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";

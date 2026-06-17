@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import OrderDetails from "../components/client/OrderDetails";
-import { getMyOrders, confirmOrderReceived, cancelOrder } from "../api/Api";
+import OrderDetails from "@/components/client/OrderDetails";
+import { getMyOrders, confirmOrderReceived, cancelOrder } from "@/api/Api";
 import { toast } from "react-toastify";
-import Loader from "../components/client/Loader";
+import Loader from "@/components/client/Loader";
 
 const OrderPages = () => {
     const [orders, setOrders] = useState([]);

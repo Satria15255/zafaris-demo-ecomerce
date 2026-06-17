@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import OrdersTable from "../components/admin/OrdersTable";
-import OrdersDetails from "../components/admin/OrdersDetails";
+import OrdersTable from "@/components/admin/OrdersTable";
+import OrdersDetails from "@/components/admin/OrdersDetails";
 import { toast } from "react-toastify";
-import { getAllTransactions, updateTransactionStatus } from "../../api/Api";
+import { getAllTransactions, updateTransactionStatus } from "@/api/Api";
 
 const AdminOrders = () => {
   const [order, setOrder] = useState([]);

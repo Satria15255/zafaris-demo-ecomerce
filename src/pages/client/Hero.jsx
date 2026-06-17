@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
-import Slide1 from "../assets/heroSection/hero12.webp";
-import Slide2 from "../assets/heroSection/hero2.webp";
+import Slide1 from "@/assets/heroSection/hero12.webp";
+import Slide2 from "@/assets/heroSection/hero2.webp";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import { useNavigate } from "react-router-dom";

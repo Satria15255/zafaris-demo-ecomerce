@@ -72,3 +72,10 @@ export const getMyOrders = () => API.get("/api/transactions/mytransactions");
 export const confirmOrderReceived = (Id) =>
     API.patch(`/api/transactions/${Id}/confirm`);
 export const cancelOrder = (Id) => API.put(`/api/transactions/cancel/${Id}`);
+
+// =======================
+// 👤 USER LIST
+// =======================
+export const getAllUsers = () => API.get("/api/admin/users");
+export const getUserTransactions = (userId) =>
+    API.get(`/api/admin/users/${userId}/transactions`);

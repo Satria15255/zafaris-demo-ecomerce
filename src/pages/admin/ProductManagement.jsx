@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import ProductsTable from "../components/admin/ProductsTable";
-import ProductsUploadForm from "../components/admin/ProductsUploadForm";
-import ProductsEditForm from "../components/admin/ProductsEditForm";
-import { getAllProducts, deleteProduct } from "../../api/Api";
+import ProductsTable from "@/components/admin/ProductsTable";
+import ProductsUploadForm from "@/components/admin/ProductsUploadForm";
+import ProductsEditForm from "@/components/admin/ProductsEditForm";
+import { getAllProducts, deleteProduct } from "@/api/Api";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);

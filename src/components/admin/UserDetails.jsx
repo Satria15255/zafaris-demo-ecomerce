@@ -29,4 +29,4 @@ const UserDetails = ({ transactions, onClose }) => {
   );
 };
 
-export default UserDetail;
+export default UserDetails;

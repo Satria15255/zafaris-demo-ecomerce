@@ -1,10 +1,10 @@
 // AdminUserList.jsx
 import React, { useEffect, useState } from "react";
-import UserList from "@/components/UserList";
-import UserDetail from "@/components/UserDetail";
+import UserList from "@/components/admin/UserList";
+import UserDetail from "@/components/admin/UserDetails";
 import { getAllUsers, getUserTransactions } from "@/api/Api";
 
-const UserList = () => {
+const AdminUserList = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [transactions, setTransactions] = useState([]);
@@ -44,4 +44,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default AdminUserList;

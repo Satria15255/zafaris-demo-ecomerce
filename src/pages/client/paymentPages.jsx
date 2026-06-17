@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import ProductCard from "../components/client/ProductCard";
-import { getTransactionById, getAllProducts, payTransaction } from "../api/Api";
+import ProductCard from "@/components/client/ProductCard";
+import { getTransactionById, getAllProducts, payTransaction } from "@/api/Api";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Loader from "../components/client/Loader";
+import Loader from "@/components/client/Loader";
 
 const PaymentPages = () => {
     const [latestOrder, setLatestOrder] = useState(null);

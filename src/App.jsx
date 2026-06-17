@@ -20,7 +20,7 @@ import UserDashboard from "./pages/client/UserDashboard";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminProduct from "./pages/admin/ProductManagement";
 import AdminOrder from "./pages/admin/AdminOrders";
-import AdminUserList from "./pages/admin/UserList";
+import AdminUserList from "./pages/admin/AdminUserList";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 
 import ShoppingCart from "./components/client/ShoppingCart";
@@ -29,6 +29,7 @@ import SidebarProfile from "./components/client/SidebarProfile";
 import ScrollToTop from "./components/client/ScrollToTop";
 
 import AdminRoute from "./components/admin/AdminRoute";
+import AdminLayout from "./layout/AdminLayout";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";

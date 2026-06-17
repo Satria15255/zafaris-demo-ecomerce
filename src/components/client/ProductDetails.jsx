@@ -8,7 +8,7 @@ import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import Loader from "./Loader";
 import ProductCard from "./ProductCard";
-import CallAction from "@/pages/CallAction";
+import CallAction from "@/pages/client/CallAction";
 
 function ProductModal() {
     const [product, setProduct] = useState([]);

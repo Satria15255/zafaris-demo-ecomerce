@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "../components/client/ProductCard";
-import { getTransactionById, getAllProducts } from "../api/Api";
+import ProductCard from "@/components/client/ProductCard";
+import { getTransactionById, getAllProducts } from "@/api/Api";
 import { FcApproval } from "react-icons/fc";
 import { useNavigate, useParams } from "react-router-dom";
-import Loader from "../components/client/Loader";
+import Loader from "@/components/client/Loader";
 
 const SuccesTransaction = () => {
     const [latestOrder, setlatestOrder] = useState([]);

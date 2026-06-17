@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import actionImage from "../assets/heroSection/action.webp";
+import actionImage from "@/assets/heroSection/action.webp";
 
 const CallAction = () => {
     const navigate = useNavigate();
