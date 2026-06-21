@@ -72,11 +72,11 @@ const OrdersDetails = ({ order, onClose, onStatusChange }) => {
             onChange={(e) => onStatusChange(order._id, e.target.value)}
             className="block mt-1 border px-2 py-1 rounded"
           >
-            <option value="pending_confirmation">Pending Confirmation</option>
-            <option value="processing">Processing</option>
-            <option value="shipped">Shipped</option>
-            <option value="delivered">Delivered</option>
-            <option value="cancelled">Cancelled</option>
+            <option value="Waiting for Payment">Pending Confirmation</option>
+            <option value="Processing">Processing</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Cancelled">Cancelled</option>
           </select>
         </div>
 

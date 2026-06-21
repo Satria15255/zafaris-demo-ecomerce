@@ -46,10 +46,10 @@ const AdminOrders = () => {
 
   return (
     <div className="w-full p-4">
-      <TransactionTable order={order} onOpenModal={openModal} />
+      <OrdersTable order={order} onOpenModal={openModal} />
 
       {selectedOrder && (
-        <TransactionDetails
+        <OrdersDetails
           order={selectedOrder}
           onClose={closeModal}
           onStatusChange={handleStatusChange}

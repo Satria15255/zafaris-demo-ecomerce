@@ -18,13 +18,15 @@ const AdminSidebar = () => {
 
       {/* Menu Items (otomatis memenuhi tinggi dengan flex-1) */}
       <div className="flex-1 overflow-y-auto p-3 space-y-6">
-        <h1
+        <NavLink
+          as={NavLink}
+          to="/admin/dashboard"
           label="Dashboard"
           className="pb-2 flex items-center gap-2 border-b border-gray-700"
         >
           <FaTachometerAlt />
           Dashboard
-        </h1>
+        </NavLink>
         <NavLink
           as={NavLink}
           to="/admin/product"
@@ -36,7 +38,7 @@ const AdminSidebar = () => {
         </NavLink>
         <NavLink
           as={NavLink}
-          to="/admin/transaction"
+          to="/admin/all-orders"
           label="transaksi"
           className="pb-2 flex items-center gap-2 border-b border-gray-700"
         >

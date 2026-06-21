@@ -30,6 +30,7 @@ import ScrollToTop from "./components/client/ScrollToTop";
 
 import AdminRoute from "./components/admin/AdminRoute";
 import AdminLayout from "./layout/AdminLayout";
+import AdminLogin from "./pages/admin/AdminLoginPage";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -81,6 +82,8 @@ function App() {
             <Route path="/my-orders" element={<OrderPages />} />
             <Route path="/dashboard" element={<UserDashboard />} />
           </Route>
+          <Route path="/admin-login" element={<AdminLogin />} />
+
           <Route
             path="/admin"
             element={
@@ -90,6 +93,7 @@ function App() {
             }
           >
             <Route index element={<AdminDashboard />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/product" element={<AdminProduct />} />
             <Route path="/admin/all-orders" element={<AdminOrder />} />
             <Route path="/admin/user" element={<AdminUserList />} />

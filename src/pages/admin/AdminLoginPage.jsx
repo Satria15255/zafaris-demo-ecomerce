@@ -42,9 +42,9 @@ const AdminLoginPage = () => {
     <div className="min-h-screen flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 shadow-lg rounded w-96 space-y-4"
+        className="bg-white p-8 shadow-lg rounded w-2/5 space-y-4"
       >
-        <h1 className="text-2xl font-bold text-center">Admin Login</h1>
+        <h2 className="text-lg font-bold text-center">Admin Login</h2>
 
         <input
           type="email"

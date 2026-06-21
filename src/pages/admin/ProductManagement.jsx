@@ -54,7 +54,7 @@ const ProductManagement = () => {
       </div>
 
       <div>
-        <ProductTable
+        <ProductsTable
           products={products}
           onEdit={(product) => setEditingProduct(product)}
           onDelete={handleDelete}
@@ -62,14 +62,14 @@ const ProductManagement = () => {
       </div>
 
       {isUploadOpen && (
-        <ProductUploadForm
+        <ProductsUploadForm
           onClose={() => setIsUploadOpen(false)}
           onSucces={handleUploadSuccess}
         />
       )}
 
       {editingProduct && (
-        <ProductEditForm
+        <ProductsEditForm
           product={editingProduct}
           onClose={() => setEditingProduct(null)}
           onSucces={handleEditSucces}
