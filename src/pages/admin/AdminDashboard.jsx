@@ -31,12 +31,13 @@ const AdminDashboard = () => {
 				</div>
 			</header>
 			<main className="mt-4">
-				<div className="flex justify-between px-2">
+				<div className="flex justify-around gap-4 px-2">
 					{dashboardConfig.map((item) => (
 						<DashboardStatsCard
 							key={item.key}
 							title={item.title}
 							value={stats[item.key]}
+							icon={item.icon}
 						/>
 					))}
 				</div>
