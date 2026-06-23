@@ -79,3 +79,7 @@ export const cancelOrder = (Id) => API.put(`/api/transactions/cancel/${Id}`);
 export const getAllUsers = () => API.get("/api/admin/users");
 export const getUserTransactions = (userId) =>
     API.get(`/api/admin/users/${userId}/transactions`);
+// =======================
+// 👤 DASHBOARD STATISTIC
+// =======================
+export const getDashboardStats = () => API.get("/api/dashboard-stats");
