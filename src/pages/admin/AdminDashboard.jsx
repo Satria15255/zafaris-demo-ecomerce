@@ -2,6 +2,8 @@ import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
 import { getDashboardStats } from "@/api/Api";
 import React, { useState, useEffect } from "react";
 import { dashboardConfig } from "@/components/admin/config/DashboardConfig";
+import { MdOutlineCalendarMonth } from "react-icons/md";
+import DatenTimeFormat from "@/components/shared/DatenTimeFormat";
 
 const AdminDashboard = () => {
 	const [stats, setStats] = useState({});
@@ -26,8 +28,13 @@ const AdminDashboard = () => {
 					<h2>Good Morning !!</h2>
 					<p>Here's what's happening in your store today</p>
 				</div>
-				<div>
-					<h2>22, June 2026</h2>
+				<div className="flex items-center gap-3">
+					<p className="p-2 text-3xl bg-gray-200 rounded-full">
+						<MdOutlineCalendarMonth />
+					</p>
+					<h2>
+						<DatenTimeFormat />
+					</h2>
 				</div>
 			</header>
 			<main className="mt-4">
