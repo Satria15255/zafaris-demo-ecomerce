@@ -26,4 +26,4 @@ const SalesChart = ({ data }) => {
 	);
 };
 
-export default SalesChart();
+export default SalesChart;

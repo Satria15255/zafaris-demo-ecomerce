@@ -1,12 +1,15 @@
 import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
-import { getDashboardStats } from "@/api/Api";
+import { getDashboardStats, getSalesData } from "@/api/Api";
 import React, { useState, useEffect } from "react";
 import { dashboardConfig } from "@/components/admin/config/DashboardConfig";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import DatenTimeFormat from "@/components/shared/DatenTimeFormat";
+import SalesChart from "@/components/admin/SalesChart";
 
 const AdminDashboard = () => {
 	const [stats, setStats] = useState({});
+	const [salesData, setSalesData] = useState([]);
+	const [range, setRange] = useState("7d");
 
 	const getDashboardItems = async () => {
 		try {
@@ -21,6 +24,22 @@ const AdminDashboard = () => {
 	useEffect(() => {
 		getDashboardItems();
 	}, []);
+
+	// Fetch sales data for chart
+	const fetchSalesData = async () => {
+		try {
+			const res = await getSalesData(range);
+			setSalesData(res.data);
+			console.log("data sales:", salesData);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		fetchSalesData();
+	}, [range]);
+
 	return (
 		<div className="w-full">
 			<header className="flex justify-between items-center border-b border-gray-300 py-4 px-2">
@@ -49,7 +68,16 @@ const AdminDashboard = () => {
 					))}
 				</div>
 				<div>
-					<h1>Chart nanti disini</h1>
+					<div className="flex gap-2 mb-4">
+						<button onClick={() => setRange("7d")}>7D</button>
+
+						<button onClick={() => setRange("30d")}>30D</button>
+
+						<button onClick={() => setRange("90d")}>90D</button>
+
+						<button onClick={() => setRange("1y")}>1Y</button>
+					</div>
+					<SalesChart data={salesData} />
 				</div>
 			</main>
 		</div>
