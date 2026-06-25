@@ -83,3 +83,4 @@ export const getUserTransactions = (userId) =>
 // 👤 DASHBOARD STATISTIC
 // =======================
 export const getDashboardStats = () => API.get("/api/dashboard-stats");
+export const getSalesChart = (params) => API.get(`/api/sales-chart?${params}`);
