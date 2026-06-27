@@ -10,7 +10,7 @@ import { dashboardConfig } from "@/components/admin/config/DashboardConfig";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import DatenTimeFormat from "@/components/shared/DatenTimeFormat";
 import SalesChart from "@/components/admin/SalesChart";
-import OrdersTable from "@/components/admin/OrdersTable";
+import LatestTransactionsTabel from "@/components/admin/dashboard/LatestTransactionsTabel";
 import ProductCard from "@/components/client/ProductCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -66,6 +66,11 @@ const AdminDashboard = () => {
 		fetchOrders();
 	}, []);
 
+	// Sort Order
+	const sortOrders = [...order].sort(
+		(a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+	);
+
 	// fetch top product
 	const fetchProducts = async () => {
 		try {
@@ -85,7 +90,7 @@ const AdminDashboard = () => {
 	}, []);
 
 	return (
-		<div className="w-full">
+		<div className="w-full p-5">
 			<header className="flex justify-between items-center border-b border-gray-300 py-4 px-2">
 				<div>
 					<h2>Good Morning !!</h2>
@@ -113,8 +118,8 @@ const AdminDashboard = () => {
 				</div>
 
 				{/*Sales Chart*/}
-				<div classNamew="w-3/5">
-					<div className="flex gap-2 mb-4">
+				<div>
+					<div className="flex gap-2 mb-4 justify-end">
 						<button onClick={() => setRange("7d")}>7D</button>
 
 						<button onClick={() => setRange("30d")}>30D</button>
@@ -126,41 +131,42 @@ const AdminDashboard = () => {
 					<SalesChart data={salesData} />
 				</div>
 
-				<div className="flex">
+				<div className="flex w-full">
 					<div className="w-3/5">
-						<OrdersTable order={order} />
+						<LatestTransactionsTabel order={sortOrders} />
 					</div>
+					<div className="w-2/5 h-auto flex justify-center mt-2 lg:mt-4 pb-4 px-2 md:px-3 overflow-hidden">
+						{/* Slider */}
+						<Swiper
+							modules={[Pagination, Autoplay]}
+							slidesPerView={1}
+							slidesPerGroup={1}
+							autoplay={{ delay: 4000 }}
+							pagination={{
+								el: ".swiper-pagination",
+								clickable: true,
+							}}
+							className="h-full w-full flex justify-center"
+						>
+							{bestSellingProducts.map((products, index) => (
+								<SwiperSlide key={index} className="pb-6">
+									<ProductCard
+										key={products._id}
+										product={products}
+										productDetails={() =>
+											navigate(`/product/${products._id}`)
+										}
+										addToCart={() =>
+											handleAddToCart(products._id)
+										}
+									/>
+								</SwiperSlide>
+							))}
 
-					{/* Slider */}
-					<Swiper
-						modules={[Pagination, Autoplay]}
-						slidesPerView={1}
-						slidesPerGroup={1}
-						autoplay={{ delay: 4000 }}
-						pagination={{
-							el: ".swiper-pagination",
-							clickable: true,
-						}}
-						className="h-full "
-					>
-						{bestSellingProducts.map((products, index) => (
-							<SwiperSlide key={index} className="pb-6">
-								<ProductCard
-									key={products._id}
-									product={products}
-									productDetails={() =>
-										navigate(`/product/${products._id}`)
-									}
-									addToCart={() =>
-										handleAddToCart(products._id)
-									}
-								/>
-							</SwiperSlide>
-						))}
-
-						{/* Navigation & Pagination */}
-						<div className="swiper-pagination"></div>
-					</Swiper>
+							{/* Navigation & Pagination */}
+							<div className="swiper-pagination"></div>
+						</Swiper>
+					</div>
 				</div>
 			</main>
 		</div>
