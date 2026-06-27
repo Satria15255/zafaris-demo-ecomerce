@@ -1,18 +1,32 @@
 import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
-import { getDashboardStats, getSalesData, getAllTransactions } from "@/api/Api";
+import {
+	getDashboardStats,
+	getSalesData,
+	getAllTransactions,
+	getAllProducts,
+} from "@/api/Api";
 import React, { useState, useEffect } from "react";
 import { dashboardConfig } from "@/components/admin/config/DashboardConfig";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import DatenTimeFormat from "@/components/shared/DatenTimeFormat";
 import SalesChart from "@/components/admin/SalesChart";
 import OrdersTable from "@/components/admin/OrdersTable";
+import ProductCard from "@/components/client/ProductCard";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const AdminDashboard = () => {
 	const [stats, setStats] = useState({});
 	const [salesData, setSalesData] = useState([]);
 	const [range, setRange] = useState("7d");
 	const [order, setOrder] = useState([]);
+	const [products, setProducts] = useState([]);
 
+	// Fetch Dashboard Stats
 	const getDashboardItems = async () => {
 		try {
 			const res = await getDashboardStats();
@@ -42,6 +56,7 @@ const AdminDashboard = () => {
 		fetchSalesData();
 	}, [range]);
 
+	// fetch last / newest transactions(order)
 	const fetchOrders = async () => {
 		const res = await getAllTransactions();
 		setOrder(res.data);
@@ -49,6 +64,24 @@ const AdminDashboard = () => {
 
 	useEffect(() => {
 		fetchOrders();
+	}, []);
+
+	// fetch top product
+	const fetchProducts = async () => {
+		try {
+			const res = await getAllProducts();
+			setProducts(res.data);
+		} catch (err) {
+			console.log("Failed to fetch best sellers:", err);
+		}
+	};
+	const bestSellingProducts = products.filter(
+		(product) => product.isBestSeller === true,
+	);
+	console.log("ini dari filter", bestSellingProducts);
+
+	useEffect(() => {
+		fetchProducts();
 	}, []);
 
 	return (
@@ -78,6 +111,8 @@ const AdminDashboard = () => {
 						/>
 					))}
 				</div>
+
+				{/*Sales Chart*/}
 				<div classNamew="w-3/5">
 					<div className="flex gap-2 mb-4">
 						<button onClick={() => setRange("7d")}>7D</button>
@@ -90,10 +125,42 @@ const AdminDashboard = () => {
 					</div>
 					<SalesChart data={salesData} />
 				</div>
-				<div>
+
+				<div className="flex">
 					<div className="w-3/5">
 						<OrdersTable order={order} />
 					</div>
+
+					{/* Slider */}
+					<Swiper
+						modules={[Pagination, Autoplay]}
+						slidesPerView={1}
+						slidesPerGroup={1}
+						autoplay={{ delay: 4000 }}
+						pagination={{
+							el: ".swiper-pagination",
+							clickable: true,
+						}}
+						className="h-full "
+					>
+						{bestSellingProducts.map((products, index) => (
+							<SwiperSlide key={index} className="pb-6">
+								<ProductCard
+									key={products._id}
+									product={products}
+									productDetails={() =>
+										navigate(`/product/${products._id}`)
+									}
+									addToCart={() =>
+										handleAddToCart(products._id)
+									}
+								/>
+							</SwiperSlide>
+						))}
+
+						{/* Navigation & Pagination */}
+						<div className="swiper-pagination"></div>
+					</Swiper>
 				</div>
 			</main>
 		</div>
