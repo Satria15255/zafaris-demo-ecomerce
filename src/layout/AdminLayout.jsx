@@ -5,8 +5,12 @@ import { Outlet } from "react-router-dom";
 const AdminLayout = () => {
   return (
     <div className="flex">
-      <Sidebar />
-      <Outlet />
+      <div className="w-2/5">
+        <Sidebar />
+      </div>
+      <div className="max-h-screen overflow-y-auto">
+        <Outlet />
+      </div>
     </div>
   );
 };
