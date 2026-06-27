@@ -16,7 +16,7 @@ const LatestTransactionsTabel = ({ order, onOpenModal }) => {
         </thead>
       </table>
 
-      <div className="overflow-y-auto max-h-[75vh] w-full">
+      <div className="overflow-y-auto overflow-x-hidden max-h-[65vh] w-full">
         <table className="w-full table-fixed">
           <tbody className="w-full py-5">
             {order.map((o) => (

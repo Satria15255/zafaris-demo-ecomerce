@@ -2,7 +2,7 @@ import React from "react";
 
 const OrdersTable = ({ order, onOpenModal }) => {
   return (
-    <div className="w-full border-collapse ">
+    <div className="w-full border-collapse overflow-x-hidden">
       <table className="w-full table-fixed">
         <thead className="bg-gray-100 w-full">
           <tr>

@@ -131,15 +131,13 @@ const AdminDashboard = () => {
 					<SalesChart data={salesData} />
 				</div>
 
-				<div className="flex w-full">
+				<div className="flex w-full gap-5">
 					<div className="w-3/5">
 						<LatestTransactionsTabel order={sortOrders} />
 					</div>
-					<div className="w-2/5 flex flex-col gap-5 bg-gray-900 rounded-3xl h-auto flex justify-center mt-2 lg:mt-4 pb-4 p-5">
-						<div className="text-white flex flex-col gap-5">
-							<p className="text-white text-3xl">
-								Congratulations!
-							</p>
+					<div className="w-2/5 flex flex-col gap-5 bg-gray-200 rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-5 shadow-lg">
+						<div className="flex flex-col gap-5">
+							<p className=" text-3xl">Congratulations!🎉</p>
 							<p className="max-w-xs">
 								Some of your products already have a highest
 								buyer
@@ -160,7 +158,7 @@ const AdminDashboard = () => {
 							{bestSellingProducts.map((products, index) => (
 								<SwiperSlide
 									key={index}
-									className="pb-6 w-full"
+									className="pb-2 w-full"
 								>
 									<TopProductCard
 										key={products._id}
