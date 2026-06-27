@@ -11,7 +11,7 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 import DatenTimeFormat from "@/components/shared/DatenTimeFormat";
 import SalesChart from "@/components/admin/SalesChart";
 import LatestTransactionsTabel from "@/components/admin/dashboard/LatestTransactionsTabel";
-import ProductCard from "@/components/client/ProductCard";
+import TopProductCard from "@/components/admin/dashboard/TopProductCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -135,7 +135,16 @@ const AdminDashboard = () => {
 					<div className="w-3/5">
 						<LatestTransactionsTabel order={sortOrders} />
 					</div>
-					<div className="w-2/5 h-auto flex justify-center mt-2 lg:mt-4 pb-4 px-2 md:px-3 overflow-hidden">
+					<div className="w-2/5 flex flex-col gap-5 bg-gray-900 rounded-3xl h-auto flex justify-center mt-2 lg:mt-4 pb-4 p-5">
+						<div className="text-white flex flex-col gap-5">
+							<p className="text-white text-3xl">
+								Congratulations!
+							</p>
+							<p className="max-w-xs">
+								Some of your products already have a highest
+								buyer
+							</p>
+						</div>
 						{/* Slider */}
 						<Swiper
 							modules={[Pagination, Autoplay]}
@@ -149,16 +158,13 @@ const AdminDashboard = () => {
 							className="h-full w-full flex justify-center"
 						>
 							{bestSellingProducts.map((products, index) => (
-								<SwiperSlide key={index} className="pb-6">
-									<ProductCard
+								<SwiperSlide
+									key={index}
+									className="pb-6 w-full"
+								>
+									<TopProductCard
 										key={products._id}
 										product={products}
-										productDetails={() =>
-											navigate(`/product/${products._id}`)
-										}
-										addToCart={() =>
-											handleAddToCart(products._id)
-										}
 									/>
 								</SwiperSlide>
 							))}
