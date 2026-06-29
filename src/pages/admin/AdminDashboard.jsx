@@ -25,6 +25,24 @@ const AdminDashboard = () => {
 	const [range, setRange] = useState("7d");
 	const [order, setOrder] = useState([]);
 	const [products, setProducts] = useState([]);
+	const ranges = [
+		{
+			label: "7D",
+			value: "7d",
+		},
+		{
+			label: "30D",
+			value: "30d",
+		},
+		{
+			label: "90D",
+			value: "90d",
+		},
+		{
+			label: "1Y",
+			value: "1y",
+		},
+	];
 
 	// Fetch Dashboard Stats
 	const getDashboardItems = async () => {
@@ -118,15 +136,22 @@ const AdminDashboard = () => {
 				</div>
 
 				{/*Sales Chart*/}
-				<div>
-					<div className="flex gap-2 mb-4 justify-end">
-						<button onClick={() => setRange("7d")}>7D</button>
-
-						<button onClick={() => setRange("30d")}>30D</button>
-
-						<button onClick={() => setRange("90d")}>90D</button>
-
-						<button onClick={() => setRange("1y")}>1Y</button>
+				<div className="mt-6">
+					<div className="flex gap-3 justify-end mb-4">
+						{ranges.map((item) => (
+							<button
+								key={item.value}
+								onClick={() => setRange(item.value)}
+								className={`px-4 py-2 rounded-xl transition-all duration-200 font-medium
+        ${
+			range === item.value
+				? "bg-black text-white shadow-md"
+				: "bg-gray-200 hover:bg-gray-300 text-gray-700"
+		}`}
+							>
+								{item.label}
+							</button>
+						))}
 					</div>
 					<SalesChart data={salesData} />
 				</div>
