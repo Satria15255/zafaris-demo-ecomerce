@@ -135,7 +135,7 @@ const AdminDashboard = () => {
 					<div className="w-3/5">
 						<LatestTransactionsTabel order={sortOrders} />
 					</div>
-					<div className="w-2/5 flex flex-col gap-5 bg-gray-200 rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-5 shadow-lg">
+					<div className="w-2/5 flex flex-col gap-5 bg-gray-100 rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-5 shadow-lg">
 						<div className="flex flex-col gap-5">
 							<p className=" text-3xl">Congratulations!🎉</p>
 							<p className="max-w-xs">
