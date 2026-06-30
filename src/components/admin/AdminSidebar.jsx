@@ -1,10 +1,10 @@
 import React from "react";
 import {
   FaTachometerAlt,
-  FaCreditCard,
-  FaClipboardList,
+  FaUser,
   FaBoxes,
   FaSignOutAlt,
+  FaShoppingCart,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import logoBrand from "@/assets/logo/brandLogo.png";
@@ -17,18 +17,18 @@ const AdminSidebar = () => {
       path: "/admin/dashboard",
     },
     {
-      name: "Produk",
+      name: "Product",
       icon: <FaBoxes />,
       path: "/admin/product",
     },
     {
-      name: "Transaksi",
-      icon: <FaClipboardList />,
+      name: "Orders",
+      icon: <FaShoppingCart />,
       path: "/admin/all-orders",
     },
     {
-      name: "Users",
-      icon: <FaCreditCard />,
+      name: "Customer",
+      icon: <FaUser />,
       path: "/admin/user",
     },
   ];
@@ -39,7 +39,7 @@ const AdminSidebar = () => {
 
   console.log(menuItems);
   return (
-    <div className="h-screen w-64 bg-gray-100 flex flex-col">
+    <div className="h-screen w-60 bg-gray-100 flex flex-col">
       {/* Header / Logo */}
       <div className="p-4 py-8 text-sm font-bold ">
         <img src={logoBrand} alt="brand logo" className="w-3/4" />

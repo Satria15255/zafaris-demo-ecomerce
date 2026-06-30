@@ -11,8 +11,7 @@ import {
 
 const SalesChart = ({ data }) => {
 	return (
-		<div className="bg-white rounded-xl p-5">
-			<h2>Sales Overview</h2>
+		<div className="bg-white rounded-xl p-5 w-4/5">
 			<ResponsiveContainer width="100%" height={350}>
 				<LineChart data={data}>
 					<CartesianGrid strokeDashArray="3 3" />

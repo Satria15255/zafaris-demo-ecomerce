@@ -9,7 +9,7 @@ const TopProductCard = ({ product }) => {
 					className="w-3/5 rounded-3xl"
 				/>
 			</div>
-			<div className="flex flex-col items-center   gap-3">
+			<div className="flex flex-col items-center gap-3">
 				<h2 className=" ">{product.name}</h2>
 				<p className=" ">{product.totalSold} Sold</p>
 			</div>

@@ -49,7 +49,7 @@ const AdminDashboard = () => {
 		try {
 			const res = await getDashboardStats();
 			setStats(res.data);
-			console.log(res.data);
+			console.log("statistic store", res.data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -138,22 +138,33 @@ const AdminDashboard = () => {
 				</div>
 
 				{/*Sales Chart*/}
-				<div className="mt-6">
-					<div className="flex gap-3 justify-end mb-4">
-						{ranges.map((item) => (
-							<button
-								key={item.value}
-								onClick={() => setRange(item.value)}
-								className={`px-4 py-2 rounded-xl transition-all duration-200 font-medium
+				<div className="mt-6 flex justify-around">
+					<div className="flex gap-3 mb-4">
+						<div className="flex flex-col justify-around">
+							<div>
+								<h2>Your Sales Report</h2>
+								<p className="text-sm">Look at your sales</p>
+							</div>
+							<div>
+								<h1>${stats.totalRevenue}</h1>
+							</div>
+							<div className="flex gap-3">
+								{ranges.map((item) => (
+									<button
+										key={item.value}
+										onClick={() => setRange(item.value)}
+										className={`w-12 py-2 rounded-xl transition-all duration-200 text-sm
         ${
 			range === item.value
 				? "bg-black text-white shadow-md"
-				: "bg-gray-200 hover:bg-gray-300 text-gray-700"
+				: " hover:bg-gray-300 text-gray-700"
 		}`}
-							>
-								{item.label}
-							</button>
-						))}
+									>
+										{item.label}
+									</button>
+								))}
+							</div>
+						</div>
 					</div>
 					<SalesChart data={salesData} />
 				</div>
@@ -185,7 +196,7 @@ const AdminDashboard = () => {
 							{bestSellingProducts.map((products, index) => (
 								<SwiperSlide
 									key={index}
-									className="pb-2 w-full"
+									className="pb-8 w-full"
 								>
 									<TopProductCard
 										key={products._id}
