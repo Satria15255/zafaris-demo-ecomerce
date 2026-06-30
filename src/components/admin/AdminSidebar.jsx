@@ -35,11 +35,11 @@ const AdminSidebar = () => {
 
   const menuClass = ({ isActive }) =>
     `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
-  ${isActive ? "bg-gray-100 shadow-md" : "text-gray-600 hover:bg-gray-200"}`;
+  ${isActive ? "bg-gray-200 shadow-md" : "text-gray-600 hover:bg-gray-200"}`;
 
   console.log(menuItems);
   return (
-    <div className="h-screen w-64 bg-gray-200 flex flex-col">
+    <div className="h-screen w-64 bg-gray-100 flex flex-col">
       {/* Header / Logo */}
       <div className="p-4 py-8 text-sm font-bold ">
         <img src={logoBrand} alt="brand logo" className="w-3/4" />
