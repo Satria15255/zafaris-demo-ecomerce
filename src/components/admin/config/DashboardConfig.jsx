@@ -5,22 +5,22 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 export const dashboardConfig = [
 	{
 		key: "totalStock",
-		title: "Total Stock",
+		title: "Stock",
 		icon: <GiCardboardBoxClosed />,
 	},
 	{
 		key: "totalRevenue",
-		title: "Total Revenue",
+		title: "Revenue",
 		icon: <IoLogoUsd />,
 	},
 	{
 		key: "totalCompletedOrders",
-		title: "Total Completed Orders",
+		title: "Completed Orders",
 		icon: <BsFillCartCheckFill />,
 	},
 	{
 		key: "totalProductSold",
-		title: "Total Product Sold",
+		title: "Product Sold",
 		icon: <GiRunningShoe />,
 	},
 ];
