@@ -89,6 +89,8 @@ const AdminDashboard = () => {
 		(a, b) => new Date(b.createdAt) - new Date(a.createdAt),
 	);
 
+	const lastOrders = sortOrders.slice(0, 5);
+
 	// fetch top product
 	const fetchProducts = async () => {
 		try {
@@ -158,7 +160,7 @@ const AdminDashboard = () => {
 
 				<div className="flex w-full gap-5">
 					<div className="w-3/5">
-						<LatestTransactionsTabel order={sortOrders} />
+						<LatestTransactionsTabel order={lastOrders} />
 					</div>
 					<div className="w-2/5 flex flex-col gap-5 bg-gray-100 rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-5 shadow-lg">
 						<div className="flex flex-col gap-5">
