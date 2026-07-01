@@ -43,13 +43,13 @@ const ProductManagement = () => {
   return (
     <div className="w-full p-4">
       <div className="flex justify-between items-center mb-2">
-        <h1 className="text-xl font-bold">Product Management</h1>
+        <p className="text-2xl font-semibold">Product </p>
 
         <button
           onClick={() => setIsUploadOpen(true)}
-          className=" border border-black hover:bg-gray-900 transition duration-100 hover:text-white py-2 px-3 rounded-lg font-semibold flex justify-center"
+          className=" border border-black bg-black text-white hover:bg-white transition duration-100 hover:text-black py-2 px-3 rounded-lg flex justify-center"
         >
-          Add Product
+          + Add New Product
         </button>
       </div>
 
