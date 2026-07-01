@@ -2,10 +2,11 @@ import React from "react";
 import {
   FaTachometerAlt,
   FaUser,
-  FaBoxes,
+  FaBox,
   FaSignOutAlt,
   FaShoppingCart,
 } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import logoBrand from "@/assets/logo/brandLogo.png";
 
@@ -13,12 +14,12 @@ const AdminSidebar = () => {
   const menuItems = [
     {
       name: "Dashboard",
-      icon: <FaTachometerAlt />,
+      icon: <MdDashboard />,
       path: "/admin/dashboard",
     },
     {
       name: "Product",
-      icon: <FaBoxes />,
+      icon: <FaBox />,
       path: "/admin/product",
     },
     {

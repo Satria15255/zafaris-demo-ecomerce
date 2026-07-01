@@ -1,6 +1,6 @@
 import { GiCardboardBoxClosed, GiRunningShoe } from "react-icons/gi";
-import { IoLogoUsd } from "react-icons/io";
 import { BsFillCartCheckFill } from "react-icons/bs";
+import { MdShoppingBag } from "react-icons/md";
 
 export const dashboardConfig = [
 	{
@@ -9,9 +9,9 @@ export const dashboardConfig = [
 		icon: <GiCardboardBoxClosed />,
 	},
 	{
-		key: "totalRevenue",
-		title: "Revenue",
-		icon: <IoLogoUsd />,
+		key: "totalProducts",
+		title: "Products",
+		icon: <GiRunningShoe />,
 	},
 	{
 		key: "totalCompletedOrders",
@@ -21,6 +21,6 @@ export const dashboardConfig = [
 	{
 		key: "totalProductSold",
 		title: "Product Sold",
-		icon: <GiRunningShoe />,
+		icon: <MdShoppingBag />,
 	},
 ];
