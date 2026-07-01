@@ -70,19 +70,24 @@ const ProductManagement = () => {
   ];
 
   return (
-    <div className="w-full p-4">
+    <div className="w-full flex flex-col space-y-6 p-4">
       <div className="flex justify-between items-center mb-2">
-        <p className="text-2xl font-semibold">Product </p>
+        <div className="flex flex-col">
+          <p className="text-2xl font-semibold">Product </p>
+          <p className="text-sm text-gray-700">
+            Manage and organize our products easily
+          </p>
+        </div>
 
         <button
           onClick={() => setIsUploadOpen(true)}
-          className=" border border-black bg-black text-white hover:bg-white transition duration-100 hover:text-black py-2 px-3 rounded-lg flex justify-center"
+          className=" border border-black bg-black text-white hover:bg-white transition duration-100 hover:text-black py-2 px-5 rounded-lg flex items-center justify-center"
         >
           + Add New Product
         </button>
       </div>
 
-      <div className="flex justify-around gap-4 px-2">
+      <div className="flex justify-around gap-4 ">
         {ProductStats.map((item) => (
           <DashboardStatsCard
             key={item.key}
