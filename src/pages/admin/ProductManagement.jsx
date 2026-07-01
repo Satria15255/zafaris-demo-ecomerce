@@ -4,6 +4,12 @@ import ProductsTable from "@/components/admin/ProductsTable";
 import ProductsUploadForm from "@/components/admin/ProductsUploadForm";
 import ProductsEditForm from "@/components/admin/ProductsEditForm";
 import { getAllProducts, deleteProduct } from "@/api/Api";
+import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
+
+import { IoBagOutline } from "react-icons/io5";
+import { TbCategory2 } from "react-icons/tb";
+import { CiShoppingTag } from "react-icons/ci";
+import { FaChartLine } from "react-icons/fa";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
@@ -40,6 +46,29 @@ const ProductManagement = () => {
     fetchProducts();
   };
 
+  const ProductStats = [
+    {
+      key: 48,
+      title: "Product",
+      icon: <IoBagOutline />,
+    },
+    {
+      key: 4,
+      title: "Categories",
+      icon: <TbCategory2 />,
+    },
+    {
+      key: 8,
+      title: "Brand",
+      icon: <CiShoppingTag />,
+    },
+    {
+      key: 2900,
+      title: "Value",
+      icon: <FaChartLine />,
+    },
+  ];
+
   return (
     <div className="w-full p-4">
       <div className="flex justify-between items-center mb-2">
@@ -51,6 +80,17 @@ const ProductManagement = () => {
         >
           + Add New Product
         </button>
+      </div>
+
+      <div className="flex justify-around gap-4 px-2">
+        {ProductStats.map((item) => (
+          <DashboardStatsCard
+            key={item.key}
+            title={item.title}
+            value={item.key}
+            icon={item.icon}
+          />
+        ))}
       </div>
 
       <div>
