@@ -3,7 +3,16 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 const ProductsTable = ({ products, onEdit, onDelete }) => {
   return (
-    <div className="w-full border-collapse border border-gray-300">
+    <div className="w-full border-collapse border border-gray-200 rounded-lg">
+      <div className="p-4 bg-gray-100 rounded-lg">
+        <div className="w-1/2">
+          <input
+            type="text"
+            placeholder="Search Products..."
+            className="w-full px-2 py-2 text-xs lg:text-sm bg-white border border-gray-300 rounded-xl"
+          />
+        </div>
+      </div>
       <table className="w-full table-fixed">
         <thead className="bg-gray-100 w-full">
           <tr>
@@ -22,7 +31,7 @@ const ProductsTable = ({ products, onEdit, onDelete }) => {
             {products.map((p) => (
               <tr
                 key={p._id}
-                className="border-b border-gray-300 w-full table-fixed "
+                className="border-b border-gray-200 w-full table-fixed "
               >
                 <td className="p-2  w-1/3">
                   <div className="flex">
