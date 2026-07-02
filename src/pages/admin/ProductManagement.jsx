@@ -15,6 +15,8 @@ const ProductManagement = () => {
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productPerPage = 6;
 
   const fetchProducts = async () => {
     const res = await getAllProducts();
@@ -69,6 +71,50 @@ const ProductManagement = () => {
     },
   ];
 
+  // Product Pagination
+  const totalPages = Math.ceil(products.length / productPerPage);
+  const indexOfLastProduct = currentPage * productPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  );
+
+  const getPagination = () => {
+    if (totalPages <= 5) {
+      return [...Array(totalPages)].map((_, i) => i + 1);
+    }
+
+    // halaman 1-3
+    if (currentPage <= 3) {
+      return [1, 2, 3, 4, 5, "...", totalPages];
+    }
+
+    // halaman terakhir
+    if (currentPage >= totalPages - 2) {
+      return [
+        1,
+        "...",
+        totalPages - 4,
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ];
+    }
+
+    // halaman tengah
+    return [
+      1,
+      "...",
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      "...",
+      totalPages,
+    ];
+  };
+
   return (
     <div className="w-full flex flex-col space-y-6 p-4">
       <div className="flex justify-between items-center mb-2">
@@ -100,10 +146,67 @@ const ProductManagement = () => {
 
       <div>
         <ProductsTable
-          products={products}
+          products={currentProducts}
           onEdit={(product) => setEditingProduct(product)}
           onDelete={handleDelete}
         />
+        <div className="flex justify-between items-center mt-4">
+          <p className="text-sm text-gray-500">
+            Showing {indexOfFirstProduct + 1} -{" "}
+            {Math.min(indexOfLastProduct, products.length)} of {products.length}{" "}
+            products
+          </p>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setCurrentPage((prev) => prev - 1)}
+              disabled={currentPage === 1}
+              className={`w-10 h-10 rounded-lg transition
+      ${
+        currentPage === 1
+          ? "opacity-40 cursor-not-allowed"
+          : "hover:bg-black hover:text-white"
+      }`}
+            >
+              ←
+            </button>
+
+            <div className="flex gap-2">
+              {getPagination().map((item, index) =>
+                item === "..." ? (
+                  <span
+                    key={index}
+                    className="w-10 h-10 flex items-center justify-center text-gray-500"
+                  >
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentPage(item)}
+                    className={`w-10 h-10 rounded-lg border border-gray-200 transition
+        ${currentPage === item ? "bg-black text-white" : "hover:bg-gray-100"}`}
+                  >
+                    {item}
+                  </button>
+                ),
+              )}
+            </div>
+
+            <button
+              onClick={() => setCurrentPage((prev) => prev + 1)}
+              disabled={currentPage === totalPages}
+              className={`w-10 h-10 rounded-lg transition
+      ${
+        currentPage === totalPages
+          ? "opacity-40 cursor-not-allowed"
+          : "hover:bg-black hover:text-white"
+      }`}
+            >
+              →
+            </button>
+          </div>
+        </div>
       </div>
 
       {isUploadOpen && (

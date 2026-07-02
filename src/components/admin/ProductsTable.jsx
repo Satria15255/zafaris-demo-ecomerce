@@ -4,7 +4,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 const ProductsTable = ({ products, onEdit, onDelete }) => {
   return (
     <div className="w-full border-collapse border border-gray-200 rounded-lg">
-      <div className="p-4 flex items-center gap-4 bg-gray-100 rounded-lg">
+      <div className="p-4 flex items-center gap-4 bg-gray-100 rounded-t-lg">
         <div className="w-3/5">
           <input
             type="text"
@@ -47,7 +47,7 @@ const ProductsTable = ({ products, onEdit, onDelete }) => {
         </thead>
       </table>
 
-      <div className="overflow-y-auto max-h-[75vh] w-full">
+      <div className="overflow-y-auto w-full">
         <table className="w-full table-fixed">
           <tbody className="w-full">
             {products.map((p) => (
