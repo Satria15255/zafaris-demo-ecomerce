@@ -4,13 +4,35 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 const ProductsTable = ({ products, onEdit, onDelete }) => {
   return (
     <div className="w-full border-collapse border border-gray-200 rounded-lg">
-      <div className="p-4 bg-gray-100 rounded-lg">
-        <div className="w-1/2">
+      <div className="p-4 flex items-center gap-4 bg-gray-100 rounded-lg">
+        <div className="w-3/5">
           <input
             type="text"
             placeholder="Search Products..."
             className="w-full px-2 py-2 text-xs lg:text-sm bg-white border border-gray-300 rounded-xl"
           />
+        </div>
+        <div className="flex w-2/5 gap-4">
+          <select
+            name=""
+            id=""
+            className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-1/2"
+          >
+            <option value="Nike">All Brand</option>
+            <option value="Nike">Mizuno</option>
+            <option value="Nike">Adidas</option>
+            <option value="Nike">New Balance</option>
+          </select>
+          <select
+            name=""
+            id=""
+            className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-1/2"
+          >
+            <option value="Nike">All Category</option>
+            <option value="Nike">Running</option>
+            <option value="Nike">Basket</option>
+            <option value="Nike">Casual</option>
+          </select>
         </div>
       </div>
       <table className="w-full table-fixed">
