@@ -77,7 +77,7 @@ const ProductManagement = () => {
   );
 
   // Product Pagination
-  const totalPages = Math.ceil(products.length / productPerPage);
+  const totalPages = Math.ceil(filteredProducts.length / productPerPage);
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
   const currentProducts = filteredProducts.slice(
@@ -92,7 +92,7 @@ const ProductManagement = () => {
 
     // halaman 1-3
     if (currentPage <= 3) {
-      return [1, 2, 3, 4, 5, "...", totalPages];
+      return [1, 2, 3, 4, 5, totalPages];
     }
 
     // halaman terakhir
@@ -119,6 +119,10 @@ const ProductManagement = () => {
       totalPages,
     ];
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
 
   return (
     <div className="w-full flex flex-col space-y-6 p-4">
@@ -160,8 +164,8 @@ const ProductManagement = () => {
         <div className="flex justify-between items-center mt-4">
           <p className="text-sm text-gray-500">
             Showing {indexOfFirstProduct + 1} -{" "}
-            {Math.min(indexOfLastProduct, products.length)} of {products.length}{" "}
-            products
+            {Math.min(indexOfLastProduct, filteredProducts.length)} of{" "}
+            {filteredProducts.length} products
           </p>
 
           <div className="flex items-center gap-2">
