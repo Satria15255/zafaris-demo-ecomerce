@@ -16,6 +16,7 @@ const ProductManagement = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState("");
   const productPerPage = 6;
 
   const fetchProducts = async () => {
@@ -71,11 +72,15 @@ const ProductManagement = () => {
     },
   ];
 
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(search.toLowerCase()),
+  );
+
   // Product Pagination
   const totalPages = Math.ceil(products.length / productPerPage);
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
-  const currentProducts = products.slice(
+  const currentProducts = filteredProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct,
   );
@@ -149,6 +154,8 @@ const ProductManagement = () => {
           products={currentProducts}
           onEdit={(product) => setEditingProduct(product)}
           onDelete={handleDelete}
+          search={search}
+          setSearch={setSearch}
         />
         <div className="flex justify-between items-center mt-4">
           <p className="text-sm text-gray-500">

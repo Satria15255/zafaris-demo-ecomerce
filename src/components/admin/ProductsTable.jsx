@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const ProductsTable = ({ products, onEdit, onDelete }) => {
-  const [search, setSearch] = useState("");
-
-  const filteredProduct = products.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase()),
-  );
+const ProductsTable = ({ products, onEdit, onDelete, search, setSearch }) => {
   return (
     <div className="w-full border-collapse border border-gray-200 rounded-lg">
       <div className="p-4 flex items-center gap-4 bg-gray-100 rounded-t-lg">
@@ -57,7 +52,7 @@ const ProductsTable = ({ products, onEdit, onDelete }) => {
       <div className="overflow-y-auto w-full">
         <table className="w-full table-fixed">
           <tbody className="w-full">
-            {filteredProduct.map((p) => (
+            {products.map((p) => (
               <tr
                 key={p._id}
                 className="border-b border-gray-200 w-full table-fixed "
