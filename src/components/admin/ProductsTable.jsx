@@ -18,7 +18,7 @@ const ProductsTable = ({ products, onEdit, onDelete, search, setSearch }) => {
           <select
             name=""
             id=""
-            className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-1/2"
+            className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-1/2 text-sm"
           >
             <option value="Nike">All Brand</option>
             <option value="Nike">Mizuno</option>
@@ -28,7 +28,7 @@ const ProductsTable = ({ products, onEdit, onDelete, search, setSearch }) => {
           <select
             name=""
             id=""
-            className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-1/2"
+            className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-1/2 text-sm"
           >
             <option value="Nike">All Category</option>
             <option value="Nike">Running</option>
@@ -38,7 +38,7 @@ const ProductsTable = ({ products, onEdit, onDelete, search, setSearch }) => {
         </div>
       </div>
       <table className="w-full table-fixed">
-        <thead className="bg-gray-100 w-full">
+        <thead className="bg-gray-100 w-full text-xs">
           <tr>
             <th className="p-2 w-1/3 text-left">Name</th>
             <th className="text-left">Brand</th>
@@ -55,14 +55,14 @@ const ProductsTable = ({ products, onEdit, onDelete, search, setSearch }) => {
             {products.map((p) => (
               <tr
                 key={p._id}
-                className="border-b border-gray-200 w-full table-fixed "
+                className="border-b border-gray-200 w-full table-fixed text-xs"
               >
                 <td className="p-2  w-1/3">
                   <div className="flex">
                     <img
                       src={p.image}
                       alt={p.name}
-                      className="w-16 h-16 object-cover mr-2 inline-block rounded-md"
+                      className="w-14 h-14 object-cover mr-2 inline-block rounded-md"
                     />
                     <p className="p-2 flex flex-col">
                       {p.name}

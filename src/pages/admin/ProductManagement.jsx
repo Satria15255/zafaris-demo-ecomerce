@@ -129,14 +129,14 @@ const ProductManagement = () => {
       <div className="flex justify-between items-center mb-2">
         <div className="flex flex-col">
           <p className="text-2xl font-semibold">Product </p>
-          <p className="text-sm text-gray-700">
+          <p className="text-xs text-gray-700">
             Manage and organize our products easily
           </p>
         </div>
 
         <button
           onClick={() => setIsUploadOpen(true)}
-          className=" border border-black bg-black text-white hover:bg-white transition duration-100 hover:text-black py-2 px-5 rounded-lg flex items-center justify-center"
+          className=" border border-black bg-black text-sm text-white hover:bg-white transition duration-100 hover:text-black py-2 px-5 rounded-lg flex items-center justify-center"
         >
           + Add New Product
         </button>
@@ -162,13 +162,13 @@ const ProductManagement = () => {
           setSearch={setSearch}
         />
         <div className="flex justify-between items-center mt-4">
-          <p className="text-sm text-gray-500">
+          <p className="text-xs text-gray-500">
             Showing {indexOfFirstProduct + 1} -{" "}
             {Math.min(indexOfLastProduct, filteredProducts.length)} of{" "}
             {filteredProducts.length} products
           </p>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-xs">
             <button
               onClick={() => setCurrentPage((prev) => prev - 1)}
               disabled={currentPage === 1}

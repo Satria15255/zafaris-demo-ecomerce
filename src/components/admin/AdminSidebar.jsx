@@ -63,7 +63,7 @@ const AdminSidebar = () => {
           as={NavLink}
           to="/"
           label="Logout"
-          className="font-bold flex items-center gap-2"
+          className="font-bold flex items-center gap-2 text-sm text-red-500"
         >
           <FaSignOutAlt />
           Log Out
