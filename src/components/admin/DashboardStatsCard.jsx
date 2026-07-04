@@ -6,7 +6,7 @@ const DashboardStatsCard = ({ item, icon, title, value }) => {
 					{icon}
 				</p>
 			</div>
-			<div className="w-full flex flex-col gap-3">
+			<div className="w-full flex flex-col">
 				<p className="text-sm">{title}</p>
 				<p className="text-lg">{value}</p>
 			</div>

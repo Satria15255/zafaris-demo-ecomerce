@@ -40,7 +40,7 @@ const AdminSidebar = () => {
 
   console.log(menuItems);
   return (
-    <div className="h-screen w-60 bg-gray-100 flex flex-col">
+    <div className="h-screen w-50 bg-gray-100 flex flex-col">
       {/* Header / Logo */}
       <div className="p-4 py-8 text-sm font-bold ">
         <img src={logoBrand} alt="brand logo" className="w-3/4" />
