@@ -5,7 +5,7 @@ const LatestTransactionsTabel = ({ order, onOpenModal }) => {
     <div className="w-full border-collapse mt-4">
       <h2 className="pb-4">Latest Orders</h2>
       <table className="w-full table-fixed">
-        <thead className="border-b border-gray-400 w-full py-2">
+        <thead className="border-b border-gray-400 w-full py-2 text-sm">
           <tr>
             <th className="text-left py-2">Order Id</th>
             <th className="text-left">Qty</th>
@@ -22,7 +22,7 @@ const LatestTransactionsTabel = ({ order, onOpenModal }) => {
             {order.map((o) => (
               <tr
                 key={o._id}
-                className="border-b border-gray-200 w-full table-fixed "
+                className="border-b border-gray-200 w-full table-fixed text-sm"
               >
                 <td className="py-6">{o._id.slice(-5)}</td>
                 <td className="p-2">{o.totalProducts}</td>

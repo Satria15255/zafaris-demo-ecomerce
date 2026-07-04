@@ -114,9 +114,11 @@ const AdminDashboard = () => {
 			<header className="flex justify-between items-center border-b border-gray-300 py-4 px-2">
 				<div>
 					<h2>Good Morning !!</h2>
-					<p>Here's what's happening in your store today</p>
+					<p className="text-sm">
+						Here's what's happening in your store today
+					</p>
 				</div>
-				<div className="flex items-center gap-3">
+				<div className="flex items-center gap-3 text-sm">
 					<p className="p-2 text-3xl bg-gray-200 rounded-full">
 						<MdOutlineCalendarMonth />
 					</p>
@@ -176,7 +178,7 @@ const AdminDashboard = () => {
 					<div className="w-2/5 flex flex-col gap-5 bg-gray-100 rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-5 shadow-lg">
 						<div className="flex flex-col gap-5">
 							<p className=" text-3xl">Congratulations!🎉</p>
-							<p className="max-w-xs">
+							<p className="max-w-xs text-sm">
 								Some of your products already have a highest
 								buyer
 							</p>
