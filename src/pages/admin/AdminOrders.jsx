@@ -44,9 +44,15 @@ const AdminOrders = () => {
     }
   };
 
+  const sortOrders = [...order].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+  );
+
+  console.log("order:", sortOrders);
+
   return (
     <div className="w-full p-4">
-      <OrdersTable order={order} onOpenModal={openModal} />
+      <OrdersTable order={sortOrders} onOpenModal={openModal} />
 
       {selectedOrder && (
         <OrdersDetails
