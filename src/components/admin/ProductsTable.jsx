@@ -4,7 +4,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 const ProductsTable = ({ products, onEdit, onDelete, search, setSearch }) => {
   return (
     <div className="w-full border-collapse border border-gray-200 rounded-lg">
-      <div className="p-4 flex items-center gap-4 bg-gray-100 rounded-t-lg">
+      <div className="p-4 flex items-center gap-4 rounded-t-lg">
         <div className="w-3/5">
           <input
             type="text"
@@ -83,7 +83,7 @@ const ProductsTable = ({ products, onEdit, onDelete, search, setSearch }) => {
                   </button>
                   <button
                     onClick={() => onDelete(p._id)}
-                    className="text-gray-900 border border-black hover:bg-gray-900 hover:text-white transition duration-100 rounded-lg p-4"
+                    className="text-gray-900 border border-gray-400 hover:bg-gray-900 hover:text-white transition duration-100 rounded-lg p-4"
                   >
                     <FaTrashAlt />
                   </button>
