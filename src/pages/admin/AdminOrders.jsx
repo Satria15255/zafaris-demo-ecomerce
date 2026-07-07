@@ -7,6 +7,7 @@ import { getAllTransactions, updateTransactionStatus } from "@/api/Api";
 const AdminOrders = () => {
   const [order, setOrder] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [search, setSearch] = useState("");
 
   const fetchOrders = async () => {
     const res = await getAllTransactions();
@@ -44,16 +45,18 @@ const AdminOrders = () => {
     }
   };
 
-  const sortOrders = [...order].sort(
+  const filteredOrder = order.filter((order) =>
+    order.user.name.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  const sortOrders = [...filteredOrder].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
   );
 
-  console.log("order:", sortOrders);
-
   return (
     <div className="w-full p-4">
-      <header className="flex flex-col">
-        <div>
+      <header className="flex flex-col border border-gray-300 p-5">
+        <div className="w-1/2">
           <input
             type="text"
             placeholder="Search Products..."
