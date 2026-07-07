@@ -52,6 +52,25 @@ const AdminOrders = () => {
 
   return (
     <div className="w-full p-4">
+      <header className="flex flex-col">
+        <div>
+          <input
+            type="text"
+            placeholder="Search Products..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full px-2 py-2 text-xs lg:text-sm bg-white border border-gray-300 rounded-xl"
+          />
+        </div>
+        <div>
+          <input
+            type="date"
+            placeholder="Start date"
+            className="border border-gray-300 rounded-2xl w-1/4"
+          />
+        </div>
+      </header>
+
       <OrdersTable order={sortOrders} onOpenModal={openModal} />
 
       {selectedOrder && (
