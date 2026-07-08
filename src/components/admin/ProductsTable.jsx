@@ -45,11 +45,18 @@ const ProductsTable = ({
             name=""
             id=""
             className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-1/2 text-sm"
+            onChange={(e) =>
+              setFilter((prev) => ({
+                ...prev,
+                category: e.target.value,
+              }))
+            }
           >
-            <option value="Nike">All Category</option>
-            <option value="Nike">Running</option>
-            <option value="Nike">Basket</option>
-            <option value="Nike">Casual</option>
+            {category.map((cat) => (
+              <option value={cat} key={cat}>
+                {cat}
+              </option>
+            ))}
           </select>
         </div>
       </div>
