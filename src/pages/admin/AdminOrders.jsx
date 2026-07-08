@@ -100,12 +100,14 @@ const AdminOrders = () => {
   }, [search]);
 
   return (
-    <div className="w-full flex flex-col gap-7 p-4 text-gray-700">
-      <div className="flex justify-between px-2">
+    <div className="w-full flex flex-col gap-5 p-4 text-gray-700">
+      <div className="flex justify-between px-2 font-semibold">
         <h2>Order History</h2>
-        <p className="text-sm">Dashboard / Order</p>
+        <p className="text-sm">
+          <span className="text-black">Dashboard /</span> Order
+        </p>
       </div>
-      <header className="flex flex-col gap-4 rounded-lg border border-gray-300 p-5">
+      <header className="flex flex-col gap-4 rounded-lg border border-gray-300 p-5 text-xs">
         <div className="w-1/2">
           <input
             type="text"
@@ -163,6 +165,7 @@ const AdminOrders = () => {
             {sortOrders.length} products
           </p>
 
+          {/*Pagination button */}
           <div className="flex items-center gap-2 text-xs">
             <button
               onClick={() => setCurrentPage((prev) => prev - 1)}

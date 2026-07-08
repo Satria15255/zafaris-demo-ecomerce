@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const ProductsTable = ({ products, onEdit, onDelete, search, setSearch }) => {
+const ProductsTable = ({
+  products,
+  onEdit,
+  onDelete,
+  search,
+  onChange,
+  brand,
+  category,
+  setFilter,
+}) => {
   return (
     <div className="w-full border-collapse border border-gray-200 rounded-lg">
       <div className="p-4 flex items-center gap-4 rounded-t-lg">
@@ -10,7 +19,7 @@ const ProductsTable = ({ products, onEdit, onDelete, search, setSearch }) => {
             type="text"
             placeholder="Search Products..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={onChange}
             className="w-full px-2 py-2 text-xs lg:text-sm bg-white border border-gray-300 rounded-xl"
           />
         </div>
@@ -19,11 +28,18 @@ const ProductsTable = ({ products, onEdit, onDelete, search, setSearch }) => {
             name=""
             id=""
             className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-1/2 text-sm"
+            onChange={(e) =>
+              setFilter((prev) => ({
+                ...prev,
+                brand: e.target.value,
+              }))
+            }
           >
-            <option value="Nike">All Brand</option>
-            <option value="Nike">Mizuno</option>
-            <option value="Nike">Adidas</option>
-            <option value="Nike">New Balance</option>
+            {brand.map((b) => (
+              <option value={b} key={b}>
+                {b}
+              </option>
+            ))}
           </select>
           <select
             name=""

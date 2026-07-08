@@ -16,7 +16,31 @@ const ProductManagement = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState({
+    brand: "All Brand",
+    category: "All Category",
+    search: "",
+  });
+  const brands = [
+    "All Brand",
+    "Nike",
+    "Mizuno",
+    "Adidas",
+    "Converse",
+    "Vans",
+    "New Balance",
+    "Asics",
+    "Reebok",
+    "Onitsu Tiger",
+    "Puma",
+  ];
+  const category = [
+    "All Category",
+    "Running",
+    "Casual",
+    "Basketball",
+    "Sneakers",
+  ];
   const productPerPage = 6;
 
   const fetchProducts = async () => {
@@ -72,9 +96,21 @@ const ProductManagement = () => {
     },
   ];
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase()),
-  );
+  const filterProducts = () => {
+    return products.filter((product) => {
+      const matchBrand =
+        filter.brand === "All Brand" || product.brand === filter.brand;
+      const matchCategory =
+        filter.category === "All Category" ||
+        product.category === filter.category;
+      const matchSearch =
+        filter.search.trim() === "" ||
+        product.name.toLowerCase().includes(filter.search.toLowerCase());
+      return matchBrand && matchCategory && matchSearch;
+    });
+  };
+
+  const filteredProducts = filterProducts();
 
   // Product Pagination
   const totalPages = Math.ceil(filteredProducts.length / productPerPage);
@@ -84,6 +120,10 @@ const ProductManagement = () => {
     indexOfFirstProduct,
     indexOfLastProduct,
   );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filter.brand, filter.category, filter.search]);
 
   const getPagination = () => {
     if (totalPages <= 5) {
@@ -120,10 +160,6 @@ const ProductManagement = () => {
     ];
   };
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [search]);
-
   return (
     <div className="w-full flex flex-col space-y-6 p-4">
       <div className="flex justify-between items-center mb-2">
@@ -158,8 +194,16 @@ const ProductManagement = () => {
           products={currentProducts}
           onEdit={(product) => setEditingProduct(product)}
           onDelete={handleDelete}
-          search={search}
-          setSearch={setSearch}
+          search={filter.search}
+          onChange={(e) =>
+            setFilter((prev) => ({
+              ...prev,
+              search: e.target.value,
+            }))
+          }
+          category={category}
+          brand={brands}
+          setFilter={setFilter}
         />
         <div className="flex justify-between items-center mt-4">
           <p className="text-xs text-gray-500">
