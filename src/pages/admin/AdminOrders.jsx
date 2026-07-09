@@ -9,6 +9,20 @@ const AdminOrders = () => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [filter, setFilter] = useState({
+    status: "All Status",
+    method: "All Method",
+    search: "",
+  });
+  const orderStatus = [
+    "Waiting for Payment",
+    "Processing",
+    "Shipped",
+    "Delivered",
+    "Completed",
+    "Cancelled",
+  ];
+  const paymentMethod = ["Cash on Delivery", "Transfer"];
   const orderPerPages = 6;
 
   const fetchOrders = async () => {
@@ -47,9 +61,21 @@ const AdminOrders = () => {
     }
   };
 
-  const filteredOrder = order.filter((order) =>
-    order.user.name.toLowerCase().includes(search.toLowerCase()),
-  );
+  const filterOrder = () => {
+    return order.filter((order) => {
+      const matchStatus =
+        filter.status === "All Status" || order.status === filter.status;
+      const matchMethod =
+        filter.method === "All Method" ||
+        order.paymentMethod === filter.matchMethod;
+      const matchSearch =
+        filter.search.trim() === "" ||
+        order.id.toLowerCase().includes(filter.search.toLowerCase());
+      return matchStatus && matchMethod && matchSearch;
+    });
+  };
+
+  const filteredOrder = filterOrder();
 
   const sortOrders = [...filteredOrder].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
@@ -59,6 +85,10 @@ const AdminOrders = () => {
   const indexOfLastOrder = currentPage * orderPerPages;
   const indexOfFirstOrder = indexOfLastOrder - orderPerPages;
   const currentOrder = sortOrders.slice(indexOfFirstOrder, indexOfLastOrder);
+
+  useEffect(() => {
+    setCurrentPage;
+  }, [filter.status, filter.method, filter.search]);
 
   const getPagination = () => {
     if (totalPages <= 5) {
@@ -95,10 +125,6 @@ const AdminOrders = () => {
     ];
   };
 
-  useEffect(() => {
-    setCurrentPage;
-  }, [search]);
-
   return (
     <div className="w-full flex flex-col gap-5 p-4 text-gray-700">
       <div className="flex justify-between px-2 font-semibold">
@@ -133,14 +159,15 @@ const AdminOrders = () => {
             name=""
             id=""
             className="border border-gray-300 rounded-xl py-2 px-2 w-1/4"
+            onChange={(e) =>
+              setFilter((prev) => ({ ...prev, status: e.target.value }))
+            }
           >
-            <option value="">All Status</option>
-            <option value="">Pending</option>
-            <option value="">Processing</option>
-            <option value="">Shipped</option>
-            <option value="">Delivered</option>
-            <option value="">Completed</option>
-            <option value="">Cancelled</option>
+            {orderStatus.map((order) => (
+              <option key={order} value={order}>
+                {order}
+              </option>
+            ))}
           </select>
           <select
             name=""
