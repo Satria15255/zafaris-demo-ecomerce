@@ -15,6 +15,7 @@ const AdminOrders = () => {
     search: "",
   });
   const orderStatus = [
+    "All Status",
     "Waiting for Payment",
     "Processing",
     "Shipped",
@@ -22,7 +23,13 @@ const AdminOrders = () => {
     "Completed",
     "Cancelled",
   ];
-  const paymentMethod = ["Cash on Delivery", "Transfer"];
+  const paymentMethod = [
+    "All Method",
+    "Cash on Delivery",
+    "Transfer",
+    "Visa",
+    "Mastercard",
+  ];
   const orderPerPages = 6;
 
   const fetchOrders = async () => {
@@ -66,8 +73,7 @@ const AdminOrders = () => {
       const matchStatus =
         filter.status === "All Status" || order.status === filter.status;
       const matchMethod =
-        filter.method === "All Method" ||
-        order.paymentMethod === filter.matchMethod;
+        filter.method === "All Method" || order.paymentMethod === filter.method;
       const matchSearch =
         filter.search.trim() === "" ||
         order.id.toLowerCase().includes(filter.search.toLowerCase());
@@ -173,11 +179,15 @@ const AdminOrders = () => {
             name=""
             id=""
             className="border border-gray-300 rounded-xl py-2 px-2 w-1/4"
+            onChange={(e) =>
+              setFilter((prev) => ({ ...prev, method: e.target.value }))
+            }
           >
-            <option value="">All Method</option>
-            <option value="">Cash on Delivery</option>
-            <option value="">Visa</option>
-            <option value="">Mastercard</option>
+            {paymentMethod.map((method) => (
+              <option key={method} value={method}>
+                {method}
+              </option>
+            ))}
           </select>
         </div>
       </header>
