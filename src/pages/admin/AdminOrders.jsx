@@ -81,7 +81,7 @@ const AdminOrders = () => {
         order.transferProvider === filter.method;
       const matchSearch =
         filter.search.trim() === "" ||
-        order.name.toLowerCase().includes(filter.search.toLowerCase());
+        order._id.toLowerCase().includes(filter.search.toLowerCase());
 
       const orderDate = new Date(order.createdAt);
 
@@ -114,7 +114,13 @@ const AdminOrders = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [filter.status, filter.method, filter.search]);
+  }, [
+    filter.status,
+    filter.method,
+    filter.search,
+    dateRange.startDate,
+    dateRange.endDate,
+  ]);
 
   const getPagination = () => {
     if (totalPages <= 5) {
@@ -163,7 +169,7 @@ const AdminOrders = () => {
         <div className="w-1/2">
           <input
             type="text"
-            placeholder="Search Products..."
+            placeholder="Search Order Id..."
             value={filter.search}
             onChange={(e) =>
               setFilter((prev) => ({ ...prev, search: e.target.value }))
@@ -229,7 +235,7 @@ const AdminOrders = () => {
           <p className="text-xs text-gray-500">
             Showing {indexOfFirstOrder + 1} -{" "}
             {Math.min(indexOfLastOrder, sortOrders.length)} of{" "}
-            {sortOrders.length} products
+            {sortOrders.length} orders
           </p>
 
           {/*Pagination button */}
