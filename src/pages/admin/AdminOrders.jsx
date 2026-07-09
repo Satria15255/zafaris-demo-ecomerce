@@ -7,8 +7,11 @@ import { getAllTransactions, updateTransactionStatus } from "@/api/Api";
 const AdminOrders = () => {
   const [order, setOrder] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
-  const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [dateRange, setDateRange] = useState({
+    startDate: "",
+    endDate: "",
+  });
   const [filter, setFilter] = useState({
     status: "All Status",
     method: "All Method",
@@ -78,8 +81,23 @@ const AdminOrders = () => {
         order.transferProvider === filter.method;
       const matchSearch =
         filter.search.trim() === "" ||
-        order.id.toLowerCase().includes(filter.search.toLowerCase());
-      return matchStatus && matchMethod && matchSearch;
+        order.name.toLowerCase().includes(filter.search.toLowerCase());
+
+      const orderDate = new Date(order.createdAt);
+
+      const startDate = dateRange.startDate
+        ? new Date(dateRange.startDate)
+        : null;
+      const endDate = dateRange.endDate ? new Date(dateRange.endDate) : null;
+      if (endDate) {
+        endDate.setHours(23, 59, 59, 999);
+      }
+
+      const matchDate =
+        (!startDate || orderDate >= startDate) &&
+        (!endDate || orderDate <= endDate);
+
+      return matchStatus && matchMethod && matchSearch && matchDate;
     });
   };
 
@@ -95,7 +113,7 @@ const AdminOrders = () => {
   const currentOrder = sortOrders.slice(indexOfFirstOrder, indexOfLastOrder);
 
   useEffect(() => {
-    setCurrentPage;
+    setCurrentPage(1);
   }, [filter.status, filter.method, filter.search]);
 
   const getPagination = () => {
@@ -146,8 +164,10 @@ const AdminOrders = () => {
           <input
             type="text"
             placeholder="Search Products..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={filter.search}
+            onChange={(e) =>
+              setFilter((prev) => ({ ...prev, search: e.target.value }))
+            }
             className="w-full px-2 py-2 text-xs lg:text-sm bg-white border border-gray-300 rounded-xl"
           />
         </div>
@@ -155,13 +175,21 @@ const AdminOrders = () => {
           <input
             type="date"
             placeholder="Start date"
+            value={dateRange.startDate}
             className="border border-gray-300 rounded-xl py-2 px-2 w-1/4"
+            onChange={(e) =>
+              setDateRange((prev) => ({ ...prev, startDate: e.target.value }))
+            }
           />
           <p>to</p>
           <input
             type="date"
             placeholder="End date"
+            value={dateRange.endDate}
             className="border border-gray-300 rounded-xl py-2 px-2 w-1/4"
+            onChange={(e) =>
+              setDateRange((prev) => ({ ...prev, endDate: e.target.value }))
+            }
           />
           <select
             name=""
