@@ -30,9 +30,11 @@ const OrdersTable = ({ order, onOpenModal }) => {
                   {new Date(o.createdAt).toLocaleString()}
                 </td>
                 <td className="p-2">{o.status}</td>
-                {o.paymentMethod === "Transfer" &&
-                o.paymentStatus === "Paid" ? (
-                  <td className="p-2">{o.transferProvider}</td>
+                {o.paymentMethod === "Transfer" ? (
+                  <td className="p-2">
+                    <p className="flex">{o.paymentMethod}</p>
+                    <p>({o.transferProvider || "unavailable"})</p>
+                  </td>
                 ) : (
                   <td className="p-2">{o.paymentMethod}</td>
                 )}

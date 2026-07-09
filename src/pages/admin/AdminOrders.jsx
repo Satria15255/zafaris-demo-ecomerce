@@ -73,7 +73,9 @@ const AdminOrders = () => {
       const matchStatus =
         filter.status === "All Status" || order.status === filter.status;
       const matchMethod =
-        filter.method === "All Method" || order.paymentMethod === filter.method;
+        filter.method === "All Method" ||
+        order.paymentMethod === filter.method ||
+        order.transferProvider === filter.method;
       const matchSearch =
         filter.search.trim() === "" ||
         order.id.toLowerCase().includes(filter.search.toLowerCase());
