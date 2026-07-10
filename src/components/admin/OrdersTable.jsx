@@ -3,7 +3,7 @@ import React from "react";
 const OrdersTable = ({ order, onOpenModal }) => {
   console.log(order);
   return (
-    <div className="w-full border border-gray-300 overflow-x-hidden">
+    <div className="w-full border border-gray-300 rounded-lg overflow-x-hidden">
       <table className="w-full table-fixed">
         <thead className="bg-gray-100 w-full text-xs p-2 table-fixed">
           <tr>
