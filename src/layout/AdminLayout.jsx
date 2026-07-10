@@ -8,7 +8,7 @@ const AdminLayout = () => {
       <div className="w-1/5">
         <Sidebar />
       </div>
-      <div className="max-h-screen overflow-y-auto">
+      <div className="max-h-screen w-full overflow-y-auto">
         <Outlet />
       </div>
     </div>
