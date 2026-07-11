@@ -5,7 +5,8 @@ const UserList = ({ handleDetail, onOpenModal, users }) => {
   console.log(users);
   return (
     <div className="p-4 w-full">
-      <table className="w-full table-fixed">
+      <h2 className="text-xl font-bold mb-4">User Terdaftar</h2>
+      <table className="w-full">
         <thead className="bg-gray-100">
           <tr>
             <th>Customer Name</th>
@@ -26,6 +27,7 @@ const UserList = ({ handleDetail, onOpenModal, users }) => {
                   <p className="text-xs text-gray-500">{user.email}</p>
                 </div>
               </td>
+              <td>{user?.totalOrders || 0}</td>
               <td className="text-sm">
                 {new Date(user.createdAt).toLocaleDateString()}
               </td>

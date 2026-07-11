@@ -28,11 +28,17 @@ const AdminUserList = () => {
       console.error(err);
     }
   };
+  const sortUserList = [...users].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+  );
 
   const totalPages = Math.ceil(users.length / userlistPerPages);
   const indexOfLastProduct = currentPage * userlistPerPages;
   const indexOfFirstProduct = indexOfLastProduct - userlistPerPages;
-  const currentUsers = users.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentUsers = sortUserList.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  );
 
   const getPagination = () => {
     if (totalPages <= 5) {
