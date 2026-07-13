@@ -75,6 +75,7 @@ const AdminUserList = () => {
     ];
   };
 
+  console.log(users);
   return (
     <div className="p-4 w-full">
       <h2 className="text-xl font-bold mb-4">Customer</h2>

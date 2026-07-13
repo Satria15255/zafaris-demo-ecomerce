@@ -3,6 +3,7 @@ import { PiUserCircle } from "react-icons/pi";
 
 const UserList = ({ handleDetail, onOpenModal, users }) => {
   console.log(users);
+
   return (
     <div className="p-4 w-full">
       <h2 className="text-xl font-bold mb-4">User Terdaftar</h2>
@@ -10,6 +11,7 @@ const UserList = ({ handleDetail, onOpenModal, users }) => {
         <thead className="bg-gray-100">
           <tr>
             <th>Customer Name</th>
+            <th>Address</th>
             <th>Orders</th>
             <th>Registered</th>
             <th>Aksi</th>
@@ -27,6 +29,13 @@ const UserList = ({ handleDetail, onOpenModal, users }) => {
                   <p className="text-xs text-gray-500">{user.email}</p>
                 </div>
               </td>
+              <td>
+                {user.address?.length > 0 &&
+                user.address[0].country &&
+                user.address[0].city
+                  ? `${user.address[0].country}, ${user.address[0].city}`
+                  : "Unknown"}
+              </td>{" "}
               <td>{user?.totalOrders || 0}</td>
               <td className="text-sm">
                 {new Date(user.createdAt).toLocaleDateString()}
