@@ -137,39 +137,38 @@ const AdminUserList = () => {
         ))}
       </div>
       <main>
-        <div className="flex justify-around items-center gap-3 pb-3">
-          <div className="w-full">
-            <p className="text-sm text-gray-700">Dashboard / Users</p>
-          </div>
-          <div className="w-full">
-            <select
-              name=""
-              id=""
-              className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-full text-sm"
-            >
-              <option value="All User">All User</option>
-              <option value="User Role">User Role</option>
-              <option value="Admin Role">Admin Role</option>
-              <option value="">Most Buy</option>
-            </select>
-          </div>
-          <div className="w-full">
-            <select
-              name=""
-              id=""
-              className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-full text-sm"
-            >
-              <option value="All User">All Status</option>
-              <option value="User Role">Active</option>
-              <option value="Admin Role">Inactive</option>
-            </select>
-          </div>
-          <div className="w-full">
+        <div className="flex justify-between items-center gap-3 pb-3">
+          <div className="w-1/3">
             <input
               type="text"
               placeholder="Search user name..."
-              className="w-full px-2 py-2 text-xs lg:text-sm bg-white border border-gray-300 rounded-xl"
+              className="w-full px-2 py-2 text-xs lg:text-sm w-1/2 bg-white border border-gray-300 rounded-xl"
             />
+          </div>
+          <div className="w-1/2 flex justify-end gap-3">
+            <div className="w-1/4">
+              <select
+                name=""
+                id=""
+                className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-full text-sm"
+              >
+                <option value="All User">All User</option>
+                <option value="User Role">User Role</option>
+                <option value="Admin Role">Admin Role</option>
+                <option value="">Most Buy</option>
+              </select>
+            </div>
+            <div className="w-1/4">
+              <select
+                name=""
+                id=""
+                className="bg-white py-2 px-2 rounded-xl border border-gray-300 w-full text-sm"
+              >
+                <option value="All User">All Status</option>
+                <option value="User Role">Active</option>
+                <option value="Admin Role">Inactive</option>
+              </select>
+            </div>
           </div>
         </div>
         <UserList users={currentUsers} onOpenModal={handleDetail} />
