@@ -5,24 +5,24 @@ const UserList = ({ handleDetail, onOpenModal, users }) => {
   console.log(users);
 
   return (
-    <div className="p-4 w-full">
-      <h2 className="text-xl font-bold mb-4">User Terdaftar</h2>
-      <table className="w-full">
-        <thead className="bg-gray-100">
+    <div className="w-full border border-gray-300 rounded-lg">
+      <table className="w-full text-xs">
+        <thead className="bg-gray-100 w-full text-xs table-fixed text-left">
           <tr>
-            <th>Customer Name</th>
-            <th>Address</th>
+            <th className="pl-3 w-100 py-2">Customer Name</th>
+            <th className="w-50">Address</th>
             <th>Orders</th>
             <th>Registered</th>
-            <th>Aksi</th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody className="space-y-4">
           {users.map((user) => (
             <tr key={user._id} className="border-b border-gray-300 py-8">
-              <td className="flex items-center gap-2  my-3 ">
+              <td className="flex items-center gap-2 pl-5 my-3 ">
                 <div>
-                  <PiUserCircle size={40} />
+                  <PiUserCircle size={40} className="text-gray-800" />
                 </div>
                 <div className="flex flex-col">
                   <p className="text-sm">{user.name}</p>
@@ -34,18 +34,19 @@ const UserList = ({ handleDetail, onOpenModal, users }) => {
                 user.address[0].country &&
                 user.address[0].city
                   ? `${user.address[0].country}, ${user.address[0].city}`
-                  : "Unknown"}
+                  : "Unlisted"}
               </td>{" "}
               <td>{user?.totalOrders || 0}</td>
               <td className="text-sm">
                 {new Date(user.createdAt).toLocaleDateString()}
               </td>
+              <td>🟢 Active</td>
               <td>
                 <button
                   onClick={() => onOpenModal(user._id)}
-                  className="hover:bg-black hover:text-white border transition duration-300 px-3 py-1 rounded"
+                  className="hover:bg-black hover:text-white border border-gray-300 transition duration-300 px-4 py-2 rounded"
                 >
-                  Detail
+                  View Details
                 </button>
               </td>
             </tr>
