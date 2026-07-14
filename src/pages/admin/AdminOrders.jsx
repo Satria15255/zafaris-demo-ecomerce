@@ -33,7 +33,7 @@ const AdminOrders = () => {
     "Visa",
     "Mastercard",
   ];
-  const orderPerPages = 6;
+  const orderPerPages = 8;
 
   const fetchOrders = async () => {
     const res = await getAllTransactions();

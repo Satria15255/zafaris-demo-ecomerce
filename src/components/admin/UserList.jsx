@@ -5,9 +5,9 @@ const UserList = ({ handleDetail, onOpenModal, users }) => {
   console.log(users);
 
   return (
-    <div className="w-full border border-gray-300 rounded-lg">
-      <table className="w-full text-xs">
-        <thead className="bg-gray-100 w-full text-xs table-fixed text-left">
+    <div className="w-full border border-gray-300 rounded-lg overflow-x-hidden">
+      <table className="w-full table-fixed text-xs">
+        <thead className="bg-gray-100 w-full text-xs font-semibold text-left">
           <tr>
             <th className="pl-3 w-100 py-2">Customer Name</th>
             <th className="w-50">Address</th>
