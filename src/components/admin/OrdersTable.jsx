@@ -24,7 +24,7 @@ const OrdersTable = ({ order, onOpenModal }) => {
           <tbody className="w-full">
             {order.map((o) => (
               <tr key={o._id} className="border-b border-gray-300 text-xs ">
-                <td className="py-4 pl-1 w-18">#{o._id.slice(-5)}</td>
+                <td className="py-4 pl-2 w-18">#{o._id.slice(-5)}</td>
                 <td className="p-2">{o.user.name}</td>
                 <td className="p-2 w-40">
                   {new Date(o.createdAt).toLocaleString()}

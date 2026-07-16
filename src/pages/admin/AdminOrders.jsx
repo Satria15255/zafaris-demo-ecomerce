@@ -158,9 +158,9 @@ const AdminOrders = () => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-5 p-4 text-gray-700">
-      <div className="flex justify-between px-2 font-semibold">
-        <h2>Order History</h2>
+    <div className="w-full flex flex-col gap-4 px-4 py-9 ">
+      <div className="flex justify-between px-2">
+        <p className="text-4xl font-bold font-sans">Order History</p>
         <p className="text-sm">
           <span className="text-black">Dashboard /</span> Order
         </p>

@@ -140,42 +140,40 @@ const AdminDashboard = () => {
 				</div>
 
 				{/*Sales Chart*/}
-				<div className="mt-6 flex justify-around">
-					<div className="flex gap-3 mb-4">
-						<div className="flex flex-col justify-around">
-							<div>
-								<h2>Your Sales Report</h2>
-								<p className="text-sm">Look at your sales</p>
-							</div>
-							<div>
-								<h1>${stats.totalRevenue}</h1>
-							</div>
-							<div className="flex gap-3">
-								{ranges.map((item) => (
-									<button
-										key={item.value}
-										onClick={() => setRange(item.value)}
-										className={`w-12 py-2 rounded-xl transition-all duration-200 text-sm
+				<div className="flex gap-4 w-full">
+					<div className="mt-6 flex justify-around border border-gray-300 rounded-xl w-3/5">
+						<div className="flex gap-3">
+							<div className="flex flex-col justify-around px-5">
+								<div>
+									<h2>Your Sales Report</h2>
+									<p className="text-sm">
+										Look at your sales
+									</p>
+								</div>
+								<div>
+									<h1>${stats.totalRevenue}</h1>
+								</div>
+								<div className="flex gap-3">
+									{ranges.map((item) => (
+										<button
+											key={item.value}
+											onClick={() => setRange(item.value)}
+											className={`w-12 py-2 rounded-xl transition-all duration-200 text-sm
         ${
 			range === item.value
 				? "bg-black text-white shadow-md"
 				: " hover:bg-gray-300 text-gray-700"
 		}`}
-									>
-										{item.label}
-									</button>
-								))}
+										>
+											{item.label}
+										</button>
+									))}
+								</div>
 							</div>
 						</div>
+						<SalesChart data={salesData} />
 					</div>
-					<SalesChart data={salesData} />
-				</div>
-
-				<div className="flex w-full gap-5">
-					<div className="w-3/5">
-						<LatestTransactionsTabel order={lastOrders} />
-					</div>
-					<div className="w-2/5 flex flex-col gap-5 bg-gray-100 rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-5 shadow-lg">
+					<div className="w-2/5 flex flex-col gap-5 bg-gray-900 text-white rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-5 shadow-lg">
 						<div className="flex flex-col gap-5">
 							<p className=" text-3xl">Congratulations!🎉</p>
 							<p className="max-w-xs text-sm">
@@ -210,6 +208,12 @@ const AdminDashboard = () => {
 							{/* Navigation & Pagination */}
 							<div className="swiper-pagination"></div>
 						</Swiper>
+					</div>
+				</div>
+
+				<div className="flex w-full gap-5">
+					<div className="w-3/5">
+						<LatestTransactionsTabel order={lastOrders} />
 					</div>
 				</div>
 			</main>
