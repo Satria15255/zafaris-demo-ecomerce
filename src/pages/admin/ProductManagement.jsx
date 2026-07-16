@@ -161,11 +161,11 @@ const ProductManagement = () => {
   };
 
   return (
-    <div className="w-full flex flex-col space-y-6 p-4">
+    <div className="w-full flex flex-col gap-4 px-4 py-9">
       <div className="flex justify-between items-center mb-2">
-        <div className="flex flex-col">
-          <p className="text-2xl font-semibold">Product </p>
-          <p className="text-xs text-gray-700">
+        <div className="flex flex-col gap-2">
+          <p className="text-4xl font-bold font-sans">Product Management</p>
+          <p className="text-sm text-gray-700">
             Manage and organize our products easily
           </p>
         </div>
