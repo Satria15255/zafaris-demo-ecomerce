@@ -1,17 +1,63 @@
+import { FaStar } from "react-icons/fa6";
+
 const TopProductCard = ({ product }) => {
-	console.log("top seller", product);
+	// Total Product Revenue
+	const revenue = product.price * product.totalSold;
+
+	// Total Product Stock
+	const productStock = product.variants.map((product) => product.stock);
+	let totalStock = 0;
+	productStock.forEach((stock) => {
+		totalStock += stock;
+	});
+
+	// Product Stock Left
+	const stockLeft = totalStock - product.totalSold;
+
 	return (
 		<div className="flex flex-col gap-3 items-center">
-			<div className="flex justify-center">
-				<img
-					src={product.image}
-					alt={product.name}
-					className="w-3/5 rounded-3xl"
-				/>
-			</div>
-			<div className="flex flex-col items-center gap-3">
-				<h2 className=" ">{product.name}</h2>
-				<p className=" ">{product.totalSold} Sold</p>
+			<main className="grid grid-cols-2">
+				<div className="flex justify-center">
+					<img
+						src={product.image}
+						alt={product.name}
+						className="w-full rounded-3xl"
+					/>
+				</div>
+				<div className="flex flex-col gap-3 p-4 h-full justify-between">
+					<div className="flex flex-col justify-around border-b border-[#F3E5AB] h-4/5">
+						<h2 className=" ">{product.name}</h2>
+						<div className="flex items-center gap-1 text-[#F3E5AB]">
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<p>( 5 )</p>
+						</div>
+						<p className="text-lg">{product.totalSold} Sold</p>
+					</div>
+					<div className="grid grid-cols-2">
+						<p className="text-sm flex flex-col  border-r border-[#F3E5AB]">
+							Revenue
+							<span className="text-xl text-[#F3E5AB]">
+								${revenue}
+							</span>
+						</p>
+						<p className="text-sm flex flex-col pl-2">
+							Stock Left
+							<span className="text-xl text-[#F3E5AB]">
+								{stockLeft}
+							</span>
+						</p>
+					</div>
+				</div>
+			</main>
+			<div className="w-full">
+				<button className="p-2 w-full rounded-xl border border-[#F3E5AB]">
+					{" "}
+					View Products
+				</button>
 			</div>
 		</div>
 	);

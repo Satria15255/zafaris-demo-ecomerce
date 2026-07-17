@@ -173,12 +173,12 @@ const AdminDashboard = () => {
 						</div>
 						<SalesChart data={salesData} />
 					</div>
+
+					{/*Best Selling Products*/}
 					<div className="w-2/5 flex flex-col gap-5 bg-gray-900 text-white rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-5 shadow-lg">
 						<div className="flex flex-col gap-5">
-							<p className=" text-3xl">Congratulations!🎉</p>
-							<p className="max-w-xs text-sm">
-								Some of your products already have a highest
-								buyer
+							<p className=" text-2xl text-[#F3E5AB] font-semibold font-sans">
+								Top Selling Products
 							</p>
 						</div>
 						{/* Slider */}

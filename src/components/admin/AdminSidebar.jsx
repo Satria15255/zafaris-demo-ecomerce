@@ -36,7 +36,7 @@ const AdminSidebar = () => {
 
   const menuClass = ({ isActive }) =>
     `flex text-sm items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
-  ${isActive ? "bg-gray-900 text-[#F3E5AB] shadow-md" : "text-gray-600 hover:bg-gray-200"}`;
+  ${isActive ? "bg-gray-900 text-[#F3E5AB] shadow-sm shadow-[#F3E5AB]" : "text-gray-600 hover:bg-gray-200"}`;
 
   console.log(menuItems);
   return (
