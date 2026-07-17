@@ -15,18 +15,18 @@ const TopProductCard = ({ product }) => {
 	const stockLeft = totalStock - product.totalSold;
 
 	return (
-		<div className="flex flex-col gap-3 items-center">
+		<div className="flex flex-col gap-3 p-4 items-center">
 			<main className="grid grid-cols-2">
 				<div className="flex justify-center">
 					<img
 						src={product.image}
 						alt={product.name}
-						className="w-full rounded-3xl"
+						className="w-full rounded-2xl"
 					/>
 				</div>
 				<div className="flex flex-col gap-3 p-4 h-full justify-between">
 					<div className="flex flex-col justify-around border-b border-[#F3E5AB] h-4/5">
-						<h2 className=" ">{product.name}</h2>
+						<p className="text-2xl font-semibold">{product.name}</p>
 						<div className="flex items-center gap-1 text-[#F3E5AB]">
 							<FaStar />
 							<FaStar />
@@ -54,7 +54,7 @@ const TopProductCard = ({ product }) => {
 				</div>
 			</main>
 			<div className="w-full">
-				<button className="p-2 w-full rounded-xl border border-[#F3E5AB]">
+				<button className="p-2 w-full rounded-2xl border border-[#F3E5AB]">
 					{" "}
 					View Products
 				</button>

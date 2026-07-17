@@ -212,7 +212,7 @@ const AdminDashboard = () => {
 				</div>
 
 				<div className="flex w-full gap-5">
-					<div className="w-3/5">
+					<div className="w-full">
 						<LatestTransactionsTabel order={lastOrders} />
 					</div>
 				</div>
