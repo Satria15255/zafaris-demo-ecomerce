@@ -15,7 +15,7 @@ const TopProductCard = ({ product }) => {
 	const stockLeft = totalStock - product.totalSold;
 
 	return (
-		<div className="flex flex-col gap-3 p-4 items-center">
+		<div className="flex flex-col gap-3 p-4 items-center h-auto">
 			<main className="grid grid-cols-2">
 				<div className="flex justify-center">
 					<img

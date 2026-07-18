@@ -140,9 +140,9 @@ const AdminDashboard = () => {
 				</div>
 
 				{/*Sales Chart*/}
-				<div className="flex gap-4 w-full">
+				<div className="flex gap-4 w-full h-100">
 					<div className="mt-6 flex justify-around border border-gray-300 rounded-xl w-3/5">
-						<div className="flex gap-3">
+						<div className="flex gap-2">
 							<div className="flex flex-col justify-around px-5">
 								<div>
 									<h2>Your Sales Report</h2>
@@ -158,7 +158,7 @@ const AdminDashboard = () => {
 										<button
 											key={item.value}
 											onClick={() => setRange(item.value)}
-											className={`w-12 py-2 rounded-xl transition-all duration-200 text-sm
+											className={`w-12 py-2 rounded-xl border border-gray-300 transition-all duration-200 text-sm
         ${
 			range === item.value
 				? "bg-black text-white shadow-md"
@@ -175,9 +175,9 @@ const AdminDashboard = () => {
 					</div>
 
 					{/*Best Selling Products*/}
-					<div className="w-2/5 flex flex-col gap-5 bg-gray-900 text-white rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-5 shadow-lg">
-						<div className="flex flex-col gap-5">
-							<p className=" text-2xl text-[#F3E5AB] font-semibold font-sans">
+					<div className="w-2/5 flex flex-col gap-2 bg-gray-900 text-white rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-2 shadow-lg">
+						<div className="flex flex-col justify-center mt-2">
+							<p className=" text-xl text-[#F3E5AB] font-semibold font-sans pl-2">
 								Top Selling Products
 							</p>
 						</div>
@@ -191,7 +191,7 @@ const AdminDashboard = () => {
 								el: ".swiper-pagination",
 								clickable: true,
 							}}
-							className="h-full w-full flex justify-center"
+							className="h-auto w-full flex justify-center"
 						>
 							{bestSellingProducts.map((products, index) => (
 								<SwiperSlide
