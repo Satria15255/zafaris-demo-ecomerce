@@ -2,7 +2,7 @@ import React from "react";
 
 const LatestTransactionsTabel = ({ order, onOpenModal }) => {
   return (
-    <div className="w-full mt-4 border border-gray-300 rounded-xl p-3">
+    <div className="w-full bg-white mt-4 border border-gray-300 rounded-xl p-3">
       <h2 className="pb-4">Latest Orders</h2>
       <table className="w-full table-fixed">
         <thead className="border-b border-gray-400 w-full py-2 text-sm">

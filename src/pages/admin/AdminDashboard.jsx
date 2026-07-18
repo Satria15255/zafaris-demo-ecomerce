@@ -110,7 +110,7 @@ const AdminDashboard = () => {
 	}, []);
 
 	return (
-		<div className="w-full p-5">
+		<div className="w-full p-5 bg-slate-50">
 			<header className="flex justify-between items-center border-b border-gray-300 py-4 px-2">
 				<div>
 					<h2>Good Morning !!</h2>
@@ -128,7 +128,7 @@ const AdminDashboard = () => {
 				</div>
 			</header>
 			<main className="mt-4 w-full">
-				<div className="flex justify-around gap-4 px-2">
+				<div className="flex justify-around gap-4">
 					{dashboardConfig.map((item) => (
 						<DashboardStatsCard
 							key={item.key}
@@ -140,18 +140,20 @@ const AdminDashboard = () => {
 				</div>
 
 				{/*Sales Chart*/}
-				<div className="flex gap-4 w-full h-100">
-					<div className="mt-6 flex justify-around border border-gray-300 rounded-xl w-3/5">
+				<div className=" gap-4 w-full h-auto ">
+					<div className="mt-6 flex flex-col bg-white justify-around border border-gray-300 rounded-xl w-full">
 						<div className="flex gap-2">
-							<div className="flex flex-col justify-around px-5">
+							<div className="flex flex-col justify-between p-5 w-2/5">
 								<div>
 									<h2>Your Sales Report</h2>
-									<p className="text-sm">
+									<p className="text-sm font-semibold text-gray-700">
 										Look at your sales
 									</p>
 								</div>
 								<div>
-									<h1>${stats.totalRevenue}</h1>
+									<p className="text-6xl font-semibold">
+										${stats.totalRevenue}
+									</p>
 								</div>
 								<div className="flex gap-3">
 									{ranges.map((item) => (
@@ -170,50 +172,49 @@ const AdminDashboard = () => {
 									))}
 								</div>
 							</div>
+							<SalesChart data={salesData} />
 						</div>
-						<SalesChart data={salesData} />
 					</div>
 
-					{/*Best Selling Products*/}
-					<div className="w-2/5 flex flex-col gap-2 bg-gray-900 text-white rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-2 shadow-lg">
-						<div className="flex flex-col justify-center mt-2">
-							<p className=" text-xl text-[#F3E5AB] font-semibold font-sans pl-2">
-								Top Selling Products
-							</p>
+					<div className="flex w-full gap-5">
+						<div className="w-full">
+							<LatestTransactionsTabel order={lastOrders} />
 						</div>
-						{/* Slider */}
-						<Swiper
-							modules={[Pagination, Autoplay]}
-							slidesPerView={1}
-							slidesPerGroup={1}
-							autoplay={{ delay: 4000 }}
-							pagination={{
-								el: ".swiper-pagination",
-								clickable: true,
-							}}
-							className="h-auto w-full flex justify-center"
-						>
-							{bestSellingProducts.map((products, index) => (
-								<SwiperSlide
-									key={index}
-									className="pb-8 w-full"
-								>
-									<TopProductCard
-										key={products._id}
-										product={products}
-									/>
-								</SwiperSlide>
-							))}
+						{/*Best Selling Products*/}
+						<div className="w-2/5 flex flex-col gap-2 bg-gray-900 text-white rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-2 shadow-lg">
+							<div className="flex flex-col justify-center mt-2">
+								<p className=" text-xl text-[#F3E5AB] font-semibold font-sans pl-2">
+									Top Selling Products
+								</p>
+							</div>
+							{/* Slider */}
+							<Swiper
+								modules={[Pagination, Autoplay]}
+								slidesPerView={1}
+								slidesPerGroup={1}
+								autoplay={{ delay: 4000 }}
+								pagination={{
+									el: ".swiper-pagination",
+									clickable: true,
+								}}
+								className="h-auto w-full flex justify-center"
+							>
+								{bestSellingProducts.map((products, index) => (
+									<SwiperSlide
+										key={index}
+										className="pb-8 w-full"
+									>
+										<TopProductCard
+											key={products._id}
+											product={products}
+										/>
+									</SwiperSlide>
+								))}
 
-							{/* Navigation & Pagination */}
-							<div className="swiper-pagination"></div>
-						</Swiper>
-					</div>
-				</div>
-
-				<div className="flex w-full gap-5">
-					<div className="w-full">
-						<LatestTransactionsTabel order={lastOrders} />
+								{/* Navigation & Pagination */}
+								<div className="swiper-pagination"></div>
+							</Swiper>
+						</div>
 					</div>
 				</div>
 			</main>
