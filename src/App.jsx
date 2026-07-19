@@ -32,7 +32,7 @@ import AdminRoute from "./components/admin/AdminRoute";
 import AdminLayout from "./layout/AdminLayout";
 import AdminLogin from "./pages/admin/AdminLoginPage";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { CartProvider } from "./context/CartContext";
 import { ToastContainer } from "react-toastify";
@@ -92,7 +92,7 @@ function App() {
               </AdminRoute>
             }
           >
-            <Route index element={<AdminDashboard />} />
+            <Route index element={<Navigate to="/admin/dashboard" replace />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/product" element={<AdminProduct />} />
             <Route path="/admin/all-orders" element={<AdminOrder />} />
