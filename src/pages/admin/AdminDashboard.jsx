@@ -13,6 +13,7 @@ import SalesChart from "@/components/admin/SalesChart";
 import LatestTransactionsTabel from "@/components/admin/dashboard/LatestTransactionsTabel";
 import TopProductCard from "@/components/admin/dashboard/TopProductCard";
 
+import { getGreeting, isWeekend } from "@/utils/GetGreeting";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -113,9 +114,11 @@ const AdminDashboard = () => {
 		<div className="w-full p-5 bg-slate-50">
 			<header className="flex justify-between items-center border-b border-gray-300 py-4 px-2">
 				<div>
-					<h2>Good Morning !!</h2>
+					<h2>{getGreeting()} !!</h2>
 					<p className="text-sm">
-						Here's what's happening in your store today
+						{isWeekend()
+							? "Happy Weekend !!, Take some time to recharge."
+							: "Here's what's happening in your store today"}
 					</p>
 				</div>
 				<div className="flex items-center gap-3 text-sm">
