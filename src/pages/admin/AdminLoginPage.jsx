@@ -42,13 +42,15 @@ const AdminLoginPage = () => {
     <div className="min-h-screen flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 shadow-lg rounded w-2/5 space-y-4"
+        className="bg-white p-8 shadow-lg rounded-2xl border border-gray-300 w-2/5 h-3/5 space-y-4"
       >
-        <h2 className="text-lg font-bold text-center">Admin Login</h2>
-
+        <h2 className="text-lg font-bold   text-center">Welcome Back!</h2>
+        <p className="text-sm text-gray-700 pb-7 text-center ">
+          Please log in with an admin account.
+        </p>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="emailadmin@gmail.com"
           className="w-full border px-3 py-2 rounded"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -67,7 +69,7 @@ const AdminLoginPage = () => {
 
         <button
           type="submit"
-          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+          className="w-full bg-black text-white py-2 rounded-xl hover:bg-gray-800"
         >
           Login
         </button>

@@ -12,6 +12,7 @@ import DatenTimeFormat from "@/components/shared/DatenTimeFormat";
 import SalesChart from "@/components/admin/SalesChart";
 import LatestTransactionsTabel from "@/components/admin/dashboard/LatestTransactionsTabel";
 import TopProductCard from "@/components/admin/dashboard/TopProductCard";
+import { useAuth } from "@/context/AuthContext";
 
 import { getGreeting, isWeekend } from "@/utils/GetGreeting";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -21,6 +22,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const AdminDashboard = () => {
+	const { user, setUser } = useAuth();
+
 	const [stats, setStats] = useState({});
 	const [salesData, setSalesData] = useState([]);
 	const [range, setRange] = useState("7d");
@@ -44,6 +47,8 @@ const AdminDashboard = () => {
 			value: "1y",
 		},
 	];
+
+	console.log(user);
 
 	// Fetch Dashboard Stats
 	const getDashboardItems = async () => {
@@ -114,7 +119,9 @@ const AdminDashboard = () => {
 		<div className="w-full p-5 bg-slate-50">
 			<header className="flex justify-between items-center border-b border-gray-300 py-4 px-2">
 				<div>
-					<h2>{getGreeting()} !!</h2>
+					<h2>
+						{getGreeting()}, {user?.name} 👋
+					</h2>
 					<p className="text-sm">
 						{isWeekend()
 							? "Happy Weekend !!, Take some time to recharge."
