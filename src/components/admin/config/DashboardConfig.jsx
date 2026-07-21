@@ -4,7 +4,7 @@ import { MdShoppingBag } from "react-icons/md";
 
 export const dashboardConfig = [
 	{
-		key: "orders",
+		key: "stock",
 		title: "Stock",
 		icon: <GiCardboardBoxClosed />,
 	},
@@ -14,12 +14,12 @@ export const dashboardConfig = [
 		icon: <GiRunningShoe />,
 	},
 	{
-		key: "transaction",
+		key: "orders",
 		title: "Completed Orders",
 		icon: <BsFillCartCheckFill />,
 	},
 	{
-		key: "revenue",
+		key: "productSold",
 		title: "Product Sold",
 		icon: <MdShoppingBag />,
 	},

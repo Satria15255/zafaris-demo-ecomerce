@@ -171,6 +171,15 @@ const AdminDashboard = () => {
 									<p className="text-6xl font-semibold">
 										${summary?.revenue?.total}
 									</p>
+									{summary?.revenue?.trend === "up" ? (
+										<p className="text-green-700 text-lg">
+											+{summary?.revenue?.percentage}%
+										</p>
+									) : (
+										<p className="text-red-700 text-lg">
+											{summary?.revenue?.percentage}%
+										</p>
+									)}
 								</div>
 								<div className="flex gap-3">
 									{ranges.map((item) => (
