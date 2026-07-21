@@ -4,22 +4,22 @@ import { MdShoppingBag } from "react-icons/md";
 
 export const dashboardConfig = [
 	{
-		key: "totalStock",
+		key: "orders",
 		title: "Stock",
 		icon: <GiCardboardBoxClosed />,
 	},
 	{
-		key: "totalProducts",
+		key: "products",
 		title: "Products",
 		icon: <GiRunningShoe />,
 	},
 	{
-		key: "totalCompletedOrders",
+		key: "transaction",
 		title: "Completed Orders",
 		icon: <BsFillCartCheckFill />,
 	},
 	{
-		key: "totalProductSold",
+		key: "revenue",
 		title: "Product Sold",
 		icon: <MdShoppingBag />,
 	},

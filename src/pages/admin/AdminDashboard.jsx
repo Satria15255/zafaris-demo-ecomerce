@@ -4,6 +4,7 @@ import {
 	getSalesData,
 	getAllTransactions,
 	getAllProducts,
+	getDashboardSummary,
 } from "@/api/Api";
 import React, { useState, useEffect } from "react";
 import { dashboardConfig } from "@/components/admin/config/DashboardConfig";
@@ -25,7 +26,8 @@ const AdminDashboard = () => {
 	const { user, setUser } = useAuth();
 
 	const [stats, setStats] = useState({});
-	const [salesData, setSalesData] = useState([]);
+	const [summary, setSummary] = useState([]);
+	const [salesChart, setSalesChart] = useState([]);
 	const [range, setRange] = useState("7d");
 	const [order, setOrder] = useState([]);
 	const [products, setProducts] = useState([]);
@@ -48,14 +50,11 @@ const AdminDashboard = () => {
 		},
 	];
 
-	console.log(user);
-
 	// Fetch Dashboard Stats
 	const getDashboardItems = async () => {
 		try {
 			const res = await getDashboardStats();
 			setStats(res.data);
-			console.log("statistic store", res.data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -65,19 +64,22 @@ const AdminDashboard = () => {
 		getDashboardItems();
 	}, []);
 
-	// Fetch sales data for chart
-	const fetchSalesData = async () => {
+	const loadDashboard = async () => {
 		try {
-			const res = await getSalesData(range);
-			setSalesData(res.data);
-			console.log("data sales:", salesData);
+			const [summaryRes, chartRes] = await Promise.all([
+				getDashboardSummary(range),
+				getSalesData(range),
+			]);
+
+			setSummary(summaryRes.data);
+			setSalesChart(chartRes.data);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
 	useEffect(() => {
-		fetchSalesData();
+		loadDashboard();
 	}, [range]);
 
 	// fetch last / newest transactions(order)
@@ -115,6 +117,11 @@ const AdminDashboard = () => {
 		fetchProducts();
 	}, []);
 
+	console.log("summary ", summary);
+	console.log("statistic store", stats);
+
+	<dashboardConfig items={summary} />;
+
 	return (
 		<div className="w-full p-5 bg-slate-50">
 			<header className="flex justify-between items-center border-b border-gray-300 py-4 px-2">
@@ -143,7 +150,7 @@ const AdminDashboard = () => {
 						<DashboardStatsCard
 							key={item.key}
 							title={item.title}
-							value={stats[item.key]}
+							data={summary[item.key]}
 							icon={item.icon}
 						/>
 					))}
@@ -162,7 +169,7 @@ const AdminDashboard = () => {
 								</div>
 								<div>
 									<p className="text-6xl font-semibold">
-										${stats.totalRevenue}
+										${summary?.revenue?.total}
 									</p>
 								</div>
 								<div className="flex gap-3">
@@ -182,7 +189,7 @@ const AdminDashboard = () => {
 									))}
 								</div>
 							</div>
-							<SalesChart data={salesData} />
+							<SalesChart data={salesChart} />
 						</div>
 					</div>
 
