@@ -22,6 +22,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+import {
+	BsArrowDownRightCircleFill,
+	BsArrowUpRightCircleFill,
+} from "react-icons/bs";
+
 const AdminDashboard = () => {
 	const { user, setUser } = useAuth();
 
@@ -163,7 +168,7 @@ const AdminDashboard = () => {
 							<div className="flex flex-col justify-between p-5 w-2/5">
 								<div>
 									<h2>Your Sales Report</h2>
-									<p className="text-sm font-semibold text-gray-700">
+									<p className="text-sm  text-gray-700">
 										Look at your sales
 									</p>
 								</div>
@@ -172,11 +177,14 @@ const AdminDashboard = () => {
 										${summary?.revenue?.total}
 									</p>
 									{summary?.revenue?.trend === "up" ? (
-										<p className="text-green-700 text-lg">
-											+{summary?.revenue?.percentage}%
+										<p className="text-green-700 flex gap-1 items-center text-lg">
+											<BsArrowUpRightCircleFill />+ $
+											{summary?.revenue?.difference}(
+											{summary?.revenue?.percentage}%)
 										</p>
 									) : (
-										<p className="text-red-700 text-lg">
+										<p className="text-red-700 flex gap-1 items-center text-lg">
+											<BsArrowDownRightCircleFill />
 											{summary?.revenue?.percentage}%
 										</p>
 									)}

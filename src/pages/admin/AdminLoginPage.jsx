@@ -51,14 +51,14 @@ const AdminLoginPage = () => {
         <input
           type="email"
           placeholder="emailadmin@gmail.com"
-          className="w-full border px-3 py-2 rounded"
+          className="w-full border border-gray-400 px-3 py-2 rounded"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
-          className="w-full border px-3 py-2 rounded"
+          className="w-full border border-gray-400 px-3 py-2 rounded"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
