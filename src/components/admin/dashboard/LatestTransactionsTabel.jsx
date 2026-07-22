@@ -1,4 +1,5 @@
 import React from "react";
+import OrderStatusBadge from "@/components/ui/OrderStatusBadge";
 
 const LatestTransactionsTabel = ({ order, onOpenModal }) => {
   return (
@@ -31,7 +32,9 @@ const LatestTransactionsTabel = ({ order, onOpenModal }) => {
                   {" "}
                   {new Date(o.createdAt).toLocaleDateString()}
                 </td>
-                <td className="p-2">{o.status}</td>
+                <td>
+                  <OrderStatusBadge status={o.status} />{" "}
+                </td>
               </tr>
             ))}
           </tbody>
