@@ -1,4 +1,6 @@
 import React from "react";
+import OrderStatusBadge from "@/components/ui/OrderStatusBadge";
+import PaymentStatusBadge from "@/components/ui/PaymentStatusBadge";
 
 const OrdersTable = ({ order, onOpenModal }) => {
   console.log(order);
@@ -29,7 +31,10 @@ const OrdersTable = ({ order, onOpenModal }) => {
                 <td className="p-2 w-40">
                   {new Date(o.createdAt).toLocaleString()}
                 </td>
-                <td className="p-2">{o.status}</td>
+                <td>
+                  {" "}
+                  <OrderStatusBadge status={o.status} />
+                </td>
                 {o.paymentMethod === "Transfer" ? (
                   <td className="p-2">
                     <p className="flex">{o.paymentMethod}</p>
@@ -39,7 +44,9 @@ const OrdersTable = ({ order, onOpenModal }) => {
                   <td className="p-2">{o.paymentMethod}</td>
                 )}
 
-                <td className="p-2">{o.paymentStatus}</td>
+                <td>
+                  <PaymentStatusBadge status={o.paymentStatus} />
+                </td>
                 <td className="p-2">${o.totalPrice}</td>
                 <td className="">
                   <button
