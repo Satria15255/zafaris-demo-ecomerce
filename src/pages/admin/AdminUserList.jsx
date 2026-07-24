@@ -2,62 +2,37 @@
 import React, { useEffect, useState } from "react";
 import UserList from "@/components/admin/UserList";
 import UserDetail from "@/components/admin/UserDetails";
-import { getAllUsers, getUserTransactions, getCustStats } from "@/api/Api";
-import { FaUsers, FaUserCheck, FaHandHoldingUsd } from "react-icons/fa";
-import { BsBagXFill } from "react-icons/bs";
+import { getAllUsers, getUserTransactions, getUsersSummary } from "@/api/Api";
+import { usersConfig } from "@/components/admin/config/UsersConfig";
 import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
 
 const AdminUserList = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [transactions, setTransactions] = useState([]);
-  const [custStats, setCustStats] = useState([]);
+  const [summary, setSummary] = useState([]);
+  const [range, setRange] = useState("7d");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const userlistPerPages = 8;
 
-  const userStats = [
-    {
-      title: "Registered Users",
-      key: 16,
-      icon: <FaUsers />,
-    },
-    {
-      title: "Customers",
-      key: 11,
-      icon: <FaHandHoldingUsd />,
-    },
-    {
-      title: "Never Purchased",
-      key: 5,
-      icon: <BsBagXFill />,
-    },
-    {
-      title: "Active",
-      key: 3,
-      icon: <FaUserCheck />,
-    },
-  ];
+  const fetchUsersSummary = async (range) => {
+    try {
+      const res = await getUsersSummary(range);
+      setSummary(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsersSummary();
+  }, [range]);
 
   useEffect(() => {
     getAllUsers()
       .then((res) => setUsers(res.data))
       .catch((err) => console.error(err));
-  }, []);
-
-  const fetchCustomerStatisic = async (req, res) => {
-    try {
-      const res = await getCustStats();
-      setCustStats(res.data);
-      console.log(custStats);
-    } catch (error) {
-      console.log(eror);
-    }
-  };
-
-  console.log(custStats);
-  useEffect(() => {
-    fetchCustomerStatisic();
   }, []);
 
   const handleDetail = async (userId) => {
@@ -127,11 +102,11 @@ const AdminUserList = () => {
         </p>
       </header>
       <div className="flex justify-around gap-4">
-        {userStats.map((item) => (
+        {usersConfig.map((item) => (
           <DashboardStatsCard
             key={item.key}
             title={item.title}
-            value={item.key}
+            data={summary[item.key]}
             icon={item.icon}
           />
         ))}

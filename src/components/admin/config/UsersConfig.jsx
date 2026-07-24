@@ -1,26 +1,27 @@
-import { GiCardboardBoxClosed, GiRunningShoe } from "react-icons/gi";
-import { BsFillCartCheckFill } from "react-icons/bs";
-import { MdShoppingBag } from "react-icons/md";
+import { FaUsers } from "react-icons/fa";
+import { GrUserAdmin } from "react-icons/gr";
+import { PiUserListDuotone } from "react-icons/pi";
+import { FaUserPlus } from "react-icons/fa6";
 
-export const dashboardConfig = [
+export const usersConfig = [
 	{
-		key: "totalAccounts",
-		title: "Stock",
-		icon: <GiCardboardBoxClosed />,
+		key: "totalUsersSummary",
+		title: "Total User",
+		icon: <FaUsers />,
 	},
 	{
-		key: "totalProducts",
-		title: "Products",
-		icon: <GiRunningShoe />,
+		key: "newUsersSummary",
+		title: "New User",
+		icon: <FaUserPlus />,
 	},
 	{
-		key: "totalCompletedOrders",
-		title: "Completed Orders",
-		icon: <BsFillCartCheckFill />,
+		key: "customersSummary",
+		title: "Customers",
+		icon: <PiUserListDuotone />,
 	},
 	{
-		key: "totalProductSold",
-		title: "Product Sold",
-		icon: <MdShoppingBag />,
+		key: "adminSummary",
+		title: "Admin Account",
+		icon: <GrUserAdmin />,
 	},
 ];
