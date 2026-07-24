@@ -3,18 +3,16 @@ import { toast } from "react-toastify";
 import ProductsTable from "@/components/admin/ProductsTable";
 import ProductsUploadForm from "@/components/admin/ProductsUploadForm";
 import ProductsEditForm from "@/components/admin/ProductsEditForm";
-import { getAllProducts, deleteProduct } from "@/api/Api";
+import { getAllProducts, deleteProduct, getProductsSummary } from "@/api/Api";
 import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
-
-import { IoBagOutline } from "react-icons/io5";
-import { TbCategory2 } from "react-icons/tb";
-import { CiShoppingTag } from "react-icons/ci";
-import { FaChartLine } from "react-icons/fa";
+import { productsManagementConfig } from "@/components/admin/config/ProductsManagementConfig";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
+  const [summary, setSummary] = useState([]);
+  const [range, setRange] = useState("7d");
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState({
     brand: "All Brand",
@@ -42,6 +40,19 @@ const ProductManagement = () => {
     "Sneakers",
   ];
   const productPerPage = 6;
+
+  const fetchSummary = async () => {
+    try {
+      const res = await getProductsSummary(range);
+      setSummary(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSummary();
+  }, [range]);
 
   const fetchProducts = async () => {
     const res = await getAllProducts();
@@ -72,29 +83,6 @@ const ProductManagement = () => {
     setEditingProduct(null);
     fetchProducts();
   };
-
-  const ProductStats = [
-    {
-      key: 48,
-      title: "Product",
-      icon: <IoBagOutline />,
-    },
-    {
-      key: 4,
-      title: "Categories",
-      icon: <TbCategory2 />,
-    },
-    {
-      key: 8,
-      title: "Brand",
-      icon: <CiShoppingTag />,
-    },
-    {
-      key: 2900,
-      title: "Value",
-      icon: <FaChartLine />,
-    },
-  ];
 
   const filterProducts = () => {
     return products.filter((product) => {
@@ -179,11 +167,11 @@ const ProductManagement = () => {
       </div>
 
       <div className="flex justify-around gap-4 ">
-        {ProductStats.map((item) => (
+        {productsManagementConfig.map((item) => (
           <DashboardStatsCard
             key={item.key}
             title={item.title}
-            value={item.key}
+            data={summary[item.key]}
             icon={item.icon}
           />
         ))}
