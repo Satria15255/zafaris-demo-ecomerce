@@ -1,6 +1,5 @@
 import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
 import {
-	getDashboardStats,
 	getSalesData,
 	getAllTransactions,
 	getAllProducts,
@@ -29,8 +28,6 @@ import {
 
 const AdminDashboard = () => {
 	const { user, setUser } = useAuth();
-
-	const [stats, setStats] = useState({});
 	const [summary, setSummary] = useState([]);
 	const [salesChart, setSalesChart] = useState([]);
 	const [range, setRange] = useState("7d");
@@ -56,19 +53,6 @@ const AdminDashboard = () => {
 	];
 
 	// Fetch Dashboard Stats
-	const getDashboardItems = async () => {
-		try {
-			const res = await getDashboardStats();
-			setStats(res.data);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	useEffect(() => {
-		getDashboardItems();
-	}, []);
-
 	const loadDashboard = async () => {
 		try {
 			const [summaryRes, chartRes] = await Promise.all([
@@ -123,7 +107,6 @@ const AdminDashboard = () => {
 	}, []);
 
 	console.log("summary ", summary);
-	console.log("statistic store", stats);
 
 	<dashboardConfig items={summary} />;
 

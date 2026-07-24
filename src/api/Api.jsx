@@ -83,10 +83,11 @@ export const getCustStats = () => API.get("/api/admin/user/customer-stats");
 // =======================
 // 👤 DASHBOARD STATISTIC
 // =======================
-export const getDashboardStats = () => API.get("/api/dashboard-stats");
 export const getSalesData = (range) =>
     API.get(`/api/sales-chart?range=${range}`);
 export const getDashboardSummary = (range) =>
     API.get(`/api/dashboard-stats/summary?range=${range}`);
 export const getProductsSummary = (range) =>
     API.get(`/api/dashboard-stats/products?range=${range}`);
+export const getOrdersSummary = (range) =>
+    API.get(`/api/dashboard-stats/orders?=range=${range}`);

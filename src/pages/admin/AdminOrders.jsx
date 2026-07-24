@@ -2,12 +2,20 @@ import React, { useEffect, useState } from "react";
 import OrdersTable from "@/components/admin/OrdersTable";
 import OrdersDetails from "@/components/admin/OrdersDetails";
 import { toast } from "react-toastify";
-import { getAllTransactions, updateTransactionStatus } from "@/api/Api";
+import {
+  getAllTransactions,
+  updateTransactionStatus,
+  getOrdersSummary,
+} from "@/api/Api";
+import { ordersConfig } from "@/components/admin/config/OrdersConfig";
+import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
 
 const AdminOrders = () => {
   const [order, setOrder] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [summary, setSummary] = useState([]);
+  const [range, setRange] = useState("7d");
   const [dateRange, setDateRange] = useState({
     startDate: "",
     endDate: "",
@@ -34,6 +42,19 @@ const AdminOrders = () => {
     "Mastercard",
   ];
   const orderPerPages = 8;
+
+  const fetchOrdersSummary = async (range) => {
+    try {
+      const res = await getOrdersSummary(range);
+      setSummary(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchOrdersSummary();
+  }, [range]);
 
   const fetchOrders = async () => {
     const res = await getAllTransactions();
@@ -165,6 +186,18 @@ const AdminOrders = () => {
           <span className="text-black">Dashboard /</span> Order
         </p>
       </div>
+
+      <div className="flex justify-around gap-4 ">
+        {ordersConfig.map((item) => (
+          <DashboardStatsCard
+            key={item.key}
+            title={item.title}
+            data={summary[item.key]}
+            icon={item.icon}
+          />
+        ))}
+      </div>
+
       <header className="flex flex-col gap-4 rounded-lg border border-gray-300 p-5 text-xs">
         <div className="w-1/2">
           <input
