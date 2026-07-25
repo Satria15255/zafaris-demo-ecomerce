@@ -22,10 +22,10 @@ const Hero = () => {
                     <div className="relative flex justify-center items-center">
                         <img
                             src={Slide1}
-                            className="w-full h-auto md:h-100 lg:h-screen object-cover rounded-lg "
+                            className="w-full h-auto md:h-100 lg:h-screen xl:h-120 object-cover rounded-lg "
                         />
                         <div className="absolute inset-0 bg-black/30 flex flex-col gap-3 md:gap-3  items-center justify-center ">
-                            <p className="text-3xl md:text-4xl lg:text-6xl text-white font-bold">
+                            <p className="text-3xl md:text-4xl lg:text-6xl xl:text-5xl text-white font-bold">
                                 NEW ERA OF MOTION
                             </p>
                             <p className="text-xs md:text-sm lg:text-md font-semibold text-uppercase text-white">
@@ -44,10 +44,10 @@ const Hero = () => {
                     <div className="relative flex justify-center items-center">
                         <img
                             src={Slide2}
-                            className="w-full h-auto md:h-100 lg:h-screen object-cover rounded-lg"
+                            className="w-full h-auto md:h-100 lg:h-screen xl:h-120 object-cover rounded-lg"
                         />
                         <div className="absolute inset-0 bg-black/30 flex flex-col gap-3 md:gap-3 items-center justify-center">
-                            <p className="text-3xl md:text-4xl lg:text-6xl text-white font-bold">
+                            <p className="text-3xl md:text-4xl lg:text-6xl xl:text-5xl text-white font-bold">
                                 PLAY HARD. LOOK GOOD.
                             </p>
                             <p className="text-xs md:text-sm lg:text-md font-semibold text-white">
