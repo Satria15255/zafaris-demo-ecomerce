@@ -33,7 +33,7 @@ const Bestseller = () => {
     }, []);
 
     return (
-        <div className="my-6 lg:my-12">
+        <div className="my-6 lg:my-12 flex flex-col items-center">
             <header className="flex justify-center px-7 items-center py-4 ">
                 <header className="text-center py-2">
                     <p className="text-lg lg:text-2xl font-semibold">
@@ -46,7 +46,7 @@ const Bestseller = () => {
             </header>
             <main>
                 {/* Desktop Ver */}
-                <div className="hidden w-full mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
+                <div className="hidden max-w-7xl w-full mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
                     {bestSellingProducts.map((products) => (
                         <ProductCard
                             key={products.id}

@@ -35,7 +35,7 @@ function ProductList() {
     };
 
     return (
-        <div className="pt-12 md:mt-3 mb-8 h-auto">
+        <div className="pt-12 md:mt-3 mb-8 h-auto flex flex-col items-center">
             <motion.div
                 initial={{ opacity: 0, y: 50 }} // Awalnya transparan dan turun 50px
                 whileInView={{ opacity: 1, y: 0 }} // Saat muncul, fade-in & naik ke atas
@@ -51,7 +51,7 @@ function ProductList() {
                     </p>
                 </header>
             </motion.div>
-            <main className="grid py-2 h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
+            <main className="grid py-2 max-w-7xl h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
                 {products.map((products) => (
                     <ProductCard
                         key={products.id}

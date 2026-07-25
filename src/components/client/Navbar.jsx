@@ -69,7 +69,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         ) : (
                             <p
                                 onClick={() => navigate("/login")}
-                                className="cursor-pointer hover:underline mb-2 text-lg"
+                                className="cursor-pointer hover:underline mb-2 text-md"
                             >
                                 {" "}
                                 Login / Register

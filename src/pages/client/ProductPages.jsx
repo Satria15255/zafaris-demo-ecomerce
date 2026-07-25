@@ -141,7 +141,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                 <p className="text-4xl md:text-8xl font-bold text-white">
                     Product
                 </p>
-                <div className="hidden md:flex justify-between items-center gap-2 w-full md:w-4/5 lg:w-[180vh] rounded-t-2xl bg-white  h-[6vh] lg:h-[9vh] px-3">
+                <div className="hidden max-w-7xl md:flex justify-between items-center gap-2 w-full md:w-4/5 lg:w-[180vh] rounded-t-2xl bg-white  h-[6vh] lg:h-[9vh] px-3">
                     <p className="hidden lg:flex font-bold text-xs md:text-sm lg:text-lg">
                         Give All You Want
                     </p>
@@ -171,7 +171,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
             </div>
             {/* Product Section */}
             <div className="flex justify-center ">
-                <div className="flex flex-col justify-center md:flex-row w-[100vh] md:w-[180vh] px-2">
+                <div className="flex flex-col justify-center md:flex-row w-[100vh] md:w-[180vh] max-w-7xl px-2">
                     {/* Sidebar Filter Left*/}
                     <FilterSidebar
                         categories={categories}
@@ -208,7 +208,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
 
                     {/* Products Section Right */}
                     <div className="flex flex-col justify-between w-full lg:w-4/5 min-h-[100vh]">
-                        <div className="grid grid-cols-2 items-center md:grid-cols-4 lg:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-2 items-center md:grid-cols-4 lg:grid-cols-3 gap-2">
                             {currentProducts.length === 0 && (
                                 <p className="text-center col-span-3">
                                     No products found.
