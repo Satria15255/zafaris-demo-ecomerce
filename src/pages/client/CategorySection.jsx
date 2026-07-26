@@ -37,7 +37,7 @@ const CategoryCollection = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="h-auto py-12 px-2 lg:px-4 w-full flex flex-col items-center">
+        <div className="h-auto py-12 px-2 lg:px-4 w-full flex flex-col items-center ">
             {/* Headline */}
             <div className="text-center py-2">
                 <p className="text-lg lg:text-3xl font-semibold">
@@ -47,7 +47,7 @@ const CategoryCollection = () => {
                     Lorem ipsum dolor sit amet consectetur.
                 </p>
             </div>
-            <div className="hidden max-w-7xl md:flex flex-col gap-2 md:flex-row justify-around lg:mt-4">
+            <div className="hidden xl:max-w-7xl md:flex flex-col gap-2 md:flex-row justify-around lg:mt-4">
                 {collection.map((c) => (
                     <div className="w-50 lg:w-80">
                         <div className="overflow-hidden">

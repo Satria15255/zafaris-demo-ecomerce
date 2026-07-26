@@ -34,9 +34,9 @@ const Login = () => {
             <div className="inset-0  flex h-screen">
                 <div className="w-2/5 md:w-2/5 h-screen flex flex-col justify-around items-center bg-white rounded-xl p-1 md:p-4 px-7">
                     <div className="flex flex-col gap-2 items-center justify-around h-4/5 pb-4 pt-6">
-                        <div>
-                            <p className="text-lg md:text-2xl xl:text-5xl text-center font-bold mb-2 md:mb-4">
-                                Welcome Back!
+                        <div className="flex flex-col gap-2">
+                            <p className="text-lg md:text-2xl xl:text-4xl text-center font-bold mb-2 md:mb-4">
+                                Welcome Back!👋
                             </p>
                             <p className="text-sm text-gray-700 lorem21 max-w-sm text-center">
                                 Lorem ipsum dolor sit amet consectetur
@@ -47,7 +47,7 @@ const Login = () => {
 
                         <form
                             onSubmit={handleSubmit}
-                            className="space-y-2 md:space-y-2 flex px-3 flex-col justify-center w-130"
+                            className="space-y-2 flex px-3 flex-col justify-center w-130"
                         >
                             <label className="font-semibold">Email</label>
                             <input

@@ -32,8 +32,8 @@ const Register = () => {
                 <div className="w-2/5 md:w-2/5 h-screen flex flex-col justify-around bg-white rounded-xl p-1 md:p-4 px-7">
                     <div className="flex flex-col gap-2 justify-around items-center gap-5 pb-4">
                         <div className="flex flex-col gap-2">
-                            <p className="text-lg md:text-2xl xl:text-5xl text-center font-bold mb-2 md:mb-4">
-                                Get Started It
+                            <p className="text-lg md:text-2xl xl:text-4xl text-center font-bold mb-2 md:mb-4">
+                                Get Started Now!
                             </p>
                             <p className="text-sm text-gray-700 lorem21 max-w-sm text-center">
                                 Lorem ipsum dolor sit amet consectetur
@@ -43,7 +43,7 @@ const Register = () => {
                         </div>
                         <form
                             onSubmit={handleSubmit}
-                            className="space-y-2 md:space-y-4 flex flex-col justify-center w-140"
+                            className="space-y-2 flex flex-col justify-center w-140"
                         >
                             <label className="font-semibold">Full Name</label>
                             <input
