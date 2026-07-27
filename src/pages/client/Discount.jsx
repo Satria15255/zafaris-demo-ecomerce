@@ -52,10 +52,10 @@ function OnSale({ onOpenModal }) {
     console.log("discount product pages:", randomProduct);
 
     return (
-        <div className=" bg-gray-900 mt-6 flex justify-around w-full">
+        <div className=" mt-6 flex justify-center w-full">
             {randomProduct.map((product) => (
-                <div key={product.id}>
-                    <div className="flex items-center px-0 py-2">
+                <div key={product.id} className="bg-gray-900 max-w-7xl">
+                    <div className="flex items-center px-0 py-2  bg-gray-900">
                         <div className="flex flex-col justify-center text-right pl-2">
                             <p className="text-sm md:text-5xl lg:text-6xl text-white font-bold">
                                 ON

@@ -36,10 +36,10 @@ const Bestseller = () => {
         <div className="my-6 lg:my-12 flex flex-col items-center">
             <header className="flex justify-center px-7 items-center py-4 ">
                 <header className="text-center py-2">
-                    <p className="text-lg lg:text-2xl font-semibold">
+                    <p className="text-lg lg:text-2xl font-montserrat font-semibold">
                         Best Deals
                     </p>
-                    <p className="text-sm lg:text-lg text-gray-500">
+                    <p className="text-sm lg:text-lg text-gray-700 font-ysabeau ">
                         Lorem ipsum dolor sit amet consectetur.
                     </p>
                 </header>

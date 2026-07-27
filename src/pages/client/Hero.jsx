@@ -16,33 +16,36 @@ const Hero = () => {
                 effect="fade"
                 autoplay={{ delay: 4000 }}
                 loop
-                className="h-full  max-w-7xl"
+                className="h-full  max-w-6xl"
             >
                 <SwiperSlide>
                     <div className="relative flex justify-end items-center">
                         <img
                             src={Slide1}
-                            className="w-full h-auto md:h-100 lg:h-screen xl:h-140 object-cover object-center scale-110 rounded-lg "
+                            className="w-full h-auto md:h-100 lg:h-screen xl:h-140 object-cover object-center scale-120 rounded-lg "
                         />
-                        <div className="absolute inset-0 flex flex-col gap-3 md:gap-6 p-8 items-cener w-1/2  justify-center ">
-                            <p className="text-3xl md:text-4xl lg:text-6xl xl:text-8xl font-montserrat text-white ">
-                                New Era <br /> of Motion
+                        <div className="absolute inset-0 flex flex-col gap-3 md:gap-4 p-8 items-cener w-2/3  justify-center ">
+                            <p className="text-sm font-montserrat text-white">
+                                NEW ARRIVAL
+                            </p>
+                            <p className="text-3xl md:text-4xl lg:text-7xl xl:text-7xl font-montserrat text-white ">
+                                New Collection <br /> Just Landed
                             </p>
                             <p className="text-xs md:text-sm lg:text-lg max-w-md text-white font-ysabeau">
-                                From casual looks to streetwear, every pair is
-                                crafted to support your active and confident
-                                lifestyle.
+                                Discover the latest products from top brands.{" "}
+                                <br /> Designed for performance, built for
+                                style.
                             </p>
                             <div className="flex gap-3 w-full">
                                 <button
                                     onClick={() => navigate("/products")}
-                                    className="bg-black w-1/3 px-5  h-10   text-xs lg:text-sm text-white hover:border border-white hover:bg-transparent transition duration-300"
+                                    className="bg-black w-1/3 px-5  h-10   text-xs text-white hover:border border-white hover:bg-transparent transition duration-300"
                                 >
                                     SHOP NOW
                                 </button>
                                 <button
                                     onClick={() => navigate("/products")}
-                                    className="bg-transparent  w-1/3  px-5  h-10   text-xs lg:text-sm border border-white text-white hover:border-none hover:bg-black hover:text-white transition duration-300"
+                                    className="bg-transparent  w-1/3  px-5  h-10   text-xs  border border-white text-white hover:border-none hover:bg-black hover:text-white transition duration-300"
                                 >
                                     EXPLORE COLLECTION
                                 </button>
@@ -54,27 +57,30 @@ const Hero = () => {
                     <div className="relative flex justify-center items-center">
                         <img
                             src={Slide2}
-                            className="w-full h-auto md:h-100 lg:h-screen xl:h-140 object-cover object-center scale-110 rounded-lg"
+                            className="w-full h-auto md:h-100 lg:h-screen xl:h-140 object-cover object-center scale-120 rounded-lg"
                         />
-                        <div className="absolute inset-0 flex flex-col gap-3 md:gap-6 p-8 items-cener w-1/2  justify-center ">
-                            <p className="text-3xl md:text-4xl lg:text-6xl xl:text-8xl font-montserrat text-white ">
-                                New Era <br /> of Motion
+                        <div className="absolute inset-0 flex flex-col gap-3 md:gap-4 p-8 items-cener w-2/3  justify-center ">
+                            <p className="text-sm font-montserrat text-white">
+                                NEW ARRIVAL
+                            </p>
+                            <p className="text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-montserrat text-white ">
+                                New Collection <br /> Just Landed
                             </p>
                             <p className="text-xs md:text-sm lg:text-lg max-w-md text-white font-ysabeau">
-                                From casual looks to streetwear, every pair is
-                                crafted to support your active and confident
-                                lifestyle.
+                                Discover the latest products from top brands.{" "}
+                                <br /> Designed for performance, built for
+                                style.
                             </p>
                             <div className="flex gap-3 w-full">
                                 <button
                                     onClick={() => navigate("/products")}
-                                    className="bg-black w-1/3 px-5  h-10   text-xs lg:text-sm text-white hover:border border-white hover:bg-transparent transition duration-300"
+                                    className="bg-black w-1/3 px-5  h-10   text-xs  text-white hover:border border-white hover:bg-transparent transition duration-300"
                                 >
                                     SHOP NOW
                                 </button>
                                 <button
                                     onClick={() => navigate("/products")}
-                                    className="bg-transparent  w-1/3  px-5   h-10   text-xs lg:text-sm border border-white text-white hover:border-none hover:bg-black hover:text-white transition duration-300"
+                                    className="bg-transparent  w-1/3  px-5   h-10   text-xs border border-white text-white hover:border-none hover:bg-black hover:text-white transition duration-300"
                                 >
                                     EXPLORE COLLECTION
                                 </button>
