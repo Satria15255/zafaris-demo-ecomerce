@@ -51,7 +51,7 @@ function ProductList() {
                     </p>
                 </header>
             </motion.div>
-            <main className="grid py-2 max-w-7xl h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
+            <main className="grid py-2 xl:min-w-7xl h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
                 {products.map((products) => (
                     <ProductCard
                         key={products.id}

@@ -12,9 +12,9 @@ const CallAction = () => {
                 ></div>
 
                 {/* Content */}
-                <div className="relative z-10 gap-7 md:gap-4 lg:gap-7 flex flex-col justify-center h-full p-7  lg:ml-8 font-sans">
-                    <p className="text-5xl lg:text-7xl max-w-lg md:max-w-sm lg:max-w-xl">
-                        Find Your Perfect Pair Faster
+                <div className="relative z-10 gap-7 md:gap-4 lg:gap-7 flex flex-col  justify-center h-full p-7  lg:ml-8 font-sans">
+                    <p className="text-5xl lg:text-7xl font-montserrat">
+                        Find Your Perfect <br /> Pair Faster
                     </p>
                     <p className="text-sm max-w-xs lg:max-w-sm hidden md:flex">
                         Filter by Category and Size to Find the Perfect of Shoes
@@ -22,7 +22,7 @@ const CallAction = () => {
                     <div>
                         <button
                             onClick={() => navigate("/products")}
-                            className="bg-black text-white h-12 px-8"
+                            className="bg-[#0C0C0C] text-white h-12 px-8 font-montserrat"
                         >
                             Shop Now
                         </button>

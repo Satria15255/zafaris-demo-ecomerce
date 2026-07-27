@@ -53,7 +53,7 @@ function ProductCard({ product, productDetails }) {
                         </div>
                     </div>
                     <div className="flex justify-between items-center ">
-                        <div className="flex h-[40px] items-center">
+                        <div className="flex h-[40px] items-center font-montserrat">
                             {isDiscount ? (
                                 <div className="flex flex-col gap-1">
                                     <p className=" text-sm lg:text-lg line-through">
@@ -73,7 +73,7 @@ function ProductCard({ product, productDetails }) {
                         </div>
                         <p
                             onClick={() => productDetails(product)}
-                            className="text-xs lg:text-sm cursor-pointer lg:text-md h-8 md:h-10 px-5 font-sans bg-black rounded-full text-white flex items-center gap-3 hover:text-black hover:bg-white border border-gray-500 transition duration-300"
+                            className="text-xs lg:text-sm cursor-pointer lg:text-md h-8 md:h-10 px-5 font-ysabeau bg-[#0C0C0C] rounded-full text-white flex items-center gap-3 hover:text-black hover:bg-white border border-gray-500 transition duration-300"
                         >
                             <span className="hidden lg:flex">Add to Cart</span>
                             <FaCartPlus />

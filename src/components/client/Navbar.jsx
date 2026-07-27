@@ -29,7 +29,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-20  border-b border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 md:h-auto w-full flex flex-col justify-center transition-all duration-500 ease-in-out
+            className={`fixed top-0 z-20  border-b font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 md:h-auto w-full flex flex-col justify-center transition-all duration-500 ease-in-out
   ${scrolled ? " shadow-md  bg-white" : "bg-white"}`}
         >
             {/* Top Section */}
