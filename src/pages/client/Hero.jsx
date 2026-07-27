@@ -10,13 +10,13 @@ const Hero = () => {
     const navigate = useNavigate();
 
     return (
-        <div className=" px-2 lg:p-4 pt-15 md:pt-15 lg:pt-17 md:mt-16 flex justify-center h-auto">
-            <div className="relative flex justify-end items-center xl:min-w-7xl xl:max-w-7xl xl:h-120">
+        <div className=" px-2 lg:p-4 pt-15 md:pt-15 lg:pt-17 md:mt-16 flex justify-center w-full h-auto">
+            <div className="relative flex justify-end items-center w-full xl:h-120">
                 <img
                     src={Slide1}
                     className="w-full h- md:h-100 lg:h-screen xl:h-full object-cover object-center rounded-lg "
                 />
-                <div className="absolute inset-0 flex flex-col md:gap-4 items-start p-4 xl:p-5 w-2/3  justify-betweenn ">
+                <div className="absolute inset-0 flex flex-col md:gap-4 items-start p-4 xl:p-5 w-2/3  justify-center ">
                     <p className="text-[6px] md:text-sm font-montserrat text-white">
                         NEW ARRIVAL
                     </p>

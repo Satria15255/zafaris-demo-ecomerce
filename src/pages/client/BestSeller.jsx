@@ -34,19 +34,17 @@ const Bestseller = () => {
 
     return (
         <div className="my-6 lg:my-12 flex flex-col items-center">
-            <header className="flex justify-center px-7 items-center py-4 ">
-                <header className="text-center py-2">
-                    <p className="text-lg lg:text-2xl font-montserrat font-semibold">
-                        Best Deals
-                    </p>
-                    <p className="text-sm lg:text-lg text-gray-700 font-ysabeau ">
-                        Lorem ipsum dolor sit amet consectetur.
-                    </p>
-                </header>
+            <header className="flex  justify-between w-full px-7 items-center py-4 ">
+                <p className="text-lg lg:text-2xl font-montserrat font-semibold border-b border-yellow-600 py-2">
+                    Best Deals
+                </p>
+                <p className="text-sm lg:text-lg text-gray-700 font-ysabeau border-b my-2">
+                    View Collection
+                </p>
             </header>
             <main>
                 {/* Desktop Ver */}
-                <div className="hidden xl:min-w-7xl w-full mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
+                <div className="hidden w-full mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
                     {bestSellingProducts.map((products) => (
                         <ProductCard
                             key={products.id}

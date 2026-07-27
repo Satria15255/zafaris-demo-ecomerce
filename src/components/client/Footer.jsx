@@ -9,7 +9,7 @@ import mastercard from "@/assets/logo/mastercard.svg";
 
 const Footer = () => {
     return (
-        <div className="flex flex-col bg-gray-100 justify-center h-auto ">
+        <div className="flex flex-col bg-gray-100 justify-center h-auto font-montserrat">
             <div className="flex flex-col md:flex-row justify-around gap-4 px-2 md:px-7 py-6 md:py-12 ">
                 <div className="flex flex-col  gap-5">
                     <div>

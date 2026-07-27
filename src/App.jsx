@@ -58,13 +58,15 @@ function App() {
             <Route
               path="/"
               element={
-                <div>
-                  <Hero />
-                  <BestSeller />
-                  <DiscountSection />
-                  <NewArrival />
-                  <CallAction />
-                  <CategoryCollection />
+                <div className="flex flex-col items-center">
+                  <div className="xl:min-w-7xl max-w-8xl">
+                    <Hero />
+                    <BestSeller />
+                    <DiscountSection />
+                    <NewArrival />
+                    <CallAction />
+                    <CategoryCollection />
+                  </div>
                 </div>
               }
             />

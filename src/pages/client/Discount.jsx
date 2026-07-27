@@ -54,7 +54,7 @@ function OnSale({ onOpenModal }) {
 
     return (
         <div className=" mt-6 flex justify-center w-full h-auto">
-            <div className="max-w-7xl xl:min-w-7xl flex  bg-[#0C0C0C] ">
+            <div className="w-full flex  bg-[#0C0C0C] ">
                 <div className="w-2/5">
                     <img
                         src={discountImage}

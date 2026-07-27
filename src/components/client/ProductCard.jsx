@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
 import { FaCartPlus, FaStar } from "react-icons/fa";
+import {
+    IoBagHandleOutline,
+    IoHeartOutline,
+    IoSearchOutline,
+} from "react-icons/io5";
 
 function ProductCard({ product, productDetails }) {
     const { discountPercent, discountPrice } = product;
@@ -15,9 +20,9 @@ function ProductCard({ product, productDetails }) {
         >
             <div
                 key={product.id}
-                className="relative flex flex-col justify-center w-45 lg:w-70 h-auto md:rounded-5 border border-gray-200 lg:rounded-xl mt-2 "
+                className="relative flex flex-col justify-center w-45 lg:w-70 xl:w-80 h-auto md:rounded-5 lg:rounded-xl mt-2 "
             >
-                <div className="w-full">
+                <div className="w-full h-auto">
                     <img
                         src={product.image}
                         alt={product.name}
@@ -30,54 +35,50 @@ function ProductCard({ product, productDetails }) {
                             </p>
                         </div>
                     )}
-                </div>
-                <div className="mt-2 p-2 flex flex-col space-y-2 md:space-y-4 lg:justify-center">
-                    <div>
-                        <p className="text-sm h-10 md:h-12 md:text-[15px] lg:text-xl">
-                            {" "}
-                            {product.name}
-                        </p>
-                        <div className="flex flex-col lg:flex-row gap-4">
-                            <div className="flex">
-                                <FaStar className="text-yellow-600" />
-                                <FaStar className="text-yellow-600" />
-                                <FaStar className="text-yellow-600" />
-                                <FaStar className="text-yellow-600" />
-                                <FaStar className="text-yellow-600" />
-                                <FaStar className="text-yellow-600" />
-                            </div>
-                            <p className="text-xs text-gray-400">
-                                {" "}
-                                4.9 (120 Reviews)
+                    <div className="absolute mt-2 opacity-0 translate-y-10 z-100 inset-0 hover:opacity-100 hover:translate-y-0 transition-all duration-200 flex justify-center items-center top-30">
+                        <div className="flex gap-3">
+                            <p
+                                onClick={() => productDetails(product)}
+                                className="p-2 rounded-full bg-white text-[#0C0C0C] shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200"
+                            >
+                                <IoSearchOutline />
+                            </p>
+                            <p className="p-2 rounded-full bg-white text-[#0C0C0C] shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200">
+                                <IoBagHandleOutline />
+                            </p>
+                            <p className="p-2 rounded-full bg-white text-[#0C0C0C] shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200">
+                                <IoHeartOutline />
                             </p>
                         </div>
                     </div>
+                </div>
+                <div className="mt-2 p-2 flex flex-col items-center space-y-2 md:space-y-2 lg:justify-center">
+                    <div className="h-10 md:h-12 flex items-center">
+                        <p className="text-sm  md:text-[15px] lg:text-xl xl:text-md">
+                            {" "}
+                            {product.name}
+                        </p>
+                    </div>
+
                     <div className="flex justify-between items-center ">
-                        <div className="flex h-[40px] items-center font-montserrat">
+                        <div className="flex h-[40px] items-center justify-center font-montserrat">
                             {isDiscount ? (
-                                <div className="flex flex-col gap-1">
-                                    <p className=" text-sm lg:text-lg line-through">
+                                <div className="flex gap-2 justify-center items-center">
+                                    <p className=" text-sm lg:text-lg xl:text-sm line-through">
                                         ${product.price.toFixed(2)}
                                     </p>
-                                    <p className="text-sm lg:text-lg text-yellow-600 font-bold">
+                                    <p className="text-sm lg:text-lg xl:text-sm text-yellow-600 font-bold">
                                         ${discountPrice.toFixed(2)}
                                     </p>
                                 </div>
                             ) : (
                                 <>
-                                    <p className="text-sm lg:text-lg text-yellow-600 font-bold">
+                                    <p className="text-sm lg:text-lg xl:text-sm text-yellow-600 font-bold">
                                         ${product.price.toFixed(2)}
                                     </p>
                                 </>
                             )}
                         </div>
-                        <p
-                            onClick={() => productDetails(product)}
-                            className="text-xs lg:text-sm cursor-pointer lg:text-md h-8 md:h-10 px-5 font-ysabeau bg-[#0C0C0C] rounded-full text-white flex items-center gap-3 hover:text-black hover:bg-white border border-gray-500 transition duration-300"
-                        >
-                            <span className="hidden lg:flex">Add to Cart</span>
-                            <FaCartPlus />
-                        </p>
                     </div>
                 </div>
             </div>

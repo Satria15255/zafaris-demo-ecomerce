@@ -5,26 +5,27 @@ const CallAction = () => {
     const navigate = useNavigate();
     return (
         <div className="p-3 md:p-6 h-auto overflow-hidden ">
-            <div className="relative h-full md:h-90 lg:h-120 overflow-hidden group">
+            <div className="relative h-full md:h-90 lg:h-120 xl:h-120 overflow-hidden group">
                 <div
                     style={{ backgroundImage: `url(${actionImage})` }}
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                 ></div>
 
                 {/* Content */}
-                <div className="relative z-10 gap-7 md:gap-4 lg:gap-7 flex flex-col  justify-center h-full p-7  lg:ml-8 font-sans">
-                    <p className="text-5xl lg:text-7xl font-montserrat">
+                <div className="relative z-10 gap-7 md:gap-4 lg:gap-5 flex flex-col  justify-center h-full p-7  lg:ml-8 font-sans">
+                    <p className="text-5xl lg:text-6xl font-montserrat">
                         Find Your Perfect <br /> Pair Faster
                     </p>
-                    <p className="text-sm max-w-xs lg:max-w-sm hidden md:flex">
-                        Filter by Category and Size to Find the Perfect of Shoes
+                    <p className="text-md max-w-xs lg:max-w-sm hidden md:flex font-ysabeau">
+                        Filter by Category and Size to Find the Perfect of
+                        Shoes.
                     </p>
                     <div>
                         <button
                             onClick={() => navigate("/products")}
-                            className="bg-[#0C0C0C] text-white h-12 px-8 font-montserrat"
+                            className="bg-[#0C0C0C] text-white text-sm h-12 px-8 font-ysabeau"
                         >
-                            Shop Now
+                            SHOP NOW
                         </button>
                     </div>
                 </div>
