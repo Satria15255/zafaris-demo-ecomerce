@@ -208,11 +208,11 @@ function ProductModal() {
                     </p>
                 </div>
 
-                <div className="mt-8 px-4 w-full">
+                <div className="mt-8 w-full">
                     <p className="text-xl lg:text-2xl font-semibold pb-4">
                         Might You Like:
                     </p>
-                    <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
+                    <div className="grid grid-cols-2 place-items-center md:grid-cols-4 ">
                         {recommended.map((product) => (
                             <ProductCard
                                 key={product._id}

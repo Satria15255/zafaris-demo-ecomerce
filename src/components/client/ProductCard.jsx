@@ -28,31 +28,29 @@ function ProductCard({ product, productDetails }) {
                         alt={product.name}
                         className="w-full h-auto object-cover rounded-md md:rounded-xl md:rounded-bottom-5 object-center"
                     />
-                    {product.isBestSeller === true && (
-                        <div>
-                            <p className="absolute top-2 left-2 bg-yellow-600 text-white text-xs font-ysabeau px-2 py-1 rounded">
-                                Best Seller
-                            </p>
-                        </div>
-                    )}
-                    <div className="absolute mt-2 opacity-0 translate-y-10 z-100 inset-0 hover:opacity-100 hover:translate-y-0 transition-all duration-200 flex justify-center items-center top-30">
-                        <div className="flex gap-3">
-                            <p
-                                onClick={() => productDetails(product)}
-                                className="p-2 rounded-full bg-white text-[#0C0C0C] shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200"
-                            >
-                                <IoSearchOutline />
-                            </p>
-                            <p className="p-2 rounded-full bg-white text-[#0C0C0C] shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200">
-                                <IoBagHandleOutline />
-                            </p>
-                            <p className="p-2 rounded-full bg-white text-[#0C0C0C] shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200">
-                                <IoHeartOutline />
-                            </p>
-                        </div>
+                    <div>
+                        {product.isBestSeller === true && (
+                            <div>
+                                <p className="absolute top-2 left-2 bg-yellow-600 text-white text-xs xl:text-sm font-ysabeau px-2 xl:px-4 xl:py-2 py-1 rounded-xl">
+                                    Best Seller
+                                </p>
+                            </div>
+                        )}
+                        {isDiscount && (
+                            <div>
+                                <p className="absolute top-2 left-2 bg-yellow-600 text-white text-xs xl:text-sm font-ysabeau px-2 xl:px-4 xl:py-2 py-1 rounded-xl">
+                                    {product.discountPercent}%
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                    <div className="absolute top-2 right-2 duration-200 flex justify-start  ">
+                        <p className="p-3 rounded-full bg-white text-[#0C0C0C] text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200">
+                            <IoHeartOutline />
+                        </p>
                     </div>
                 </div>
-                <div className="mt-2 p-2 flex flex-col items-center space-y-2 md:space-y-2 lg:justify-center">
+                <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-2 lg:justify-center">
                     <div className="h-10 md:h-12 flex items-center">
                         <p className="text-sm  md:text-[15px] lg:text-xl xl:text-md">
                             {" "}
@@ -64,20 +62,31 @@ function ProductCard({ product, productDetails }) {
                         <div className="flex h-[40px] items-center justify-center font-montserrat">
                             {isDiscount ? (
                                 <div className="flex gap-2 justify-center items-center">
-                                    <p className=" text-sm lg:text-lg xl:text-sm line-through">
+                                    <p className=" text-sm lg:text-lg xl:text-md line-through">
                                         ${product.price.toFixed(2)}
                                     </p>
-                                    <p className="text-sm lg:text-lg xl:text-sm text-yellow-600 font-bold">
+                                    <p className="text-sm lg:text-lg xl:text-md text-yellow-600 font-bold">
                                         ${discountPrice.toFixed(2)}
                                     </p>
                                 </div>
                             ) : (
                                 <>
-                                    <p className="text-sm lg:text-lg xl:text-sm text-yellow-600 font-bold">
+                                    <p className="text-sm lg:text-lg xl:text-md text-yellow-600 font-bold">
                                         ${product.price.toFixed(2)}
                                     </p>
                                 </>
                             )}
+                        </div>
+                        <div className="flex gap-2">
+                            <p
+                                onClick={() => productDetails(product)}
+                                className="p-3 rounded-full text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200"
+                            >
+                                <IoSearchOutline />
+                            </p>
+                            <p className="p-3 rounded-full text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200">
+                                <IoBagHandleOutline />
+                            </p>
                         </div>
                     </div>
                 </div>
