@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
+import { TbBasketQuestion } from "react-icons/tb";
 
 const ShoppingCart = ({ closeShoppingCart }) => {
     const { cart, removeCartItems, updateQty, totalPrice } = useCart();
@@ -11,7 +12,7 @@ const ShoppingCart = ({ closeShoppingCart }) => {
 
     return (
         <div className="fixed bg-black/20 inset-0 w-full z-50 h-screen flex justify-end ">
-            <div className="bg-white w-full md:w-3/5 lg:w-2/5 flex flex-col overflow-y-auto items-center">
+            <div className="bg-white w-full md:w-3/5 lg:w-2/5 xl:w-1/4 flex flex-col overflow-y-auto items-center">
                 {/* Tombol Close */}
                 <div className="w-full flex justify-between p-5 border-b border-gray-400">
                     <button
@@ -29,9 +30,21 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                     <div className="w-full h-100 flex flex-col justify-start">
                         <div className="w-full p-1  bg-white lg:p-6 overflow-x-hidden overflow-y-auto lg:max-h-[62vh]">
                             {cart.length === 0 ? (
-                                <p className="text-gray-500 text-center">
-                                    Your cart is empty
-                                </p>
+                                <div className="flex flex-col justify-center items-center gap-4 space-y-4">
+                                    <p className="text-gray-300 text-8xl">
+                                        <TbBasketQuestion />
+                                    </p>
+                                    <p className="text-center  text-2xl font-semibold font-ysabeau">
+                                        Your cart is empty
+                                    </p>
+                                    <p className="text-sm text-gray-700 font-montserrat max-w-xs text-center ">
+                                        You may check out all the available
+                                        products and buy some in the shop
+                                    </p>
+                                    <button className="px-4 py-2 border border-gray-200 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] transition duration-200 font-semibold rounded-lg">
+                                        Continue Shopping
+                                    </button>
+                                </div>
                             ) : (
                                 <table className="w-full border-collapse">
                                     <thead className="hidden md:table-header-group">
@@ -181,11 +194,16 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                         </div>
                     </div>
                     {/* Total Harga Keseluruhan & chekout */}
-                    <div className="absolute z-50 bottom-0 w-full border-t border-gray-400 p-4 mt-4 ">
-                        <div className="grid grid-cols-2">
-                            <p className="text-[16px] md:text-lg font-semibold text-left">
-                                Sub Total
-                            </p>
+                    <div className="absolute z-50 bottom-0 w-full border-t border-gray-400 p-4 mt-4 flex flex-col gap-4 ">
+                        <div className="flex justify-between">
+                            <div className="flex flex-col">
+                                <p className="text-[16px] md:text-lg font-semibold text-left">
+                                    Sub Total
+                                </p>
+                                <p className="text-xs font-medium text-gray-700">
+                                    Tax and shipping calculated at checkout
+                                </p>
+                            </div>
                             <div className="text-right">
                                 {cart.length > 0 && (
                                     <h2 className="text-[16px] md:text-xl font-semibold text-right">
@@ -196,41 +214,51 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                                 )}
                             </div>
                         </div>
-                        <div>
-                            {cart.length === 0 ? (
-                                <button className="text-lg flex justify-center items-center mt-3 w-full h-12  bg-gray-200 text-white ">
-                                    Chek Out Now
-                                </button>
-                            ) : (
-                                <button
-                                    onClick={() => {
-                                        navigate("/checkout", {
-                                            state: {
-                                                checkoutItems: cart.map(
-                                                    (item) => ({
-                                                        id: item.productId._id,
-                                                        name: item.productId
-                                                            .name,
-                                                        image: item.productId
-                                                            .image,
-                                                        size: item.size,
-                                                        quantity: item.quantity,
-                                                        finalPrice:
-                                                            item.finalPrice,
-                                                        discountPercent:
-                                                            item.discountPercent,
-                                                    }),
-                                                ),
-                                            },
-                                        });
+                        <div className="flex gap-2 pb-6">
+                            <div className="w-1/2">
+                                {cart.length === 0 ? (
+                                    <button className="text-lg flex justify-center items-center mt-3 w-full h-12  bg-gray-200 text-white rounded-md">
+                                        Chek Out Now
+                                    </button>
+                                ) : (
+                                    <button
+                                        onClick={() => {
+                                            navigate("/checkout", {
+                                                state: {
+                                                    checkoutItems: cart.map(
+                                                        (item) => ({
+                                                            id: item.productId
+                                                                ._id,
+                                                            name: item.productId
+                                                                .name,
+                                                            image: item
+                                                                .productId
+                                                                .image,
+                                                            size: item.size,
+                                                            quantity:
+                                                                item.quantity,
+                                                            finalPrice:
+                                                                item.finalPrice,
+                                                            discountPercent:
+                                                                item.discountPercent,
+                                                        }),
+                                                    ),
+                                                },
+                                            });
 
-                                        closeShoppingCart();
-                                    }}
-                                    className="text-lg flex justify-center items-center mt-3 w-full h-12 border bg-black text-white border-black  hover:text-black hover:bg-white transition duration-300 "
-                                >
-                                    Chek Out Now
+                                            closeShoppingCart();
+                                        }}
+                                        className="text-lg flex justify-center items-center mt-3 w-full h-12 border bg-black text-white border-black  hover:text-black hover:bg-white transition duration-300 rounded-md"
+                                    >
+                                        Chek Out Now
+                                    </button>
+                                )}
+                            </div>
+                            <div className="w-1/2">
+                                <button className="text-lg flex justify-center items-center mt-3 w-full h-12 border bg-white text-[#0C0C0C] border-black  hover:text-white hover:bg-[#0C0C0C] transition duration-300 rounded-md">
+                                    View Cart
                                 </button>
-                            )}
+                            </div>
                         </div>
                     </div>
                 </div>

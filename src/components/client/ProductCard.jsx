@@ -36,13 +36,6 @@ function ProductCard({ product, productDetails }) {
                                 </p>
                             </div>
                         )}
-                        {isDiscount && (
-                            <div>
-                                <p className="absolute top-2 left-2 bg-yellow-600 text-white text-xs xl:text-sm font-ysabeau px-2 xl:px-4 xl:py-2 py-1 rounded-xl">
-                                    {product.discountPercent}%
-                                </p>
-                            </div>
-                        )}
                     </div>
                     <div className="absolute top-2 right-2 duration-200 flex justify-start  ">
                         <p className="p-3 rounded-full bg-white text-[#0C0C0C] text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200">
