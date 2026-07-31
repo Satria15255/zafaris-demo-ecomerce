@@ -196,13 +196,13 @@ const ShoppingCart = () => {
 							</p>
 						</div>
 						<div className=" border bg-gray-100 border-gray-100 text-md w-full h-auto p-3 rounded-xl">
-							<div className="flex gap-3 items-center py-2 font-semibold">
+							<div className="flex gap-3 items-center py-2 ">
 								<input
 									type="text"
 									placeholder="Our Voucher Code"
-									className="bg-white w-full px-2 py-2 rounded-xl border border-gray-300"
+									className="bg-white w-full px-2 py-2 font-ysabeau rounded-xl border border-gray-300"
 								/>
-								<button className=" flex justify-center items-center text-sm  w-1/5 py-2 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200 text-white rounded-xl">
+								<button className=" flex justify-center font-ysabeau items-center text-sm  w-1/5 py-2 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200   rounded-xl">
 									Apply
 								</button>
 							</div>
@@ -249,7 +249,7 @@ const ShoppingCart = () => {
 								</p>
 							</div>
 							<div>
-								<button className="text-lg flex justify-center items-center mt-3 w-full h-12 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200 text-white rounded-xl">
+								<button className="text-lg flex justify-center font-ysabeau items-center  w-full h-12 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200 text-white rounded-xl">
 									Check Out
 								</button>
 							</div>
