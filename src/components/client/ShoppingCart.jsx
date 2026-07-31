@@ -29,7 +29,7 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                 </div>
                 <div className="relative h-screen w-full flex flex-col justify-between">
                     {/* Tabel Cart */}
-                    <div className="w-full h-100 flex flex-col justify-start">
+                    <div className="w-full  flex flex-col justify-start">
                         <div className="w-full p-1  bg-white lg:p-6 overflow-x-hidden overflow-y-auto lg:max-h-[62vh]">
                             {cart.length === 0 ? (
                                 <div className="flex flex-col justify-center items-center gap-4 space-y-4">
@@ -169,18 +169,6 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                                                             </div>
                                                         </div>
                                                     </td>
-
-                                                    {/* Quantity */}
-
-                                                    {/* Total Harga per Item */}
-                                                    {/*<td>
-                                                        <div className="flex items-center text-lg justify-center text-right text-yellow-500 font-semibold  hidden md:block">
-                                                            $
-                                                            {item.finalPrice *
-                                                                item.quantity}
-                                                            .00
-                                                        </div>
-                                                    </td>*/}
                                                 </tr>
                                             );
                                         })}
