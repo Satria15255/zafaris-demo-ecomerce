@@ -9,11 +9,17 @@ const ShoppingCart = () => {
 	const { user } = useAuth();
 	return (
 		<div className="h-auto mt-16 pt-16 py-4 flex flex-col justify-center items-center justify-center">
-			<header className="text-center py-8">
-				<h1>Your Shopping Cart</h1>
+			<header className="text-center py-10">
+				<p className="text-4xl font-montserrat">Your Shopping Cart</p>
 			</header>
 			<main className="w-full flex max-w-7xl gap-5">
 				<aside className="w-3/5">
+					<div className="py-2">
+						<p className="font-semibold text-lg font-montserrat">
+							{" "}
+							Cart Items
+						</p>
+					</div>
 					<div className="w-full">
 						{cart.length === 0 ? (
 							<div className="flex flex-col justify-center items-center gap-4 space-y-4">
@@ -180,9 +186,75 @@ const ShoppingCart = () => {
 						</p>
 					</div>
 				</aside>
-				<aside className="w-2/5">
+				<aside className="w-2/5 flex flex-col gap-8">
+					{/*Voucher Aplly*/}
+					<div>
+						<div className="py-2">
+							<p className="font-semibold text-lg font-montserrat">
+								{" "}
+								Voucher
+							</p>
+						</div>
+						<div className=" border bg-gray-100 border-gray-100 text-md w-full h-auto p-3 rounded-xl">
+							<div className="flex gap-3 items-center py-2 font-semibold">
+								<input
+									type="text"
+									placeholder="Our Voucher Code"
+									className="bg-white w-full px-2 py-2 rounded-xl border border-gray-300"
+								/>
+								<button className=" flex justify-center items-center text-sm  w-1/5 py-2 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200 text-white rounded-xl">
+									Apply
+								</button>
+							</div>
+						</div>
+					</div>
 					{/*Cart Info*/}
-					<div className="bg-[#0C0C0C] w-full h-80"></div>
+					<div>
+						<div className="py-2">
+							<p className="font-semibold text-lg font-montserrat">
+								{" "}
+								Details
+							</p>
+						</div>
+						<div className=" border bg-gray-100 border-gray-100 text-md w-full h-auto p-3 rounded-xl">
+							<div className="flex justify-between py-2 border-b border-gray-300 font-semibold">
+								<p>Sub Total (1 Product)</p>
+								<p className="text-yellow-500">
+									{" "}
+									${totalPrice.toFixed(2)}
+								</p>
+							</div>
+							<div className="py-2">
+								<p className="font-semibold">Total Savings</p>
+								<p className="flex justify-between text-gray-500">
+									1 voucher has been used <span>-$3.00</span>
+								</p>
+							</div>
+							<div className="py-2">
+								<p className="font-semibold">Delivery</p>
+								<p className="flex justify-between text-gray-500">
+									From ZAFARIS indonesia{" "}
+									<span>Calculated at checkout</span>
+								</p>
+							</div>
+							<div className="flex justify-between py-2 border-b border-gray-300 font-semibold">
+								<p>Service Tax</p>
+								<p> $1.00</p>
+							</div>
+							<div className="flex justify-between py-2 font-semibold">
+								<p>Total</p>
+								<p className="text-yellow-500">
+									{" "}
+									${totalPrice.toFixed(2)}
+								</p>
+							</div>
+							<div>
+								<button className="text-lg flex justify-center items-center mt-3 w-full h-12 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200 text-white rounded-xl">
+									Check Out
+								</button>
+							</div>
+						</div>
+					</div>
 				</aside>
 			</main>
 		</div>
