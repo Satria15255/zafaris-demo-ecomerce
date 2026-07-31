@@ -15,6 +15,7 @@ import PaymentOrderPages from "./pages/client/paymentPages";
 import PaymentSuccessPages from "./pages/client/PaymentSuccess";
 import OrderPages from "./pages/client/MyOrderPages";
 import UserDashboard from "./pages/client/UserDashboard";
+import ShoppingCartPages from "./pages/client/ShoppingCart";
 
 // Pages Admin
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
@@ -74,6 +75,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/products" element={<ProductsPages />} />
             <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/my-cart" element={<ShoppingCartPages />} />
             <Route path="/checkout" element={<CheckoutPages />} />
             <Route path="/success-order/:id" element={<SuccessOrderPages />} />
             <Route path="/paymentOrder/:id" element={<PaymentOrderPages />} />
