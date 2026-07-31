@@ -128,7 +128,7 @@ const ShoppingCart = () => {
 												</td>
 												<td>
 													<div className="flex justify-between ">
-														<div className="flex items-center justify-center rounded-sm border border-gray-200">
+														<div className="flex items-center justify-center rounded-sm border py-1 border-gray-200">
 															<button
 																className="text-xs lg:text-sm xl:text-lg text-gray-400 hover:text-[#0C0C0C] transition duration-100 px-2 py-1   rounded"
 																onClick={() =>
