@@ -169,21 +169,6 @@ const CheckoutPage = () => {
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <div className="flex justify-start">
-                                                        <button
-                                                            onClick={() =>
-                                                                removeCartItems(
-                                                                    item
-                                                                        .productId
-                                                                        ._id,
-                                                                    item.size,
-                                                                )
-                                                            }
-                                                            className="text-xs md:text-sm text-gray-500 hover:text-red-500 md:mt-1"
-                                                        >
-                                                            Remove
-                                                        </button>
-                                                    </div>
                                                 </div>
                                             </td>
                                             <td>
@@ -216,15 +201,17 @@ const CheckoutPage = () => {
                     </div>
 
                     {/* Form Pembeli */}
-                    <div className="w-full md:w-3/5 pt-8 bg-black rounded-xl p-4">
-                        <p className="text-xl md:text-xl lg:text-3xl text-white pb-4 font-semibold">
+                    <div className="w-full md:w-3/5 pt-8 bg-gray-100 rounded-xl p-4">
+                        <p className="text-xl md:text-xl lg:text-lg font-semibold font-montserrat  pb-4 font-semibold">
                             Order Details
                         </p>
                         <form
                             onSubmit={handleSubmit}
-                            className="space-y-4 text-xs lg:text-lg text-white"
+                            className="space-y-4 text-xs lg:text-lg "
                         >
                             <div>
+                                <label />
+                                Username
                                 <input
                                     type="text"
                                     name="name"
@@ -232,31 +219,37 @@ const CheckoutPage = () => {
                                     required
                                     onChange={handleChange}
                                     placeholder="Your Name"
-                                    className="w-full border-b bg-black  px-3 py-2 rounded"
+                                    className="w-full  bg-white  px-3 py-2 rounded"
                                 />
                             </div>
 
                             <div>
+                                <label />
+                                Address
                                 <input
                                     name="address"
                                     value={formData.address}
                                     onChange={handleChange}
                                     placeholder="Your Address"
-                                    className="w-full h-12   border-b px-3 rounded"
+                                    className="w-full bg-white h-12 px-3 rounded"
                                 ></input>
                             </div>
 
                             <div>
+                                <label />
+                                Optional Message
                                 <input
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
                                     placeholder="Message (Optional)"
-                                    className="w-full border-b px-3 py-2 rounded"
+                                    className="w-full bg-white px-3 py-2 rounded"
                                 />
                             </div>
 
                             <div>
+                                <label />
+                                Phone Number
                                 <input
                                     type="tel"
                                     name="phoneNumber"
@@ -264,7 +257,7 @@ const CheckoutPage = () => {
                                     required
                                     onChange={handleChange}
                                     placeholder="Phone Number"
-                                    className="w-full  border-b px-3 py-2 rounded"
+                                    className="w-full bg-white px-3 py-2 rounded"
                                 />
                             </div>
 
@@ -346,7 +339,7 @@ const CheckoutPage = () => {
                             {/* Tombol Submit */}
                             <button
                                 type="submit"
-                                className="bg-white text-black w-full py-2 text-lg lg:text-xl px-4 rounded-lg  hover:bg-gray-100"
+                                className="bg-[#0C0C0C] text-white w-full py-2 text-lg lg:text-xl px-4 rounded-lg  hover:bg-gray-100 hover:bg-white hover:text-black hover:bg-gray-200 transition duration-200"
                             >
                                 Make Order
                             </button>
