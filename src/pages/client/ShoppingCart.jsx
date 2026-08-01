@@ -3,16 +3,18 @@ import { useAuth } from "@/context/AuthContext";
 import { TbBasketQuestion } from "react-icons/tb";
 import { FaMinus } from "react-icons/fa";
 import { LuMinus, LuPlus } from "react-icons/lu";
+import { useNavigate } from "react-router-dom";
 
 const ShoppingCart = () => {
 	const { cart, removeCartItems, updateQty, totalPrice } = useCart();
 	const { user } = useAuth();
+	const navigate = useNavigate();
 	return (
 		<div className="h-auto mt-16 pt-16 py-4 flex flex-col justify-center items-center justify-center">
 			<header className="text-center py-10">
 				<p className="text-4xl font-montserrat">Your Shopping Cart</p>
 			</header>
-			<main className="w-full flex max-w-7xl gap-5">
+			<main className="w-full flex max-w-7xl px-4 gap-5">
 				<aside className="w-3/5">
 					<div className="py-2">
 						<p className="font-semibold text-lg font-montserrat">
@@ -20,7 +22,7 @@ const ShoppingCart = () => {
 							Cart Items
 						</p>
 					</div>
-					<div className="w-full">
+					<div className=" ">
 						{cart.length === 0 ? (
 							<div className="flex flex-col justify-center items-center gap-4 space-y-4">
 								<p className="text-gray-300 text-8xl">
@@ -180,8 +182,8 @@ const ShoppingCart = () => {
 							</table>
 						)}
 					</div>
-					<div className="w-full py-4">
-						<p className="text-sm lg:text-lg w-1/5 text-gray-600 hover:text-[#0C0C0C] transition duration-200 font-ysabeau border-b pb-1">
+					<div className="w-40 py-4">
+						<p className="text-sm  cursor-pointer lg:text-lg w-full  text-gray-600 hover:text-[#0C0C0C] transition duration-200 font-ysabeau border-b border-gray-400 pb-1">
 							Continue Shopping
 						</p>
 					</div>
@@ -249,7 +251,32 @@ const ShoppingCart = () => {
 								</p>
 							</div>
 							<div>
-								<button className="text-lg flex justify-center font-ysabeau items-center  w-full h-12 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200 text-white rounded-xl">
+								<button
+									onClick={() => {
+										navigate("/checkout", {
+											state: {
+												checkoutItems: cart.map(
+													(item) => ({
+														id: item.productId._id,
+														name: item.productId
+															.name,
+														image: item.productId
+															.image,
+														size: item.size,
+														quantity: item.quantity,
+														finalPrice:
+															item.finalPrice,
+														discountPercent:
+															item.discountPercent,
+													}),
+												),
+											},
+										});
+
+										closeShoppingCart();
+									}}
+									className="text-lg flex justify-center font-ysabeau items-center  w-full h-12 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200 text-white rounded-xl"
+								>
 									Check Out
 								</button>
 							</div>
