@@ -49,6 +49,8 @@ const CheckoutPage = () => {
         );
     }
 
+    console.log(items);
+
     // Handle perubahan input form
     const handleChange = (e) => {
         setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -119,7 +121,7 @@ const CheckoutPage = () => {
                                 {items.map((item) => {
                                     return (
                                         <tr
-                                            key={`${item._id} - ${item.size}`}
+                                            key={`${item.id} - ${item.size}`}
                                             className="border-b border-gray-300 table-fixed  "
                                         >
                                             {/* Produk */}
@@ -210,7 +212,7 @@ const CheckoutPage = () => {
                             className="space-y-4 text-xs lg:text-lg "
                         >
                             <div>
-                                <label />
+                                <label className="font-semibold font-montserat" />
                                 Username
                                 <input
                                     type="text"
@@ -219,36 +221,36 @@ const CheckoutPage = () => {
                                     required
                                     onChange={handleChange}
                                     placeholder="Your Name"
-                                    className="w-full  bg-white  px-3 py-2 rounded"
+                                    className="w-full  bg-white  px-3 py-1 rounded font-ysabeau"
                                 />
                             </div>
 
                             <div>
-                                <label />
+                                <label className="font-semibold font-montserat" />
                                 Address
                                 <input
                                     name="address"
                                     value={formData.address}
                                     onChange={handleChange}
                                     placeholder="Your Address"
-                                    className="w-full bg-white h-12 px-3 rounded"
+                                    className="w-full bg-white py-1 px-3 font-ysabeau  rounded"
                                 ></input>
                             </div>
 
                             <div>
-                                <label />
+                                <label className="font-semibold font-montserat" />
                                 Optional Message
                                 <input
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
                                     placeholder="Message (Optional)"
-                                    className="w-full bg-white px-3 py-2 rounded"
+                                    className="w-full bg-white px-3 py-1 font-ysabeau rounded"
                                 />
                             </div>
 
                             <div>
-                                <label />
+                                <label className="font-semibold font-montserat" />
                                 Phone Number
                                 <input
                                     type="tel"
@@ -257,7 +259,7 @@ const CheckoutPage = () => {
                                     required
                                     onChange={handleChange}
                                     placeholder="Phone Number"
-                                    className="w-full bg-white px-3 py-2 rounded"
+                                    className="w-full bg-white px-3 py-1 font-ysabeau rounded"
                                 />
                             </div>
 
@@ -266,7 +268,10 @@ const CheckoutPage = () => {
                                 <p className="mb-1 text-sm lg:text-lg">
                                     Shipping Method
                                 </p>
-                                <label className="text-sm lg:text-lg">
+                                <label
+                                    className="font-semibold font-montserat"
+                                    className="text-sm lg:text-lg"
+                                >
                                     <input
                                         type="radio"
                                         name="shippingMethod"
@@ -278,7 +283,10 @@ const CheckoutPage = () => {
                                     />
                                     JNT
                                 </label>
-                                <label className="text-sm lg:text-lg">
+                                <label
+                                    className="font-semibold font-montserat"
+                                    className="text-sm lg:text-lg"
+                                >
                                     <input
                                         type="radio"
                                         name="shippingMethod"
@@ -290,7 +298,10 @@ const CheckoutPage = () => {
                                     />
                                     JNE
                                 </label>
-                                <label className="text-sm lg:text-lg">
+                                <label
+                                    className="font-semibold font-montserat"
+                                    className="text-sm lg:text-lg"
+                                >
                                     <input
                                         type="radio"
                                         name="shippingMethod"
@@ -308,7 +319,10 @@ const CheckoutPage = () => {
                                 <p className="mb-1 text-sm lg:text-lg">
                                     Payment Method
                                 </p>
-                                <label className="text-sm lg:text-lg">
+                                <label
+                                    className="font-semibold font-montserat"
+                                    className="text-sm lg:text-lg"
+                                >
                                     <input
                                         type="radio"
                                         name="paymentMethod"
@@ -321,7 +335,10 @@ const CheckoutPage = () => {
                                     />{" "}
                                     Cash On Delivery(COD)
                                 </label>
-                                <label className="text-sm lg:text-lg">
+                                <label
+                                    className="font-semibold font-montserat"
+                                    className="text-sm lg:text-lg"
+                                >
                                     <input
                                         type="radio"
                                         name="paymentMethod"
