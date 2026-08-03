@@ -40,7 +40,7 @@ const SuccesTransaction = () => {
     return (
         <div className="mt-8 md:mt-16 xl:pt-16 p-2 md:p-4 flex flex-col items-center  ">
             {latestOrder ? (
-                <div className="mb-8 p-4 flex flex-col rounded-lg w-full max-w-7xl">
+                <div className="mb-8 p-4 flex flex-col gap-4 rounded-lg w-full max-w-6xl">
                     <div className="flex flex-col items-center">
                         <p className="text-8xl">
                             <FcApproval />
@@ -81,7 +81,9 @@ const SuccesTransaction = () => {
                             <p className="flex flex-col text-gray-600 ">
                                 Order Date:{" "}
                                 <span className="font-ysabeau text-black font-bold text-xl">
-                                    {latestOrder.status}
+                                    {new Date(
+                                        latestOrder.createdAt,
+                                    ).toLocaleString()}
                                 </span>
                             </p>
                             <p className="flex flex-col text-gray-600 ">
@@ -172,31 +174,35 @@ const SuccesTransaction = () => {
                             <p>No product</p>
                         )}
                     </div>
-                    {/* Order Details */}
-                    <div className="flex flex-col w-full border border-gray-200 p-5 rounded-xl">
-                        <p className="text-xl w-full font-semibold mb-2">
-                            🧾 Order Details:
+                    {/*Order Summary*/}
+                    <div className="flex flex-col border border-gray-300 p-3 rounded-xl gap-3">
+                        <p className="font-semibold font-montserrat">
+                            Order Summary
                         </p>
-
-                        <div className="w-full p-3 flex flex-col gap-3">
-                            <p className="flex justify-between">
-                                <span>Order Id:</span>
-                                <p>{latestOrder._id}</p>
+                        <div className="w-full ">
+                            <p className="flex justify-between text-gray-600">
+                                {" "}
+                                Subtotal:{" "}
+                                <span className="text-xl text-yellow-500 font-ysabeau font-semibold">
+                                    {" "}
+                                    ${latestOrder.totalPrice}.00
+                                </span>
                             </p>
-                            <p className="flex justify-between">
-                                <span>Status:</span> {latestOrder.status}
+                            <p className="flex justify-between text-gray-600">
+                                {" "}
+                                Delivery:/{" "}
+                                <span className=" font-ysabeau text-black font-bold text-xl">
+                                    {" "}
+                                    Free
+                                </span>
                             </p>
-                            <p className="flex justify-between">
-                                <span>Total Price:</span> $
-                                {latestOrder.totalPrice}
-                            </p>
-                            <p className="flex h-auto justify-between">
-                                <span>Address:</span>{" "}
-                                {latestOrder.shippingAddress}
-                            </p>
-                            <p className="flex justify-between">
-                                <span>Payment Method:</span>{" "}
-                                {latestOrder.paymentMethod}
+                            <p className="flex justify-between text-gray-600">
+                                {" "}
+                                Total:{" "}
+                                <span className="text-xl text-yellow-500 font-ysabeau font-semibold">
+                                    {" "}
+                                    ${latestOrder.totalPrice}.00
+                                </span>
                             </p>
                         </div>
                     </div>
@@ -206,13 +212,13 @@ const SuccesTransaction = () => {
                             onClick={() => navigate("/")}
                             className="text-sm lg:text-lg font-semibold h-12 w-full md:w-1/5 border border-gray-300 rounded-xl hover:bg-black hover:text-white"
                         >
-                            My Orders
+                            Continue Shopping
                         </button>
                         <button
                             onClick={() =>
                                 navigate(`/paymentOrder/${latestOrder._id}`)
                             }
-                            className="text-sm lg:text-lg font-semibold h-12 w-full md:w-1/5 border border-gray-300 rounded-xl hover:bg-black hover:text-white"
+                            className="text-sm lg:text-lg font-semibold h-12 w-full bg-[#0C0C0C] text-white md:w-1/5 hover:border border-gray-300 rounded-xl hover:bg-white hover:text-[#0C0C0C] transition duration-200"
                         >
                             Paid Now
                         </button>
