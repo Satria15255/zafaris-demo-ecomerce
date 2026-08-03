@@ -116,57 +116,68 @@ const SuccesTransaction = () => {
                             </p>
                         </div>
                     </div>
+                    {/*Products Ordered*/}
+                    <div className="mt-3 w-full p-3 ">
+                        <p className="font-semibold font-montserrat">
+                            Your Order
+                        </p>
+                        {latestOrder.products &&
+                        latestOrder.products.length > 0 ? (
+                            <ul className="list-disc list-inside border-t mt-1">
+                                {latestOrder.products.map((item, i) => (
+                                    <div key={i}>
+                                        <div className="flex items-center justify-between w-full mt-3 border-b border-gray-300 pb-3">
+                                            <div className="flex items-center  w-full">
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.name}
+                                                    className="w-20 h-full object-cover rounded mr-4"
+                                                />
+                                                <div>
+                                                    <p className="text-xl w-30 md:w-40 font-semibold">
+                                                        {item.name}{" "}
+                                                    </p>
+                                                    <div className="flex justify-between">
+                                                        <p className="font-ysabeau text-black font-bold text-lg">
+                                                            Size:
+                                                            <span className="text-gray-600">
+                                                                {item.size}
+                                                            </span>{" "}
+                                                        </p>
+                                                        <p className="font-ysabeau text-black font-bold text-lg">
+                                                            Qty:{" "}
+                                                            <span className="text-gray-600">
+                                                                {item.quantity}
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="md:hidden w-20">
+                                                <p className="text-gray-600 xt-sm">
+                                                    {item.size} x{" "}
+                                                    {item.quantity}
+                                                </p>
+                                            </div>
+                                            <div className="flex justify-end w-full">
+                                                <p className="text-yellow-500 text-xl font-semibold">
+                                                    ${item.pricePerUnit}.00
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>No product</p>
+                        )}
+                    </div>
                     {/* Order Details */}
                     <div className="flex flex-col w-full border border-gray-200 p-5 rounded-xl">
                         <p className="text-xl w-full font-semibold mb-2">
                             🧾 Order Details:
                         </p>
-                        <div className="mt-3 w-full p-3 ">
-                            <p className="font-semibold">Product:</p>
-                            {latestOrder.products &&
-                            latestOrder.products.length > 0 ? (
-                                <ul className="list-disc list-inside border-t mt-1">
-                                    {latestOrder.products.map((item, i) => (
-                                        <div key={i}>
-                                            <div className="flex items-center mt-3 border-b border-gray-300 pb-3">
-                                                <div className="flex items-center  w-full">
-                                                    <img
-                                                        src={item.image}
-                                                        alt={item.name}
-                                                        className="w-20 h-full object-cover rounded mr-4"
-                                                    />
-                                                    <p className="text-md w-30 md:w-40 font-semibold">
-                                                        {item.name}{" "}
-                                                    </p>
-                                                </div>
-                                                <div className="md:hidden w-20">
-                                                    <p className="text-gray-600 xt-sm">
-                                                        {item.size} x{" "}
-                                                        {item.quantity}
-                                                    </p>
-                                                </div>
-                                                <div className="hidden md:flex justify-between gap-4 w-full">
-                                                    <p>
-                                                        Size:
-                                                        <span className="font-bold">
-                                                            {item.size}
-                                                        </span>{" "}
-                                                    </p>
-                                                    <p>
-                                                        Quantity:{" "}
-                                                        <span className="font-bold">
-                                                            {item.quantity}
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </ul>
-                            ) : (
-                                <p>No product</p>
-                            )}
-                        </div>
+
                         <div className="w-full p-3 flex flex-col gap-3">
                             <p className="flex justify-between">
                                 <span>Order Id:</span>
