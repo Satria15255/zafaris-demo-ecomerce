@@ -38,19 +38,86 @@ const SuccesTransaction = () => {
     }
 
     return (
-        <div className="mt-8 md:mt-16 p-2 md:p-4 ">
+        <div className="mt-8 md:mt-16 xl:pt-16 p-2 md:p-4 flex flex-col items-center  ">
             {latestOrder ? (
-                <div className="mb-8 p-4 flex flex-col rounded-lg ">
+                <div className="mb-8 p-4 flex flex-col rounded-lg w-full max-w-7xl">
                     <div className="flex flex-col items-center">
                         <p className="text-8xl">
                             <FcApproval />
                         </p>
-                        <p className="text-4xl font-bold pb-6 text-green-600">
-                            Order Success! 🎉
+                        <p className="text-3xl font-semibold pb-6 text-green-600 font-montserrat">
+                            Your Order is Confirmed! 🎉
+                        </p>
+                        <p className="text-sm text-gray-600 ">
+                            Order ID : {latestOrder._id}
                         </p>
                     </div>
+                    {/*Order Updpate*/}
+                    <div className="flex flex-col justify-center  border rounded-xl border-gray-200 gap-2 p-3">
+                        <p className="font-semibold font-montserrat">
+                            Order Updates
+                        </p>
+                        {latestOrder.paymentMethod === "Cash on Delivery" ? (
+                            <p className="text-sm text-gray-600">
+                                {" "}
+                                Wait for the order process, and check
+                                periodically during this time.
+                            </p>
+                        ) : (
+                            <p className="text-sm text-gray-600">
+                                {" "}
+                                Make your payment using the navigation button
+                                below, and your order will be processed
+                                immediately.
+                            </p>
+                        )}
+                    </div>
+                    {/*Order Info*/}
+                    <div className="flex flex-col justify-center gap-4 border rounded-xl border-gray-200 p-3">
+                        <p className="font-semibold font-montserrat">
+                            Order Info
+                        </p>
+                        <div className="grid grid-cols-3 gap-4">
+                            <p className="flex flex-col text-gray-600 ">
+                                Order Date:{" "}
+                                <span className="font-ysabeau text-black font-bold text-xl">
+                                    {latestOrder.status}
+                                </span>
+                            </p>
+                            <p className="flex flex-col text-gray-600 ">
+                                Status:
+                                <span className="font-ysabeau text-black font-bold text-xl">
+                                    {latestOrder.status}
+                                </span>{" "}
+                            </p>
+                            <p className="flex flex-col text-gray-600 ">
+                                Payment Method:
+                                <span className="font-ysabeau text-black font-bold text-xl">
+                                    {latestOrder.paymentMethod}
+                                </span>{" "}
+                            </p>
+                            <p className="flex flex-col text-gray-600 ">
+                                Payment Status:
+                                <span className="font-ysabeau text-black font-bold text-xl">
+                                    {latestOrder.paymentStatus}
+                                </span>{" "}
+                            </p>
+                            <p className="flex flex-col text-gray-600 ">
+                                Phone Number:
+                                <span className="font-ysabeau text-black font-bold text-xl">
+                                    {latestOrder.phoneNumber}
+                                </span>{" "}
+                            </p>
+                            <p className="flex flex-col text-gray-600 ">
+                                Address:
+                                <span className="font-ysabeau text-black font-bold text-xl">
+                                    {latestOrder.shippingAddress}
+                                </span>{" "}
+                            </p>
+                        </div>
+                    </div>
                     {/* Order Details */}
-                    <div className="flex flex-col w-full">
+                    <div className="flex flex-col w-full border border-gray-200 p-5 rounded-xl">
                         <p className="text-xl w-full font-semibold mb-2">
                             🧾 Order Details:
                         </p>
@@ -73,7 +140,7 @@ const SuccesTransaction = () => {
                                                     </p>
                                                 </div>
                                                 <div className="md:hidden w-20">
-                                                    <p className="text-gray-500 text-md md:text-sm">
+                                                    <p className="text-gray-600 xt-sm">
                                                         {item.size} x{" "}
                                                         {item.quantity}
                                                     </p>
@@ -102,22 +169,22 @@ const SuccesTransaction = () => {
                         </div>
                         <div className="w-full p-3 flex flex-col gap-3">
                             <p className="flex justify-between">
-                                <strong>Order Id:</strong>
+                                <span>Order Id:</span>
                                 <p>{latestOrder._id}</p>
                             </p>
                             <p className="flex justify-between">
-                                <strong>Status:</strong> {latestOrder.status}
+                                <span>Status:</span> {latestOrder.status}
                             </p>
                             <p className="flex justify-between">
-                                <strong>Total Price:</strong> $
+                                <span>Total Price:</span> $
                                 {latestOrder.totalPrice}
                             </p>
                             <p className="flex h-auto justify-between">
-                                <strong>Address:</strong>{" "}
+                                <span>Address:</span>{" "}
                                 {latestOrder.shippingAddress}
                             </p>
                             <p className="flex justify-between">
-                                <strong>Payment Method:</strong>{" "}
+                                <span>Payment Method:</span>{" "}
                                 {latestOrder.paymentMethod}
                             </p>
                         </div>
@@ -144,7 +211,7 @@ const SuccesTransaction = () => {
                 <p>Loading transaction details...</p>
             )}
 
-            <div className="mt-8">
+            <div className="mt-8 max-w-7xl">
                 <h2 className="text-sm text-center lg:text-xl font-bold mb-4">
                     You Might Like
                 </h2>
