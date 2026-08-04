@@ -64,7 +64,7 @@ const SuccesTransaction = () => {
                                 periodically during this time.
                             </p>
                         ) : (
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-red-700">
                                 {" "}
                                 Make your payment using the navigation button
                                 below, and your order will be processed
