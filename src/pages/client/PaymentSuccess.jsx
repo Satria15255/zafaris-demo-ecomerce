@@ -133,12 +133,12 @@ const SuccesTransaction = () => {
                             </div>
                         </div>
                         {/* Order Details */}
-                        <div className="bg-gray-100 text-[#0C0C0C] p-2 md:p-5 rounded-3xl">
-                            <div className="mt-3 w-full">
+                        <div className="   text-[#0C0C0C] rounded-3xl">
+                            <div className="mt-3 w-full flex flex-col gap-4">
                                 <p className="text-xl font-semibold font-montserrat">
                                     🧾 Order Details:
                                 </p>
-                                <div className="flex flex-col gap-3 text-sm font-ysabeau lg:text-lg p-3">
+                                <div className="flex flex-col gap-3 border border-gray-200 rounded-xl text-sm font-ysabeau lg:text-lg p-4">
                                     <p className="flex justify-between">
                                         <span>Order ID:</span>
                                         <p>{latestOrder._id}</p>
@@ -156,11 +156,11 @@ const SuccesTransaction = () => {
                                 </div>
                             </div>
                             {/* Payment Details */}
-                            <div className="mt-3 w-full ">
+                            <div className="mt-3 w-full flex flex-col gap-4">
                                 <p className="font-semibold font-montserrat text-xl">
                                     💳 Payment Details:
                                 </p>
-                                <div className="flex flex-col gap-3 text-sm font-ysabeau lg:text-lg p-3">
+                                <div className="flex flex-col gap-3 border border-gray-200 rounded-xl text-sm font-ysabeau lg:text-lg p-4">
                                     <p className="flex justify-between">
                                         <span>Total Price:</span> $
                                         {latestOrder.totalPrice}.00
@@ -188,11 +188,11 @@ const SuccesTransaction = () => {
                                 </div>
                             </div>
                             {/* Contact Details */}
-                            <div className="mt-3 w-full">
+                            <div className="mt-3 w-full flex flex-col gap-4">
                                 <p className="font-semibold font-montserrat text-xl">
                                     👤 Contact Details:
                                 </p>
-                                <div className="flex flex-col gap-3 text-sm font-ysabeau lg:text-lg p-3">
+                                <div className="flex flex-col gap-3 border border-gray-200 rounded-xl text-sm font-ysabeau lg:text-lg p-4">
                                     <p className="flex  justify-between">
                                         <span>Name :</span> {latestOrder.name}
                                     </p>
