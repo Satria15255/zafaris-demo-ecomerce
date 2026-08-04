@@ -46,9 +46,13 @@ const SuccesTransaction = () => {
             {latestOrder ? (
                 <div className="mb-8 p-4 flex flex-col w-full   justify-center rounded-lg max-w-7xl">
                     <div className="flex flex-col justify-center items-center">
-                        <p className="text-8xl">
-                            <FcOk />
-                        </p>
+                        <div className="bg-green-100 p-6 rounded-full">
+                            <div className="bg-green-200 p-6 rounded-full">
+                                <p className="text-8xl">
+                                    <FcOk />
+                                </p>
+                            </div>
+                        </div>
                         <p className="text-4xl font-bold font-ysabeau pb-3 text-green-600">
                             Thank You
                         </p>
