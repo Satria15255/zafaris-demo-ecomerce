@@ -314,7 +314,7 @@ const PaymentPages = () => {
                         </div>
                         <button
                             onClick={handlePayment}
-                            className="bg-[#0C0C0C] text-white w-full py-2 text-lg lg:text-xl xl:text-md px-4 rounded-lg  hover:bg-white hover:text-black"
+                            className="bg-[#0C0C0C] text-white w-full py-2 text-lg lg:text-xl xl:text-md px-4 rounded-lg  hover:bg-white hover:text-black transition duration-200"
                         >
                             Paid Now
                         </button>
