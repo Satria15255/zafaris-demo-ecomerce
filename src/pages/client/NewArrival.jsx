@@ -66,7 +66,7 @@ function ProductList() {
             <footer className="text-center py-4">
                 <button
                     onClick={() => navigate("/products")}
-                    className="text-sm lg:text-lg bg-black text-white px-10 py-2 rounded-3xl hover:bg-white hover:text-black border border-gray-300 transition duration-200"
+                    className="text-sm lg:text-lg px-2 text-gray-700 font-ysabeau py-1 border-b  border-gray-700  hover:border-black  hover:bg-white hover:text-black  transition duration-300"
                 >
                     View All
                 </button>
