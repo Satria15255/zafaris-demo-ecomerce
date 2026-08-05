@@ -54,20 +54,20 @@ function OnSale({ onOpenModal }) {
 
     return (
         <div className=" mt-6 flex justify-center w-full h-auto">
-            <div className="w-full flex  bg-[#0C0C0C] ">
+            <div className="w-100 h-50 md:h-auto flex  bg-[#0C0C0C] ">
                 <div className="w-2/5">
                     <img
                         src={discountImage}
                         alt="discountImage"
-                        className="w-full h-80 object-cover object-center"
+                        className="w-full h-50 md:h-80 object-cover object-center"
                     />
                 </div>
-                <div className="w-3/5 text-white flex p-4 flex-col justify-center gap-3 font-montserrat">
-                    <p className="text-sm">LIMITED OFFER</p>
-                    <p className="text-6xl">
+                <div className="w-3/5 text-white flex p-4 flex-col justify-center gap-1 md:gap-3 font-montserrat">
+                    <p className="text-[8px] md:text-sm">LIMITED OFFER</p>
+                    <p className="text-lg md:text-6xl">
                         30% off every day for <br /> our dream products
                     </p>
-                    <button className="py-2 px-4 rounded-lg text-black w-1/5 bg-white border border-gray-300">
+                    <button className="py-1 lg:py-2 text-[7px] md:text-lg px-4 rounded-lg text-black w-1/3 md:w-1/5 bg-white border border-gray-300">
                         Get Now
                     </button>
                 </div>
