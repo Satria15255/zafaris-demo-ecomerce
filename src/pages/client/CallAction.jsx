@@ -4,7 +4,7 @@ import actionImage from "@/assets/heroSection/action.webp";
 const CallAction = () => {
     const navigate = useNavigate();
     return (
-        <div className="p-3 md:p-6 h-auto overflow-hidden ">
+        <div className="p-3 md:p-6 xl:p-2 w-full xl:max-w-7xl h-auto overflow-hidden ">
             <div className="relative h-full md:h-90 lg:h-120 xl:h-120 overflow-hidden group">
                 <div
                     style={{ backgroundImage: `url(${actionImage})` }}

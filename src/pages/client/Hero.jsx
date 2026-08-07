@@ -10,8 +10,8 @@ const Hero = () => {
     const navigate = useNavigate();
 
     return (
-        <div className=" px-2 lg:p-4 pt-15 md:pt-15 lg:pt-17 md:mt-16 flex justify-center w-full h-full xl:h-auto">
-            <div className="relative flex justify-end items-center w-100 h-50 xl:h-120">
+        <div className=" px-2   lg:p-4   pt-15 md:pt-15 lg:pt-17 md:mt-16 flex justify-center w-full xl:max-w-8xl h-full xl:h-auto">
+            <div className="relative flex justify-end items-center w-100 md:w-full h-50 xl:h-120">
                 <img
                     src={Slide1}
                     className="w-full h-full md:h-100 lg:h-screen xl:h-full object-cover object-center rounded-lg "
@@ -36,7 +36,7 @@ const Hero = () => {
                         </button>
                         <button
                             onClick={() => navigate("/products")}
-                            className="bg-transparent hidden md:flex w-1/3 md:px-5  md:h-10  text-[6px] md:text-xs  border border-white text-white hover:border-none hover:bg-black hover:text-white transition duration-300"
+                            className="bg-transparent hidden md:flex items-center justify-center w-1/3 md:px-5  md:h-10  text-[6px] md:text-xs  border border-white text-white hover:border-none hover:bg-black hover:text-white transition duration-300"
                         >
                             EXPLORE COLLECTION
                         </button>

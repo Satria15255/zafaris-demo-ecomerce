@@ -60,14 +60,12 @@ function App() {
               path="/"
               element={
                 <div className="flex flex-col items-center">
-                  <div className="xl:min-w-7xl xl:max-w-8xl">
-                    <Hero />
-                    <BestSeller />
-                    <DiscountSection />
-                    <NewArrival />
-                    <CallAction />
-                    <CategoryCollection />
-                  </div>
+                  <Hero />
+                  <BestSeller />
+                  <DiscountSection />
+                  <NewArrival />
+                  <CallAction />
+                  <CategoryCollection />
                 </div>
               }
             />
