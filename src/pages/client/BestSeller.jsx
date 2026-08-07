@@ -69,7 +69,6 @@ const Bestseller = () => {
                             el: ".swiper-pagination",
                             clickable: true,
                         }}
-                        className="h-full "
                     >
                         {bestSellingProducts.map((products, index) => (
                             <SwiperSlide key={index} className="pb-6">
