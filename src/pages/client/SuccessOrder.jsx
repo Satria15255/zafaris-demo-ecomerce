@@ -41,11 +41,11 @@ const SuccesTransaction = () => {
         <div className="mt-8 md:mt-16 xl:pt-16 p-2 md:p-4 flex flex-col items-center  ">
             {latestOrder ? (
                 <div className="mb-8 p-4 flex flex-col gap-4 rounded-lg w-full max-w-6xl">
-                    <div className="flex flex-col items-center">
-                        <p className="text-8xl">
+                    <div className="flex flex-col gap-3 items-center">
+                        <p className="text-6xl  md:text-8xl">
                             <FcApproval />
                         </p>
-                        <p className="text-3xl font-semibold pb-6 text-green-600 font-montserrat">
+                        <p className="text-lg md:text-3xl font-semibold md:pb-6 text-center text-green-600 font-montserrat">
                             Your Order is Confirmed! 🎉
                         </p>
                         <p className="text-sm text-gray-600 ">
@@ -77,10 +77,10 @@ const SuccesTransaction = () => {
                         <p className="font-semibold font-montserrat">
                             Order Info
                         </p>
-                        <div className="grid grid-cols-3 gap-4">
-                            <p className="flex flex-col text-gray-600 ">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <p className="flex flex-col text-sm md:text-lg text-gray-600 ">
                                 Order Date:{" "}
-                                <span className="font-ysabeau text-black font-bold text-xl">
+                                <span className="font-ysabeau text-black font-bold text-sm md:text-xl">
                                     {new Date(
                                         latestOrder.createdAt,
                                     ).toLocaleString()}
@@ -88,31 +88,31 @@ const SuccesTransaction = () => {
                             </p>
                             <p className="flex flex-col text-gray-600 ">
                                 Status:
-                                <span className="font-ysabeau text-black font-bold text-xl">
+                                <span className="font-ysabeau text-black font-bold text-sm md:text-xl">
                                     {latestOrder.status}
                                 </span>{" "}
                             </p>
                             <p className="flex flex-col text-gray-600 ">
                                 Payment Method:
-                                <span className="font-ysabeau text-black font-bold text-xl">
+                                <span className="font-ysabeau text-black font-bold text-sm md:text-xl">
                                     {latestOrder.paymentMethod}
                                 </span>{" "}
                             </p>
                             <p className="flex flex-col text-gray-600 ">
                                 Payment Status:
-                                <span className="font-ysabeau text-black font-bold text-xl">
+                                <span className="font-ysabeau text-black font-bold text-sm md:text-xl">
                                     {latestOrder.paymentStatus}
                                 </span>{" "}
                             </p>
                             <p className="flex flex-col text-gray-600 ">
                                 Phone Number:
-                                <span className="font-ysabeau text-black font-bold text-xl">
+                                <span className="font-ysabeau text-black font-bold text-sm md:text-xl">
                                     {latestOrder.phoneNumber}
                                 </span>{" "}
                             </p>
                             <p className="flex flex-col text-gray-600 ">
                                 Address:
-                                <span className="font-ysabeau text-black font-bold text-xl">
+                                <span className="font-ysabeau text-black font-bold text-sm md:text-xl">
                                     {latestOrder.shippingAddress}
                                 </span>{" "}
                             </p>
@@ -133,20 +133,24 @@ const SuccesTransaction = () => {
                                                 <img
                                                     src={item.image}
                                                     alt={item.name}
-                                                    className="w-20 h-full object-cover rounded mr-4"
+                                                    className=" w-15 md:w-20 h-full object-cover rounded mr-4"
                                                 />
-                                                <div>
-                                                    <p className="text-xl w-30 md:w-40 font-semibold">
+                                                <div className="flex flex-col justify-around">
+                                                    <p className="text-md md:text-xl w-60 md:w-80 font-semibold">
                                                         {item.name}{" "}
                                                     </p>
-                                                    <div className="flex justify-between">
-                                                        <p className="font-ysabeau text-black font-bold text-lg">
+                                                    <div className="flex  gap-8 md:justify-between text-xs md:text-lg text-gray-600">
+                                                        <p className="font-ysabeau  font-bold ">
                                                             Size:
-                                                            <span className="text-gray-600">
+                                                            <span className="">
                                                                 {item.size}
                                                             </span>{" "}
                                                         </p>
-                                                        <p className="font-ysabeau text-black font-bold text-lg">
+                                                        <p className="text-yellow-500 md:hidden flex  font-semibold">
+                                                            ${item.pricePerUnit}
+                                                            .00
+                                                        </p>
+                                                        <p className="font-ysabeau hidden md:flex text-black font-bold text-lg">
                                                             Qty:{" "}
                                                             <span className="text-gray-600">
                                                                 {item.quantity}
@@ -155,15 +159,18 @@ const SuccesTransaction = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="md:hidden w-20">
+                                            <div className="hidden w-20">
                                                 <p className="text-gray-600 xt-sm">
                                                     {item.size} x{" "}
                                                     {item.quantity}
                                                 </p>
                                             </div>
                                             <div className="flex justify-end w-full">
-                                                <p className="text-yellow-500 text-xl font-semibold">
+                                                <p className="text-yellow-500 hidden md:flex text-xl font-semibold">
                                                     ${item.pricePerUnit}.00
+                                                </p>
+                                                <p className="font-ysabeau md:hidden text-gray-600 font-bold text-lg">
+                                                    {item.quantity}x
                                                 </p>
                                             </div>
                                         </div>
