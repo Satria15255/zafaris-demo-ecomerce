@@ -10,12 +10,12 @@ const ShoppingCart = () => {
 	const { user } = useAuth();
 	const navigate = useNavigate();
 	return (
-		<div className="h-auto mt-16 pt-16 py-4 flex flex-col justify-center items-center justify-center">
+		<div className="h-auto md:mt-16 md:pt-16 py-4 flex flex-col justify-center items-center justify-center">
 			<header className="text-center py-10">
 				<p className="text-4xl font-montserrat">Your Shopping Cart</p>
 			</header>
-			<main className="w-full flex max-w-7xl px-4 gap-5">
-				<aside className="w-3/5">
+			<main className="w-full flex flex-col md:flex-row  max-w-7xl px-4 gap-5">
+				<aside className="w-full md:w-3/5">
 					<div className="py-2">
 						<p className="font-semibold text-lg font-montserrat">
 							{" "}
@@ -175,6 +175,11 @@ const ShoppingCart = () => {
 														.00
 													</div>
 												</td>
+												<div className="w-40 py-4">
+													<p className="text-sm  cursor-pointer lg:text-lg w-full  text-gray-600 hover:text-[#0C0C0C] transition duration-200 font-ysabeau border-b border-gray-400 pb-1">
+														Continue Shopping
+													</p>
+												</div>
 											</tr>
 										);
 									})}
@@ -182,13 +187,8 @@ const ShoppingCart = () => {
 							</table>
 						)}
 					</div>
-					<div className="w-40 py-4">
-						<p className="text-sm  cursor-pointer lg:text-lg w-full  text-gray-600 hover:text-[#0C0C0C] transition duration-200 font-ysabeau border-b border-gray-400 pb-1">
-							Continue Shopping
-						</p>
-					</div>
 				</aside>
-				<aside className="w-2/5 flex flex-col gap-8">
+				<aside className="w-full md:w-2/5 flex flex-col gap-8">
 					{/*Voucher Aplly*/}
 					<div>
 						<div className="py-2">

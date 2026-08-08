@@ -20,7 +20,7 @@ function ProductCard({ product, productDetails }) {
         >
             <div
                 key={product.id}
-                className="relative flex flex-col justify-center w-45 lg:w-70 xl:w-80 h-auto md:rounded-5 lg:rounded-xl mt-2 "
+                className="relative flex flex-col justify-center w-full lg:w-70 xl:w-80 h-auto md:rounded-5 lg:rounded-xl mt-2 "
             >
                 <div className="w-full h-auto">
                     <img
@@ -38,7 +38,7 @@ function ProductCard({ product, productDetails }) {
                         )}
                     </div>
                     <div className="absolute top-2 right-2 duration-200 flex justify-start  ">
-                        <p className="p-3 rounded-full bg-white text-[#0C0C0C] text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200">
+                        <p className="p-3 rounded-full bg-white text-[#0C0C0C] text-lg md:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200">
                             <IoHeartOutline />
                         </p>
                     </div>
@@ -70,14 +70,14 @@ function ProductCard({ product, productDetails }) {
                                 </>
                             )}
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex gap-1 md:gap-2">
                             <p
                                 onClick={() => productDetails(product)}
-                                className="p-3 rounded-full text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200"
+                                className="p-3 rounded-full text-lg md:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200"
                             >
                                 <IoSearchOutline />
                             </p>
-                            <p className="p-3 rounded-full text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200">
+                            <p className="p-3 rounded-full text-lg md:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200">
                                 <IoBagHandleOutline />
                             </p>
                         </div>
