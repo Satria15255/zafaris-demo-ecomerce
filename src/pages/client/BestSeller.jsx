@@ -35,7 +35,7 @@ const Bestseller = () => {
     return (
         <div className="my-6 lg:my-12 flex flex-col items-center">
             <header className="flex  justify-between w-full px-7 items-center py-4 ">
-                <p className="text-lg lg:text-2xl font-montserrat font-semibold border-b border-yellow-600 py-2">
+                <p className="text-sm md:text-lg lg:text-2xl font-montserrat font-semibold border-b border-yellow-600 py-2">
                     Best Deals
                 </p>
                 <p className="text-sm lg:text-lg text-gray-700 font-ysabeau border-b my-2">
@@ -44,7 +44,7 @@ const Bestseller = () => {
             </header>
             <main>
                 {/* Desktop Ver */}
-                <div className="hidden w-full xl:max-w-8xl mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
+                <div className=" w-full hidden  xl:max-w-8xl mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
                     {bestSellingProducts.map((products) => (
                         <ProductCard
                             key={products.id}
@@ -58,7 +58,7 @@ const Bestseller = () => {
                 </div>
 
                 {/* Mobile Ver */}
-                <div className="w-full md:hidden h-auto flex justify-center mt-2 lg:mt-4 pb-4 px-2 md:px-3 overflow-hidden">
+                <div className="w-100 md:w-full md:hidden h-auto  mt-2 lg:mt-4 pb-4 px-2 md:px-3 overflow-hidden">
                     {/* Slider */}
                     <Swiper
                         modules={[Pagination, Autoplay]}
@@ -69,6 +69,7 @@ const Bestseller = () => {
                             el: ".swiper-pagination",
                             clickable: true,
                         }}
+                        className="w-full"
                     >
                         {bestSellingProducts.map((products, index) => (
                             <SwiperSlide key={index} className="pb-6">
