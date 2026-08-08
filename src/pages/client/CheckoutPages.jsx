@@ -110,14 +110,14 @@ const CheckoutPage = () => {
                             Shopping Cart
                         </p>
                         <table className="w-full">
-                            <thead className="border-t border-gray-400 h-4 ">
+                            <thead className="hidden md:table-header-group border-t border-gray-400 h-4 ">
                                 <tr className="my-3 text-gray-400 font-semibold text-sm">
                                     <td className="py-6">PRODUCTS</td>
                                     <td>QUANTITY</td>
                                     <td>TOTAL</td>
                                 </tr>
                             </thead>
-                            <tbody className="border-t border-gray-400 table-fixed max-h-60 overflow-y-auto">
+                            <tbody className="md:border-t border-gray-400 table-fixed max-h-60 overflow-y-auto">
                                 {items.map((item) => {
                                     return (
                                         <tr
@@ -131,10 +131,10 @@ const CheckoutPage = () => {
                                                     alt={item.name}
                                                     className="w-25 h-25 md:w-20 md:h-20 lg:w-25 lg:h-25 object-cover rounded mr-1 md:mr-4"
                                                 />
-
+                                                {/*Proeduct details desktop*/}
                                                 <div className="flex flex-col justify-between gap-2  w-full h-full">
                                                     <div>
-                                                        <p className="text-sm md:text-lg text-sm max-w-sm font-medium">
+                                                        <p className="text-sm md:text-lg text-sm  font-medium">
                                                             {item.name}
                                                         </p>
                                                     </div>
@@ -209,7 +209,7 @@ const CheckoutPage = () => {
                         </p>
                         <form
                             onSubmit={handleSubmit}
-                            className="space-y-4 text-xs lg:text-lg "
+                            className="space-y-4 text-md md:text-xs lg:text-lg "
                         >
                             <div>
                                 <label className="font-semibold font-montserat" />

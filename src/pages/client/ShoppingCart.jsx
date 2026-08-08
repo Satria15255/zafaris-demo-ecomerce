@@ -41,7 +41,7 @@ const ShoppingCart = () => {
 							</div>
 						) : (
 							<table className="w-full">
-								<thead className="border-t border-gray-400 h-4 ">
+								<thead className="hidden md:flex border-t border-gray-400 h-4 ">
 									<tr className="my-3 text-gray-400 font-semibold text-sm">
 										<td className="py-6">PRODUCTS</td>
 										<td>QUANTITY</td>
@@ -51,136 +51,142 @@ const ShoppingCart = () => {
 								<tbody className="border-t border-gray-400 table-fixed max-h-60 overflow-y-auto">
 									{cart.map((item) => {
 										return (
-											<tr
-												key={`${item.productId._id} - ${item.size}`}
-												className="border-b border-gray-300 table-fixed  "
-											>
-												{/* Produk */}
-												<td className="flex justify-between  items-center py-2">
-													<img
-														src={
-															item.productId.image
-														}
-														alt={
-															item.productId.name
-														}
-														className="w-25 h-25 md:w-20 md:h-20 lg:w-25 lg:h-25 object-cover rounded mr-1 md:mr-4"
-													/>
+											<>
+												<tr
+													key={`${item.productId._id} - ${item.size}`}
+													className="border-b border-gray-300 table-fixed  "
+												>
+													{/* Produk */}
+													<td className="flex justify-between  items-center py-2">
+														<img
+															src={
+																item.productId
+																	.image
+															}
+															alt={
+																item.productId
+																	.name
+															}
+															className="w-25 h-25 md:w-20 md:h-20 lg:w-25 lg:h-25 object-cover rounded mr-1 md:mr-4"
+														/>
 
-													<div className="flex flex-col justify-between gap-2  w-full h-full">
-														<div>
-															<p className="text-sm md:text-lg text-sm max-w-sm font-medium">
-																{
-																	item
-																		.productId
-																		.name
-																}
-															</p>
-														</div>
-														<div className="flex gap-8">
-															<p className="text-xs lg:text-sm text-gray-600 font-semibold">
-																Size:{" "}
-																{item.size}
-															</p>
-															<div className="flex gap-2 items-center">
-																{item.discountPercent >
-																	0 && (
-																	<div className="flex gap-2">
-																		<p className="text-sm">
-																			$
-																			{
-																				item.discountPercent
-																			}
-																			OFF
-																		</p>
-																		<p className="text-sm line-through">
-																			$
-																			{
-																				item.price
-																			}
-																			.00{" "}
-																		</p>
-																	</div>
-																)}
-																<p className="text-yellow-500 text-sm text-lg font-semibold">
-																	$
+														<div className="flex flex-col justify-between gap-2  w-full h-full">
+															<div>
+																<p className="text-sm md:text-lg text-sm max-w-sm font-medium">
 																	{
-																		item.finalPrice
+																		item
+																			.productId
+																			.name
 																	}
-																	.00
 																</p>
 															</div>
+															<div className="flex gap-8">
+																<p className="text-xs lg:text-sm text-gray-600 font-semibold">
+																	Size:{" "}
+																	{item.size}
+																</p>
+																<div className="flex gap-2 items-center">
+																	{item.discountPercent >
+																		0 && (
+																		<div className="flex gap-2">
+																			<p className="text-sm">
+																				$
+																				{
+																					item.discountPercent
+																				}
+																				OFF
+																			</p>
+																			<p className="text-sm line-through">
+																				$
+																				{
+																					item.price
+																				}
+																				.00{" "}
+																			</p>
+																		</div>
+																	)}
+																	<p className="text-yellow-500 text-sm text-lg font-semibold">
+																		$
+																		{
+																			item.finalPrice
+																		}
+																		.00
+																	</p>
+																</div>
+															</div>
+															<div className="flex justify-start">
+																<button
+																	onClick={() =>
+																		removeCartItems(
+																			item
+																				.productId
+																				._id,
+																			item.size,
+																		)
+																	}
+																	className="text-xs md:text-sm text-gray-500 hover:text-red-500 md:mt-1"
+																>
+																	Remove
+																</button>
+															</div>
 														</div>
-														<div className="flex justify-start">
-															<button
-																onClick={() =>
-																	removeCartItems(
-																		item
-																			.productId
-																			._id,
-																		item.size,
-																	)
-																}
-																className="text-xs md:text-sm text-gray-500 hover:text-red-500 md:mt-1"
-															>
-																Remove
-															</button>
+													</td>
+													<td>
+														<div className="flex justify-between ">
+															<div className="flex items-center justify-center rounded-sm border py-1 border-gray-200">
+																<button
+																	className="text-xs lg:text-sm xl:text-lg text-gray-400 hover:text-[#0C0C0C] transition duration-100 px-2 py-1   rounded"
+																	onClick={() =>
+																		updateQty(
+																			item
+																				.productId
+																				._id,
+																			item.size,
+																			item.quantity -
+																				1,
+																		)
+																	}
+																>
+																	<LuMinus />
+																</button>
+																<span className="text-xs lg:text-sm px-2 md:px-4">
+																	{
+																		item.quantity
+																	}
+																</span>
+																<button
+																	className="text-xs lg:text-sm px-2 text-gray-400 hover:text-[#0C0C0C] transition duration-100 py-1   rounded"
+																	onClick={() =>
+																		updateQty(
+																			item
+																				.productId
+																				._id,
+																			item.size,
+																			item.quantity +
+																				1,
+																		)
+																	}
+																>
+																	<LuPlus />
+																</button>
+															</div>
 														</div>
-													</div>
-												</td>
-												<td>
-													<div className="flex justify-between ">
-														<div className="flex items-center justify-center rounded-sm border py-1 border-gray-200">
-															<button
-																className="text-xs lg:text-sm xl:text-lg text-gray-400 hover:text-[#0C0C0C] transition duration-100 px-2 py-1   rounded"
-																onClick={() =>
-																	updateQty(
-																		item
-																			.productId
-																			._id,
-																		item.size,
-																		item.quantity -
-																			1,
-																	)
-																}
-															>
-																<LuMinus />
-															</button>
-															<span className="text-xs lg:text-sm px-2 md:px-4">
-																{item.quantity}
-															</span>
-															<button
-																className="text-xs lg:text-sm px-2 text-gray-400 hover:text-[#0C0C0C] transition duration-100 py-1   rounded"
-																onClick={() =>
-																	updateQty(
-																		item
-																			.productId
-																			._id,
-																		item.size,
-																		item.quantity +
-																			1,
-																	)
-																}
-															>
-																<LuPlus />
-															</button>
+													</td>
+													<td>
+														<div className="flex items-center text-lg justify-center text-left text-yellow-500 font-semibold  hidden md:block">
+															$
+															{item.finalPrice *
+																item.quantity}
+															.00
 														</div>
-													</div>
-												</td>
-												<td>
-													<div className="flex items-center text-lg justify-center text-left text-yellow-500 font-semibold  hidden md:block">
-														$
-														{item.finalPrice *
-															item.quantity}
-														.00
-													</div>
-												</td>
+													</td>
+												</tr>
 												<div className="w-40 py-4">
 													<p className="text-sm  cursor-pointer lg:text-lg w-full  text-gray-600 hover:text-[#0C0C0C] transition duration-200 font-ysabeau border-b border-gray-400 pb-1">
 														Continue Shopping
 													</p>
 												</div>
-											</tr>
+											</>
 										);
 									})}
 								</tbody>
