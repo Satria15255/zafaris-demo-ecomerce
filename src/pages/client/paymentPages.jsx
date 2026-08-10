@@ -111,7 +111,7 @@ const PaymentPages = () => {
     return (
         <div className="mt-8 md:mt-16 xl:pt-16 p-2 md:p-4 flex flex-col items-center ">
             <p className="text-xl lg:text-4xl py-8 font-semibold font-montserrat  ">
-                💳 Complete Your Payment
+                Complete Your Payment 💳
             </p>
 
             {latestOrder ? (
@@ -123,7 +123,9 @@ const PaymentPages = () => {
                         </p>
                         <div className="h-auto flex flex-col justify-between">
                             <div className="mt-3 w-full p-3">
-                                <p className="font-semibold">Product:</p>
+                                <p className="font-semibold font-montserrat">
+                                    Product:
+                                </p>
                                 {latestOrder.products &&
                                 latestOrder.products.length > 0 ? (
                                     <ul className="list-disc list-inside border-t mt-1">
@@ -134,22 +136,29 @@ const PaymentPages = () => {
                                                         <img
                                                             src={item.image}
                                                             alt={item.name}
-                                                            className="w-20 h-full object-cover rounded mr-4"
+                                                            className=" w-15 md:w-20 h-full object-cover rounded mr-4"
                                                         />
-                                                        <div>
-                                                            <p className="text-xl w-30 md:w-40 font-semibold">
+                                                        <div className="flex flex-col justify-around">
+                                                            <p className="text-md md:text-xl w-60 md:w-80 font-semibold">
                                                                 {item.name}{" "}
                                                             </p>
-                                                            <div className="flex justify-between">
-                                                                <p className="font-ysabeau text-black font-bold text-lg">
+                                                            <div className="flex  gap-8 md:justify-between text-xs md:text-lg text-gray-600">
+                                                                <p className="font-ysabeau  font-bold ">
                                                                     Size:
-                                                                    <span className="text-gray-600">
+                                                                    <span className="">
                                                                         {
                                                                             item.size
                                                                         }
                                                                     </span>{" "}
                                                                 </p>
-                                                                <p className="font-ysabeau text-black font-bold text-lg">
+                                                                <p className="text-yellow-500 md:hidden flex  font-semibold">
+                                                                    $
+                                                                    {
+                                                                        item.pricePerUnit
+                                                                    }
+                                                                    .00
+                                                                </p>
+                                                                <p className="font-ysabeau hidden md:flex text-black font-bold text-lg">
                                                                     Qty:{" "}
                                                                     <span className="text-gray-600">
                                                                         {
@@ -160,16 +169,19 @@ const PaymentPages = () => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="md:hidden w-20">
+                                                    <div className="hidden w-20">
                                                         <p className="text-gray-600 xt-sm">
                                                             {item.size} x{" "}
                                                             {item.quantity}
                                                         </p>
                                                     </div>
                                                     <div className="flex justify-end w-full">
-                                                        <p className="text-yellow-500 text-xl font-semibold">
+                                                        <p className="text-yellow-500 hidden md:flex text-xl font-semibold">
                                                             ${item.pricePerUnit}
                                                             .00
+                                                        </p>
+                                                        <p className="font-ysabeau md:hidden text-gray-600 font-bold text-lg">
+                                                            {item.quantity}x
                                                         </p>
                                                     </div>
                                                 </div>
@@ -180,7 +192,7 @@ const PaymentPages = () => {
                                     <p>No product</p>
                                 )}
                             </div>
-                            <div className="w-full flex flex-col gap-3  p-3">
+                            <div className="w-full flex flex-col gap-3 text-sm md:text-lg font-ysabeau p-3">
                                 <div className="flex justify-between">
                                     <strong>Order Id:</strong>
                                     <p>{latestOrder._id}</p>
@@ -214,15 +226,17 @@ const PaymentPages = () => {
                             🧾 Payment Details:
                         </p>
                         <div className="mt-5 p-4">
-                            <p className="text-lg ">Transfer Method</p>
+                            <p className="text-sm md:text-lg font-montserrat">
+                                Transfer Method
+                            </p>
 
                             <div className="flex gap-2 lg:gap-5 mt-3">
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-4">
                                     <button
                                         onClick={() =>
                                             setSelectedTransfer("Visa")
                                         }
-                                        className={`rounded-full text-sm p-2  w-5 h-5 border transition duration-300 ${selectedTransfer === "Visa" ? "bg-[#0C0C0C] text-white" : "border-gray-700 hover:bg-gray-600"}`}
+                                        className={`rounded-full text-sm p-1 md:p-2  w-5 h-5 border transition duration-300 ${selectedTransfer === "Visa" ? "bg-[#0C0C0C] text-white" : "border-gray-700 hover:bg-gray-600"}`}
                                     ></button>
                                     <img src={visa} className="w-20 h-20" />
                                 </div>
@@ -240,7 +254,7 @@ const PaymentPages = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="p-4 flex flex-col text-sm lg:text-lg justify-around space-y-5">
+                        <div className="p-4 flex flex-col text-sm font-montserrat lg:text-lg justify-around space-y-5">
                             <div>
                                 <label />
                                 Card Name
