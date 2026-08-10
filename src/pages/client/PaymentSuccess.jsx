@@ -71,13 +71,13 @@ const SuccesTransaction = () => {
                     <div className="flex flex-col justify-center w-full">
                         {/* Product Details\ */}
                         <div className="mt-3 w-full">
-                            <p className="font-semibold text-xl font-montserrat border-b pb-4">
+                            <p className="font-semibold text-lg md:text-xl font-montserrat md:border-b pb-4">
                                 📦 Product Order:
                             </p>
                             <div className="p-3">
                                 {latestOrder.products &&
                                 latestOrder.products.length > 0 ? (
-                                    <ul className="list-disc list-inside   mt-1">
+                                    <ul className="list-disc list-inside border-t mt-1">
                                         {latestOrder.products.map((item, i) => (
                                             <div key={i}>
                                                 <div className="flex items-center justify-between w-full mt-3 border-b border-gray-300 pb-3">
@@ -85,22 +85,29 @@ const SuccesTransaction = () => {
                                                         <img
                                                             src={item.image}
                                                             alt={item.name}
-                                                            className="w-20 h-full object-cover rounded mr-4"
+                                                            className=" w-15 md:w-20 h-full object-cover rounded mr-4"
                                                         />
-                                                        <div>
-                                                            <p className="text-xl w-30 md:w-40 font-semibold">
+                                                        <div className="flex flex-col justify-around">
+                                                            <p className="text-md md:text-xl w-60 md:w-80 font-semibold">
                                                                 {item.name}{" "}
                                                             </p>
-                                                            <div className="flex justify-between">
-                                                                <p className="font-ysabeau text-black font-bold text-lg">
+                                                            <div className="flex  gap-8 md:justify-between text-xs md:text-lg text-gray-600">
+                                                                <p className="font-ysabeau  font-bold ">
                                                                     Size:
-                                                                    <span className="text-gray-600">
+                                                                    <span className="">
                                                                         {
                                                                             item.size
                                                                         }
                                                                     </span>{" "}
                                                                 </p>
-                                                                <p className="font-ysabeau text-black font-bold text-lg">
+                                                                <p className="text-yellow-500 md:hidden flex  font-semibold">
+                                                                    $
+                                                                    {
+                                                                        item.pricePerUnit
+                                                                    }
+                                                                    .00
+                                                                </p>
+                                                                <p className="font-ysabeau hidden md:flex text-black font-bold text-lg">
                                                                     Qty:{" "}
                                                                     <span className="text-gray-600">
                                                                         {
@@ -111,16 +118,19 @@ const SuccesTransaction = () => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="md:hidden w-20">
+                                                    <div className="hidden w-20">
                                                         <p className="text-gray-600 xt-sm">
                                                             {item.size} x{" "}
                                                             {item.quantity}
                                                         </p>
                                                     </div>
                                                     <div className="flex justify-end w-full">
-                                                        <p className="text-yellow-500 text-xl font-semibold">
+                                                        <p className="text-yellow-500 hidden md:flex text-xl font-semibold">
                                                             ${item.pricePerUnit}
                                                             .00
+                                                        </p>
+                                                        <p className="font-ysabeau md:hidden text-gray-600 font-bold text-lg">
+                                                            {item.quantity}x
                                                         </p>
                                                     </div>
                                                 </div>
@@ -135,7 +145,7 @@ const SuccesTransaction = () => {
                         {/* Order Details */}
                         <div className="   text-[#0C0C0C] rounded-3xl">
                             <div className="mt-3 w-full flex flex-col gap-4">
-                                <p className="text-xl font-semibold font-montserrat">
+                                <p className="text-lg md:text-xl font-semibold font-montserrat">
                                     🧾 Order Details:
                                 </p>
                                 <div className="flex flex-col gap-3 border border-gray-200 rounded-xl text-sm font-ysabeau lg:text-lg p-4">
@@ -157,7 +167,7 @@ const SuccesTransaction = () => {
                             </div>
                             {/* Payment Details */}
                             <div className="mt-3 w-full flex flex-col gap-4">
-                                <p className="font-semibold font-montserrat text-xl">
+                                <p className="font-semibold font-montserrat text-lg md:text-xl">
                                     💳 Payment Details:
                                 </p>
                                 <div className="flex flex-col gap-3 border border-gray-200 rounded-xl text-sm font-ysabeau lg:text-lg p-4">
@@ -189,7 +199,7 @@ const SuccesTransaction = () => {
                             </div>
                             {/* Contact Details */}
                             <div className="mt-3 w-full flex flex-col gap-4">
-                                <p className="font-semibold font-montserrat text-xl">
+                                <p className="font-semibold font-montserrat text-lg md:text-xl">
                                     👤 Contact Details:
                                 </p>
                                 <div className="flex flex-col gap-3 border border-gray-200 rounded-xl text-sm font-ysabeau lg:text-lg p-4">
