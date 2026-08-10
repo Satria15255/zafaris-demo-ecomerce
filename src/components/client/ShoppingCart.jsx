@@ -240,7 +240,10 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                             </div>
                             <div className="w-1/2">
                                 <button
-                                    onClick={() => navigate("/my-cart")}
+                                    onClick={() => {
+                                        navigate("/my-cart");
+                                        closeShoppingCart();
+                                    }}
                                     className="text-lg flex justify-center items-center mt-3 w-full h-12 border bg-white text-[#0C0C0C] border-black  hover:text-white hover:bg-[#0C0C0C] transition duration-300 rounded-md"
                                 >
                                     View Cart

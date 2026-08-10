@@ -41,7 +41,7 @@ const ShoppingCart = () => {
 							</div>
 						) : (
 							<table className="w-full">
-								<thead className="hidden md:flex border-t border-gray-400 h-4 ">
+								<thead className="hidden md:table-header-group border-t border-gray-400 h-4 ">
 									<tr className="my-3 text-gray-400 font-semibold text-sm">
 										<td className="py-6">PRODUCTS</td>
 										<td>QUANTITY</td>
