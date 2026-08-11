@@ -32,7 +32,7 @@ const SidebarProfile = ({ closeSidebar }) => {
             className="inset-0 bg-black/10 fixed z-40 flex justify-end"
             onClick={closeSidebar}
         >
-            <div className="mt-17 mr-10 rounded-3xl w-1/2 md:w-50 lg:w-1/5 h-70 lg:h-90 bg-white z-50 md:p-6 shadow-xl">
+            <div className="mt-17 mr-10 rounded-3xl  h-70 lg:h-90 bg-white z-50 md:p-6 shadow-xl">
                 <ul className="md:space-y-3">
                     <div>
                         <div className="flex justify-center items=center py-2">
