@@ -12,11 +12,11 @@ const CallAction = () => {
                 ></div>
 
                 {/* Content */}
-                <div className="relative z-10 gap-2 md:gap-4 lg:gap-5 flex flex-col  justify-center h-50 p-7  lg:ml-8 font-sans">
+                <div className="relative z-10 gap-2 md:gap-4 lg:gap-5 flex flex-col  justify-center h-50 md:h-full p-7  lg:ml-8 font-sans">
                     <p className="text-xl md:text-5xl lg:text-6xl font-montserrat">
                         Find Your Perfect <br /> Pair Faster
                     </p>
-                    <p className="text-[9px] text-md max-w-xs leading-tight lg:max-w-sm flex font-ysabeau">
+                    <p className="text-[9px] lg:text-lg max-w-xs leading-tight lg:max-w-sm flex font-ysabeau">
                         Filter by Category and Size <br /> to Find the Perfect
                         of Shoes.
                     </p>
