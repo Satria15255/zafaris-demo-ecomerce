@@ -37,15 +37,15 @@ const ChangePassword = () => {
         }
     };
     return (
-        <div className="flex flex-col gap-10 lg:px-16 h-auto lg:h-full pb-4">
+        <div className="flex flex-col gap-10  h-auto lg:h-full p-8">
             {/* Form*/}
-            <div>
+            <div className="border border-gray-200 shadow-2xl rounded-xl p-5">
                 <form
                     onSubmit={handleForm}
-                    className="gap-14 flex flex-col gap-7 w-full px-4 text-sm lg:text-lg lg:px-16"
+                    className="gap-14 flex flex-col gap-7 font-ysabeau w-full px-4 text-sm lg:text-md "
                 >
                     <div className="w-full flex flex-col">
-                        <h2 className="text-left">Current Password</h2>
+                        <p className="text-lg">Current Password</p>
                         <input
                             type="text"
                             name="currentPassword"
@@ -55,7 +55,7 @@ const ChangePassword = () => {
                         />
                     </div>
                     <div className="w-full flex flex-col ">
-                        <h2>New Password</h2>
+                        <p className="text-lg">New Password</p>
                         <input
                             type="text"
                             name="newPassword"
@@ -65,10 +65,10 @@ const ChangePassword = () => {
                         />
                     </div>
                 </form>
-                <div className="w-full flex justify-center mt-10">
+                <div className="w-full flex justify-center lg:justify-end mt-10">
                     <button
                         onClick={handleForm}
-                        className="bg-black w-1/2 text-sm lg:w-1/5 text-white border border-gray-300 hover:bg-white hover:text-black transition durationn-300 px-4 py-3 rounded-xl mt-4"
+                        className="bg-black w-1/2 text-sm font-ysabeau lg:w-1/5 text-white border border-gray-300 hover:bg-white hover:text-black transition durationn-300 px-4 py-3 rounded-xl mt-4"
                     >
                         Change Password
                     </button>

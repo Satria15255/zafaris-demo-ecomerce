@@ -65,7 +65,7 @@ const CategoryCollection = () => {
                             </p>
                             <p
                                 onclick={() => navigate("/products")}
-                                className="underline pb-7 text-sm font-semibold"
+                                className="underline cursor-pointer pb-7 text-gray-600 hover:text-[#0C0C0C] transition duration-200 w-1/3 text-sm font-semibold"
                             >
                                 SHOP NOW
                             </p>
