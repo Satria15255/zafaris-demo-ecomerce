@@ -79,7 +79,7 @@ const OrderPages = () => {
     }
 
     return (
-        <div className="">
+        <div className="p-5">
             <div>
                 {/* Filter Orders */}
                 <div className="flex md:justify-around gap-3 pb-6 border-b border-gray-400 md:w-full overflow-x-auto px-2">

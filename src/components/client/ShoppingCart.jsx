@@ -43,7 +43,10 @@ const ShoppingCart = ({ closeShoppingCart }) => {
                                         You may check out all the available
                                         products and buy some in the shop
                                     </p>
-                                    <button className="px-4 py-2 border border-gray-200 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] transition duration-200 font-semibold rounded-lg">
+                                    <button
+                                        onClick={() => navigate("/products")}
+                                        className="px-4 py-2 border border-gray-200 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] transition duration-200 font-semibold rounded-lg"
+                                    >
                                         Continue Shopping
                                     </button>
                                 </div>

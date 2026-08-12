@@ -32,7 +32,7 @@ const SidebarProfile = ({ closeSidebar }) => {
             className="inset-0 bg-black/10 fixed z-40 flex justify-end"
             onClick={closeSidebar}
         >
-            <div className="mt-17 mr-10 rounded-3xl  h-70 lg:h-90 bg-white z-50 md:p-6 shadow-xl">
+            <div className="mt-17 mr-10 rounded-3xl w-1/2 md:w-50 lg:w-1/5 h-70 lg:h-90 bg-white z-50 md:p-6 shadow-xl">
                 <ul className="md:space-y-3">
                     <div>
                         <div className="flex justify-center items=center py-2">
@@ -46,7 +46,7 @@ const SidebarProfile = ({ closeSidebar }) => {
                             onClick={() =>
                                 handleNavigate("/dashboard?tab=profile")
                             }
-                            className="flex font-bold items-center text-sm gap-2 hover:text-gray-300 py-2 px-1 mt-1"
+                            className="flex font-bold items-center text-sm gap-2 hover:text-[#0C0C0C] text-gray-600 py-2 px-1 mt-1"
                         >
                             <FaHome />
                             <span>Profile</span>
@@ -55,14 +55,14 @@ const SidebarProfile = ({ closeSidebar }) => {
                             onClick={() =>
                                 handleNavigate("/dashboard?tab=my-orders")
                             }
-                            className="flex font-bold items-center text-sm gap-2 hover:text-gray-300 py-2 px-1 mt-1"
+                            className="flex font-bold items-center text-sm gap-2 hover:text-[#0C0C0C] text-gray-600 py-2 px-1 mt-1"
                         >
                             <FaCreditCard />
                             <span>My Orders</span>
                         </button>
                         <button
                             onClick={handleLogout}
-                            className="flex font-bold text-sm items-center gap-2 hover:text-red-400 py-2 px-1"
+                            className="flex font-bold text-sm items-center gap-2 text-gray-600 hover:text-red-400 py-2 px-1"
                         >
                             <FaSignOutAlt />
                             <span>Logout</span>
