@@ -53,15 +53,15 @@ const ProfilePages = () => {
     };
     return (
         <div className="flex flex-col bg-[#FAFAFA] gap-10 p-5 h-full">
-            <div className="flex flex-col md:flex-row bg-white items-center border border-gray-100 shadow-lg rounded-xl  gap-2 lg:p-9 ">
+            <div className="flex flex-row bg-white items-center border border-gray-100 shadow-lg rounded-xl  gap-2 py-7 px-2 lg:p-9 ">
                 <div className="text-5xl lg:text-6xl">
                     <PiUserCircle />
                 </div>
                 <div className="w-60 flex flex-col justify-center">
-                    <p className="text-3xl lg:text-3xl  font-montserrat">
+                    <p className="text-xl lg:text-3xl  font-montserrat">
                         {user?.name}
                     </p>
-                    <p className="text-xs font-ysabeau bg-green-200 flex gap-1 w-35 justify-center items-center rounded-full">
+                    <p className=" text-[10px] md:text-xs font-ysabeau bg-green-200 flex gap-1 w-25 md:w-35 justify-center items-center rounded-full">
                         <MdCheckCircleOutline size={15} />
                         Verified Account
                     </p>
