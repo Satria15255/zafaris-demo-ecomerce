@@ -49,7 +49,7 @@ const CategoryCollection = () => {
             </div>
             <div className="hidden xl:max-w-7xl md:flex flex-col gap-2 md:flex-row justify-around lg:mt-4">
                 {collection.map((c) => (
-                    <div className="w-50 lg:w-80">
+                    <div className="w-50 md:w-1/4 lg:w-80">
                         <div className="overflow-hidden">
                             <img
                                 src={c.image}
@@ -65,7 +65,7 @@ const CategoryCollection = () => {
                             </p>
                             <p
                                 onclick={() => navigate("/products")}
-                                className="underline cursor-pointer pb-7 text-gray-600 hover:text-[#0C0C0C] transition duration-200 w-1/3 text-sm font-semibold"
+                                className="underline cursor-pointer pb-7 text-gray-600 hover:text-[#0C0C0C] transition duration-200 w-1/3 md:w-1/2 text-xs lg:text-sm font-semibold"
                             >
                                 SHOP NOW
                             </p>

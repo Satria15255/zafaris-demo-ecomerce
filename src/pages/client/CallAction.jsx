@@ -16,7 +16,7 @@ const CallAction = () => {
                     <p className="text-xl md:text-5xl lg:text-6xl font-montserrat">
                         Find Your Perfect <br /> Pair Faster
                     </p>
-                    <p className="text-[9px] lg:text-lg max-w-xs leading-tight lg:max-w-sm flex font-ysabeau">
+                    <p className="text-[9px] md:text-sm lg:text-lg max-w-xs leading-tight lg:max-w-sm flex font-ysabeau">
                         Filter by Category and Size <br /> to Find the Perfect
                         of Shoes.
                     </p>
