@@ -61,7 +61,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         {user ? (
                             <button
                                 onClick={onToggleSidebar}
-                                className="relative flex items-center gap-2 hidden md:flex px-2 hover:text-yellow-500 transition duration-100"
+                                className="relative flex items-center md:text-xs lg:text-md gap-2 hidden md:flex px-2 hover:text-yellow-500 transition duration-100"
                             >
                                 <PiUserCircle size={30} />{" "}
                                 <span>Hi {user.name}</span>
@@ -69,7 +69,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         ) : (
                             <p
                                 onClick={() => navigate("/login")}
-                                className="cursor-pointer hover:underline mb-2 text-md"
+                                className="cursor-pointer hover:underline mb-2 md:text-xs lg:text-md"
                             >
                                 {" "}
                                 Login / Register
@@ -92,7 +92,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
             </div>
             {/* Bottom Section */}
             <div>
-                <div className=" gap-7 hidden md:flex justify-start font-semibold text-sm lg:text-md mt-5 items-center">
+                <div className=" gap-7 hidden md:flex justify-start font-semibold text-xs lg:text-md mt-5 items-center">
                     <p
                         onClick={() => navigate("/products")}
                         className="cursor-pointer hover:text-yellow-500 transition duration-100"
