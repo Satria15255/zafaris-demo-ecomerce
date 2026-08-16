@@ -15,7 +15,7 @@ const ShoppingCart = () => {
 				<p className="text-4xl font-montserrat">Your Shopping Cart</p>
 			</header>
 			<main className="w-full flex flex-col md:flex-row  max-w-7xl px-4 gap-5">
-				<aside className="w-full md:w-3/5">
+				<aside className="w-full  md:w-1/2 lg:w-3/5">
 					<div className="py-2">
 						<p className="font-semibold text-lg font-montserrat">
 							{" "}
@@ -44,7 +44,7 @@ const ShoppingCart = () => {
 							</div>
 						) : (
 							<table className="w-full">
-								<thead className="hidden md:table-header-group border-t border-gray-400 h-4 ">
+								<thead className="hidden lg:table-header-group border-t border-gray-400 h-4 ">
 									<tr className="my-3 text-gray-400 font-semibold text-sm">
 										<td className="py-6">PRODUCTS</td>
 										<td>QUANTITY</td>
@@ -75,7 +75,7 @@ const ShoppingCart = () => {
 
 														<div className="flex flex-col justify-between gap-2  w-full h-full">
 															<div>
-																<p className="text-sm md:text-lg text-sm max-w-sm font-medium">
+																<p className="text-sm lg::text-lg max-w-sm font-medium">
 																	{
 																		item
 																			.productId
@@ -83,7 +83,7 @@ const ShoppingCart = () => {
 																	}
 																</p>
 															</div>
-															<div className="flex gap-8">
+															<div className="flex items-center gap-8">
 																<p className="text-xs lg:text-sm text-gray-600 font-semibold">
 																	Size:{" "}
 																	{item.size}
@@ -176,7 +176,7 @@ const ShoppingCart = () => {
 														</div>
 													</td>
 													<td>
-														<div className="flex items-center text-lg justify-center text-left text-yellow-500 font-semibold  hidden md:block">
+														<div className="flex items-center text-lg justify-center text-left text-yellow-500 font-semibold  hidden lg:block">
 															$
 															{item.finalPrice *
 																item.quantity}
@@ -197,7 +197,7 @@ const ShoppingCart = () => {
 						)}
 					</div>
 				</aside>
-				<aside className="w-full md:w-2/5 flex flex-col gap-8">
+				<aside className="w-full md:w-1/2 lg:w-2/5 flex flex-col gap-8">
 					{/*Voucher Aplly*/}
 					<div>
 						<div className="py-2">

@@ -44,7 +44,7 @@ const Bestseller = () => {
             </header>
             <main>
                 {/* Desktop Ver */}
-                <div className=" w-full hidden  xl:max-w-8xl mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
+                <div className=" w-full hidden  xl:max-w-7xl mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
                     {bestSellingProducts.map((products) => (
                         <ProductCard
                             key={products.id}

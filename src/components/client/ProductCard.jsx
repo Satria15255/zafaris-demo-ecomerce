@@ -20,7 +20,7 @@ function ProductCard({ product, productDetails }) {
         >
             <div
                 key={product.id}
-                className="relative flex flex-col justify-center w-full lg:w-70 xl:w-80 h-auto md:rounded-5 lg:rounded-xl mt-2 "
+                className="relative flex flex-col justify-center w-full lg:w-70 xl:w-75 h-auto md:rounded-5 lg:rounded-xl mt-2 "
             >
                 <div className="w-full h-auto">
                     <img

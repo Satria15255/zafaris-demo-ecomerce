@@ -10,7 +10,7 @@ const Hero = () => {
     const navigate = useNavigate();
 
     return (
-        <div className=" px-2   md:p-4   pt-15  md:pt-12 lg:pt-17 md:mt-17 flex justify-center w-full xl:max-w-8xl h-full xl:h-auto">
+        <div className="   pt-15  md:pt-12 lg:pt-17 md:mt-17 flex justify-center w-full xl:max-w-7xl h-full xl:h-auto">
             <div className="relative flex justify-end items-center w-100 md:w-full h-50 md:h-100 xl:h-120  ">
                 <img
                     src={Slide1}
@@ -27,7 +27,7 @@ const Hero = () => {
                         Discover the latest products from top brands. <br />
                         Designed for performance, built for style.
                     </p>
-                    <div className="flex gap-1 md:gap-3 w-1/2 lg:w-full">
+                    <div className="flex gap-1 md:gap-3 w-1/2 ">
                         <button
                             onClick={() => navigate("/products")}
                             className="bg-black w-1/3 md:w-1/2 md:px-5  md:h-10  text-[6px] md:text-[8px] lg:text-xs text-white hover:border border-white hover:bg-transparent transition duration-300"

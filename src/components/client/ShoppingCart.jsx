@@ -14,7 +14,7 @@ const ShoppingCart = ({ closeShoppingCart }) => {
 
     return (
         <div className="fixed bg-black/20 inset-0 w-full z-50 h-screen flex justify-end ">
-            <div className="bg-white w-full md:w-3/5 lg:w-2/5 xl:w-1/4 flex flex-col overflow-y-auto items-center">
+            <div className="bg-white w-full md:w-1/2 lg:w-2/5 xl:w-1/4 flex flex-col overflow-y-auto items-center">
                 {/* Tombol Close */}
                 <div className="w-full flex justify-between p-5 border-b border-gray-400">
                     <button
