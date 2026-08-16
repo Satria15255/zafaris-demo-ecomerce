@@ -105,12 +105,12 @@ const CheckoutPage = () => {
             ) : (
                 <div className="flex flex-col md:flex-row pt-2 w-full max-w-7xl">
                     {/* Rincian Cart */}
-                    <div className="w-full mb-6 p-2 md:p-8">
+                    <div className="w-full md:w-1/2 lg:w-2/5 mb-6 p-2 md:p-8">
                         <p className="text-xl md:text-xl lg:text-lg font-montserrat font-semibold border-b border-gray-500 pb-3">
                             Shopping Cart
                         </p>
                         <table className="w-full">
-                            <thead className="hidden md:table-header-group border-t border-gray-400 h-4 ">
+                            <thead className="hidden lg:table-header-group border-t border-gray-400 h-4 ">
                                 <tr className="my-3 text-gray-400 font-semibold text-sm">
                                     <td className="py-6">PRODUCTS</td>
                                     <td>QUANTITY</td>
@@ -179,7 +179,7 @@ const CheckoutPage = () => {
                                                 </p>
                                             </td>
                                             <td>
-                                                <div className="flex items-center text-lg justify-center text-left text-yellow-500 font-semibold  hidden md:block">
+                                                <div className="flex items-center text-lg justify-center text-left text-yellow-500 font-semibold  hidden lg:block">
                                                     $
                                                     {item.finalPrice *
                                                         item.quantity}
@@ -203,7 +203,7 @@ const CheckoutPage = () => {
                     </div>
 
                     {/* Form Pembeli */}
-                    <div className="w-full md:w-3/5 pt-8 bg-gray-100 rounded-xl p-4">
+                    <div className="w-full md:w-1/2 lg:w-3/5 pt-8 bg-gray-100 rounded-xl p-4">
                         <p className="text-xl md:text-xl lg:text-lg font-semibold font-montserrat  pb-4 font-semibold">
                             Order Details
                         </p>
