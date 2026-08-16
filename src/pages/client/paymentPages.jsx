@@ -115,9 +115,9 @@ const PaymentPages = () => {
             </p>
 
             {latestOrder ? (
-                <div className="mb-8 p-4 xl:p-2 flex flex-col md:flex-row rounded-lg w-full max-w-7xl">
+                <div className="mb-8 lg:p-4 xl:p-2 flex flex-col md:flex-row rounded-lg w-full max-w-7xl">
                     {/* Order Details */}
-                    <div className="flex flex-col w-full  ">
+                    <div className="flex flex-col w-full md:w-1/2 lg:w-3/5  ">
                         <p className="text-xl w-full font-semibold mb-2">
                             🧾 Order Details:
                         </p>
@@ -139,10 +139,10 @@ const PaymentPages = () => {
                                                             className=" w-15 md:w-20 h-full object-cover rounded mr-4"
                                                         />
                                                         <div className="flex flex-col justify-around">
-                                                            <p className="text-md md:text-xl w-60 md:w-80 font-semibold">
+                                                            <p className="text-md lg:text-xl w-60 lg:w-80 font-semibold">
                                                                 {item.name}{" "}
                                                             </p>
-                                                            <div className="flex  gap-8 md:justify-between text-xs md:text-lg text-gray-600">
+                                                            <div className="flex  gap-8 lg:justify-between text-xs md:text-sm lg:text-lg text-gray-600">
                                                                 <p className="font-ysabeau  font-bold ">
                                                                     Size:
                                                                     <span className="">
@@ -158,9 +158,9 @@ const PaymentPages = () => {
                                                                     }
                                                                     .00
                                                                 </p>
-                                                                <p className="font-ysabeau hidden md:flex text-black font-bold text-lg">
+                                                                <p className="font-ysabeau hidden md:flex  font-bold   ">
                                                                     Qty:{" "}
-                                                                    <span className="text-gray-600">
+                                                                    <span className="">
                                                                         {
                                                                             item.quantity
                                                                         }
@@ -192,7 +192,7 @@ const PaymentPages = () => {
                                     <p>No product</p>
                                 )}
                             </div>
-                            <div className="w-full flex flex-col gap-3 text-sm md:text-lg font-ysabeau p-3">
+                            <div className="w-full flex flex-col gap-3 text-sm lg:text-lg font-ysabeau p-3">
                                 <div className="flex justify-between">
                                     <strong>Order Id:</strong>
                                     <p>{latestOrder._id}</p>
@@ -221,12 +221,12 @@ const PaymentPages = () => {
                     </div>
 
                     {/* Payment Details */}
-                    <div className="bg-gray-100 w-full md:w-3/5 h-auto flex flex-col justify-around p-4 rounded-xl">
+                    <div className="bg-gray-100 w-full md:w-1/2 lg:w-2/5 h-auto flex flex-col justify-around p-2 lg:p-4 rounded-xl">
                         <p className="text-xl w-full font-semibold mb-2">
                             🧾 Payment Details:
                         </p>
                         <div className="mt-5 p-4">
-                            <p className="text-sm md:text-lg font-montserrat">
+                            <p className="text-sm lg:text-lg font-montserrat">
                                 Transfer Method
                             </p>
 
