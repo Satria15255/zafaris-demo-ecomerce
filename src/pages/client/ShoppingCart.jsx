@@ -1,14 +1,46 @@
+import React, { useState, useMemo } from "react";
+
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import { TbBasketQuestion } from "react-icons/tb";
 import { FaMinus } from "react-icons/fa";
 import { LuMinus, LuPlus } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
+import { getDiscountVoucher } from "@/api/Api";
 
 const ShoppingCart = () => {
-	const { cart, removeCartItems, updateQty, totalPrice } = useCart();
+	const {
+		cart,
+		removeCartItems,
+		updateQty,
+		totalPrice,
+		voucher,
+		applyVoucher,
+		removeVoucher,
+		voucherLoading,
+		voucherError,
+		finalTotal,
+	} = useCart();
 	const { user } = useAuth();
 	const navigate = useNavigate();
+	const [voucherCode, setVoucherCode] = useState("");
+
+	// Handle perubahan input form
+	const handleChange = (e) => {
+		setVoucherCode((prev) => ({
+			...prev,
+			[e.target.name]: e.target.value,
+		}));
+	};
+
+	const handleVoucher = async () => {
+		try {
+			await applyVoucher(voucherCode);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<div className="h-auto md:mt-16 md:pt-16 py-4 flex flex-col justify-center items-center justify-center">
 			<header className="text-center py-10">
@@ -207,16 +239,20 @@ const ShoppingCart = () => {
 							</p>
 						</div>
 						<div className=" border bg-gray-100 border-gray-100 text-md w-full h-auto p-3 rounded-xl">
-							<div className="flex gap-3 items-center py-2 ">
+							<form className="flex gap-3 items-center py-2 ">
 								<input
 									type="text"
 									placeholder="Our Voucher Code"
+									onChange={handleChange}
 									className="bg-white w-full px-2 py-2 font-ysabeau rounded-xl border border-gray-300"
 								/>
-								<button className=" flex justify-center font-ysabeau items-center text-sm  w-1/5 py-2 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200   rounded-xl">
+								<button
+									onClick={handleVoucher}
+									className=" flex justify-center font-ysabeau items-center text-sm  w-1/5 py-2 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200   rounded-xl"
+								>
 									Apply
 								</button>
-							</div>
+							</form>
 						</div>
 					</div>
 					{/*Cart Info*/}
@@ -255,7 +291,6 @@ const ShoppingCart = () => {
 							<div className="flex justify-between py-2 font-semibold">
 								<p>Total</p>
 								<p className="text-yellow-500">
-									{" "}
 									${totalPrice.toFixed(2)}
 								</p>
 							</div>

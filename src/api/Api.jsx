@@ -32,6 +32,8 @@ export const updateCartQuantity = (productId, size, quantity) =>
 export const removeCartItem = (productId, size) =>
     API.delete(`/api/cart/remove/${productId}/${size}`);
 export const clearCart = () => API.delete("/api/cart/clear");
+export const getDiscountVoucher = (data) =>
+    API.post("/api/voucher/apply", data);
 // =======================
 // 👟 PRODUCTS
 // =======================

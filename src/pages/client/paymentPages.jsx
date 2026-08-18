@@ -97,7 +97,7 @@ const PaymentPages = () => {
                 transferProvider: selectedTransfer,
             });
             toast.success("Payment Success!!");
-            navigate(`/completed-order/${latestOrder._id}`);
+            navigate(`/payment-success/${latestOrder._id}`);
         } catch (error) {
             console.log(error.message);
             console.log(error.response);
