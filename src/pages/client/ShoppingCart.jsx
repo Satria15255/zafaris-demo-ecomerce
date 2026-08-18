@@ -6,8 +6,6 @@ import { TbBasketQuestion } from "react-icons/tb";
 import { FaMinus } from "react-icons/fa";
 import { LuMinus, LuPlus } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
-import { getDiscountVoucher } from "@/api/Api";
-
 const ShoppingCart = () => {
 	const {
 		cart,
@@ -20,6 +18,7 @@ const ShoppingCart = () => {
 		voucherLoading,
 		voucherError,
 		finalTotal,
+		discountAmount,
 	} = useCart();
 	const { user } = useAuth();
 	const navigate = useNavigate();
@@ -27,18 +26,13 @@ const ShoppingCart = () => {
 
 	// Handle perubahan input form
 	const handleChange = (e) => {
-		setVoucherCode((prev) => ({
-			...prev,
-			[e.target.name]: e.target.value,
-		}));
+		setVoucherCode(e.target.value);
 	};
 
-	const handleVoucher = async () => {
-		try {
-			await applyVoucher(voucherCode);
-		} catch (error) {
-			console.log(error);
-		}
+	const handleVoucher = async (e) => {
+		e.preventDefault();
+
+		await applyVoucher(voucherCode);
 	};
 
 	return (
@@ -239,18 +233,24 @@ const ShoppingCart = () => {
 							</p>
 						</div>
 						<div className=" border bg-gray-100 border-gray-100 text-md w-full h-auto p-3 rounded-xl">
-							<form className="flex gap-3 items-center py-2 ">
+							<form
+								onSubmit={handleVoucher}
+								className="flex gap-3 items-center py-2"
+							>
 								<input
 									type="text"
 									placeholder="Our Voucher Code"
+									value={voucherCode}
 									onChange={handleChange}
 									className="bg-white w-full px-2 py-2 font-ysabeau rounded-xl border border-gray-300"
 								/>
+
 								<button
-									onClick={handleVoucher}
-									className=" flex justify-center font-ysabeau items-center text-sm  w-1/5 py-2 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200   rounded-xl"
+									type="submit"
+									disabled={voucherLoading}
+									className="flex justify-center font-ysabeau items-center text-sm w-1/5 py-2 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200 rounded-xl"
 								>
-									Apply
+									{voucherLoading ? "..." : "Apply"}
 								</button>
 							</form>
 						</div>
@@ -272,10 +272,28 @@ const ShoppingCart = () => {
 								</p>
 							</div>
 							<div className="py-2">
-								<p className="font-semibold">Total Savings</p>
-								<p className="flex justify-between text-gray-500">
-									1 voucher has been used <span>-$3.00</span>
-								</p>
+								{voucher && (
+									<div className="py-2">
+										<p className="font-semibold">
+											Total Savings
+										</p>
+
+										<div className="flex justify-between text-gray-500">
+											<p>
+												Voucher {voucher.voucher.code}
+											</p>
+
+											<p>-${discountAmount.toFixed(2)}</p>
+										</div>
+
+										<button
+											onClick={removeVoucher}
+											className="text-xs text-red-500 hover:text-red-700 mt-1"
+										>
+											Remove voucher
+										</button>
+									</div>
+								)}
 							</div>
 							<div className="py-2">
 								<p className="font-semibold">Delivery</p>
@@ -291,7 +309,7 @@ const ShoppingCart = () => {
 							<div className="flex justify-between py-2 font-semibold">
 								<p>Total</p>
 								<p className="text-yellow-500">
-									${totalPrice.toFixed(2)}
+									${finalTotal.toFixed(2)}
 								</p>
 							</div>
 							<div>

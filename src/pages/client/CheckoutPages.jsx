@@ -49,7 +49,7 @@ const CheckoutPage = () => {
         );
     }
 
-    console.log(items);
+    console.log("isi dari cart", items);
 
     // Handle perubahan input form
     const handleChange = (e) => {
@@ -64,7 +64,7 @@ const CheckoutPage = () => {
                 Array(item.quantity).fill({
                     product: item.id,
                     size: item.size,
-                    price: item.finalPrice,
+                    price: item.finalTotal,
                     discountPercent: item.discountPercent,
                 }),
             );

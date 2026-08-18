@@ -50,6 +50,7 @@ export const CartProvider = ({ children }) => {
         try {
             const res = await addToCart(product._id, 1, size);
             await fetchCart();
+            resetVoucher();
             toast.success("Product added to cart");
         } catch (err) {
             console.log(err);
@@ -62,6 +63,7 @@ export const CartProvider = ({ children }) => {
         try {
             await updateCartQuantity(productId, size, quantity);
             await fetchCart();
+            resetVoucher();
         } catch (err) {
             console.log(err);
         }
@@ -72,6 +74,7 @@ export const CartProvider = ({ children }) => {
         try {
             const res = await removeCartItem(productId, size);
             await fetchCart();
+            resetVoucher();
         } catch (err) {
             console.log(err);
         }
@@ -81,6 +84,7 @@ export const CartProvider = ({ children }) => {
     const handleClearCart = async () => {
         try {
             await clearCart();
+            resetVoucher();
             setCart([]);
         } catch (err) {
             console.log(err);
@@ -156,6 +160,7 @@ export const CartProvider = ({ children }) => {
                 voucherError,
 
                 finalTotal,
+                discountAmount,
             }}
         >
             {children}
