@@ -15,6 +15,12 @@ const CheckoutPage = () => {
         return location.state?.checkoutItems || [];
     }, [location.state]);
 
+    const savingPrice = useMemo(() => {
+        return location.state?.priceDetails || [];
+    }, [location.state]);
+
+    console.log(savingPrice);
+
     console.log(user);
     // State untuk form data
     const [formData, setFormData] = useState({
@@ -34,6 +40,12 @@ const CheckoutPage = () => {
             0,
         );
     }, [items]);
+
+    console.log(totalPrice);
+
+    const finalTotalPrice = totalPrice - savingPrice.totalSaving;
+    console.log(finalTotalPrice);
+    console.log(savingPrice.totalSaving);
 
     if (items.length === 0) {
         return (
@@ -69,6 +81,7 @@ const CheckoutPage = () => {
                 }),
             );
 
+            console.log(products);
             const payload = {
                 products,
                 name: formData.name,
@@ -77,8 +90,9 @@ const CheckoutPage = () => {
                 shippingMethod: formData.shippingMethod,
                 paymentMethod: formData.paymentMethod,
                 shippingAddress: formData.address,
-                voucherCode: "",
-                status: "Waiting Confirmation",
+                voucherCode: savingPrice.voucherCodes,
+                savingPrice: savingPrice.totalSaving,
+                status: "Pending",
             };
 
             const response = await createTransaction(payload);
@@ -105,7 +119,7 @@ const CheckoutPage = () => {
             ) : (
                 <div className="flex flex-col md:flex-row pt-2 w-full max-w-7xl">
                     {/* Rincian Cart */}
-                    <div className="w-full md:w-1/2 lg:w-2/5 mb-6 p-2 md:p-8">
+                    <div className="w-full md:w-1/2 lg:w-3/5 mb-6 p-2 md:p-8">
                         <p className="text-xl md:text-xl lg:text-lg font-montserrat font-semibold border-b border-gray-500 pb-3">
                             Shopping Cart
                         </p>
@@ -191,19 +205,34 @@ const CheckoutPage = () => {
                                 })}
                             </tbody>
                         </table>
-                        <div className="mt-4 flex justify-between text-right ">
-                            <p className="font-bold text-lg md:text-lg">
-                                Total:
+                        <div className="mt-4 flex flex-col justify-between gap-2 text-right ">
+                            <p className="font-bold  flex justify-between text-lg md:text-lg">
+                                SubTotal:
+                                <span className="text-yellow-500 font-bold text-lg md:text-lg">
+                                    {" "}
+                                    ${totalPrice.toFixed(2)}
+                                </span>
                             </p>
-                            <span className="text-yellow-500 font-bold text-lg md:text-lg">
-                                {" "}
-                                ${totalPrice.toFixed(2)}
-                            </span>
+                            <p className=" flex text-gray-600 justify-between text-lg md:text-sm">
+                                Voucher Used
+                                <span>{savingPrice?.voucherCodes}</span>
+                            </p>
+                            <p className=" flex text-gray-600 justify-between text-lg md:text-sm">
+                                Total Saving{" "}
+                                <span>${savingPrice?.totalSaving}</span>
+                            </p>
+                            <p className="font-bold  flex justify-between text-lg md:text-lg">
+                                Total Price:
+                                <span className="text-yellow-500 font-bold text-lg md:text-lg">
+                                    {" "}
+                                    ${finalTotalPrice.toFixed(2)}
+                                </span>
+                            </p>
                         </div>
                     </div>
 
                     {/* Form Pembeli */}
-                    <div className="w-full md:w-1/2 lg:w-3/5 pt-8 bg-gray-100 rounded-xl p-4">
+                    <div className="w-full md:w-1/2 lg:w-2/5 pt-8 bg-gray-100 rounded-xl p-4">
                         <p className="text-xl md:text-xl lg:text-lg font-semibold font-montserrat  pb-4 font-semibold">
                             Order Details
                         </p>

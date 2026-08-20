@@ -332,6 +332,11 @@ const ShoppingCart = () => {
 															item.discountPercent,
 													}),
 												),
+												priceDetails: {
+													voucherCodes:
+														voucher?.voucher?.code,
+													totalSaving: discountAmount,
+												},
 											},
 										});
 
