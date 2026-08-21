@@ -219,7 +219,7 @@ const CheckoutPage = () => {
                             </p>
                             <p className=" flex text-gray-600 justify-between text-lg md:text-sm">
                                 Total Saving{" "}
-                                <span>${savingPrice?.totalSaving}</span>
+                                <span>- ${savingPrice?.totalSaving}</span>
                             </p>
                             <p className="font-bold  flex justify-between text-lg md:text-lg">
                                 Total Price:

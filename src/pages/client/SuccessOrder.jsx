@@ -140,9 +140,9 @@ const SuccesTransaction = () => {
                                                         {item.name}{" "}
                                                     </p>
                                                     <div className="flex  gap-8 md:justify-between text-xs md:text-lg text-gray-600">
-                                                        <p className="font-ysabeau  font-bold ">
-                                                            Size:
-                                                            <span className="">
+                                                        <p className="font-ysabeau text-black  ">
+                                                            Size :
+                                                            <span className="text-black font-semibold">
                                                                 {item.size}
                                                             </span>{" "}
                                                         </p>
@@ -150,9 +150,9 @@ const SuccesTransaction = () => {
                                                             ${item.pricePerUnit}
                                                             .00
                                                         </p>
-                                                        <p className="font-ysabeau hidden md:flex text-black font-bold text-lg">
-                                                            Qty:{" "}
-                                                            <span className="text-gray-600">
+                                                        <p className="font-ysabeau hidden md:flex text-black  text-lg">
+                                                            Qty :{" "}
+                                                            <span className="text-black font-semibold">
                                                                 {item.quantity}
                                                             </span>
                                                         </p>
@@ -192,13 +192,21 @@ const SuccesTransaction = () => {
                                 Subtotal:{" "}
                                 <span className="text-xl text-yellow-500 font-ysabeau font-semibold">
                                     {" "}
-                                    ${latestOrder.totalPrice.toFixed()}
+                                    ${latestOrder.totalPrice.toFixed(2)}
+                                </span>
+                            </p>
+                            <p className="flex justify-between text-gray-600">
+                                {" "}
+                                Saving:{" "}
+                                <span className=" font-ysabeau   text-xl">
+                                    {" "}
+                                    ${latestOrder.discountAmount}
                                 </span>
                             </p>
                             <p className="flex justify-between text-gray-600">
                                 {" "}
                                 Delivery:{" "}
-                                <span className=" font-ysabeau text-black font-bold text-xl">
+                                <span className=" font-ysabeau  text-xl">
                                     {" "}
                                     Free
                                 </span>
@@ -208,7 +216,7 @@ const SuccesTransaction = () => {
                                 Total:{" "}
                                 <span className="text-xl text-yellow-500 font-ysabeau font-semibold">
                                     {" "}
-                                    ${latestOrder.totalPrice.toFixed()}
+                                    ${latestOrder.finalPrice.toFixed(2)}
                                 </span>
                             </p>
                         </div>
