@@ -144,7 +144,7 @@ const SuccesTransaction = () => {
                         </div>
                         {/* Order Details */}
                         <div className="   text-[#0C0C0C] rounded-3xl">
-                            <div className="mt-3 w-full flex flex-col gap-4">
+                            <div className="mt-10 w-full flex flex-col gap-4">
                                 <p className="text-lg md:text-xl font-semibold font-montserrat">
                                     🧾 Order Details:
                                 </p>
@@ -165,15 +165,52 @@ const SuccesTransaction = () => {
                                     </p>
                                 </div>
                             </div>
+
+                            {/* Contact Details */}
+                            <div className="mt-10 w-full flex flex-col gap-4">
+                                <p className="font-semibold font-montserrat text-lg md:text-xl">
+                                    👤 Contact Details:
+                                </p>
+                                <div className="flex flex-col gap-3 border border-gray-200 rounded-xl text-sm font-ysabeau lg:text-lg p-4">
+                                    <p className="flex  justify-between">
+                                        <span>Name :</span> {latestOrder.name}
+                                    </p>
+                                    <p className="flex h-auto justify-between">
+                                        <span>Address :</span>{" "}
+                                        {latestOrder.shippingAddress}
+                                    </p>
+                                    <p className="flex justify-between">
+                                        <span>Phone Number :</span>{" "}
+                                        {latestOrder.phoneNumber}
+                                    </p>
+                                </div>
+                            </div>
                             {/* Payment Details */}
-                            <div className="mt-3 w-full flex flex-col gap-4">
+                            <div className="mt-10 w-full flex flex-col gap-4">
                                 <p className="font-semibold font-montserrat text-lg md:text-xl">
                                     💳 Payment Details:
                                 </p>
                                 <div className="flex flex-col gap-3 border border-gray-200 rounded-xl text-sm font-ysabeau lg:text-lg p-4">
                                     <p className="flex justify-between">
                                         <span>Total Price:</span> $
-                                        {latestOrder.totalPrice}.00
+                                        {latestOrder.totalPrice.toFixed(2)}
+                                    </p>
+                                    <p className="flex justify-between">
+                                        <span>Voucher:</span>
+                                        {latestOrder.voucherCode ? (
+                                            <p>{latestOrder.voucherCode}</p>
+                                        ) : (
+                                            <p>Not Used</p>
+                                        )}
+                                    </p>
+
+                                    <p className="flex justify-between">
+                                        <span>Total Saving:</span> - $
+                                        {latestOrder.discountAmount.toFixed(2)}
+                                    </p>
+                                    <p className="flex justify-between">
+                                        <span>Total Paid:</span> $
+                                        {latestOrder.finalPrice.toFixed(2)}
                                     </p>
                                     <p className="flex justify-between">
                                         <span>Payment Method:</span>{" "}
@@ -195,25 +232,6 @@ const SuccesTransaction = () => {
                                             </p>
                                         </>
                                     )}
-                                </div>
-                            </div>
-                            {/* Contact Details */}
-                            <div className="mt-3 w-full flex flex-col gap-4">
-                                <p className="font-semibold font-montserrat text-lg md:text-xl">
-                                    👤 Contact Details:
-                                </p>
-                                <div className="flex flex-col gap-3 border border-gray-200 rounded-xl text-sm font-ysabeau lg:text-lg p-4">
-                                    <p className="flex  justify-between">
-                                        <span>Name :</span> {latestOrder.name}
-                                    </p>
-                                    <p className="flex h-auto justify-between">
-                                        <span>Address :</span>{" "}
-                                        {latestOrder.shippingAddress}
-                                    </p>
-                                    <p className="flex justify-between">
-                                        <span>Phone Number :</span>{" "}
-                                        {latestOrder.phoneNumber}
-                                    </p>
                                 </div>
                             </div>
                         </div>
