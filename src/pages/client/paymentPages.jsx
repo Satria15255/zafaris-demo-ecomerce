@@ -143,9 +143,9 @@ const PaymentPages = () => {
                                                                 {item.name}{" "}
                                                             </p>
                                                             <div className="flex  gap-8 lg:justify-between text-xs md:text-sm lg:text-lg text-gray-600">
-                                                                <p className="font-ysabeau  font-bold ">
+                                                                <p className="font-ysabeau ">
                                                                     Size:
-                                                                    <span className="">
+                                                                    <span className="font-semibold text-black">
                                                                         {
                                                                             item.size
                                                                         }
@@ -158,9 +158,9 @@ const PaymentPages = () => {
                                                                     }
                                                                     .00
                                                                 </p>
-                                                                <p className="font-ysabeau hidden md:flex  font-bold   ">
+                                                                <p className="font-ysabeau hidden md:flex">
                                                                     Qty:{" "}
-                                                                    <span className="">
+                                                                    <span className="font-semibold text-black">
                                                                         {
                                                                             item.quantity
                                                                         }
@@ -194,28 +194,38 @@ const PaymentPages = () => {
                             </div>
                             <div className="w-full flex flex-col gap-3 text-sm lg:text-lg font-ysabeau p-3">
                                 <div className="flex justify-between">
-                                    <strong>Order Id:</strong>
+                                    <p>Order Id:</p>
                                     <p>{latestOrder._id}</p>
                                 </div>
                                 <div className="flex justify-between">
-                                    <strong>Status:</strong>{" "}
-                                    {latestOrder.status}
+                                    <p>Status:</p> {latestOrder.status}
                                 </div>
                                 <div className="flex justify-between">
-                                    <strong>Total Price:</strong> $
-                                    {latestOrder.totalPrice}
+                                    <p>Total Price:</p> $
+                                    {latestOrder.totalPrice.toFixed(2)}
                                 </div>
                                 <div className="flex justify-between">
-                                    <strong>Address:</strong>{" "}
+                                    <p>Discount Amount:</p>- $
+                                    {latestOrder.discountAmount.toFixed(2)}
+                                </div>
+
+                                <div className="flex justify-between">
+                                    <p>Address:</p>{" "}
                                     {latestOrder.shippingAddress}
                                 </div>
                                 <div className="flex justify-between">
-                                    <strong>Payment Method:</strong>{" "}
+                                    <p>Payment Method:</p>{" "}
                                     {latestOrder.paymentMethod}
                                 </div>
                                 <div className="flex justify-between">
-                                    <strong>Payment Expired:</strong> {timeLeft}
+                                    <p>Payment Expired:</p> {timeLeft}
                                 </div>
+                            </div>
+                            <div className="flex justify-between text-xl font-semibold text-yellow-500 p-2">
+                                <p className="text-black font-semibold">
+                                    Total Paid:
+                                </p>{" "}
+                                ${latestOrder.finalPrice.toFixed(2)}
                             </div>
                         </div>
                     </div>
