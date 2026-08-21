@@ -13,7 +13,7 @@ const OrderPages = () => {
     });
     const ordersStatus = [
         "All",
-        "Waiting for Payment",
+        "Pending",
         "Processing",
         "Shipped",
         "Delivered",
