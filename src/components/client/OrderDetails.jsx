@@ -109,7 +109,7 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
               >
                 Cancel
               </button>
-              {order.status === "Waiting for Payment" ? (
+              {order.status === "Pending" ? (
                 <button
                   onClick={() => {
                     console.log("Buttonn Clicked");

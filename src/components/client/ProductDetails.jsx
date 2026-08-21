@@ -13,12 +13,13 @@ import CallAction from "@/pages/client/Discount";
 function ProductModal() {
     const [product, setProduct] = useState([]);
     const [recommended, setRecommended] = useState([]);
-    const [selectedSize, setSelectedSize] = useState("");
+    const [selectedSize, setSelectedSize] = useState(null);
     const [loading, setLoading] = useState(true);
     const { handleAddToCart } = useCart();
     const { user } = useAuth();
     const navigate = useNavigate();
     const { id } = useParams();
+    const [size, setSize] = useState([]);
 
     const fetchProduct = async () => {
         try {
@@ -44,6 +45,16 @@ function ProductModal() {
     useEffect(() => {
         console.log("Data product details:", product);
     }, [product]);
+
+    console.log("Stock", product.variants);
+
+    const productSize = product?.variants?.map((stock) => stock.size);
+    console.log(productSize);
+
+    const currentVariant = product?.variants?.find(
+        (v) => v.size === selectedSize,
+    );
+    console.log(currentVariant);
 
     const isDiscount = product.discountPercent > 0;
     // Fungsi Checkout product
@@ -142,10 +153,10 @@ function ProductModal() {
                             <p className="text-lg lg:text-2xl font-semibold">
                                 Size Charts
                             </p>
-                            <div className="mt-3 lg:mt-6">
+                            <div className="mt-3 lg:mt-6 flex flex-col gap-5">
                                 <div className="flex flex-wrap gap-3">
-                                    {product?.sizes?.length > 0 ? (
-                                        product.sizes.map((size) => (
+                                    {productSize.length > 0 ? (
+                                        productSize.map((size) => (
                                             <button
                                                 key={size}
                                                 type="button"
@@ -172,6 +183,18 @@ function ProductModal() {
                                 {!selectedSize && (
                                     <p className="text-red-500 text-sm mt-2">
                                         Please select a size
+                                    </p>
+                                )}
+
+                                {/*Stock Information*/}
+                                {currentVariant.stock <= 3 ? (
+                                    <p className="text-red-500 text-sm mt-2">
+                                        Please select a size
+                                    </p>
+                                ) : (
+                                    <p className="mt-5 text-gray-500 text-sm font-semibold">
+                                        <span>{currentVariant.stock}</span>{" "}
+                                        Stock Left
                                     </p>
                                 )}
                             </div>
