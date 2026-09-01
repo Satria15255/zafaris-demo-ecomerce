@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import Loader from "@/components/common/Loader";
-import ProductCard from "./ProductCard";
+import ProductCard from "@/features/products/components/ProductCard";
 import CallAction from "@/pages/public/home/sections/Discount";
 
 function ProductModal() {

@@ -19,8 +19,8 @@ import AdminRoute from "@/components/admin/route/AdminRoute";
 import AdminLogin from "@/pages/auth/AdminLoginPage";
 
 // Products
-import ProductsPages from "@/pages/public/ProductPages";
-import ProductDetail from "@/features/products/components/ProductDetails";
+import ProductsPages from "@/pages/public/products/ProductPages";
+import ProductDetail from "@/pages/public/productDetails/ProductDetails";
 
 // Cart
 import ShoppingCartPages from "@/features/cart/components/ShoppingCart";
