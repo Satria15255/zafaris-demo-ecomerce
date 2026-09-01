@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "@/features/products/components/ProductCard";
-import {
-    getTransactionById,
-    getAllProducts,
-} from "@/features/transaction/services/transactionService";
+import { getTransactionById } from "@/features/transactions/services/transactionService";
+import { getAllProducts } from "@/features/products/services/productService";
 import { FcApproval } from "react-icons/fc";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "@/components/common/Loader";

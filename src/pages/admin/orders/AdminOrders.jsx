@@ -3,7 +3,7 @@ import OrdersTable from "@/features/admin/orders/components/OrdersTable";
 import OrdersDetails from "@/features/admin/orders/components/OrdersDetails";
 import { toast } from "react-toastify";
 import { getOrdersSummary } from "@/features/admin/dashboard/services/adminDashboardService";
-import { getAllTransactions } from "@/features/transactions/services/transactionService";
+import { getAllTransactions } from "@/features/admin/orders/services/adminOrderService";
 import { updateTransactionStatus } from "@/features/admin/orders/services/adminOrderService";
 import { ordersConfig } from "@/features/admin/orders/config/OrdersConfig";
 import DashboardStatsCard from "@/components/admin/ui/DashboardStatsCard";

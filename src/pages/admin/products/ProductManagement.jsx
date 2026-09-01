@@ -3,13 +3,9 @@ import { toast } from "react-toastify";
 import ProductsTable from "@/features/admin/products/components/ProductsTable";
 import ProductsUploadForm from "@/features/admin/products/components/ProductsUploadForm";
 import ProductsEditForm from "@/features/admin/products/components/ProductsEditForm";
-import {
-  getAllProducts,
-  deleteProduct,
-  getProductsSummary,
-} from "@/features/admin/products/service/adminProductService";
-import { getAllProducts } from "@/features/products/service/productService";
-import { getProductsSummary } from "@/features/admin/dashboard/service/adminDashboardService";
+import { deleteProduct } from "@/features/admin/products/services/adminProductService";
+import { getAllProducts } from "@/features/products/services/productService";
+import { getProductsSummary } from "@/features/admin/dashboard/services/adminDashboardService";
 import DashboardStatsCard from "@/components/admin/ui/DashboardStatsCard";
 import { productsManagementConfig } from "@/features/admin/products/config/ProductsManagementConfig";
 

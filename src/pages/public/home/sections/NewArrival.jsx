@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProductCard from "@/components/client/ProductCard";
+import ProductCard from "@/features/products/components/ProductCard";
 import { getLatestProducts } from "@/features/products/services/productService";
 import { addToCart } from "@/features/cart/services/cartService";
 import { toast } from "react-toastify";

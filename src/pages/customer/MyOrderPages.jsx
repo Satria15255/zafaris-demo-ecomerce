@@ -4,9 +4,9 @@ import {
     getMyOrders,
     confirmOrderReceived,
     cancelOrder,
-} from "@/features/orders/service/orderService";
+} from "@/features/orders/services/orderService";
 import { toast } from "react-toastify";
-import Loader from "@/components/client/Loader";
+import Loader from "@/components/common/Loader";
 
 const OrderPages = () => {
     const [orders, setOrders] = useState([]);

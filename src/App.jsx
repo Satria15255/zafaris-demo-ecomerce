@@ -3,12 +3,12 @@ import AdminLayout from "@/layout/AdminLayout";
 import MainLayout from "@/layout/MainLayout";
 
 // Home Section
-import Hero from "@/pages/public/home/section/Hero";
-import CallAction from "@/pages/public/home/section/CallAction";
-import BestSeller from "@/pages/public/home/section/BestSeller";
-import DiscountSection from "@/pages/public/home/section/Discount";
-import NewArrival from "@/pages/public/home/section/NewArrival";
-import CategoryCollection from "@/pages/public/home/section/CategorySection";
+import Hero from "@/pages/public/home/sections/Hero";
+import CallAction from "@/pages/public/home/sections/CallAction";
+import BestSeller from "@/pages/public/home/sections/BestSeller";
+import DiscountSection from "@/pages/public/home/sections/Discount";
+import NewArrival from "@/pages/public/home/sections/NewArrival";
+import CategoryCollection from "@/pages/public/home/sections/CategorySection";
 
 // Auth
 import Login from "@/pages/auth/Login";

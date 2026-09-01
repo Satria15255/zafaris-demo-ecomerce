@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "@/features/products/components/ProductCard";
-import {
-    getTransactionById,
-    getAllProducts,
-} from "@/features/transactions/services/transactionService";
+import { getTransactionById } from "@/features/transactions/services/transactionService";
 import { getAllProducts } from "@/features/products/services/productService";
 import { FcApproval, FcOk } from "react-icons/fc";
 import { formatDate } from "@/utils/FormatedDate";
