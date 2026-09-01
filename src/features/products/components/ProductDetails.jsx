@@ -21,6 +21,7 @@ function ProductModal() {
     const { id } = useParams();
     const [size, setSize] = useState([]);
 
+    // FETCH PRODUCTS DETAILS
     const fetchProduct = async () => {
         try {
             setLoading(true);
@@ -46,8 +47,7 @@ function ProductModal() {
         console.log("Data product details:", product);
     }, [product]);
 
-    console.log("Stock", product.variants);
-
+    // PRODUCT STOCK INFORMATION
     const productSize = product?.variants?.map((stock) => stock.size);
     console.log(productSize);
 
@@ -56,8 +56,10 @@ function ProductModal() {
     );
     console.log(currentVariant);
 
+    // DISCOUNT VALIDATION
     const isDiscount = product.discountPercent > 0;
-    // Fungsi Checkout product
+
+    // HANDLE CHECKOUT
     const handleChekoutNow = () => {
         try {
             if (!user) {
@@ -187,13 +189,14 @@ function ProductModal() {
                                 )}
 
                                 {/*Stock Information*/}
-                                {currentVariant.stock <= 3 ? (
+                                {currentVariant?.stock <= 3 ? (
                                     <p className="text-red-500 text-sm mt-2">
-                                        Please select a size
+                                        <span>{currentVariant?.stock}</span>{" "}
+                                        Stock Left
                                     </p>
                                 ) : (
                                     <p className="mt-5 text-gray-500 text-sm font-semibold">
-                                        <span>{currentVariant.stock}</span>{" "}
+                                        <span>{currentVariant?.stock}</span>{" "}
                                         Stock Left
                                     </p>
                                 )}
