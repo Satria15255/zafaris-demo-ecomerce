@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { login } from "@/features/auth/authService";
+import { login } from "@/features/auth/services/authService";
 import { useAuth } from "@/context/AuthContext";
 import background from "@/assets/heroSection/hero2.jpg";
 

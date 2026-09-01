@@ -5,7 +5,7 @@ import { TbBasketQuestion } from "react-icons/tb";
 import { FaMinus } from "react-icons/fa";
 import { LuMinus, LuPlus } from "react-icons/lu";
 
-const ShoppingCart = ({ closeShoppingCart }) => {
+const SidebarCart = ({ closeShoppingCart }) => {
     const { cart, removeCartItems, updateQty, totalPrice } = useCart();
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -260,4 +260,4 @@ const ShoppingCart = ({ closeShoppingCart }) => {
     );
 };
 
-export default ShoppingCart;
+export default SidebarCart;

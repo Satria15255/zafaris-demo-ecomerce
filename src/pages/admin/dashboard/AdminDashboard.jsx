@@ -3,7 +3,7 @@ import {
 	getSalesData,
 	getDashboardSummary,
 } from "@/features/admin/dashboard/services/adminDashboardService";
-import { getAllTransactions } from "@/features/admin/orders/services/adminOrdersService";
+import { getAllTransactions } from "@/features/admin/orders/services/adminOrderService";
 import { getAllProducts } from "@/features/products/services/productService";
 import React, { useState, useEffect } from "react";
 import { dashboardConfig } from "@/features/admin/dashboard/config/DashboardConfig";

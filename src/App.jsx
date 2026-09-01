@@ -1,41 +1,59 @@
-import MainLayout from "./layout/MainLayout";
+// Layout
+import AdminLayout from "@/layout/AdminLayout";
+import MainLayout from "@/layout/MainLayout";
 
-import Hero from "./pages/client/Hero";
-import BestSeller from "./pages/client/BestSeller";
-import DiscountSection from "./pages/client/Discount";
-import NewArrival from "./pages/client/NewArrival";
-import Login from "./pages/client/Login";
-import Register from "./pages/client/Register";
-import ProductsPages from "./pages/client/ProductPages";
-import CallAction from "./pages/client/CallAction";
-import CategoryCollection from "./pages/client/CategorySection";
-import CheckoutPages from "./pages/client/CheckoutPages";
-import SuccessOrderPages from "./pages/client/SuccessOrder";
-import PaymentOrderPages from "./pages/client/paymentPages";
-import PaymentSuccessPages from "./pages/client/PaymentSuccess";
-import OrderPages from "./pages/client/MyOrderPages";
-import UserDashboard from "./pages/client/UserDashboard";
-import ShoppingCartPages from "./pages/client/ShoppingCart";
+// Home Section
+import Hero from "@/pages/public/home/section/Hero";
+import CallAction from "@/pages/public/home/section/CallAction";
+import BestSeller from "@/pages/public/home/section/BestSeller";
+import DiscountSection from "@/pages/public/home/section/Discount";
+import NewArrival from "@/pages/public/home/section/NewArrival";
+import CategoryCollection from "@/pages/public/home/section/CategorySection";
+
+// Auth
+import Login from "@/pages/auth/Login";
+import Register from "@/pages/auth/Register";
+
+// Admin Auth
+import AdminRoute from "@/components/admin/route/AdminRoute";
+import AdminLogin from "@/pages/auth/AdminLoginPage";
+
+// Products
+import ProductsPages from "@/pages/public/ProductPages";
+import ProductDetail from "@/features/products/components/ProductDetails";
+
+// Cart
+import ShoppingCartPages from "@/features/cart/components/ShoppingCart";
+import SidebarCart from "@/features/cart/components/SidebarCart";
+
+// Context
+import { CartProvider } from "./context/CartContext";
+
+// Orders
+import SuccessOrderPages from "@/features/orders/components/SuccessOrder";
+import OrderPages from "@/pages/customer/MyOrderPages";
+
+// Customer
+import UserDashboard from "@/pages/customer/UserDashboard";
+import SidebarProfile from "@/components/layout/SidebarProfile";
+
+// Transaction / Orders
+import CheckoutPages from "@/features/orders/components/CheckoutPages";
+import PaymentOrderPages from "@/features/payment/components/paymentPages";
+import PaymentSuccessPages from "@/features/payment/components/PaymentSuccess";
 
 // Pages Admin
-import AdminLoginPage from "./pages/admin/AdminLoginPage";
-import AdminProduct from "./pages/admin/ProductManagement";
-import AdminOrder from "./pages/admin/AdminOrders";
-import AdminUserList from "./pages/admin/AdminUserList";
-import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminProduct from "@/pages/admin/products/ProductManagement";
+import AdminOrder from "@/pages/admin/orders/AdminOrders";
+import AdminUserList from "@/pages/admin/users/AdminUserList";
+import AdminDashboard from "@/pages/admin/dashboard/AdminDashboard";
 
-import ShoppingCart from "./components/client/ShoppingCart";
-import ProductDetail from "./components/client/ProductDetails";
-import SidebarProfile from "./components/client/SidebarProfile";
-import ScrollToTop from "./components/client/ScrollToTop";
+// Common
+import ScrollToTop from "@/components/common/ScrollToTop";
 
-import AdminRoute from "./components/admin/AdminRoute";
-import AdminLayout from "./layout/AdminLayout";
-import AdminLogin from "./pages/admin/AdminLoginPage";
-
+// Tools
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
-import { CartProvider } from "./context/CartContext";
 import { ToastContainer } from "react-toastify";
 
 function App() {

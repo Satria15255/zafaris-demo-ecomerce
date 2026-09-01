@@ -5,9 +5,9 @@ import UserDetail from "@/features/admin/users/components/UserDetails";
 import {
   getAllUsers,
   getUserTransactions,
-} from "@/features/admin/users/service/adminUserService";
-import { getUsersSummary } from "@/features/admin/dashboard/service/adminDashboardService";
-import { usersConfig } from "@/components/admin/config/UsersConfig";
+} from "@/features/admin/users/services/adminUserService";
+import { getUsersSummary } from "@/features/admin/dashboard/services/adminDashboardService";
+import { usersConfig } from "@/features/admin/users/config/UsersConfig";
 import DashboardStatsCard from "@/components/admin/ui/DashboardStatsCard";
 
 const AdminUserList = () => {

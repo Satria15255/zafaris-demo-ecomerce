@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import OrdersTable from "@/features/admin/order/components/OrdersTable";
-import OrdersDetails from "@/features/admin/order/components/OrdersDetails";
+import OrdersTable from "@/features/admin/orders/components/OrdersTable";
+import OrdersDetails from "@/features/admin/orders/components/OrdersDetails";
 import { toast } from "react-toastify";
 import { getOrdersSummary } from "@/features/admin/dashboard/services/adminDashboardService";
 import { getAllTransactions } from "@/features/transactions/services/transactionService";
