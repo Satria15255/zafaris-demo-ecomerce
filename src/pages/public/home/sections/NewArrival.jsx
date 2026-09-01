@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "@/components/client/ProductCard";
-import { getLatestProducts, addToCart } from "@/api/Api";
+import { getLatestProducts } from "@/features/products/services/productService";
+import { addToCart } from "@/features/cart/services/cartService";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";

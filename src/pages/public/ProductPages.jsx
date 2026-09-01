@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
-import ProductCard from "@/components/client/ProductCard";
+import ProductCard from "@/features/products/components/ProductCard";
 import {
     getAllProducts,
     getLatestProducts,
     getDiscountProducts,
-} from "@/api/Api";
+} from "@/features/products/services/productService";
 import bgProductPages from "@/assets/hero3.png";
 import { MdFilterList } from "react-icons/md";
-import FilterMobile from "@/components/client/FilterMobile";
-import FilterSidebar from "@/components/client/FilterSidebar";
-import Loader from "@/components/client/Loader";
+import FilterMobile from "@/features/products/components/FilterMobile";
+import FilterSidebar from "@/features/products/components/FilterSidebar";
+import Loader from "@/components/common/Loader";
 import { useNavigate } from "react-router-dom";
 
 function ProductPages({ onAddToCart, onOpenModal }) {

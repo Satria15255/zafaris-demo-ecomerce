@@ -5,8 +5,8 @@ import {
     getCart,
     updateCartQuantity,
     clearCart,
-    getDiscountVoucher,
-} from "../api/Api";
+} from "@/features/cart/services/cartService";
+import { getDiscountVoucher } from "@/features/voucher/services/voucherService";
 import { toast } from "react-toastify";
 import { useAuth } from "./AuthContext";
 

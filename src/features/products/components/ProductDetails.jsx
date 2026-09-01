@@ -2,13 +2,16 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaCartPlus, FaStar } from "react-icons/fa";
-import { getProductById, getAllProducts } from "@/api/Api";
+import {
+    getProductById,
+    getAllProducts,
+} from "@/features/products/services/productService";
 import { toast } from "react-toastify";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
-import Loader from "./Loader";
+import Loader from "@/components/common/Loader";
 import ProductCard from "./ProductCard";
-import CallAction from "@/pages/client/Discount";
+import CallAction from "@/pages/public/home/sections/Discount";
 
 function ProductModal() {
     const [product, setProduct] = useState([]);

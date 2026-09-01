@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { register } from "@/api/Api";
+import { register } from "@/features/auth/authService";
 import background from "@/assets/heroSection/hero12.jpg";
 import { IoIosHome } from "react-icons/io";
 

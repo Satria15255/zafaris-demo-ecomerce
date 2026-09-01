@@ -1,7 +1,7 @@
 import { useAuth } from "@/context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { changePassword } from "@/api/Api";
+import { changePassword } from "@/features/auth/authService";
 import { toast } from "react-toastify";
 
 const ChangePassword = () => {

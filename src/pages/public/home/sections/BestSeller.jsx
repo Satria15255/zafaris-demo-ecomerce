@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getAllProducts } from "@/api/Api";
+import { getAllProducts } from "@/features/products/services/productService";
 import { useNavigate } from "react-router-dom";
-import ProductCard from "@/components/client/ProductCard";
+import ProductCard from "@/features/products/components/ProductCard";
 import { useCart } from "@/context/CartContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";

@@ -2,7 +2,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContext";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { updateProfile } from "@/api/Api";
+import { updateProfile } from "@/features/auth/authService";
 import { toast } from "react-toastify";
 import { MdCheckCircleOutline } from "react-icons/md";
 import { PiUserCircle } from "react-icons/pi";

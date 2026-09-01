@@ -1,10 +1,14 @@
 // AdminUserList.jsx
 import React, { useEffect, useState } from "react";
-import UserList from "@/components/admin/UserList";
-import UserDetail from "@/components/admin/UserDetails";
-import { getAllUsers, getUserTransactions, getUsersSummary } from "@/api/Api";
+import UserList from "@/features/admin/users/components/UserList";
+import UserDetail from "@/features/admin/users/components/UserDetails";
+import {
+  getAllUsers,
+  getUserTransactions,
+} from "@/features/admin/users/service/adminUserService";
+import { getUsersSummary } from "@/features/admin/dashboard/service/adminDashboardService";
 import { usersConfig } from "@/components/admin/config/UsersConfig";
-import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
+import DashboardStatsCard from "@/components/admin/ui/DashboardStatsCard";
 
 const AdminUserList = () => {
   const [users, setUsers] = useState([]);

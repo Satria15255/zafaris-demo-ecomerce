@@ -1,5 +1,5 @@
-import Navbar from "../components/client/Navbar";
-import Footer from "../components/client/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import { Outlet } from "react-router-dom";
 
 const MainLayout = ({ handleOpenCart, onToggleSidebar }) => {

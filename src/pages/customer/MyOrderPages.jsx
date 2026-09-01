@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
-import OrderDetails from "@/components/client/OrderDetails";
-import { getMyOrders, confirmOrderReceived, cancelOrder } from "@/api/Api";
+import OrderDetails from "@/features/orders/components/OrderDetails";
+import {
+    getMyOrders,
+    confirmOrderReceived,
+    cancelOrder,
+} from "@/features/orders/service/orderService";
 import { toast } from "react-toastify";
 import Loader from "@/components/client/Loader";
 

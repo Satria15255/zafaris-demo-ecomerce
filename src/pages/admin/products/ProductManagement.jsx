@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import ProductsTable from "@/components/admin/ProductsTable";
-import ProductsUploadForm from "@/components/admin/ProductsUploadForm";
-import ProductsEditForm from "@/components/admin/ProductsEditForm";
-import { getAllProducts, deleteProduct, getProductsSummary } from "@/api/Api";
-import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
-import { productsManagementConfig } from "@/components/admin/config/ProductsManagementConfig";
+import ProductsTable from "@/features/admin/products/components/ProductsTable";
+import ProductsUploadForm from "@/features/admin/products/components/ProductsUploadForm";
+import ProductsEditForm from "@/features/admin/products/components/ProductsEditForm";
+import {
+  getAllProducts,
+  deleteProduct,
+  getProductsSummary,
+} from "@/features/admin/products/service/adminProductService";
+import { getAllProducts } from "@/features/products/service/productService";
+import { getProductsSummary } from "@/features/admin/dashboard/service/adminDashboardService";
+import DashboardStatsCard from "@/components/admin/ui/DashboardStatsCard";
+import { productsManagementConfig } from "@/features/admin/products/config/ProductsManagementConfig";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);

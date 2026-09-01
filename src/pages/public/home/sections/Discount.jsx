@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getDiscountProducts } from "@/api/Api";
+import { getDiscountProducts } from "@/features/products/services/productService";
 import { useNavigate } from "react-router-dom";
 import discountImage from "@/assets/heroSection/discountSecs.webp";
 

@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import OrdersTable from "@/components/admin/OrdersTable";
-import OrdersDetails from "@/components/admin/OrdersDetails";
+import OrdersTable from "@/features/admin/order/components/OrdersTable";
+import OrdersDetails from "@/features/admin/order/components/OrdersDetails";
 import { toast } from "react-toastify";
-import {
-  getAllTransactions,
-  updateTransactionStatus,
-  getOrdersSummary,
-} from "@/api/Api";
-import { ordersConfig } from "@/components/admin/config/OrdersConfig";
-import DashboardStatsCard from "@/components/admin/DashboardStatsCard";
+import { getOrdersSummary } from "@/features/admin/dashboard/services/adminDashboardService";
+import { getAllTransactions } from "@/features/transactions/services/transactionService";
+import { updateTransactionStatus } from "@/features/admin/orders/services/adminOrderService";
+import { ordersConfig } from "@/features/admin/orders/config/OrdersConfig";
+import DashboardStatsCard from "@/components/admin/ui/DashboardStatsCard";
 
 const AdminOrders = () => {
   const [order, setOrder] = useState([]);

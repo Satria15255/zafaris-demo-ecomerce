@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import ProductCard from "@/components/client/ProductCard";
-import { getTransactionById, getAllProducts, payTransaction } from "@/api/Api";
+import ProductCard from "@/features/products/components/ProductCard";
+import {
+    getTransactionById,
+    payTransaction,
+} from "@/features/transactions/services/transactionService";
+import { getAllProducts } from "@/features/products/services/productService";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Loader from "@/components/client/Loader";
+import Loader from "@/components/common/Loader";
 
 import visa from "@/assets/logo/visa.svg";
 import mastercard from "@/assets/logo/mastercard.svg";
