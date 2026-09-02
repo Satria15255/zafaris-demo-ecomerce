@@ -185,23 +185,28 @@ function ProductModal() {
                                     )}
                                 </div>
 
-                                {!selectedSize && (
+                                {!selectedSize ? (
                                     <p className="text-red-500 text-sm mt-2">
                                         Please select a size
                                     </p>
-                                )}
-
-                                {/*Stock Information*/}
-                                {currentVariant?.stock <= 3 ? (
-                                    <p className="text-red-500 text-sm mt-2">
-                                        <span>{currentVariant?.stock}</span>{" "}
-                                        Stock Left
-                                    </p>
                                 ) : (
-                                    <p className="mt-5 text-gray-500 text-sm font-semibold">
-                                        <span>{currentVariant?.stock}</span>{" "}
-                                        Stock Left
-                                    </p>
+                                    <div>
+                                        {currentVariant?.stock <= 3 ? (
+                                            <p className="text-red-500 text-sm mt-2">
+                                                <span>
+                                                    {currentVariant?.stock}
+                                                </span>{" "}
+                                                Stock Left
+                                            </p>
+                                        ) : (
+                                            <p className="mt-5 text-gray-500 text-sm font-semibold">
+                                                <span>
+                                                    {currentVariant?.stock}
+                                                </span>{" "}
+                                                Stock Left
+                                            </p>
+                                        )}
+                                    </div>
                                 )}
                             </div>
                         </div>
