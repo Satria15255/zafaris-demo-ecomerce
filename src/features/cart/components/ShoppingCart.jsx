@@ -313,39 +313,54 @@ const ShoppingCart = () => {
 								</p>
 							</div>
 							<div>
-								<button
-									onClick={() => {
-										navigate("/checkout", {
-											state: {
-												checkoutItems: cart.map(
-													(item) => ({
-														id: item.productId._id,
-														name: item.productId
-															.name,
-														image: item.productId
-															.image,
-														size: item.size,
-														quantity: item.quantity,
-														finalPrice:
-															item.finalPrice,
-														discountPercent:
-															item.discountPercent,
-													}),
-												),
-												priceDetails: {
-													voucherCodes:
-														voucher?.voucher?.code,
-													totalSaving: discountAmount,
+								{cart.length > 0 ? (
+									<button
+										onClick={() => {
+											navigate("/checkout", {
+												state: {
+													checkoutItems: cart.map(
+														(item) => ({
+															id: item.productId
+																._id,
+															name: item.productId
+																.name,
+															image: item
+																.productId
+																.image,
+															size: item.size,
+															quantity:
+																item.quantity,
+															finalPrice:
+																item.finalPrice,
+															discountPercent:
+																item.discountPercent,
+														}),
+													),
+													priceDetails: {
+														voucherCodes:
+															voucher?.voucher
+																?.code,
+														totalSaving:
+															discountAmount,
+													},
 												},
-											},
-										});
+											});
 
-										closeShoppingCart();
-									}}
-									className="text-lg flex justify-center font-ysabeau items-center  w-full h-12 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200 text-white rounded-xl"
-								>
-									Check Out
-								</button>
+											closeShoppingCart();
+										}}
+										disabled={cart.length <= 0}
+										className="text-lg flex justify-center font-ysabeau items-center  w-full h-12 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] hover:border border-gray-400 transition duration-200  rounded-xl"
+									>
+										Check Out
+									</button>
+								) : (
+									<button
+										disabled={cart.length <= 0}
+										className="text-lg flex justify-center font-ysabeau items-center  w-full h-12 bg-gray-200 text-white  border-gray-400  rounded-xl"
+									>
+										Check Out
+									</button>
+								)}
 							</div>
 						</div>
 					</div>
