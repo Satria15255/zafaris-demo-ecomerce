@@ -54,7 +54,7 @@ function ProductCard({ product, productDetails }) {
                     <div className="flex justify-between items-center ">
                         <div className="flex h-[40px] items-center justify-center font-montserrat">
                             {isDiscount ? (
-                                <div className="flex gap-2 justify-center items-center">
+                                <div className="flex flex-col lg:flex-row gap-2 justify-center items-center">
                                     <p className=" text-sm lg:text-lg xl:text-md line-through">
                                         ${product.price.toFixed(2)}
                                     </p>
@@ -73,11 +73,11 @@ function ProductCard({ product, productDetails }) {
                         <div className="flex gap-1 lg:gap-2">
                             <p
                                 onClick={() => productDetails(product)}
-                                className="p-3 rounded-full text-lg lg:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200"
+                                className="p-3 rounded-full text-lg md:text-sm lg:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200"
                             >
                                 <IoSearchOutline />
                             </p>
-                            <p className="p-3 rounded-full text-lg lg:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200">
+                            <p className="p-3 rounded-full text-lg md:text-sm lg:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200">
                                 <IoBagHandleOutline />
                             </p>
                         </div>

@@ -5,7 +5,7 @@ import { TbBasketQuestion } from "react-icons/tb";
 import { FaMinus } from "react-icons/fa";
 import { LuMinus, LuPlus } from "react-icons/lu";
 
-const SidebarCart = ({ closeShoppingCart }) => {
+const SidebarCart = ({ closeSidebarCart }) => {
     const { cart, removeCartItems, updateQty, totalPrice } = useCart();
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ const SidebarCart = ({ closeShoppingCart }) => {
                 {/* Tombol Close */}
                 <div className="w-full flex justify-between p-5 border-b border-gray-400">
                     <button
-                        onClick={closeShoppingCart}
+                        onClick={closeSidebarCart}
                         className="top-4 left-4 text-2xl font-bold text-gray-600 hover:text-gray-900"
                     >
                         ×
@@ -245,7 +245,7 @@ const SidebarCart = ({ closeShoppingCart }) => {
                                 <button
                                     onClick={() => {
                                         navigate("/my-cart");
-                                        closeShoppingCart();
+                                        closeSidebarCart();
                                     }}
                                     className="text-lg flex justify-center items-center mt-3 w-full h-12 border bg-white text-[#0C0C0C] border-black  hover:text-white hover:bg-[#0C0C0C] transition duration-300 rounded-md"
                                 >

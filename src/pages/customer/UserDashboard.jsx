@@ -14,12 +14,12 @@ import ChangePassword from "./ChangePassword";
 const UserDashboard = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const { logout, user } = useAuth();
+    const navigate = useNavigate();
 
     const tab = searchParams.get("tab") || "profile";
 
     const handleLogout = () => {
         logout();
-        navigate("/");
         toast.success("Logout Successfully");
     };
 

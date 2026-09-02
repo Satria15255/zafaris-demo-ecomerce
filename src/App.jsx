@@ -59,7 +59,7 @@ import { ToastContainer } from "react-toastify";
 function App() {
   // UI State
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [shoppingCartOpen, setShoppingCartOpen] = useState(false);
+  const [sidebarCartOpen, setSidebarCartOpen] = useState(false);
 
   return (
     <div>
@@ -69,7 +69,7 @@ function App() {
           <Route
             element={
               <MainLayout
-                handleOpenCart={() => setShoppingCartOpen(true)}
+                handleOpenCart={() => setSidebarCartOpen(true)}
                 onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
               />
             }
@@ -120,8 +120,8 @@ function App() {
           </Route>
         </Routes>
 
-        {shoppingCartOpen && (
-          <ShoppingCart closeShoppingCart={() => setShoppingCartOpen(false)} />
+        {sidebarCartOpen && (
+          <SidebarCart closeSidebarCart={() => setSidebarCartOpen(false)} />
         )}
         {isSidebarOpen && (
           <>

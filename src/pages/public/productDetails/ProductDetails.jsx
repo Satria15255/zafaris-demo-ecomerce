@@ -46,10 +46,6 @@ function ProductModal() {
         fetchProduct();
     }, [id]);
 
-    useEffect(() => {
-        console.log("Data product details:", product);
-    }, [product]);
-
     // PRODUCT STOCK INFORMATION
     const productSize = product?.variants?.map((stock) => stock.size);
     console.log(productSize);
@@ -102,8 +98,8 @@ function ProductModal() {
 
     return (
         <div className="w-full flex justify-center">
-            <div className="md:mt-16 pt-12 bg-white rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto max-w-7xl">
-                <div className="flex flex-col md:flex-row justify-center px-4 ">
+            <div className="md:mt-16 pt-12 bg-white rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto xl:max-w-7xl px-4">
+                <div className="flex flex-col md:flex-row justify-center  ">
                     <div className="w-full h-full flex justify-center">
                         <img
                             src={product.image}
@@ -246,7 +242,7 @@ function ProductModal() {
                     <p className="text-xl lg:text-2xl font-semibold pb-4">
                         Might You Like:
                     </p>
-                    <div className="grid grid-cols-2 place-items-center md:grid-cols-4 ">
+                    <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-2 ">
                         {recommended.map((product) => (
                             <ProductCard
                                 key={product._id}
