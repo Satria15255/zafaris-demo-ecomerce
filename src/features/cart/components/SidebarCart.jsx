@@ -12,6 +12,14 @@ const SidebarCart = ({ closeSidebarCart }) => {
 
     console.log("Carty isinya ", cart);
 
+    const handleViewCart = () => {
+        if (!user) {
+            navigate("/login");
+        } else {
+            navigate("/my-cart");
+        }
+    };
+
     return (
         <div className="fixed bg-black/20 inset-0 w-full z-50 h-screen flex justify-end ">
             <div className="bg-white w-full md:w-1/2 lg:w-2/5 xl:w-1/4 flex flex-col overflow-y-auto items-center">
@@ -244,7 +252,7 @@ const SidebarCart = ({ closeSidebarCart }) => {
                             <div className="w-1/2">
                                 <button
                                     onClick={() => {
-                                        navigate("/my-cart");
+                                        handleViewCart();
                                         closeSidebarCart();
                                     }}
                                     className="text-lg flex justify-center items-center mt-3 w-full h-12 border bg-white text-[#0C0C0C] border-black  hover:text-white hover:bg-[#0C0C0C] transition duration-300 rounded-md"
