@@ -264,7 +264,7 @@ const ShoppingCart = () => {
 							</p>
 						</div>
 						<div className=" border bg-gray-100 border-gray-100 text-md w-full h-auto p-3 rounded-xl">
-							<div className="flex justify-between py-2 border-b border-gray-300 font-semibold">
+							<div className="flex justify-between text-md py-2 border-b border-gray-300 font-semibold">
 								<p>Sub Total (1 Product)</p>
 								<p className="text-yellow-500">
 									{" "}
@@ -295,23 +295,27 @@ const ShoppingCart = () => {
 									</div>
 								)}
 							</div>
-							<div className="py-2">
-								<p className="font-semibold">Delivery</p>
-								<p className="flex justify-between text-gray-500">
+
+							<div className="py-2 ">
+								<p className="font-semibold text-md">
+									Delivery
+								</p>
+								<p className="flex text-sm lg:text-md justify-between text-gray-500">
 									From ZAFARIS indonesia{" "}
 									<span>Calculated at checkout</span>
 								</p>
 							</div>
-							<div className="flex justify-between py-2 border-b border-gray-300 font-semibold">
+							<div className="flex justify-between text-md py-2 border-b border-gray-300 font-semibold ">
 								<p>Service Tax</p>
 								<p> $1.00</p>
 							</div>
-							<div className="flex justify-between py-2 font-semibold">
+							<div className="flex justify-between text-md py-2 font-semibold">
 								<p>Total</p>
 								<p className="text-yellow-500">
 									${finalTotal.toFixed(2)}
 								</p>
 							</div>
+
 							<div>
 								{cart.length > 0 ? (
 									<button
