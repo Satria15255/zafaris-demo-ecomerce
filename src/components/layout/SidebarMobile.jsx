@@ -52,26 +52,12 @@ const SidebarMobile = ({ onClose }) => {
                 {/* Sidebar Menu */}
                 <div className="">
                     <div className="flex flex-col font-semibold text-sm ">
-                        {user && (
-                            <>
-                                <p
-                                    onClick={() =>
-                                        navigate("/dashboard?tab=profile")
-                                    }
-                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
-                                >
-                                    PROFILE
-                                </p>
-                                <p
-                                    onClick={() =>
-                                        navigate("/dashboard?tab=my-orders")
-                                    }
-                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
-                                >
-                                    MY ORDERS
-                                </p>
-                            </>
-                        )}
+                        <p
+                            onClick={() => navigate("/")}
+                            className="cursor-pointer hover:text-yellow-500 transition duration-100 py-4 border-t border-gray-300"
+                        >
+                            HOME
+                        </p>
                         <div className="text-sm py-4 border-t border-gray-300">
                             <p className="cursor-pointer hover:text-yellow-500 transition duration-100">
                                 CATEGORY :
@@ -109,6 +95,26 @@ const SidebarMobile = ({ onClose }) => {
                                 </p>
                             </div>
                         </div>
+                        {user && (
+                            <>
+                                <p
+                                    onClick={() =>
+                                        navigate("/dashboard?tab=profile")
+                                    }
+                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
+                                >
+                                    PROFILE
+                                </p>
+                                <p
+                                    onClick={() =>
+                                        navigate("/dashboard?tab=my-orders")
+                                    }
+                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
+                                >
+                                    MY ORDERS
+                                </p>
+                            </>
+                        )}
                         {user && (
                             <>
                                 <p
