@@ -83,10 +83,10 @@ const OrderPages = () => {
     }
 
     return (
-        <div className="p-5">
+        <section className="p-5">
             <div>
                 {/* Filter Orders */}
-                <div className="flex md:justify-around gap-3 pb-6 border-b border-gray-400 md:w-full overflow-x-auto px-2">
+                <nav className="flex md:justify-around gap-3 pb-6 border-b border-gray-400 md:w-full overflow-x-auto px-2">
                     {ordersStatus.map((ord) => (
                         <button
                             key={ord}
@@ -108,10 +108,10 @@ const OrderPages = () => {
                             {ord}
                         </button>
                     ))}
-                </div>
+                </nav>
 
                 {/* Order Section */}
-                <div className="w-full h-auto lg:max-h-120 lg:overflow-y-auto">
+                <section className="w-full h-auto lg:max-h-120 lg:overflow-y-auto">
                     {sortedOrder.length === 0 ? (
                         <p className="pt-20 text-center">Belum ada order.</p>
                     ) : (
@@ -137,9 +137,9 @@ const OrderPages = () => {
                             </div>
                         </>
                     )}
-                </div>
+                </section>
             </div>
-        </div>
+        </section>
     );
 };
 

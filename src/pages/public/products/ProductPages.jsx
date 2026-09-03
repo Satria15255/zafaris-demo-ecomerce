@@ -130,7 +130,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     }
 
     return (
-        <div className="lg:mt-16 p-1 md:p-2">
+        <main className="lg:mt-16 p-1 md:p-2">
             <div
                 style={{ backgroundImage: `url(${bgProductPages})` }}
                 className="z-0 flex flex-col justify-center md:justify-between items-center h-[25vh] lg:h-[50vh] bg-center bg-cover rounded-lg md:rounded-3xl mt-12 mb-2 md:mb-4"
@@ -138,9 +138,9 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                 <div className="hidden md:flex bg-transparant font-light ml-5">
                     .
                 </div>
-                <p className="text-4xl md:text-8xl font-bold text-white">
+                <h1 className="text-4xl md:text-8xl font-bold text-white">
                     Product
-                </p>
+                </h1>
                 <div className="hidden max-w-7xl md:flex justify-between items-center gap-2 w-full md:w-4/5 lg:w-[180vh] rounded-t-2xl bg-white  h-[6vh] lg:h-[9vh] px-3">
                     <p className="hidden lg:flex font-bold text-xs md:text-sm lg:text-lg">
                         Give All You Want
@@ -170,15 +170,17 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                 </div>
             </div>
             {/* Product Section */}
-            <div className="flex justify-center ">
+            <section className="flex justify-center ">
                 <div className="flex flex-col justify-center md:flex-row w-[100vh] md:w-[180vh] max-w-7xl px-2">
-                    {/* Sidebar Filter Left*/}
-                    <FilterSidebar
-                        categories={categories}
-                        size={size}
-                        filter={filter}
-                        setFilter={setFilter}
-                    />
+                    <aside>
+                        {/* Sidebar Filter Left*/}
+                        <FilterSidebar
+                            categories={categories}
+                            size={size}
+                            filter={filter}
+                            setFilter={setFilter}
+                        />
+                    </aside>
 
                     {/* Filter Mobile Version */}
                     <div className="md:hidden w-full flex justify-center gap-3 mb-2 mt-2 mr-2">
@@ -206,8 +208,8 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                         </button>
                     </div>
 
-                    {/* Products Section Right */}
-                    <div className="flex flex-col justify-between w-full lg:w-4/5 min-h-[100vh]">
+                    {/* Products Section */}
+                    <section className="flex flex-col justify-between w-full lg:w-4/5 min-h-[100vh]">
                         <div className="grid grid-cols-2 items-center md:grid-cols-4 lg:grid-cols-3 gap-2">
                             {currentProducts.length === 0 && (
                                 <p className="text-center col-span-3">
@@ -225,7 +227,10 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                                     />
                                 ))}
                         </div>
-                        <div className="flex justify-between w-full py-4">
+                        <nav
+                            aria-label="Product Pagination"
+                            className="flex justify-between w-full py-4"
+                        >
                             <button
                                 className="font-semibold text-xs md:text-lg w-25 rounded h-[5vh] hover:shadow-md transition duration-200"
                                 onClick={() =>
@@ -259,8 +264,8 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                             >
                                 Next →
                             </button>
-                        </div>
-                    </div>
+                        </nav>
+                    </section>
                 </div>
                 {filterOpen && (
                     <FilterMobile
@@ -272,8 +277,8 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                         onApply={(newFilter) => setFilter(newFilter)}
                     />
                 )}
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 

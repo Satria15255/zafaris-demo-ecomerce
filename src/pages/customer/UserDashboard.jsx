@@ -24,51 +24,55 @@ const UserDashboard = () => {
     };
 
     return (
-        <div className="flex justify-center bg-[#FAFAFA] w-full">
+        <main className="flex justify-center bg-[#FAFAFA] w-full">
             <div className="flex w-full max-w-7xl lg:min-h-screen pt-16 lg:mt-13">
                 {/* Sidebar */}
-                <div className="hidden w-1/4 md:flex flex-col items-start p-3 gap-3 border-r border-gray-300">
+                <aside className="hidden w-1/4 md:flex flex-col items-start p-3 gap-3 border-r border-gray-300">
                     <div className="pb-5 border-b w-full">
                         <p className="text-lg">Hello {user.name}</p>
                     </div>
-                    <button
-                        className={`w-4/5 rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "profile" ? "bg-black text-white" : ""}`}
-                        onClick={() => setSearchParams({ tab: "profile" })}
-                    >
-                        <FaUserCircle size={20} />
-                        Profile
-                    </button>
-                    <button
-                        className={`w-4/5 rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "my-orders" ? "bg-black text-white" : ""}`}
-                        onClick={() => setSearchParams({ tab: "my-orders" })}
-                    >
-                        <FaShoppingBag size={20} />
-                        My Orders
-                    </button>
-                    <button
-                        className={`w-4/5 rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "change-password" ? "bg-black text-white" : ""}`}
-                        onClick={() =>
-                            setSearchParams({ tab: "change-password" })
-                        }
-                    >
-                        <FaLockOpen size={20} />
-                        Change Password
-                    </button>
-                    <button
-                        className={`w-4/5 rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200`}
-                        onClick={handleLogout}
-                    >
-                        <FaSignOutAlt size={20} /> Logout
-                    </button>
-                </div>
+                    <nav>
+                        <button
+                            className={`w-4/5 rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "profile" ? "bg-black text-white" : ""}`}
+                            onClick={() => setSearchParams({ tab: "profile" })}
+                        >
+                            <FaUserCircle size={20} />
+                            Profile
+                        </button>
+                        <button
+                            className={`w-4/5 rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "my-orders" ? "bg-black text-white" : ""}`}
+                            onClick={() =>
+                                setSearchParams({ tab: "my-orders" })
+                            }
+                        >
+                            <FaShoppingBag size={20} />
+                            My Orders
+                        </button>
+                        <button
+                            className={`w-4/5 rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "change-password" ? "bg-black text-white" : ""}`}
+                            onClick={() =>
+                                setSearchParams({ tab: "change-password" })
+                            }
+                        >
+                            <FaLockOpen size={20} />
+                            Change Password
+                        </button>
+                        <button
+                            className={`w-4/5 rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200`}
+                            onClick={handleLogout}
+                        >
+                            <FaSignOutAlt size={20} /> Logout
+                        </button>
+                    </nav>
+                </aside>
                 {/* Main Content */}
-                <div className="ml-auto w-full h-auto bg-[#FAFAFA]">
+                <section className="ml-auto w-full h-auto bg-[#FAFAFA]">
                     {tab === "profile" && <ProfilePage />}
                     {tab === "my-orders" && <MyOrdersPage />}
                     {tab === "change-password" && <ChangePassword />}
-                </div>
+                </section>
             </div>
-        </div>
+        </main>
     );
 };
 

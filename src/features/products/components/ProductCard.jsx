@@ -18,7 +18,7 @@ function ProductCard({ product, productDetails }) {
             transition={{ duration: 1.0 }} // Animasi selama 1 detik
             viewport={{ once: true }}
         >
-            <div
+            <article
                 key={product.id}
                 className="relative flex flex-col justify-center w-full lg:w-70 xl:w-75 h-auto md:rounded-5 lg:rounded-xl mt-2 "
             >
@@ -44,14 +44,14 @@ function ProductCard({ product, productDetails }) {
                     </div>
                 </div>
                 <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-2 lg:justify-center">
-                    <div className="h-10 md:h-12 flex items-center">
+                    <header className="h-10 md:h-12 flex items-center">
                         <p className="text-sm  md:text-[15px] lg:text-xl xl:text-md">
                             {" "}
                             {product.name}
                         </p>
-                    </div>
+                    </header>
 
-                    <div className="flex justify-between items-center ">
+                    <main className="flex justify-between items-center ">
                         <div className="flex h-[40px] items-center justify-center font-montserrat">
                             {isDiscount ? (
                                 <div className="flex flex-col lg:flex-row gap-2 justify-center items-center">
@@ -81,9 +81,9 @@ function ProductCard({ product, productDetails }) {
                                 <IoBagHandleOutline />
                             </p>
                         </div>
-                    </div>
+                    </main>
                 </div>
-            </div>
+            </article>
         </motion.div>
     );
 }

@@ -52,8 +52,8 @@ const ProfilePages = () => {
         }
     };
     return (
-        <div className="flex flex-col bg-[#FAFAFA] gap-10 p-5 h-full">
-            <div className="flex flex-row bg-white items-center border border-gray-100 shadow-lg rounded-xl  gap-2 py-7 px-2 lg:p-9 ">
+        <section className="flex flex-col bg-[#FAFAFA] gap-10 p-5 h-full">
+            <header className="flex flex-row bg-white items-center border border-gray-100 shadow-lg rounded-xl  gap-2 py-7 px-2 lg:p-9 ">
                 <div className="text-5xl lg:text-6xl">
                     <PiUserCircle />
                 </div>
@@ -66,7 +66,7 @@ const ProfilePages = () => {
                         Verified Account
                     </p>
                 </div>
-            </div>
+            </header>
 
             {/* User Details & Upate Form*/}
             <div className="w-full">
@@ -179,7 +179,7 @@ const ProfilePages = () => {
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
