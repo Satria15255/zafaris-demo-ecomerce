@@ -98,14 +98,14 @@ const AdminUserList = () => {
 
   console.log(users);
   return (
-    <div className="px-4 w-full flex flex-col gap-4 py-9">
+    <main className="px-4 w-full flex flex-col gap-4 py-9">
       <header className="flex flex-col gap-2">
         <p className="text-4xl font-sans font-bold">Users Management</p>
         <p className="text-sm text-gray-700 font-sans">
           Manage every registered account inside Zafaris
         </p>
       </header>
-      <div className="flex justify-around gap-4">
+      <section className="flex justify-around gap-4">
         {usersConfig.map((item) => (
           <DashboardStatsCard
             key={item.key}
@@ -114,8 +114,8 @@ const AdminUserList = () => {
             icon={item.icon}
           />
         ))}
-      </div>
-      <main>
+      </section>
+      <section>
         <div className="flex justify-between items-center gap-3 pb-3">
           <div className="w-1/3">
             <input
@@ -151,7 +151,7 @@ const AdminUserList = () => {
           </div>
         </div>
         <UserList users={currentUsers} onOpenModal={handleDetail} />
-        <div className="flex justify-between items-center mt-4">
+        <nav className="flex justify-between items-center mt-4">
           <p className="text-xs text-gray-500">
             Showing {indexOfFirstProduct + 1} -{" "}
             {Math.min(indexOfLastProduct, users.length)} of {users.length} Cust
@@ -206,8 +206,8 @@ const AdminUserList = () => {
               →
             </button>
           </div>
-        </div>
-      </main>
+        </nav>
+      </section>
 
       {isModalOpen && (
         <UserDetail
@@ -217,7 +217,7 @@ const AdminUserList = () => {
           onClose={() => setIsModalOpen(false)}
         />
       )}
-    </div>
+    </main>
   );
 };
 

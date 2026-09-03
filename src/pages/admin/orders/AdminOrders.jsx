@@ -177,15 +177,15 @@ const AdminOrders = () => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-4 px-4 py-9 ">
-      <div className="flex justify-between px-2">
+    <main className="w-full flex flex-col gap-4 px-4 py-9 ">
+      <header className="flex justify-between px-2">
         <p className="text-4xl font-bold font-sans">Order History</p>
         <p className="text-sm">
           <span className="text-black">Dashboard /</span> Order
         </p>
-      </div>
+      </header>
 
-      <div className="flex justify-around gap-4 ">
+      <section className="flex justify-around gap-4 ">
         {ordersConfig.map((item) => (
           <DashboardStatsCard
             key={item.key}
@@ -194,9 +194,9 @@ const AdminOrders = () => {
             icon={item.icon}
           />
         ))}
-      </div>
+      </section>
 
-      <header className="flex flex-col gap-4 rounded-lg border border-gray-300 p-5 text-xs">
+      <section className="flex flex-col gap-4 rounded-lg border border-gray-300 p-5 text-xs">
         <div className="w-1/2">
           <input
             type="text"
@@ -257,12 +257,12 @@ const AdminOrders = () => {
             ))}
           </select>
         </div>
-      </header>
+      </section>
 
-      <div>
+      <section>
         <OrdersTable order={currentOrder} onOpenModal={openModal} />
 
-        <div className="flex justify-between items-center mt-4">
+        <nav className="flex justify-between items-center mt-4">
           <p className="text-xs text-gray-500">
             Showing {indexOfFirstOrder + 1} -{" "}
             {Math.min(indexOfLastOrder, sortOrders.length)} of{" "}
@@ -319,8 +319,8 @@ const AdminOrders = () => {
               →
             </button>
           </div>
-        </div>
-      </div>
+        </nav>
+      </section>
 
       {selectedOrder && (
         <OrdersDetails
@@ -329,7 +329,7 @@ const AdminOrders = () => {
           onStatusChange={handleStatusChange}
         />
       )}
-    </div>
+    </main>
   );
 };
 

@@ -151,8 +151,8 @@ const ProductManagement = () => {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col gap-4 px-4 py-5">
-      <div className="flex justify-between items-center mb-2">
+    <main className="w-full h-screen flex flex-col gap-4 px-4 py-5">
+      <header className="flex justify-between items-center mb-2">
         <div className="flex flex-col gap-2">
           <p className="text-4xl font-bold font-sans">Product Management</p>
           <p className="text-sm text-gray-700">
@@ -166,9 +166,9 @@ const ProductManagement = () => {
         >
           + Add New Product
         </button>
-      </div>
+      </header>
 
-      <div className="flex justify-around gap-4 ">
+      <section className="flex justify-around gap-4 ">
         {productsManagementConfig.map((item) => (
           <DashboardStatsCard
             key={item.key}
@@ -177,9 +177,9 @@ const ProductManagement = () => {
             icon={item.icon}
           />
         ))}
-      </div>
+      </section>
 
-      <div>
+      <section>
         <ProductsTable
           products={currentProducts}
           onEdit={(product) => setEditingProduct(product)}
@@ -195,7 +195,7 @@ const ProductManagement = () => {
           brand={brands}
           setFilter={setFilter}
         />
-        <div className="flex justify-between items-center mt-4">
+        <nav className="flex justify-between items-center mt-4">
           <p className="text-xs text-gray-500">
             Showing {indexOfFirstProduct + 1} -{" "}
             {Math.min(indexOfLastProduct, filteredProducts.length)} of{" "}
@@ -251,8 +251,8 @@ const ProductManagement = () => {
               →
             </button>
           </div>
-        </div>
-      </div>
+        </nav>
+      </section>
 
       {isUploadOpen && (
         <ProductsUploadForm
@@ -268,7 +268,7 @@ const ProductManagement = () => {
           onSucces={handleEditSucces}
         />
       )}
-    </div>
+    </main>
   );
 };
 

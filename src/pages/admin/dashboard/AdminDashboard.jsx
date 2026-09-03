@@ -111,7 +111,7 @@ const AdminDashboard = () => {
 	<dashboardConfig items={summary} />;
 
 	return (
-		<div className="w-full p-5 bg-slate-50">
+		<main className="w-full p-5 bg-slate-50">
 			<header className="flex justify-between items-center border-b border-gray-300 py-4 px-2">
 				<div>
 					<h2>
@@ -132,8 +132,8 @@ const AdminDashboard = () => {
 					</h2>
 				</div>
 			</header>
-			<main className="mt-4 w-full">
-				<div className="flex justify-around gap-4">
+			<div className="mt-4 w-full">
+				<section className="flex justify-around gap-4">
 					{dashboardConfig.map((item) => (
 						<DashboardStatsCard
 							key={item.key}
@@ -142,11 +142,11 @@ const AdminDashboard = () => {
 							icon={item.icon}
 						/>
 					))}
-				</div>
+				</section>
 
 				{/*Sales Chart*/}
 				<div className=" gap-4 w-full h-auto ">
-					<div className="mt-6 flex flex-col bg-white justify-around border border-gray-300 rounded-xl w-full">
+					<section className="mt-6 flex flex-col bg-white justify-around border border-gray-300 rounded-xl w-full">
 						<div className="flex gap-2">
 							<div className="flex flex-col justify-between p-5 w-2/5">
 								<div>
@@ -191,14 +191,14 @@ const AdminDashboard = () => {
 							</div>
 							<SalesChart data={salesChart} />
 						</div>
-					</div>
+					</section>
 
 					<div className="flex w-full gap-5">
-						<div className="w-full">
+						<section className="w-full">
 							<LatestTransactionsTabel order={lastOrders} />
-						</div>
+						</section>
 						{/*Best Selling Products*/}
-						<div className="w-2/5 flex flex-col gap-2 bg-gray-900 text-white rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-2 shadow-lg">
+						<section className="w-2/5 flex flex-col gap-2 bg-gray-900 text-white rounded-3xl h-auto justify-center mt-2 lg:mt-4 p-2 shadow-lg">
 							<div className="flex flex-col justify-center mt-2">
 								<p className=" text-xl text-[#F3E5AB] font-semibold font-sans pl-2">
 									Top Selling Products
@@ -231,11 +231,11 @@ const AdminDashboard = () => {
 								{/* Navigation & Pagination */}
 								<div className="swiper-pagination"></div>
 							</Swiper>
-						</div>
+						</section>
 					</div>
 				</div>
-			</main>
-		</div>
+			</div>
+		</main>
 	);
 };
 

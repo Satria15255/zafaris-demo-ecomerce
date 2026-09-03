@@ -37,7 +37,7 @@ const ChangePassword = () => {
         }
     };
     return (
-        <div className="flex flex-col gap-10  h-auto lg:h-full p-8">
+        <section className="flex flex-col gap-10  h-auto lg:h-full p-8">
             {/* Form*/}
             <div className="border border-gray-200 shadow-2xl rounded-xl p-5">
                 <form
@@ -74,7 +74,7 @@ const ChangePassword = () => {
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
