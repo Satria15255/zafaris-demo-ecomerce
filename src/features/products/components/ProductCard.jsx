@@ -44,14 +44,14 @@ function ProductCard({ product, productDetails }) {
                     </div>
                 </div>
                 <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-2 lg:justify-center">
-                    <header className="h-10 md:h-12 flex items-center">
+                    <div className="h-10 md:h-12 flex items-center">
                         <p className="text-sm  md:text-[15px] lg:text-xl xl:text-md">
                             {" "}
                             {product.name}
                         </p>
-                    </header>
+                    </div>
 
-                    <main className="flex justify-between items-center ">
+                    <div className="flex justify-between items-center ">
                         <div className="flex h-[40px] items-center justify-center font-montserrat">
                             {isDiscount ? (
                                 <div className="flex flex-col lg:flex-row gap-2 justify-center items-center">
@@ -81,7 +81,7 @@ function ProductCard({ product, productDetails }) {
                                 <IoBagHandleOutline />
                             </p>
                         </div>
-                    </main>
+                    </div>
                 </div>
             </article>
         </motion.div>

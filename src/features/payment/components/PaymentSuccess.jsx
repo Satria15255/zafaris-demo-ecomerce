@@ -43,10 +43,10 @@ const SuccesTransaction = () => {
     }
 
     return (
-        <div className="mt-8 md:mt-17 xl:pt-16 p-2 md:p-4 flex flex-col items-center">
+        <main className="mt-8 md:mt-17 xl:pt-16 p-2 md:p-4 flex flex-col items-center">
             {latestOrder ? (
                 <div className="mb-8 p-4 flex flex-col w-full   justify-center rounded-lg max-w-7xl">
-                    <div className="flex flex-col justify-center items-center pt-4">
+                    <header className="flex flex-col justify-center items-center pt-4">
                         <div className="bg-green-100 p-6 rounded-full">
                             <div className="bg-green-200 p-6 rounded-full">
                                 <p className="text-8xl">
@@ -67,9 +67,9 @@ const SuccesTransaction = () => {
                                 being processed.
                             </p>
                         )}
-                    </div>
+                    </header>
                     {/* Purchase Details */}
-                    <div className="flex flex-col justify-center w-full">
+                    <section className="flex flex-col justify-center w-full">
                         {/* Product Details\ */}
                         <div className="mt-3 w-full">
                             <p className="font-semibold text-lg md:text-xl font-montserrat md:border-b pb-4">
@@ -251,13 +251,13 @@ const SuccesTransaction = () => {
                                 Continue Shopping
                             </button>
                         </div>
-                    </div>
+                    </section>
                 </div>
             ) : (
                 <p>Loading transaction details...</p>
             )}
 
-            <div className="mt-8">
+            <aside className="mt-8">
                 <p className=" text-sm lg:text-2xl text-center font-semibold pb-4">
                     You Might Like
                 </p>
@@ -266,8 +266,8 @@ const SuccesTransaction = () => {
                         <ProductCard key={product._id} product={product} />
                     ))}
                 </div>
-            </div>
-        </div>
+            </aside>
+        </main>
     );
 };
 

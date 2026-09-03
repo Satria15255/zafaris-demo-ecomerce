@@ -111,7 +111,7 @@ const CheckoutPage = () => {
     };
 
     return (
-        <div className="mt-9 md:pt-16 lg:mt-16 p-6 flex justify-center">
+        <main className="mt-9 md:pt-16 lg:mt-16 p-6 flex justify-center">
             {items.length === 0 ? (
                 <div className="h-4/5 border-t">
                     <p>No Product</p>
@@ -119,7 +119,7 @@ const CheckoutPage = () => {
             ) : (
                 <div className="flex flex-col md:flex-row pt-2 w-full max-w-7xl">
                     {/* Rincian Cart */}
-                    <div className="w-full md:w-1/2 lg:w-3/5 mb-6 p-2 md:p-8">
+                    <section className="w-full md:w-1/2 lg:w-3/5 mb-6 p-2 md:p-8">
                         <p className="text-xl md:text-xl lg:text-lg font-montserrat font-semibold border-b border-gray-500 pb-3">
                             Shopping Cart
                         </p>
@@ -229,10 +229,10 @@ const CheckoutPage = () => {
                                 </span>
                             </p>
                         </div>
-                    </div>
+                    </section>
 
                     {/* Form Pembeli */}
-                    <div className="w-full md:w-1/2 lg:w-2/5 pt-8 bg-gray-100 rounded-xl p-4">
+                    <aside className="w-full md:w-1/2 lg:w-2/5 pt-8 bg-gray-100 rounded-xl p-4">
                         <p className="text-xl md:text-xl lg:text-lg font-semibold font-montserrat  pb-4 font-semibold">
                             Order Details
                         </p>
@@ -390,10 +390,10 @@ const CheckoutPage = () => {
                                 Make Order
                             </button>
                         </form>
-                    </div>
+                    </aside>
                 </div>
             )}
-        </div>
+        </main>
     );
 };
 

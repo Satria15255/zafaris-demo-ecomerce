@@ -21,10 +21,10 @@ const SidebarCart = ({ closeSidebarCart }) => {
     };
 
     return (
-        <div className="fixed bg-black/20 inset-0 w-full z-50 h-screen flex justify-end ">
+        <main className="fixed bg-black/20 inset-0 w-full z-50 h-screen flex justify-end ">
             <div className="bg-white w-full md:w-1/2 lg:w-2/5 xl:w-1/4 flex flex-col overflow-y-auto items-center">
                 {/* Tombol Close */}
-                <div className="w-full flex justify-between p-5 border-b border-gray-400">
+                <header className="w-full flex justify-between p-5 border-b border-gray-400">
                     <button
                         onClick={closeSidebarCart}
                         className="top-4 left-4 text-2xl font-bold text-gray-600 hover:text-gray-900"
@@ -34,10 +34,10 @@ const SidebarCart = ({ closeSidebarCart }) => {
                     <p className="text-md mt-3 lg:text-2xl font-semibold mb-4 md:mb-6">
                         Your cart
                     </p>
-                </div>
+                </header>
                 <div className="relative h-screen w-full flex flex-col justify-between">
                     {/* Tabel Cart */}
-                    <div className="w-full  flex flex-col justify-start">
+                    <section className="w-full  flex flex-col justify-start">
                         <div className="w-full p-1  bg-white lg:p-6 overflow-x-hidden overflow-y-auto lg:max-h-[62vh]">
                             {cart.length === 0 ? (
                                 <div className="flex flex-col justify-center items-center gap-4 space-y-4">
@@ -187,10 +187,10 @@ const SidebarCart = ({ closeSidebarCart }) => {
                                 </table>
                             )}
                         </div>
-                    </div>
+                    </section>
                     {/* Total Harga Keseluruhan & chekout */}
                     <div className="absolute z-50 bottom-0 w-full border-t border-gray-400 p-4 mt-4 flex flex-col gap-4 ">
-                        <div className="flex justify-between">
+                        <section className="flex justify-between">
                             <div className="flex flex-col">
                                 <p className="text-[16px] md:text-lg font-semibold text-left">
                                     Sub Total
@@ -208,7 +208,7 @@ const SidebarCart = ({ closeSidebarCart }) => {
                                     </h2>
                                 )}
                             </div>
-                        </div>
+                        </section>
                         <div className="flex gap-2 pb-6">
                             <div className="w-1/2">
                                 {cart.length === 0 ? (
@@ -264,7 +264,7 @@ const SidebarCart = ({ closeSidebarCart }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 };
 

@@ -5,7 +5,7 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="p-2 pt-6 ">
+    <article className="p-2 pt-6 ">
       <div
         key={order._id}
         className="border border-gray-300 mb-3 p-2 h-auto md:p-4 rounded-xl shadow space-y-3 "
@@ -141,7 +141,7 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

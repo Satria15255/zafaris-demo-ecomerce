@@ -113,7 +113,7 @@ const PaymentPages = () => {
     }
 
     return (
-        <div className="mt-8 md:mt-16 xl:pt-16 p-2 md:p-4 flex flex-col items-center ">
+        <main className="mt-8 md:mt-16 xl:pt-16 p-2 md:p-4 flex flex-col items-center ">
             <p className="text-xl lg:text-4xl py-8 font-semibold font-montserrat  ">
                 Complete Your Payment 💳
             </p>
@@ -121,7 +121,7 @@ const PaymentPages = () => {
             {latestOrder ? (
                 <div className="mb-8 lg:p-4 xl:p-2 flex flex-col md:flex-row rounded-lg w-full max-w-7xl">
                     {/* Order Details */}
-                    <div className="flex flex-col w-full md:w-1/2 lg:w-3/5  ">
+                    <section className="flex flex-col w-full md:w-1/2 lg:w-3/5  ">
                         <p className="text-xl w-full font-semibold mb-2">
                             🧾 Order Details:
                         </p>
@@ -232,10 +232,10 @@ const PaymentPages = () => {
                                 ${latestOrder.finalPrice.toFixed(2)}
                             </div>
                         </div>
-                    </div>
+                    </section>
 
                     {/* Payment Details */}
-                    <div className="bg-gray-100 w-full md:w-1/2 lg:w-2/5 h-auto flex flex-col justify-around p-2 lg:p-4 rounded-xl">
+                    <section className="bg-gray-100 w-full md:w-1/2 lg:w-2/5 h-auto flex flex-col justify-around p-2 lg:p-4 rounded-xl">
                         <p className="text-xl w-full font-semibold mb-2">
                             🧾 Payment Details:
                         </p>
@@ -346,7 +346,7 @@ const PaymentPages = () => {
                         >
                             Paid Now
                         </button>
-                    </div>
+                    </section>
                 </div>
             ) : (
                 <p>Loading transaction details...</p>
@@ -360,7 +360,7 @@ const PaymentPages = () => {
                 </button>
             </div>
 
-            <div className="mt-8">
+            <aside className="mt-8">
                 <h2 className="text-sm lg:text-xl text-center font-bold mb-4">
                     You Might Like
                 </h2>
@@ -369,8 +369,8 @@ const PaymentPages = () => {
                         <ProductCard key={product._id} product={product} />
                     ))}
                 </div>
-            </div>
-        </div>
+            </aside>
+        </main>
     );
 };
 

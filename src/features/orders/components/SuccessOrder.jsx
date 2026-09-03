@@ -39,9 +39,9 @@ const SuccesTransaction = () => {
     }
 
     return (
-        <div className="mt-8 md:mt-16 xl:pt-16 p-2 md:p-4 flex flex-col items-center  ">
+        <main className="mt-8 md:mt-16 xl:pt-16 p-2 md:p-4 flex flex-col items-center  ">
             {latestOrder ? (
-                <div className="mb-8 p-4 flex flex-col gap-4 rounded-lg w-full max-w-6xl">
+                <section className="mb-8 p-4 flex flex-col gap-4 rounded-lg w-full max-w-6xl">
                     <div className="flex flex-col gap-3 items-center">
                         <p className="text-6xl  md:text-8xl">
                             <FcApproval />
@@ -239,12 +239,12 @@ const SuccesTransaction = () => {
                             Paid Now
                         </button>
                     </div>
-                </div>
+                </section>
             ) : (
                 <p>Loading transaction details...</p>
             )}
 
-            <div className="mt-8 max-w-7xl">
+            <aside className="mt-8 max-w-7xl">
                 <h2 className="text-sm text-center lg:text-xl font-bold mb-4">
                     You Might Like
                 </h2>
@@ -253,8 +253,8 @@ const SuccesTransaction = () => {
                         <ProductCard key={product._id} product={product} />
                     ))}
                 </div>
-            </div>
-        </div>
+            </aside>
+        </main>
     );
 };
 
