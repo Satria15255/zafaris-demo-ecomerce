@@ -97,9 +97,9 @@ function ProductModal() {
     }
 
     return (
-        <div className="w-full flex justify-center">
+        <main className="w-full flex justify-center">
             <div className="md:mt-16 pt-12 bg-white rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto xl:max-w-7xl px-4">
-                <div className="flex flex-col md:flex-row justify-center  ">
+                <article className="flex flex-col md:flex-row justify-center  ">
                     <div className="w-full h-full flex justify-center">
                         <img
                             src={product.image}
@@ -107,29 +107,28 @@ function ProductModal() {
                             className="w-full lg:w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2"
                         />
                     </div>
+
                     <div className="w-full gap-3 flex justify-around flex-col md:pl-6 mt-3">
-                        <div className="">
-                            <div className="flex flex-col gap-3">
-                                <p className="text-sm md:text-lg text-gray-500">
-                                    {product.brand} / {product.category}
+                        <header className="flex flex-col gap-3">
+                            <p className="text-sm md:text-lg text-gray-500">
+                                {product.brand} / {product.category}
+                            </p>
+                            <p className="text-3xl lg:text-5xl font-semibold">
+                                {product.name}
+                            </p>
+                            <div className="flex items-center text-sm lg:text-lg">
+                                <FaStar className="text-yellow-500" />
+                                <FaStar className="text-yellow-500" />
+                                <FaStar className="text-yellow-500" />
+                                <FaStar className="text-yellow-500" />
+                                <FaStar className="text-yellow-500" />
+                                <FaStar className="text-yellow-500" />
+                                <p className="text-sm lg:text-lg text-gray-400 pl-4">
+                                    {" "}
+                                    4.9 (120 Reviews)
                                 </p>
-                                <p className="text-3xl lg:text-5xl font-semibold">
-                                    {product.name}
-                                </p>
-                                <div className="flex items-center text-sm lg:text-lg">
-                                    <FaStar className="text-yellow-500" />
-                                    <FaStar className="text-yellow-500" />
-                                    <FaStar className="text-yellow-500" />
-                                    <FaStar className="text-yellow-500" />
-                                    <FaStar className="text-yellow-500" />
-                                    <FaStar className="text-yellow-500" />
-                                    <p className="text-sm lg:text-lg text-gray-400 pl-4">
-                                        {" "}
-                                        4.9 (120 Reviews)
-                                    </p>
-                                </div>
                             </div>
-                        </div>
+                        </header>
 
                         <div className="flex items-center ">
                             {isDiscount ? (
@@ -150,7 +149,7 @@ function ProductModal() {
                             )}
                         </div>
 
-                        <div className="">
+                        <section className="">
                             <p className="text-lg lg:text-2xl font-semibold">
                                 Size Charts
                             </p>
@@ -205,7 +204,7 @@ function ProductModal() {
                                     </div>
                                 )}
                             </div>
-                        </div>
+                        </section>
 
                         <div className=" flex gap-4 justify-arround ">
                             <button
@@ -227,18 +226,18 @@ function ProductModal() {
                             </button>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div className="mt-9 px-4">
+                <section className="mt-9 px-4">
                     <p className="text-xl lg:text-2xl font-semibold">
                         Product Description
                     </p>
                     <p className="py-3 text-sm lg:text-lg border-bottom w-full ">
                         {product.description}
                     </p>
-                </div>
+                </section>
 
-                <div className="mt-8 w-full">
+                <section className="mt-8 w-full">
                     <p className="text-xl lg:text-2xl font-semibold pb-4">
                         Might You Like:
                     </p>
@@ -253,13 +252,13 @@ function ProductModal() {
                             />
                         ))}
                     </div>
-                </div>
+                </section>
 
                 <div className="py-4">
                     <CallAction />
                 </div>
             </div>
-        </div>
+        </main>
     );
 }
 

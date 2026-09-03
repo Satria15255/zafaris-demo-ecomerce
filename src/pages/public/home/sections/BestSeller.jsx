@@ -33,18 +33,21 @@ const Bestseller = () => {
     }, []);
 
     return (
-        <div className="my-6 lg:my-12 flex flex-col items-center">
+        <section className="my-6 lg:my-12 flex flex-col items-center">
             <header className="flex  justify-between w-full px-2 md:px-7 items-center py-4 ">
                 <p className="text-sm md:text-lg lg:text-2xl font-montserrat font-semibold border-b border-yellow-600 py-2">
                     Best Deals
                 </p>
-                <p className="text-sm lg:text-lg text-gray-700 font-ysabeau border-b my-2">
+                <button
+                    onClick={() => navigate("/products")}
+                    className="text-sm lg:text-lg text-gray-700 font-ysabeau border-b my-2"
+                >
                     View Collection
-                </p>
+                </button>
             </header>
             <main>
                 {/* Desktop Ver */}
-                <div className=" w-full hidden  xl:max-w-7xl mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
+                <article className=" w-full hidden  xl:max-w-7xl mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
                     {bestSellingProducts.map((products) => (
                         <ProductCard
                             key={products.id}
@@ -55,10 +58,10 @@ const Bestseller = () => {
                             addToCart={() => handleAddToCart(products._id)}
                         />
                     ))}
-                </div>
+                </article>
 
                 {/* Mobile Ver */}
-                <div className="w-100 md:w-full md:hidden h-auto gap-3 mt-2 lg:mt-4 pb-4 px-2 md:px-3 overflow-hidden">
+                <article className="w-100 md:w-full md:hidden h-auto gap-3 mt-2 lg:mt-4 pb-4 px-2 md:px-3 overflow-hidden">
                     {/* Slider */}
                     <Swiper
                         modules={[Pagination, Autoplay]}
@@ -90,9 +93,9 @@ const Bestseller = () => {
                         {/* Navigation & Pagination */}
                         <div className="swiper-pagination"></div>
                     </Swiper>
-                </div>
+                </article>
             </main>
-        </div>
+        </section>
     );
 };
 

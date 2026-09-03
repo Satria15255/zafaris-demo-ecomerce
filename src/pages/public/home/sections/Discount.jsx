@@ -53,7 +53,7 @@ function OnSale({ onOpenModal }) {
     console.log("discount product pages:", randomProduct);
 
     return (
-        <div className=" mt-6 flex justify-center w-full h-auto">
+        <section className=" mt-6 flex justify-center w-full h-auto">
             <div className="w-100 md:w-full xl:max-w-7xl h-50 md:h-60 lg:h-80 flex  bg-[#0C0C0C] ">
                 <div className="w-2/5">
                     <img
@@ -62,7 +62,7 @@ function OnSale({ onOpenModal }) {
                         className="w-full h-full  object-cover object-center"
                     />
                 </div>
-                <div className="w-3/5 text-white flex p-4 flex-col justify-center gap-1 md:gap-3 font-montserrat">
+                <header className="w-3/5 text-white flex p-4 flex-col justify-center gap-1 md:gap-3 font-montserrat">
                     <p className="text-[8px]  md:text-xs lg:text-sm">
                         LIMITED OFFER
                     </p>
@@ -72,9 +72,9 @@ function OnSale({ onOpenModal }) {
                     <button className="py-1 lg:py-2 text-[7px] md:text-xs lg:text-lg px-4 rounded-lg text-black w-1/3 lg:w-1/5 bg-white border border-gray-300">
                         Get Now
                     </button>
-                </div>
+                </header>
             </div>
-        </div>
+        </section>
     );
 }
 

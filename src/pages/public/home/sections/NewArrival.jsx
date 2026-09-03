@@ -36,7 +36,7 @@ function ProductList() {
     };
 
     return (
-        <div className="pt-12 md:mt-3 mb-8 h-auto flex flex-col items-center">
+        <section className="pt-12 md:mt-3 mb-8 h-auto flex flex-col items-center">
             <motion.div
                 initial={{ opacity: 0, y: 50 }} // Awalnya transparan dan turun 50px
                 whileInView={{ opacity: 1, y: 0 }} // Saat muncul, fade-in & naik ke atas
@@ -52,7 +52,7 @@ function ProductList() {
                     </p>
                 </header>
             </motion.div>
-            <main className="grid py-2 xl:min-w-7xl h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
+            <article className="grid py-2 xl:min-w-7xl h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
                 {products.map((products) => (
                     <ProductCard
                         key={products.id}
@@ -63,7 +63,7 @@ function ProductList() {
                         addToCart={() => addToCartItems(products._id)}
                     />
                 ))}
-            </main>
+            </article>
             <footer className="text-center py-4">
                 <button
                     onClick={() => navigate("/products")}
@@ -72,7 +72,7 @@ function ProductList() {
                     View All
                 </button>
             </footer>
-        </div>
+        </section>
     );
 }
 

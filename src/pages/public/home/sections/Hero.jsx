@@ -10,13 +10,13 @@ const Hero = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="   pt-15  md:pt-12 lg:pt-17 md:mt-17 flex justify-center w-full xl:max-w-7xl h-full xl:h-auto">
+        <section className="   pt-15  md:pt-12 lg:pt-17 md:mt-17 flex justify-center w-full xl:max-w-7xl h-full xl:h-auto">
             <div className="relative flex justify-end items-center w-100 md:w-full h-50 md:h-100 xl:h-120  ">
                 <img
                     src={Slide1}
                     className="w-full h-full   lg:h-screen xl:h-full object-cover object-center rounded-lg "
                 />
-                <div className="absolute inset-0 flex flex-col md:gap-4 lg:items-start p-4 xl:p-5 w-full lg:w-2/3  justify-center ">
+                <header className="absolute inset-0 flex flex-col md:gap-4 lg:items-start p-4 xl:p-5 w-full lg:w-2/3  justify-center ">
                     <p className="text-[6px] md:text-sm font-montserrat text-white">
                         NEW ARRIVAL
                     </p>
@@ -41,9 +41,9 @@ const Hero = () => {
                             EXPLORE COLLECTION
                         </button>
                     </div>
-                </div>
+                </header>
             </div>
-        </div>
+        </section>
     );
 };
 
