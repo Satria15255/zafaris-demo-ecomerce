@@ -253,6 +253,13 @@ const ShoppingCart = () => {
 									{voucherLoading ? "..." : "Apply"}
 								</button>
 							</form>
+							<div>
+								{voucherError && (
+									<p className="text-red-500 text-xs ">
+										{voucherError}
+									</p>
+								)}
+							</div>
 						</div>
 					</div>
 					{/*Cart Info*/}
