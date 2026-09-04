@@ -10,3 +10,5 @@ export const getBestSellingProducts = () =>
 	API.get("/api/products/best-seller");
 export const getDiscountProducts = () =>
 	API.get("api/products/discounts/today");
+export const getProductSearch = (query) =>
+	API.get(`/api/products?search=${encodeURIComponent(query)}`);

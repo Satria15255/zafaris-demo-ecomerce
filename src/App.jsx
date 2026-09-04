@@ -21,6 +21,7 @@ import AdminLogin from "@/pages/auth/AdminLoginPage";
 // Products
 import ProductsPages from "@/pages/public/products/ProductPages";
 import ProductDetail from "@/pages/public/productDetails/ProductDetails";
+import SearchPages from "@/pages/public/products/SearchProduct";
 
 // Cart
 import ShoppingCartPages from "@/features/cart/components/ShoppingCart";
@@ -90,6 +91,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/products" element={<ProductsPages />} />
+            <Route path="/search" element={<SearchPages />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/my-cart" element={<ShoppingCartPages />} />
             <Route path="/checkout" element={<CheckoutPages />} />
