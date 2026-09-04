@@ -7,10 +7,13 @@ import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import brandLogo from "@/assets/logo/brandLogo.png";
 import SidebarMobile from "./SidebarMobile";
+import SearchBar from "@/features/search/components/SearchBar";
 
 function Navbar({ handleOpenCart, onToggleSidebar }) {
     const [scrolled, setScrolled] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [query, setQuery] = useState("");
+
     const { cart } = useCart();
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -26,6 +29,14 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
     }, []);
 
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+
+        if (!quert.trim()) return;
+
+        navigate(`/search?${encodeURIComponent(query.trim())}`);
+    };
 
     return (
         <div
@@ -50,11 +61,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     </div>
                 </div>
                 <div className="hidden md:flex justify-center w-2/5 lg:w-3/5">
-                    <input
-                        type="text"
-                        placeholder="Search Products..."
-                        className="w-full px-2 h-[3vh] lg:h-[5vh] text-xs lg:text-sm border border-gray-300 rounded-xl"
-                    />
+                    <SearchBar />
                 </div>
                 <div className="flex justify-end gap-3 md:gap-6 items-center">
                     <div className="hidden md:flex">

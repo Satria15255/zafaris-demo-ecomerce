@@ -29,7 +29,20 @@ const SearchProduct = () => {
 	return (
 		<main className="h-auto min-h-screen flex flex-col pt-4 mt-8 lg:mt-16 md:pt-16">
 			<div className="xl:flex justify-center">
-				{products.length === 0 ? (
+				{products.length > 0 ? (
+					<div className="grid grid-cols-2 w-full xl:max-w-7xl md:grid-cols-4  gap-2 p-2">
+						{products.map((product) => (
+							<div key={product._id}>
+								<ProductCard
+									product={product}
+									productDetails={() =>
+										navigate(`/product/${products._id}`)
+									}
+								/>
+							</div>
+						))}
+					</div>
+				) : (
 					<div className="flex flex-col min-h-screen items-center justify-center gap-4 font-ysabeau">
 						<div className="text-gray-700 text-8xl">
 							<TbMoodSadSquint />
@@ -44,19 +57,6 @@ const SearchProduct = () => {
 						>
 							Continue Shopping
 						</button>
-					</div>
-				) : (
-					<div className="grid grid-cols-2 w-full xl:max-w-7xl md:grid-cols-4  gap-2 p-2">
-						{products.map((product) => (
-							<div key={product._id}>
-								<ProductCard
-									product={product}
-									productDetails={() =>
-										navigate(`/product/${products._id}`)
-									}
-								/>
-							</div>
-						))}
 					</div>
 				)}
 			</div>
