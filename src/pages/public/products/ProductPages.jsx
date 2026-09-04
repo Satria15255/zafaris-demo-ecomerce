@@ -130,48 +130,18 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     }
 
     return (
-        <main className="lg:mt-16 p-1 md:p-2">
+        <main className="md:mt-16 p-1 md:p-2">
             <div
                 style={{ backgroundImage: `url(${bgProductPages})` }}
-                className="z-0 flex flex-col justify-center md:justify-between items-center h-[25vh] lg:h-[50vh] bg-center bg-cover rounded-lg md:rounded-3xl mt-12 mb-2 md:mb-4"
+                className="z-0 flex flex-col justify-center lg:justify-center  items-center h-[25vh] lg:h-[40vh] bg-center bg-cover rounded-lg md:rounded-3xl mt-12 mb-2 md:mb-4"
             >
-                <div className="hidden md:flex bg-transparant font-light ml-5">
-                    .
-                </div>
                 <h1 className="text-4xl md:text-8xl font-bold text-white">
-                    Product
+                    Find Our Products
                 </h1>
-                <div className="hidden max-w-7xl md:flex justify-between items-center gap-2 w-full md:w-4/5 lg:w-[180vh] rounded-t-2xl bg-white  h-[6vh] lg:h-[9vh] px-3">
-                    <p className="hidden lg:flex font-bold text-xs md:text-sm lg:text-lg">
-                        Give All You Want
-                    </p>
-                    <div className="flex justify-center w-full lg:w-3/5 mt-3">
-                        <input
-                            type="text"
-                            placeholder="Search Products..."
-                            value={filter.search}
-                            onChange={(e) =>
-                                setFilter((prev) => ({
-                                    ...prev,
-                                    search: e.target.value,
-                                }))
-                            }
-                            className="w-full px-2 h-[6vh] lg:py-3 text-sm border border-gray-300 rounded-xl"
-                        />
-                    </div>
-                    <button
-                        onClick={() => setFilterOpen(true)}
-                        className="hidden md:flex lg:hidden p-4 mt-3 items-center text-sm  border rounded-lg "
-                    >
-                        <span className="flex items-center">
-                            <MdFilterList />
-                        </span>
-                    </button>
-                </div>
             </div>
             {/* Product Section */}
             <section className="flex justify-center ">
-                <div className="flex flex-col justify-center md:flex-row w-[100vh] md:w-[180vh] max-w-7xl px-2">
+                <div className="flex flex-col justify-center md:flex-row  w-full lg:max-w-4/5  px-2">
                     <aside>
                         {/* Sidebar Filter Left*/}
                         <FilterSidebar
@@ -209,8 +179,8 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                     </div>
 
                     {/* Products Section */}
-                    <section className="flex flex-col justify-between w-full lg:w-4/5 min-h-[100vh]">
-                        <div className="grid grid-cols-2 items-center md:grid-cols-4 lg:grid-cols-3 gap-2">
+                    <section className="flex flex-col justify-between w-full  min-h-[100vh]">
+                        <div className="grid grid-cols-2 items-center md:grid-cols-4 gap-2">
                             {currentProducts.length === 0 && (
                                 <p className="text-center col-span-3">
                                     No products found.
