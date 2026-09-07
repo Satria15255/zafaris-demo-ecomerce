@@ -6,10 +6,14 @@ import {
     IoSearchOutline,
 } from "react-icons/io5";
 import { useProductModal } from "@/context/ProductModalContext";
+import { useFavorite } from "@/context/FavoriteContext";
 
 function ProductCard({ product, productDetails, openModal, productModal }) {
     const { discountPercent, discountPrice } = product;
     const { openProductModal } = useProductModal();
+    const { isFavorite, toggleFavorite } = useFavorite();
+
+    const favorite = isFavorite(product._id);
 
     const isDiscount = discountPercent && discountPrice;
 
@@ -40,9 +44,12 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                         )}
                     </div>
                     <div className="absolute top-2 right-2 duration-200 flex justify-start  ">
-                        <p className="p-3 rounded-full bg-white text-[#0C0C0C] text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200">
+                        <button
+                            onClick={() => toggleFavorite(product._id)}
+                            className={`p-3 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
+                        >
                             <IoHeartOutline />
-                        </p>
+                        </button>
                     </div>
                 </div>
                 <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-2 lg:justify-center">

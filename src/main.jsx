@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 import { ProductModalProvider } from "./context/ProductModalContext";
+import { FavoriteProvider } from "./context/FavoriteContext";
 import { ToastContainer } from "react-toastify";
 import "./index.css";
 import App from "./App.jsx";
@@ -13,9 +14,11 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
-          <ProductModalProvider>
-            <App />
-          </ProductModalProvider>
+          <FavoriteProvider>
+            <ProductModalProvider>
+              <App />
+            </ProductModalProvider>
+          </FavoriteProvider>
         </CartProvider>
       </AuthProvider>
     </BrowserRouter>

@@ -1,15 +1,17 @@
 import { getProductById } from "@/features/products/services/productService";
 import { useEffect, useState } from "react";
 import { FaCartPlus, FaStar } from "react-icons/fa";
+import { IoHeartOutline } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
+import { useFavorite } from "@/context/FavoriteContext";
 
 const ProductModal = ({ product, closeModal }) => {
-	console.log(product);
-
+	const { isFavorite, toggleFavorite } = useFavorite();
+	const favorite = isFavorite(product._id);
 	const [size, setSize] = useState([]);
 	const [selectedSize, setSelectedSize] = useState(null);
 	const { handleAddToCart } = useCart();
@@ -74,13 +76,21 @@ const ProductModal = ({ product, closeModal }) => {
 						<IoMdClose />
 					</button>
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2  px-2 pb-2">
-					<div>
+				<div className=" grid grid-cols-1 md:grid-cols-2  px-2 pb-2">
+					<div className="relative">
 						<img
 							src={product.image}
 							alt={product?.name}
 							className="rounded-xl"
 						/>
+						<div className="absolute top-2 right-2 duration-200 flex justify-start  ">
+							<button
+								onClick={() => toggleFavorite(product._id)}
+								className={`p-3 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
+							>
+								<IoHeartOutline />
+							</button>
+						</div>
 					</div>
 					<div className="flex flex-col justify-between md:px-2 font-ysabeau">
 						<p className="text-3xl">{product.name}</p>

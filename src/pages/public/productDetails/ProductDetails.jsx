@@ -9,6 +9,8 @@ import {
 import { toast } from "react-toastify";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
+import { useFavorite } from "@/context/FavoriteContext";
+import { IoHeartOutline } from "react-icons/io5";
 import Loader from "@/components/common/Loader";
 import ProductCard from "@/features/products/components/ProductCard";
 import CallAction from "@/pages/public/home/sections/Discount";
@@ -23,6 +25,8 @@ function ProductModal() {
     const navigate = useNavigate();
     const { id } = useParams();
     const [size, setSize] = useState([]);
+    const { isFavorite, toggleFavorite } = useFavorite();
+    const favorite = isFavorite(product._id);
 
     // FETCH PRODUCTS DETAILS
     const fetchProduct = async () => {
@@ -99,7 +103,7 @@ function ProductModal() {
     return (
         <main className="w-full flex justify-center">
             <div className="md:mt-16 pt-12 bg-white rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto xl:max-w-7xl px-4">
-                <article className="flex flex-col md:flex-row justify-center  ">
+                <article className="relative flex flex-col md:flex-row justify-center  ">
                     <div className="w-full h-full flex justify-center">
                         <img
                             src={product.image}
@@ -225,10 +229,18 @@ function ProductModal() {
                                 Chekout
                             </button>
                         </div>
+                        <div className="absolute top-2 right-2 duration-200 flex justify-start  ">
+                            <button
+                                onClick={() => toggleFavorite(product._id)}
+                                className={`p-3 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
+                            >
+                                <IoHeartOutline />
+                            </button>
+                        </div>
                     </div>
                 </article>
 
-                <section className="mt-9 px-4">
+                <section className="mt-9">
                     <p className="text-xl lg:text-2xl font-semibold">
                         Product Description
                     </p>

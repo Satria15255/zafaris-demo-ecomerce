@@ -22,6 +22,7 @@ import AdminLogin from "@/pages/auth/AdminLoginPage";
 import ProductsPages from "@/pages/public/products/ProductPages";
 import ProductDetail from "@/pages/public/productDetails/ProductDetails";
 import SearchPages from "@/pages/public/products/SearchProduct";
+import FavoriteProducts from "@/pages/customer/FavoriteProducts";
 
 // Cart
 import ShoppingCartPages from "@/features/cart/components/ShoppingCart";
@@ -102,6 +103,7 @@ function App() {
               element={<PaymentSuccessPages />}
             />
             <Route path="/my-orders" element={<OrderPages />} />
+            <Route path="/my-favorite" element={<FavoriteProducts />} />
             <Route path="/dashboard" element={<UserDashboard />} />
           </Route>
           <Route path="/admin-login" element={<AdminLogin />} />
