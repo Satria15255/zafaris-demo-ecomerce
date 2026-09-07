@@ -2,11 +2,42 @@ import ProductCard from "@/features/products/components/ProductCard";
 import { useFavorite } from "@/context/FavoriteContext";
 import { RiEmotionUnhappyLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import {
+    getLatestProducts,
+    getAllProducts,
+} from "@/features/products/services/productService";
 
 const FavoritesPage = () => {
+    const [products, setProducts] = useState([]);
     const { favorites, loadingFavorites } = useFavorite();
     const navigate = useNavigate();
 
+    const fetchProducts = async () => {
+        console.log("Sebelum function");
+        try {
+            console.log("Sebelum Fetch");
+
+            const res = await getAllProducts();
+            console.log("Sesuadh fetch");
+
+            console.log(res.data);
+            setProducts(res.data.slice(0, 4));
+        } catch (error) {
+            console.log("Failed to fetch products:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
+    const shuffled = products.sort(() => 0.5 - Math.random());
+    const recomennded = shuffled.slice(0, 6);
+
+    console.log(recomennded);
+
+    console.log(products);
     if (loadingFavorites) {
         return <p>Loading...</p>;
     }
@@ -21,8 +52,8 @@ const FavoritesPage = () => {
                 </header>
 
                 <section className="">
-                    {favorites.length === 0 ? (
-                        <div className="flex flex-col  items-center justify-center gap-4 font-ysabeau mt-12">
+                    {favorites.length <= 0 ? (
+                        <div className="flex flex-col min-h-120 items-center justify-center gap-4 font-ysabeau mt-12">
                             <div className="text-gray-700 text-8xl">
                                 <RiEmotionUnhappyLine />
                             </div>
@@ -48,6 +79,17 @@ const FavoritesPage = () => {
                         </section>
                     )}
                 </section>
+
+                <aside className="mt-8 max-w-7xl">
+                    <h2 className="text-sm text-center lg:text-xl font-bold mb-4">
+                        You Might Like
+                    </h2>
+                    <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
+                        {recomennded.map((product) => (
+                            <ProductCard key={product._id} product={product} />
+                        ))}
+                    </div>
+                </aside>
             </div>
         </main>
     );

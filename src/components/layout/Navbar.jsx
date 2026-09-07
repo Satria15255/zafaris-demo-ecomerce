@@ -43,6 +43,15 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
         navigate(`/search?${encodeURIComponent(query.trim())}`);
     };
 
+    // HANDLE NAVIGATION TO FAVORITES
+    const handleFavoriteNav = () => {
+        if (user) {
+            navigate("/my-favorite");
+        } else {
+            navigate("/login");
+        }
+    };
+
     return (
         <div
             className={`fixed top-0 z-20 border-b font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 md:h-auto  w-full md:w-full flex flex-col justify-center transition-all duration-500 ease-in-out
@@ -71,7 +80,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 <div className="flex justify-center md:justify-end gap-3 md:gap-6 items-center">
                     <div className="flex justify-center items-center">
                         <button
-                            onClick={() => navigate("/my-favorite")}
+                            onClick={handleFavoriteNav}
                             className="text-2xl hover:text-yellow-500 transition duration-100"
                         >
                             <IoHeartOutline />
