@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register } from "@/features/auth/services/authService";
 import background from "@/assets/heroSection/hero12.jpg";
-import { IoIosHome } from "react-icons/io";
+import { IoIosHome, IoIosArrowBack } from "react-icons/io";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -29,8 +29,16 @@ const Register = () => {
             style={{ backgroundImage: `url(${background})` }}
         >
             <div className="inset-0  flex h-screen">
-                <div className="w-2/5 md:w-2/5 h-screen flex flex-col justify-around bg-white rounded-xl p-1 md:p-4 px-7">
-                    <div className="flex flex-col gap-2 justify-around items-center gap-5 pb-4">
+                <div className="w-full md:w-1/2 lg:w-2/5 h-screen flex flex-col justify-around bg-white rounded-xl p-1 md:p-4 ">
+                    <div className="w-full flex justify-start p-4 ">
+                        <button
+                            onClick={() => navigate("/")}
+                            className="p-2 rounded-full shadow-xl border border-gray-100"
+                        >
+                            <IoIosArrowBack />
+                        </button>
+                    </div>
+                    <div className="flex flex-col gap-2 justify-around items-center h-full gap-5 pb-4 px-7">
                         <div className="flex flex-col gap-2">
                             <p className="text-lg md:text-2xl xl:text-4xl text-center font-bold mb-2 md:mb-4">
                                 Get Started Now!
@@ -43,7 +51,7 @@ const Register = () => {
                         </div>
                         <form
                             onSubmit={handleSubmit}
-                            className="space-y-2 flex flex-col justify-center w-140"
+                            className="space-y-2 flex flex-col justify-center w-full"
                         >
                             <label className="font-semibold">Full Name</label>
                             <input

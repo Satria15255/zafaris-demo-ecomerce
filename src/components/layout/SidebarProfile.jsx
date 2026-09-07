@@ -12,9 +12,11 @@ import {
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useAuth } from "@/context/AuthContext";
+import { useCart } from "@/context/CartContext";
 
 const SidebarProfile = ({ closeSidebar }) => {
     const navigate = useNavigate();
+    const { handleClearCart } = useCart();
     const { user, logout } = useAuth();
 
     const handleNavigate = (path) => {
@@ -25,6 +27,7 @@ const SidebarProfile = ({ closeSidebar }) => {
     const handleLogout = () => {
         logout();
         navigate("/");
+        handleClearCart();
         toast.success("Logout Successfully");
     };
     return (
