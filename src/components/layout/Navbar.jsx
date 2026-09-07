@@ -8,6 +8,11 @@ import { useAuth } from "@/context/AuthContext";
 import brandLogo from "@/assets/logo/brandLogo.png";
 import SidebarMobile from "./SidebarMobile";
 import SearchBar from "@/features/search/components/SearchBar";
+import {
+    IoBagHandleOutline,
+    IoHeartOutline,
+    IoSearchOutline,
+} from "react-icons/io5";
 
 function Navbar({ handleOpenCart, onToggleSidebar }) {
     const [scrolled, setScrolled] = useState(false);
@@ -40,7 +45,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-20 border-b font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 md:h-auto  w-100 md:w-full flex flex-col justify-center transition-all duration-500 ease-in-out
+            className={`fixed top-0 z-20 border-b font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 md:h-auto  w-full md:w-full flex flex-col justify-center transition-all duration-500 ease-in-out
   ${scrolled ? " shadow-md  bg-white" : "bg-white"}`}
         >
             {/* Top Section */}
@@ -60,10 +65,18 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         />
                     </div>
                 </div>
-                <div className="hidden md:flex justify-center w-2/5 lg:w-3/5">
+                <div className="flex justify-center w-full px-4 lg:w-3/5">
                     <SearchBar />
                 </div>
-                <div className="flex justify-end gap-3 md:gap-6 items-center">
+                <div className="flex justify-center md:justify-end gap-3 md:gap-6 items-center">
+                    <div className="flex justify-center items-center">
+                        <button
+                            onClick={() => navigate("/my-favorite")}
+                            className="text-2xl hover:text-yellow-500 transition duration-100"
+                        >
+                            <IoHeartOutline />
+                        </button>
+                    </div>
                     <div className="hidden md:flex">
                         {user ? (
                             <button
@@ -84,9 +97,9 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         )}
                     </div>
 
-                    <p
+                    <button
                         onClick={handleOpenCart}
-                        className="relative text-2xl px-2  hover:text-yellow-500 transition duration-100"
+                        className="relative text-2xl px-2 hover:text-yellow-500 transition duration-100"
                     >
                         <MdOutlineShoppingCart />
                         {totalItems > 0 && (
@@ -94,7 +107,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                                 <p>{totalItems}</p>
                             </span>
                         )}
-                    </p>
+                    </button>
                 </div>
             </div>
             {/* Bottom Section */}

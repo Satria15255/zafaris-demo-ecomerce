@@ -10,7 +10,7 @@ const Hero = () => {
     const navigate = useNavigate();
 
     return (
-        <section className="   pt-15  md:pt-12 lg:pt-17 md:mt-17 flex justify-center w-full xl:max-w-7xl h-full xl:h-auto">
+        <section className="pt-15 px-2 md:px-4 md:pt-12 xl:pt-17 md:mt-17 flex justify-center w-full xl:max-w-7xl h-full xl:h-auto">
             <div className="relative flex justify-end items-center w-100 md:w-full h-50 md:h-100 xl:h-120  ">
                 <img
                     src={Slide1}
