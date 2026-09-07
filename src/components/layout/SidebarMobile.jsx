@@ -27,26 +27,11 @@ const SidebarMobile = ({ onClose }) => {
                 </div>
                 {/* User Validation */}
                 <div>
-                    {user ? (
+                    {user && (
                         <p className="relative flex flex-col items-center gap-2 flex px-2 hover:text-yellow-500 transition duration-100">
                             <PiUserCircle size={40} />{" "}
                             <span className="text-left">{user.name}</span>
                         </p>
-                    ) : (
-                        <div className="text-sm">
-                            <p
-                                onClick={() => navigate("/login")}
-                                className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
-                            >
-                                Login
-                            </p>
-                            <p
-                                onClick={() => navigate("/register")}
-                                className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
-                            >
-                                Register
-                            </p>
-                        </div>
                     )}
                 </div>
                 {/* Sidebar Menu */}
@@ -56,46 +41,46 @@ const SidebarMobile = ({ onClose }) => {
                             onClick={() => navigate("/")}
                             className="cursor-pointer hover:text-yellow-500 transition duration-100 py-4 border-t border-gray-300"
                         >
-                            HOME
+                            Home
                         </p>
                         <div className="text-sm py-4 border-t border-gray-300">
                             <p className="cursor-pointer hover:text-yellow-500 transition duration-100">
-                                CATEGORY :
+                                Category :
                             </p>
                             <div className="pl-2 flex flex-col gap-4 mt-4">
                                 <p
                                     onClick={() => navigate("/products")}
                                     className="cursor-pointer hover:text-yellow-500 transition duration-100"
                                 >
-                                    RUNNING
+                                    Running
                                 </p>
                                 <p
                                     onClick={() => navigate("/products")}
                                     className="cursor-pointer hover:text-yellow-500 transition duration-100"
                                 >
-                                    BASKETBALL
+                                    Basketball
                                 </p>
                                 <p
                                     onClick={() => navigate("/products")}
                                     className="cursor-pointer  hover:text-yellow-500 transition duration-100"
                                 >
-                                    SNEAKERS
+                                    Sneakers
                                 </p>
                                 <p
                                     onClick={() => navigate("/products")}
                                     className="cursor-pointer  hover:text-yellow-500 transition duration-100"
                                 >
-                                    CASUAL
+                                    Casual
                                 </p>
                                 <p
                                     onClick={() => navigate("/products")}
                                     className="cursor-pointer  hover:text-yellow-500 transition duration-100"
                                 >
-                                    FOOTBALL
+                                    Footbal
                                 </p>
                             </div>
                         </div>
-                        {user && (
+                        {user ? (
                             <>
                                 <p
                                     onClick={() =>
@@ -114,6 +99,21 @@ const SidebarMobile = ({ onClose }) => {
                                     MY ORDERS
                                 </p>
                             </>
+                        ) : (
+                            <div className="text-sm">
+                                <p
+                                    onClick={() => navigate("/login")}
+                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
+                                >
+                                    Login
+                                </p>
+                                <p
+                                    onClick={() => navigate("/register")}
+                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
+                                >
+                                    Register
+                                </p>
+                            </div>
                         )}
                         {user && (
                             <>

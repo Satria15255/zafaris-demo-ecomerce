@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register } from "@/features/auth/services/authService";
 import background from "@/assets/heroSection/hero12.jpg";
-import { IoIosHome, IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Register = () => {
     const [name, setName] = useState("");
