@@ -131,14 +131,14 @@ function ProductPages({ onAddToCart, onOpenModal }) {
 
     return (
         <main className="md:mt-16 p-1 md:p-2">
-            <div
+            <header
                 style={{ backgroundImage: `url(${bgProductPages})` }}
                 className="z-0 flex flex-col justify-center lg:justify-center  items-center h-[25vh] lg:h-[40vh] bg-center bg-cover rounded-lg md:rounded-3xl mt-12 mb-2 md:mb-4"
             >
                 <h1 className="text-4xl md:text-8xl font-bold text-white">
                     Find Our Products
                 </h1>
-            </div>
+            </header>
             {/* Product Section */}
             <section className="flex justify-center ">
                 <div className="flex flex-col justify-center md:flex-row  w-full lg:max-w-4/5  px-2">
@@ -190,7 +190,6 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                                 currentProducts.map((products) => (
                                     <ProductCard
                                         product={products}
-                                        onAddToCart={onAddToCart}
                                         productDetails={() =>
                                             navigate(`/product/${products._id}`)
                                         }

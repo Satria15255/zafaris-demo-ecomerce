@@ -5,9 +5,11 @@ import {
     IoHeartOutline,
     IoSearchOutline,
 } from "react-icons/io5";
+import { useProductModal } from "@/context/ProductModalContext";
 
-function ProductCard({ product, productDetails }) {
+function ProductCard({ product, productDetails, openModal, productModal }) {
     const { discountPercent, discountPrice } = product;
+    const { openProductModal } = useProductModal();
 
     const isDiscount = discountPercent && discountPrice;
 
@@ -77,7 +79,10 @@ function ProductCard({ product, productDetails }) {
                             >
                                 <IoSearchOutline />
                             </p>
-                            <p className="p-3 rounded-full text-lg md:text-sm lg:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200">
+                            <p
+                                onClick={() => openProductModal(product)}
+                                className="p-3 rounded-full text-lg md:text-sm lg:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200"
+                            >
                                 <IoBagHandleOutline />
                             </p>
                         </div>

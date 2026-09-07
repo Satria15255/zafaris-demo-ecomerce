@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getAllProducts } from "@/features/products/services/productService";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "@/features/products/components/ProductCard";
-import { useCart } from "@/context/CartContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -12,7 +11,6 @@ import "swiper/css/pagination";
 const Bestseller = () => {
     const [products, setProducts] = useState([]);
     const navigate = useNavigate();
-    const { handleAddToCart } = useCart();
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const fetchProducts = async () => {
@@ -55,7 +53,6 @@ const Bestseller = () => {
                             productDetails={() =>
                                 navigate(`/product/${products._id}`)
                             }
-                            addToCart={() => handleAddToCart(products._id)}
                         />
                     ))}
                 </article>
