@@ -1,9 +1,5 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade } from "swiper/modules";
 import Slide1 from "@/assets/heroSection/heroBackground.webp";
-import Slide2 from "@/assets/heroSection/testt.png";
-import "swiper/css";
-import "swiper/css/effect-fade";
+
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
@@ -11,10 +7,15 @@ const Hero = () => {
 
     return (
         <section className="pt-15 px-2 md:px-4 md:pt-12 xl:pt-17 md:mt-17 flex justify-center w-full xl:max-w-7xl h-full xl:h-auto">
-            <div className="relative flex justify-end items-center w-100 md:w-full h-50 md:h-100 xl:h-120  ">
+            <div className="relative flex justify-end items-center w-100 md:w-full h-50 md:h-100 xl:h-120 overflow-hidden rounded-lg  ">
                 <img
                     src={Slide1}
-                    className="w-full h-full   lg:h-screen xl:h-full object-cover object-center rounded-lg "
+                    alt="Zafaris new collection - new arrival shoes"
+                    width={1600}
+                    height={640}
+                    loading="eager"
+                    fetchPriority="high"
+                    className="absolute w-full h-full  object-cover object-center "
                 />
                 <header className="absolute inset-0 flex flex-col md:gap-4 lg:items-start p-4 xl:p-5 w-full lg:w-2/3  justify-center ">
                     <p className="text-[6px] md:text-sm font-montserrat text-white">
