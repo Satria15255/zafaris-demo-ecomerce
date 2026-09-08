@@ -86,8 +86,12 @@ const Footer = () => {
                     </p>
                 </div>
                 <div className="flex gap-3 ">
-                    <img src={visa} className="w-12 h-auto " />
-                    <img src={mastercard} className="w-12 h-auto " />
+                    <img src={visa} className="w-12 h-auto " alt="Visa Card" />
+                    <img
+                        src={mastercard}
+                        className="w-12 h-auto "
+                        alt="Mastercard"
+                    />
                 </div>
             </div>
         </div>

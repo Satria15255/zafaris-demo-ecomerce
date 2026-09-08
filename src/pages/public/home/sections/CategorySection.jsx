@@ -55,6 +55,7 @@ const CategoryCollection = () => {
                         <div className="overflow-hidden">
                             <img
                                 src={c.image}
+                                alt={c.title}
                                 className="hover:scale-110 transition duration-300"
                             />
                         </div>

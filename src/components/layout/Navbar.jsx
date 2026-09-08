@@ -70,6 +70,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     <div onClick={() => navigate("/")}>
                         <img
                             src={brandLogo}
+                            alt="Brand Logo"
                             className="hidden md:flex w-40 lg:w-50 h-auto"
                         />
                     </div>
