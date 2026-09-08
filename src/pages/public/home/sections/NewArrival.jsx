@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "@/features/products/components/ProductCard";
 import { getLatestProducts } from "@/features/products/services/productService";
-import { addToCart } from "@/features/cart/services/cartService";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -9,32 +8,25 @@ import { LazyMotion, domAnimation } from "framer-motion";
 
 function ProductList() {
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const fetchProducts = async () => {
         try {
+            setLoading(true);
             const res = await getLatestProducts();
             console.log(res.data);
             setProducts(res.data.slice(0, 8));
         } catch (err) {
             console.err("Failed to fetch products:", err);
+        } finally {
+            setLoading(false);
         }
     };
 
     useEffect(() => {
         fetchProducts();
     }, []);
-
-    const addToCartItems = async (productId) => {
-        try {
-            const res = await addToCart(productId, 1);
-            toast.success("Product added to cart");
-            console.log("Product add to cart", res.data);
-        } catch (err) {
-            toast.error("Failed to add product to cart");
-            console.log("Failed add product", err);
-        }
-    };
 
     return (
         <section className="pt-12 md:mt-3 mb-8 h-auto flex flex-col items-center">
@@ -54,18 +46,36 @@ function ProductList() {
                 </header>
             </motion.div>
             <LazyMotion features={domAnimation}>
-                <article className="grid py-2 xl:max-w-7xl h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
-                    {products.map((products) => (
-                        <ProductCard
-                            key={products.id}
-                            product={products}
-                            productDetails={() =>
-                                navigate(`/product/${products._id}`)
-                            }
-                            addToCart={() => addToCartItems(products._id)}
-                        />
-                    ))}
-                </article>
+                <div
+                    className="
+                        grid
+                        grid-cols-2
+                        md:grid-cols-4
+                        gap-2
+                        md:mt-2
+                        lg:mt-4
+                        xl:max-w-7xl
+                        w-full
+                        p-2
+                    "
+                >
+                    {loading
+                        ? Array.from({ length: 8 }).map((_, index) => (
+                              <div
+                                  key={index}
+                                  className="h-[320px] md:h-[400px] bg-gray-100 rounded-xl"
+                              />
+                          ))
+                        : products.map((product) => (
+                              <ProductCard
+                                  key={product._id}
+                                  product={product}
+                                  productDetails={() =>
+                                      navigate(`/product/${product._id}`)
+                                  }
+                              />
+                          ))}
+                </div>
             </LazyMotion>
             <footer className="text-center py-4">
                 <button

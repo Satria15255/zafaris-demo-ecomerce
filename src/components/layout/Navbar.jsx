@@ -1,5 +1,5 @@
 import { FaBars } from "react-icons/fa";
-import { MdOutlineFavoriteBorder, MdOutlineShoppingCart } from "react-icons/md";
+import { MdOutlineShoppingCart } from "react-icons/md";
 import { PiUserCircle } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -8,16 +8,11 @@ import { useAuth } from "@/context/AuthContext";
 import brandLogo from "@/assets/logo/brandLogo.png";
 import SidebarMobile from "./SidebarMobile";
 import SearchBar from "@/features/search/components/SearchBar";
-import {
-    IoBagHandleOutline,
-    IoHeartOutline,
-    IoSearchOutline,
-} from "react-icons/io5";
+import { IoHeartOutline } from "react-icons/io5";
 
 function Navbar({ handleOpenCart, onToggleSidebar }) {
     const [scrolled, setScrolled] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [query, setQuery] = useState("");
 
     const { cart } = useCart();
     const { user } = useAuth();
@@ -34,14 +29,6 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
     }, []);
 
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-
-    const handleSearch = (e) => {
-        e.preventDefault();
-
-        if (!quert.trim()) return;
-
-        navigate(`/search?${encodeURIComponent(query.trim())}`);
-    };
 
     // HANDLE NAVIGATION TO FAVORITES
     const handleFavoriteNav = () => {
@@ -62,6 +49,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 <div className="flex justify-center items-center">
                     {/* Hamburger icon */}
                     <button
+                        aria-label="Open navigation menu"
                         onClick={() => setIsSidebarOpen(true)}
                         className="relative md:hidden text-lg px-2 hover:text-yellow-500 transition duration-100"
                     >
@@ -71,7 +59,9 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <img
                             src={brandLogo}
                             alt="Brand Logo"
-                            className="hidden md:flex w-40 lg:w-50 h-auto"
+                            width="862"
+                            height="116"
+                            className="hidden md:block w-40 lg:w-50 h-auto"
                         />
                     </div>
                 </div>
@@ -81,6 +71,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 <div className="flex justify-center md:justify-end gap-3 md:gap-6 items-center">
                     <div className="flex justify-center items-center">
                         <button
+                            aria-label="Open favorites"
                             onClick={handleFavoriteNav}
                             className="text-2xl hover:text-yellow-500 transition duration-100"
                         >
@@ -108,6 +99,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     </div>
 
                     <button
+                        aria-label={`Open shopping cart, ${totalItems} items`}
                         onClick={handleOpenCart}
                         className="relative text-2xl px-2 hover:text-yellow-500 transition duration-100"
                     >

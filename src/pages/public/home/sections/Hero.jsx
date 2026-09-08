@@ -1,5 +1,3 @@
-import Slide1 from "@/assets/heroSection/heroBackground.webp";
-
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
@@ -9,7 +7,7 @@ const Hero = () => {
         <section className="pt-15 px-2 md:px-4 md:pt-12 xl:pt-17 md:mt-17 flex justify-center w-full xl:max-w-7xl h-full xl:h-auto">
             <div className="relative flex justify-end items-center w-100 md:w-full h-50 md:h-100 xl:h-120 overflow-hidden rounded-lg  ">
                 <img
-                    src={Slide1}
+                    src="/homeSection/heroBackground.webp"
                     alt="Zafaris new collection - new arrival shoes"
                     width={1600}
                     height={640}

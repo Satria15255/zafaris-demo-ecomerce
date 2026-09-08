@@ -36,8 +36,13 @@ export const CartProvider = ({ children }) => {
     };
 
     useEffect(() => {
+        if (!user) {
+            setCart([]);
+            return;
+        }
+
         fetchCart();
-    }, []);
+    }, [user?._id]);
 
     // Handle Add Cart Items
     const handleAddToCart = async (product, size) => {

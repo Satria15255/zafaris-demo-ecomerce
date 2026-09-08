@@ -19,7 +19,7 @@ const OnSale = () => {
                     <p className="text-[8px]  md:text-xs lg:text-sm">
                         LIMITED OFFER
                     </p>
-                    <p className="text-lg md:text-4xl lg:text-6xl">
+                    <p className="text-lg md:text-4xl lg:text-5xl xl:text-6xl">
                         30% off every day for <br /> our dream products
                     </p>
                     <button className="py-1 lg:py-2 text-[7px] md:text-xs lg:text-lg px-4 rounded-lg text-black w-1/3 lg:w-1/5 bg-white border border-gray-300">
