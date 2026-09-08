@@ -59,8 +59,12 @@ export const FavoriteProvider = ({ children }) => {
     };
 
     useEffect(() => {
+        if (!user) {
+            setFavorites([]);
+            return;
+        }
         fetchFavorites();
-    }, []);
+    }, [user?._id]);
 
     return (
         <FavoriteContext.Provider

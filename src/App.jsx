@@ -1,8 +1,11 @@
+// Tools
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useState, lazy, Suspense } from "react";
+import { ToastContainer } from "react-toastify";
+
 // Layout
-import AdminLayout from "@/layout/AdminLayout";
 import MainLayout from "@/layout/MainLayout";
 
-// Home Section
 import Hero from "@/pages/public/home/sections/Hero";
 import CallAction from "@/pages/public/home/sections/CallAction";
 import BestSeller from "@/pages/public/home/sections/BestSeller";
@@ -10,53 +13,77 @@ import DiscountSection from "@/pages/public/home/sections/Discount";
 import NewArrival from "@/pages/public/home/sections/NewArrival";
 import CategoryCollection from "@/pages/public/home/sections/CategorySection";
 
-// Auth
-import Login from "@/pages/auth/Login";
-import Register from "@/pages/auth/Register";
-
-// Admin Auth
 import AdminRoute from "@/components/admin/route/AdminRoute";
-import AdminLogin from "@/pages/auth/AdminLoginPage";
-
-// Products
-import ProductsPages from "@/pages/public/products/ProductPages";
-import ProductDetail from "@/pages/public/productDetails/ProductDetails";
-import SearchPages from "@/pages/public/products/SearchProduct";
-import FavoriteProducts from "@/pages/customer/FavoriteProducts";
-
-// Cart
-import ShoppingCartPages from "@/features/cart/components/ShoppingCart";
-import SidebarCart from "@/features/cart/components/SidebarCart";
-
-// Context
 import { CartProvider } from "./context/CartContext";
-
-// Orders
-import SuccessOrderPages from "@/features/orders/components/SuccessOrder";
-import OrderPages from "@/pages/customer/MyOrderPages";
-
-// Customer
-import UserDashboard from "@/pages/customer/UserDashboard";
-import SidebarProfile from "@/components/layout/SidebarProfile";
-
-// Transaction / Orders
-import CheckoutPages from "@/features/orders/components/CheckoutPages";
-import PaymentOrderPages from "@/features/payment/components/paymentPages";
-import PaymentSuccessPages from "@/features/payment/components/PaymentSuccess";
-
-// Pages Admin
-import AdminProduct from "@/pages/admin/products/ProductManagement";
-import AdminOrder from "@/pages/admin/orders/AdminOrders";
-import AdminUserList from "@/pages/admin/users/AdminUserList";
-import AdminDashboard from "@/pages/admin/dashboard/AdminDashboard";
-
-// Common
 import ScrollToTop from "@/components/common/ScrollToTop";
 
-// Tools
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
-import { ToastContainer } from "react-toastify";
+// AUTH
+const Login = lazy(() => import("@/pages/auth/Login"));
+const Register = lazy(() => import("@/pages/auth/Register"));
+const AdminLogin = lazy(() => import("@/pages/auth/AdminLoginPage"));
+
+// PRODUCTS
+const ProductsPages = lazy(
+  () => import("@/pages/public/products/ProductPages"),
+);
+
+const ProductDetail = lazy(
+  () => import("@/pages/public/productDetails/ProductDetails"),
+);
+
+const SearchPages = lazy(() => import("@/pages/public/products/SearchProduct"));
+
+const FavoriteProducts = lazy(
+  () => import("@/pages/customer/FavoriteProducts"),
+);
+
+// CART / ORDER
+const ShoppingCartPages = lazy(
+  () => import("@/features/cart/components/ShoppingCart"),
+);
+
+const CheckoutPages = lazy(
+  () => import("@/features/orders/components/CheckoutPages"),
+);
+
+const SuccessOrderPages = lazy(
+  () => import("@/features/orders/components/SuccessOrder"),
+);
+
+const OrderPages = lazy(() => import("@/pages/customer/MyOrderPages"));
+
+// PAYMENT
+const PaymentOrderPages = lazy(
+  () => import("@/features/payment/components/paymentPages"),
+);
+
+const PaymentSuccessPages = lazy(
+  () => import("@/features/payment/components/PaymentSuccess"),
+);
+
+// CUSTOMER
+const UserDashboard = lazy(() => import("@/pages/customer/UserDashboard"));
+
+// ADMIN
+const AdminLayout = lazy(() => import("@/layout/AdminLayout"));
+
+const AdminProduct = lazy(
+  () => import("@/pages/admin/products/ProductManagement"),
+);
+
+const AdminOrder = lazy(() => import("@/pages/admin/orders/AdminOrders"));
+
+const AdminUserList = lazy(() => import("@/pages/admin/users/AdminUserList"));
+
+const AdminDashboard = lazy(
+  () => import("@/pages/admin/dashboard/AdminDashboard"),
+);
+
+// CONDITIONAL UI
+const SidebarCart = lazy(
+  () => import("@/features/cart/components/SidebarCart"),
+);
+const SidebarProfile = lazy(() => import("@/components/layout/SidebarProfile"));
 
 function App() {
   // UI State
@@ -67,65 +94,82 @@ function App() {
     <div>
       <ScrollToTop />
       <CartProvider>
-        <Routes>
-          <Route
-            element={
-              <MainLayout
-                handleOpenCart={() => setSidebarCartOpen(true)}
-                onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-              />
-            }
-          >
+        <Suspense
+          fallback={
+            <div className="min-h-screen flex  justify-center items-center">
+              {" "}
+              Loading....
+            </div>
+          }
+        >
+          <Routes>
             <Route
-              path="/"
               element={
-                <div className="flex flex-col items-center overflow-hidden">
-                  <Hero />
-                  <BestSeller />
-                  <DiscountSection />
-                  <NewArrival />
-                  <CallAction />
-                  <CategoryCollection />
-                </div>
+                <MainLayout
+                  handleOpenCart={() => setSidebarCartOpen(true)}
+                  onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+                />
               }
-            />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/products" element={<ProductsPages />} />
-            <Route path="/search" element={<SearchPages />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/my-cart" element={<ShoppingCartPages />} />
-            <Route path="/checkout" element={<CheckoutPages />} />
-            <Route path="/success-order/:id" element={<SuccessOrderPages />} />
-            <Route path="/paymentOrder/:id" element={<PaymentOrderPages />} />
-            <Route
-              path="/payment-success/:id"
-              element={<PaymentSuccessPages />}
-            />
-            <Route path="/my-orders" element={<OrderPages />} />
-            <Route path="/my-favorite" element={<FavoriteProducts />} />
-            <Route path="/dashboard" element={<UserDashboard />} />
-          </Route>
-          <Route path="/admin-login" element={<AdminLogin />} />
+            >
+              <Route
+                path="/"
+                element={
+                  <div className="flex flex-col items-center overflow-hidden">
+                    <Hero />
+                    <BestSeller />
+                    <DiscountSection />
+                    <NewArrival />
+                    <CallAction />
+                    <CategoryCollection />
+                  </div>
+                }
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/products" element={<ProductsPages />} />
+              <Route path="/search" element={<SearchPages />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/my-cart" element={<ShoppingCartPages />} />
+              <Route path="/checkout" element={<CheckoutPages />} />
+              <Route
+                path="/success-order/:id"
+                element={<SuccessOrderPages />}
+              />
+              <Route path="/paymentOrder/:id" element={<PaymentOrderPages />} />
+              <Route
+                path="/payment-success/:id"
+                element={<PaymentSuccessPages />}
+              />
+              <Route path="/my-orders" element={<OrderPages />} />
+              <Route path="/my-favorite" element={<FavoriteProducts />} />
+              <Route path="/dashboard" element={<UserDashboard />} />
+            </Route>
+            <Route path="/admin-login" element={<AdminLogin />} />
 
-          <Route
-            path="/admin"
-            element={
-              <AdminRoute>
-                <AdminLayout />
-              </AdminRoute>
-            }
-          >
-            <Route index element={<Navigate to="/admin/dashboard" replace />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/product" element={<AdminProduct />} />
-            <Route path="/admin/all-orders" element={<AdminOrder />} />
-            <Route path="/admin/user" element={<AdminUserList />} />
-          </Route>
-        </Routes>
+            <Route
+              path="/admin"
+              element={
+                <AdminRoute>
+                  <AdminLayout />
+                </AdminRoute>
+              }
+            >
+              <Route
+                index
+                element={<Navigate to="/admin/dashboard" replace />}
+              />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/product" element={<AdminProduct />} />
+              <Route path="/admin/all-orders" element={<AdminOrder />} />
+              <Route path="/admin/user" element={<AdminUserList />} />
+            </Route>
+          </Routes>
+        </Suspense>
 
         {sidebarCartOpen && (
-          <SidebarCart closeSidebarCart={() => setSidebarCartOpen(false)} />
+          <Suspense fallback={null}>
+            <SidebarCart closeSidebarCart={() => setSidebarCartOpen(false)} />
+          </Suspense>
         )}
         {isSidebarOpen && (
           <>
@@ -133,7 +177,9 @@ function App() {
               className="fixed inset-0 z-40"
               onClick={() => setIsSidebarOpen(false)}
             />
-            <SidebarProfile closeSidebar={() => setIsSidebarOpen(false)} />
+            <Suspense fallback={null}>
+              <SidebarProfile closeSidebar={() => setIsSidebarOpen(false)} />
+            </Suspense>
           </>
         )}
         <ToastContainer
