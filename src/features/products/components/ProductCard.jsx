@@ -65,7 +65,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                 <div className="absolute top-0 right-0 p-2 duration-200 flex justify-start  ">
                     <button
                         onClick={() => toggleFavorite(product._id)}
-                        className={`p-3 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
+                        className={`p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
                     >
                         <IoHeartOutline />
                     </button>

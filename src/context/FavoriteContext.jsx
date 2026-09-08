@@ -5,10 +5,13 @@ import {
     addFavorite,
     removeFavorite,
 } from "@/features/favorite/services/favoriteService";
+import { useAuth } from "./AuthContext";
 
 const FavoriteContext = createContext();
 
 export const FavoriteProvider = ({ children }) => {
+    const { user } = useAuth();
+
     const [favorites, setFavorites] = useState([]);
     const [loadingFavorites, setLoadingFavorites] = useState(false);
 
