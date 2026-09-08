@@ -1,64 +1,17 @@
-import { useCallback, useEffect, useState } from "react";
-import { getDiscountProducts } from "@/features/products/services/productService";
 import { useNavigate } from "react-router-dom";
-import discountImage from "@/assets/heroSection/discountSecs.webp";
 
-function seededRandom(seed) {
-    var x = Math.sin(seed) * 10000;
-    return x - Math.floor(x);
-}
-
-function shuffleWithSeed(array, seed) {
-    const arr = [...array];
-    for (let i = arr.length - 1; i > 1; i--) {
-        const j = Math.floor(seededRandom(seed + i) * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-}
-
-function OnSale({ onOpenModal }) {
-    const [products, setProducts] = useState([]);
-    const navigate = useNavigate();
-
-    const normalizeDiscount = (discount) => {
-        return {
-            ...discount.productId,
-            isDiscount: true,
-            discountPercent: discount.discountPercent,
-            discountPrice: discount.discountPrice,
-            expiresAt: discount.expiresAt,
-        };
-    };
-
-    const fetchProducts = useCallback(async () => {
-        try {
-            const res = await getDiscountProducts();
-            const normalized = res.data.map(normalizeDiscount);
-            setProducts(normalized);
-            console.log(normalized);
-        } catch (err) {
-            console.err("Failed to fetch products:", err);
-        }
-    }, []);
-
-    useEffect(() => {
-        fetchProducts();
-    }, [fetchProducts]);
-
-    const today = new Date();
-    const seed = parseInt(today.toISOString().slice(0, 10).replace(/-/g, ""));
-
-    const randomProduct = shuffleWithSeed(products, seed).slice(0, 1);
-    console.log("discount product pages:", randomProduct);
-
+const OnSale = () => {
     return (
         <main className=" mt-6 flex justify-center w-full h-auto">
             <div className="w-100 md:w-full xl:max-w-7xl h-50 md:h-60 lg:h-80 flex  bg-[#0C0C0C] ">
                 <div className="w-2/5">
                     <img
-                        src={discountImage}
+                        src="/homeSection/discountImage.webp"
                         alt="discountImage"
+                        width="1024"
+                        height="1278"
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full  object-cover object-center"
                     />
                 </div>
@@ -76,6 +29,6 @@ function OnSale({ onOpenModal }) {
             </div>
         </main>
     );
-}
+};
 
 export default OnSale;
