@@ -5,6 +5,7 @@ import { addToCart } from "@/features/cart/services/cartService";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 function ProductList() {
     const [products, setProducts] = useState([]);
@@ -52,18 +53,20 @@ function ProductList() {
                     </p>
                 </header>
             </motion.div>
-            <article className="grid py-2 xl:max-w-7xl h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
-                {products.map((products) => (
-                    <ProductCard
-                        key={products.id}
-                        product={products}
-                        productDetails={() =>
-                            navigate(`/product/${products._id}`)
-                        }
-                        addToCart={() => addToCartItems(products._id)}
-                    />
-                ))}
-            </article>
+            <LazyMotion features={domAnimation}>
+                <article className="grid py-2 xl:max-w-7xl h-auto grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 place-items-center p-2">
+                    {products.map((products) => (
+                        <ProductCard
+                            key={products.id}
+                            product={products}
+                            productDetails={() =>
+                                navigate(`/product/${products._id}`)
+                            }
+                            addToCart={() => addToCartItems(products._id)}
+                        />
+                    ))}
+                </article>
+            </LazyMotion>
             <footer className="text-center py-4">
                 <button
                     onClick={() => navigate("/products")}

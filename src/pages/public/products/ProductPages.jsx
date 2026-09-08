@@ -11,6 +11,7 @@ import FilterMobile from "@/features/products/components/FilterMobile";
 import FilterSidebar from "@/features/products/components/FilterSidebar";
 import Loader from "@/components/common/Loader";
 import { useNavigate } from "react-router-dom";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 function ProductPages({ onAddToCart, onOpenModal }) {
     const [products, setProducts] = useState([]);
@@ -180,22 +181,26 @@ function ProductPages({ onAddToCart, onOpenModal }) {
 
                     {/* Products Section */}
                     <section className="flex flex-col justify-between w-full  min-h-[100vh]">
-                        <div className="grid grid-cols-2 items-center md:grid-cols-4 gap-2">
-                            {currentProducts.length === 0 && (
-                                <p className="text-center col-span-3">
-                                    No products found.
-                                </p>
-                            )}
-                            {currentProducts.length > 0 &&
-                                currentProducts.map((products) => (
-                                    <ProductCard
-                                        product={products}
-                                        productDetails={() =>
-                                            navigate(`/product/${products._id}`)
-                                        }
-                                    />
-                                ))}
-                        </div>
+                        <LazyMotion features={domAnimation}>
+                            <div className="grid grid-cols-2 items-center md:grid-cols-4 gap-2">
+                                {currentProducts.length === 0 && (
+                                    <p className="text-center col-span-3">
+                                        No products found.
+                                    </p>
+                                )}
+                                {currentProducts.length > 0 &&
+                                    currentProducts.map((products) => (
+                                        <ProductCard
+                                            product={products}
+                                            productDetails={() =>
+                                                navigate(
+                                                    `/product/${products._id}`,
+                                                )
+                                            }
+                                        />
+                                    ))}
+                            </div>
+                        </LazyMotion>
                         <nav
                             aria-label="Product Pagination"
                             className="flex justify-between w-full py-4"

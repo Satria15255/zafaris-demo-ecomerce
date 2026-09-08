@@ -7,6 +7,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 const Bestseller = () => {
     const [products, setProducts] = useState([]);
@@ -45,51 +46,55 @@ const Bestseller = () => {
             </header>
             <main>
                 {/* Desktop Ver */}
-                <article className=" w-full hidden  xl:max-w-7xl mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
-                    {bestSellingProducts.map((products) => (
-                        <ProductCard
-                            key={products.id}
-                            product={products}
-                            productDetails={() =>
-                                navigate(`/product/${products._id}`)
-                            }
-                        />
-                    ))}
-                </article>
+                <LazyMotion features={domAnimation}>
+                    <article className=" w-full hidden  xl:max-w-7xl mt-2 lg:mt-4 md:gap-4 px-2 md:px-3 md:grid grid-cols-4 place-items-center ">
+                        {bestSellingProducts.map((products) => (
+                            <ProductCard
+                                key={products.id}
+                                product={products}
+                                productDetails={() =>
+                                    navigate(`/product/${products._id}`)
+                                }
+                            />
+                        ))}
+                    </article>
+                </LazyMotion>
 
                 {/* Mobile Ver */}
                 <article className="w-100 md:w-full md:hidden h-auto gap-3 mt-2 lg:mt-4 pb-4 px-2 md:px-3 overflow-hidden">
                     {/* Slider */}
-                    <Swiper
-                        modules={[Pagination, Autoplay]}
-                        slidesPerView={2}
-                        slidesPerGroup={2}
-                        autoplay={{ delay: 4000 }}
-                        spaceBetween={8}
-                        pagination={{
-                            el: ".swiper-pagination",
-                            clickable: true,
-                        }}
-                        className="w-full flex gap-4 space-x-5"
-                    >
-                        {bestSellingProducts.map((products, index) => (
-                            <SwiperSlide key={index} className="pb-6 p-2">
-                                <ProductCard
-                                    key={products._id}
-                                    product={products}
-                                    productDetails={() =>
-                                        navigate(`/product/${products._id}`)
-                                    }
-                                    addToCart={() =>
-                                        handleAddToCart(products._id)
-                                    }
-                                />
-                            </SwiperSlide>
-                        ))}
+                    <LazyMotion features={domAnimation}>
+                        <Swiper
+                            modules={[Pagination, Autoplay]}
+                            slidesPerView={2}
+                            slidesPerGroup={2}
+                            autoplay={{ delay: 4000 }}
+                            spaceBetween={8}
+                            pagination={{
+                                el: ".swiper-pagination",
+                                clickable: true,
+                            }}
+                            className="w-full flex gap-4 space-x-5"
+                        >
+                            {bestSellingProducts.map((products, index) => (
+                                <SwiperSlide key={index} className="pb-6 p-2">
+                                    <ProductCard
+                                        key={products._id}
+                                        product={products}
+                                        productDetails={() =>
+                                            navigate(`/product/${products._id}`)
+                                        }
+                                        addToCart={() =>
+                                            handleAddToCart(products._id)
+                                        }
+                                    />
+                                </SwiperSlide>
+                            ))}
 
-                        {/* Navigation & Pagination */}
-                        <div className="swiper-pagination"></div>
-                    </Swiper>
+                            {/* Navigation & Pagination */}
+                            <div className="swiper-pagination"></div>
+                        </Swiper>
+                    </LazyMotion>
                 </article>
             </main>
         </section>
