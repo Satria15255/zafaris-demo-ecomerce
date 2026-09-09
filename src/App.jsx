@@ -6,12 +6,7 @@ import { ToastContainer } from "react-toastify";
 // Layout
 import MainLayout from "@/layout/MainLayout";
 
-import Hero from "@/pages/public/home/sections/Hero";
-import CallAction from "@/pages/public/home/sections/CallAction";
-import BestSeller from "@/pages/public/home/sections/BestSeller";
-import DiscountSection from "@/pages/public/home/sections/Discount";
-import NewArrival from "@/pages/public/home/sections/NewArrival";
-import CategoryCollection from "@/pages/public/home/sections/CategorySection";
+import HomePages from "@/pages/public/home/pages/HomePages";
 
 import AdminRoute from "@/components/admin/route/AdminRoute";
 import { CartProvider } from "./context/CartContext";
@@ -91,7 +86,7 @@ function App() {
   const [sidebarCartOpen, setSidebarCartOpen] = useState(false);
 
   return (
-    <div>
+    <main>
       <ScrollToTop />
       <CartProvider>
         <Suspense
@@ -111,19 +106,7 @@ function App() {
                 />
               }
             >
-              <Route
-                path="/"
-                element={
-                  <div className="flex flex-col items-center overflow-hidden">
-                    <Hero />
-                    <BestSeller />
-                    <DiscountSection />
-                    <NewArrival />
-                    <CallAction />
-                    <CategoryCollection />
-                  </div>
-                }
-              />
+              <Route path="/" element={<HomePages />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/products" element={<ProductsPages />} />
@@ -195,7 +178,7 @@ function App() {
           theme="light"
         />
       </CartProvider>
-    </div>
+    </main>
   );
 }
 

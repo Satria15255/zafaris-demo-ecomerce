@@ -56,10 +56,14 @@ const CategoryCollection = () => {
                             <img
                                 src={c.image}
                                 alt={c.title}
+                                loading="lazy"
+                                decoding="async"
+                                width="432"
+                                height="756"
                                 className="hover:scale-110 transition duration-300"
                             />
                         </div>
-                        <div className="flex flex-col gap-5 mt-6">
+                        <div className="flex flex-col items-start gap-5 mt-6">
                             <p className="text-sm lg:text-lg font-semibold">
                                 {c.title}
                             </p>
@@ -68,7 +72,7 @@ const CategoryCollection = () => {
                             </p>
                             <button
                                 onClick={() => navigate("/products")}
-                                className="underline cursor-pointer pb-7 text-gray-600 hover:text-[#0C0C0C] transition duration-200 w-1/3 md:w-1/2 text-xs lg:text-sm font-semibold"
+                                className="underline cursor-pointer pb-7 text-gray-600 hover:text-[#0C0C0C] transition duration-200 text-xs lg:text-sm font-semibold"
                             >
                                 SHOP NOW
                             </button>
@@ -99,11 +103,16 @@ const CategoryCollection = () => {
                                 <div className="overflow-hidden">
                                     <img
                                         src={c.image}
+                                        alt={c.title}
+                                        loading="lazy"
+                                        decoding="async"
+                                        width="432"
+                                        height="756"
                                         className="hover:scale-110 transition duration-300"
                                     />
                                 </div>
 
-                                <div className="flex flex-col gap-5 mt-6">
+                                <div className="flex flex-col items-start gap-5 mt-6">
                                     <p className="text-lg font-semibold">
                                         {c.title}
                                     </p>
