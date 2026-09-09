@@ -81,6 +81,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     <div className="hidden md:flex">
                         {user ? (
                             <button
+                                aria-label="User Profile"
                                 onClick={onToggleSidebar}
                                 className="relative flex items-center md:text-xs lg:text-md gap-2 hidden md:flex px-2 hover:text-yellow-500 transition duration-100"
                             >
@@ -88,13 +89,14 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                                 <span>Hi {user.name}</span>
                             </button>
                         ) : (
-                            <p
+                            <button
+                                aria-label="Login Navigation"
                                 onClick={() => navigate("/login")}
                                 className="cursor-pointer hover:underline mb-2 md:text-xs lg:text-md"
                             >
                                 {" "}
                                 Login / Register
-                            </p>
+                            </button>
                         )}
                     </div>
 

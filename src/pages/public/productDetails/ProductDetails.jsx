@@ -162,6 +162,7 @@ function ProductModal() {
                                     {productSize.length > 0 ? (
                                         productSize.map((size) => (
                                             <button
+                                                aria-label="Product Size Option"
                                                 key={size}
                                                 type="button"
                                                 onClick={() =>
@@ -212,6 +213,7 @@ function ProductModal() {
 
                         <div className=" flex gap-4 justify-arround ">
                             <button
+                                aria-label="Add Product to Cart"
                                 onClick={() =>
                                     handleAddToCart(product, selectedSize)
                                 }
@@ -220,9 +222,9 @@ function ProductModal() {
                                 Add to Cart <FaCartPlus />
                             </button>
                             <button
+                                aria-label="Buy product instan"
                                 onClick={() => {
                                     handleChekoutNow();
-                                    // closed();
                                 }}
                                 className="mt-2 w-full px-2 py-3 bg-white border  hover:text-white rounded-md hover:bg-black transition"
                             >
@@ -231,6 +233,7 @@ function ProductModal() {
                         </div>
                         <div className="absolute top-2 right-2 duration-200 flex justify-start  ">
                             <button
+                                aria-label="Add product to favorite list"
                                 onClick={() => toggleFavorite(product._id)}
                                 className={`p-3 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
                             >

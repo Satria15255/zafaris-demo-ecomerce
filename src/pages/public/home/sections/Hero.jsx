@@ -28,12 +28,14 @@ const Hero = () => {
                     </p>
                     <div className="flex gap-1 md:gap-3 w-1/2 ">
                         <button
+                            aria-label="Shop Now"
                             onClick={() => navigate("/products")}
                             className="bg-black w-1/3 md:w-1/2 md:px-5  md:h-10  text-[6px] md:text-[8px] lg:text-xs text-white hover:border border-white hover:bg-transparent transition duration-300"
                         >
                             SHOP NOW
                         </button>
                         <button
+                            aria-label="Explore Products"
                             onClick={() => navigate("/products")}
                             className="bg-transparent hidden md:flex items-center justify-center w-1/3 md:w-1/2 md:px-5  md:h-10 text-[6px] md:text-[7px] lg:text-xs  border border-white text-white hover:border-none hover:bg-black hover:text-white transition duration-300"
                         >

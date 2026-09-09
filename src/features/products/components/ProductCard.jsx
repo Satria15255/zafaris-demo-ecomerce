@@ -64,6 +64,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                 </div>
                 <div className="absolute top-0 right-0 p-2 duration-200 flex justify-start  ">
                     <button
+                        aria-label="Add product to favorite list"
                         onClick={() => toggleFavorite(product._id)}
                         className={`p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
                     >
@@ -100,12 +101,14 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                     </div>
                     <div className="flex gap-1 lg:gap-2">
                         <button
+                            aria-label="See Product Detail"
                             onClick={() => productDetails(product)}
                             className="p-3 rounded-full text-lg md:text-sm lg:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200"
                         >
                             <IoSearchOutline />
                         </button>
                         <button
+                            aria-label="Open product modal"
                             onClick={() => openProductModal(product)}
                             className="p-3 rounded-full text-lg md:text-sm lg:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200"
                         >

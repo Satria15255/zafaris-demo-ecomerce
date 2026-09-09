@@ -71,6 +71,7 @@ const ProductModal = ({ product, closeModal }) => {
 			<section className="bg-white w-4/5 xl:w-2/5 h-auto rounded-2xl p-3">
 				<div className="flex justify-end items-center h-2">
 					<button
+						aria-label="Closed Modal"
 						onClick={closeModal}
 						className="text-gray-500 hover:text-black transition duration-200"
 					>
@@ -86,6 +87,7 @@ const ProductModal = ({ product, closeModal }) => {
 						/>
 						<div className="absolute top-2 right-2 duration-200 flex justify-start  ">
 							<button
+								aria-label="Add product to favorite list"
 								onClick={() => toggleFavorite(product._id)}
 								className={`p-3 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
 							>
@@ -123,6 +125,7 @@ const ProductModal = ({ product, closeModal }) => {
 									{productSize?.length > 0 ? (
 										productSize.map((size) => (
 											<button
+												aria-label="Product Size Option"
 												key={size}
 												type="button"
 												onClick={() =>
@@ -171,6 +174,7 @@ const ProductModal = ({ product, closeModal }) => {
 							</div>
 							<div className=" flex gap-4 justify-arround text-sm">
 								<button
+									aria-label="Add product to cart"
 									onClick={() =>
 										handleAddToCart(product, selectedSize)
 									}
@@ -179,6 +183,7 @@ const ProductModal = ({ product, closeModal }) => {
 									Add to Cart <FaCartPlus />
 								</button>
 								<button
+									aria-label="Buy Product Instan"
 									onClick={() => {
 										handleChekoutNow();
 										// closed();
