@@ -10,8 +10,9 @@ import { MdFilterList } from "react-icons/md";
 import FilterMobile from "@/features/products/components/FilterMobile";
 import FilterSidebar from "@/features/products/components/FilterSidebar";
 import Loader from "@/components/common/Loader";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
+import { TbMoodSadSquint } from "react-icons/tb";
 
 function ProductPages({ onAddToCart, onOpenModal }) {
     const [products, setProducts] = useState([]);
@@ -19,11 +20,13 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     const [discountProducts, setDiscountProducts] = useState([]);
     const [currentPages, setCurrentPages] = useState(1);
     const [loading, setLoading] = useState(true);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const searchFromUrl = searchParams.get("Search") || "";
     const [filterOpen, setFilterOpen] = useState(false);
     const [filter, setFilter] = useState({
         category: "All",
         size: "All",
-        search: "",
+        search: searchFromUrl,
         latest: false,
         discount: false,
     });
@@ -111,6 +114,39 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     };
     const filteredProducts = filterProducts();
 
+    const handleProductSearch = (value) => {
+        setFilter((prev) => ({
+            ...prev,
+            search: value,
+        }));
+
+        const params = new URLSearchParams(searchParams);
+
+        if (value.trim()) {
+            params.set("search", value);
+        } else {
+            params.delete("search");
+        }
+
+        setSearchParams(params, {
+            replace: true,
+        });
+    };
+
+    useEffect(() => {
+        const search = searchParams.get("search") || "";
+
+        setFilter((prev) => {
+            if (prev.search === search) {
+                return prev;
+            }
+
+            return {
+                ...prev,
+                search,
+            };
+        });
+    }, [searchParams]);
     // Function Products Pagination
     useEffect(() => {
         setCurrentPages(1);
@@ -143,7 +179,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
             {/* Product Section */}
             <section className="flex justify-center ">
                 <div className="flex flex-col justify-center md:flex-row  w-full lg:max-w-4/5  px-2">
-                    <aside>
+                    <aside className="lg:w-1/5">
                         {/* Sidebar Filter Left*/}
                         <FilterSidebar
                             categories={categories}
@@ -152,94 +188,111 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                             setFilter={setFilter}
                         />
                     </aside>
+                    <div className="flex flex-col w-full">
+                        {/* Filter Mobile Version */}
+                        <section className=" w-full flex justify-center gap-3 mb-2 mt-2 mr-2">
+                            <div className="flex  justify-center w-full">
+                                <input
+                                    type="text"
+                                    placeholder="Search Products..."
+                                    value={filter.search}
+                                    onChange={(e) =>
+                                        handleProductSearch(e.target.value)
+                                    }
+                                    className="w-full px-2 h-[5vh] text-sm border border-gray-300 rounded-xl"
+                                />
+                            </div>
+                            <button
+                                onClick={() => setFilterOpen(true)}
+                                className="flex lg:hidden px-3 items-center text-sm  border border-gray-300 rounded-lg "
+                            >
+                                <span className="flex items-center">
+                                    <MdFilterList />
+                                </span>
+                            </button>
+                        </section>
 
-                    {/* Filter Mobile Version */}
-                    <div className="md:hidden w-full flex justify-center gap-3 mb-2 mt-2 mr-2">
-                        <div className="flex md:hidden justify-center w-full">
-                            <input
-                                type="text"
-                                placeholder="Search Products..."
-                                value={filter.search}
-                                onChange={(e) =>
-                                    setFilter((prev) => ({
-                                        ...prev,
-                                        search: e.target.value,
-                                    }))
-                                }
-                                className="w-full px-2 h-[5vh] text-sm border border-gray-300 rounded-xl"
-                            />
-                        </div>
-                        <button
-                            onClick={() => setFilterOpen(true)}
-                            className="flex px-3 items-center text-sm  border border-gray-300 rounded-lg "
-                        >
-                            <span className="flex items-center">
-                                <MdFilterList />
-                            </span>
-                        </button>
-                    </div>
-
-                    {/* Products Section */}
-                    <section className="flex flex-col justify-between w-full  min-h-[100vh]">
-                        <LazyMotion features={domAnimation}>
-                            <div className="grid grid-cols-2 items-center md:grid-cols-4 gap-2">
-                                {currentProducts.length === 0 && (
-                                    <p className="text-center col-span-3">
-                                        No products found.
-                                    </p>
-                                )}
-                                {currentProducts.length > 0 &&
-                                    currentProducts.map((products) => (
-                                        <ProductCard
-                                            product={products}
-                                            productDetails={() =>
-                                                navigate(
-                                                    `/product/${products._id}`,
-                                                )
+                        {/* Products Section */}
+                        <section className="flex flex-col justify-between w-full  min-h-[100vh]">
+                            <LazyMotion features={domAnimation}>
+                                {currentProducts.length > 0 ? (
+                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                        {currentProducts.map((product) => (
+                                            <div key={product.id}>
+                                                <ProductCard
+                                                    product={product}
+                                                    productDetails={() =>
+                                                        navigate(
+                                                            `/product/${product._id}`,
+                                                        )
+                                                    }
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="flex flex-col min-h-screen items-center justify-center gap-4 font-ysabeau">
+                                        <div className="text-gray-700 text-8xl">
+                                            <TbMoodSadSquint />
+                                        </div>
+                                        <p className="text-center  max-w-3/5 text-xl lg:text-3xl lg:max-w-2/5 text-gray-600">
+                                            Oops, sorry—it looks like the
+                                            product you're looking for isn't
+                                            available...
+                                        </p>
+                                        <button
+                                            onClick={() =>
+                                                navigate("/products")
                                             }
-                                        />
+                                            className="px-4 py-2 border border-gray-200 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] transition duration-200 font-semibold rounded-lg"
+                                        >
+                                            Continue Shopping
+                                        </button>
+                                    </div>
+                                )}
+                            </LazyMotion>
+                            <nav
+                                aria-label="Product Pagination"
+                                className="flex justify-between w-full py-4"
+                            >
+                                <button
+                                    className="font-semibold text-xs md:text-lg w-25 rounded h-[5vh] hover:shadow-md transition duration-200"
+                                    onClick={() =>
+                                        setCurrentPages((prev) =>
+                                            Math.max(prev - 1, 1),
+                                        )
+                                    }
+                                    disabled={currentPages === 1}
+                                >
+                                    ← Previous
+                                </button>
+                                <div>
+                                    {[...Array(totalPages)].map((_, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() =>
+                                                setCurrentPages(idx + 1)
+                                            }
+                                            className={`px-2 md:px-3 py-1 text-xs md:text-lg rounded hover:bg-gray-100 hover:font-bold transition-all duration-300 ease-in-out ${currentPages === idx + 1 ? "font-bold bg-gray-100" : ""}`}
+                                        >
+                                            {idx + 1}
+                                        </button>
                                     ))}
-                            </div>
-                        </LazyMotion>
-                        <nav
-                            aria-label="Product Pagination"
-                            className="flex justify-between w-full py-4"
-                        >
-                            <button
-                                className="font-semibold text-xs md:text-lg w-25 rounded h-[5vh] hover:shadow-md transition duration-200"
-                                onClick={() =>
-                                    setCurrentPages((prev) =>
-                                        Math.max(prev - 1, 1),
-                                    )
-                                }
-                                disabled={currentPages === 1}
-                            >
-                                ← Previous
-                            </button>
-                            <div>
-                                {[...Array(totalPages)].map((_, idx) => (
-                                    <button
-                                        key={idx}
-                                        onClick={() => setCurrentPages(idx + 1)}
-                                        className={`px-2 md:px-3 py-1 text-xs md:text-lg rounded hover:bg-gray-100 hover:font-bold transition-all duration-300 ease-in-out ${currentPages === idx + 1 ? "font-bold bg-gray-100" : ""}`}
-                                    >
-                                        {idx + 1}
-                                    </button>
-                                ))}
-                            </div>
-                            <button
-                                className="font-semibold text-xs md:text-lg w-25 rounded h-[5vh] hover:shadow-md transition duration-200"
-                                onClick={() =>
-                                    setCurrentPages((prev) =>
-                                        Math.min(prev + 1, totalPages),
-                                    )
-                                }
-                                disabled={currentPages === totalPages}
-                            >
-                                Next →
-                            </button>
-                        </nav>
-                    </section>
+                                </div>
+                                <button
+                                    className="font-semibold text-xs md:text-lg w-25 rounded h-[5vh] hover:shadow-md transition duration-200"
+                                    onClick={() =>
+                                        setCurrentPages((prev) =>
+                                            Math.min(prev + 1, totalPages),
+                                        )
+                                    }
+                                    disabled={currentPages === totalPages}
+                                >
+                                    Next →
+                                </button>
+                            </nav>
+                        </section>
+                    </div>
                 </div>
                 {filterOpen && (
                     <FilterMobile
