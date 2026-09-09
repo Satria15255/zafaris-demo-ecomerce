@@ -23,7 +23,13 @@ const SidebarMobile = ({ onClose }) => {
                     onClick={() => navigate("/")}
                     className="cursor-pointer mb-6"
                 >
-                    <img src={brandLogo} className="w-40 h-auto" />
+                    <img
+                        src={brandLogo}
+                        alt="Brand Logo"
+                        width="862"
+                        height="116"
+                        className="w-40 h-auto"
+                    />
                 </div>
                 {/* User Validation */}
                 <div>
