@@ -35,6 +35,7 @@ const ProductModal = ({ product, closeModal }) => {
 		try {
 			if (!user) {
 				navigate("/login");
+				closeModal();
 				return;
 			}
 			if (!selectedSize) {
