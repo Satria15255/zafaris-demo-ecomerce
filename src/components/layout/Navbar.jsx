@@ -78,7 +78,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <IoHeartOutline />
                         </button>
                     </div>
-                    <div className="hidden md:flex">
+                    <div className="hidden md:flex items-center">
                         {user ? (
                             <button
                                 aria-label="User Profile"
@@ -92,7 +92,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <button
                                 aria-label="Login Navigation"
                                 onClick={() => navigate("/login")}
-                                className="cursor-pointer hover:underline mb-2 md:text-xs lg:text-md"
+                                className="cursor-pointer hover:underline  md:text-xs lg:text-md"
                             >
                                 {" "}
                                 Login / Register
