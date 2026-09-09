@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
 	const [query, setQuery] = useState("");
@@ -7,29 +7,28 @@ const SearchBar = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	const isProductPage = location.pathname === "/products";
-
 	useEffect(() => {
-		if (!isProductPage) {
+		if (location.pathname === "/products") {
+			const params = new URLSearchParams(location.search);
+
+			setQuery(params.get("search") || "");
+		} else {
 			setQuery("");
 		}
-	}, [location.pathname, isProductPage]);
+	}, [location.pathname, location.search]);
 
 	const handleSearch = (e) => {
 		e.preventDefault();
 
 		const keyword = query.trim();
 
-		if (!keyword) return;
+		if (!keyword) {
+			navigate("/products");
+			return;
+		}
 
 		navigate(`/products?search=${encodeURIComponent(keyword)}`);
-
-		setQuery("");
 	};
-
-	if (isProductPage) {
-		return null;
-	}
 
 	return (
 		<form onSubmit={handleSearch} className="w-full">

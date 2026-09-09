@@ -20,13 +20,10 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     const [discountProducts, setDiscountProducts] = useState([]);
     const [currentPages, setCurrentPages] = useState(1);
     const [loading, setLoading] = useState(true);
-    const [searchParams, setSearchParams] = useSearchParams();
-    const searchFromUrl = searchParams.get("Search") || "";
     const [filterOpen, setFilterOpen] = useState(false);
     const [filter, setFilter] = useState({
         category: "All",
         size: "All",
-        search: searchFromUrl,
         latest: false,
         discount: false,
     });
@@ -34,6 +31,8 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     const categories = ["All", "Basketball", "Sneakers", "Running", "Casual"];
     const size = ["All", 38, 39, 40, 41, 42, 43, 44];
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const searchQuery = searchParams.get("search") || "";
 
     const normalizeDiscount = (discount) => {
         return {
@@ -105,10 +104,10 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                 (Array.isArray(products.sizes) &&
                     products.sizes.includes(Number(filter.size)));
             const matchSearch =
-                filter.search.trim() === "" ||
+                searchQuery.trim() === "" ||
                 products.name
                     .toLowerCase()
-                    .includes(filter.search.toLocaleLowerCase());
+                    .includes(searchQuery.toLocaleLowerCase());
             return matchCategory && matchSize && matchSearch;
         });
     };
@@ -155,7 +154,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
         filter.size,
         filter.latest,
         filter.discount,
-        filter.search,
+        searchQuery,
     ]);
     const indexOfLast = currentPages * productsPerPage;
     const indexOfFirst = indexOfLast - productsPerPage;
@@ -191,17 +190,6 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                     <div className="flex flex-col w-full">
                         {/* Filter Mobile Version */}
                         <section className=" w-full flex justify-center gap-3 mb-2 mt-2 mr-2">
-                            <div className="flex  justify-center w-full">
-                                <input
-                                    type="text"
-                                    placeholder="Search Products..."
-                                    value={filter.search}
-                                    onChange={(e) =>
-                                        handleProductSearch(e.target.value)
-                                    }
-                                    className="w-full px-2 h-[5vh] text-sm border border-gray-300 rounded-xl"
-                                />
-                            </div>
                             <button
                                 onClick={() => setFilterOpen(true)}
                                 className="flex lg:hidden px-3 items-center text-sm  border border-gray-300 rounded-lg "
