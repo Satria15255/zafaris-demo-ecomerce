@@ -1,11 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import discountImage from "@/assets/discountImage(1).webp";
 
 const OnSale = () => {
     const navigate = useNavigate();
     return (
         <main className=" mt-6 flex justify-center w-full h-auto">
             <div className="w-100 md:w-full xl:max-w-7xl h-50 md:h-60 lg:h-80 flex  bg-[#0C0C0C] ">
-                <div className="w-2/5">
+                <picture className="w-2/5">
+                    <source
+                        media="(max-width: 640px)"
+                        srcSet={discountImage}
+                        className="w-full h-full  object-cover object-center"
+                    />
                     <img
                         src="/homeSection/discountImage.webp"
                         alt="discountImage"
@@ -15,7 +21,7 @@ const OnSale = () => {
                         decoding="async"
                         className="w-full h-full  object-cover object-center"
                     />
-                </div>
+                </picture>
                 <header className="w-3/5 text-white flex p-4 flex-col justify-center gap-1 md:gap-3 font-montserrat">
                     <p className="text-[8px]  md:text-xs lg:text-sm">
                         LIMITED OFFER
