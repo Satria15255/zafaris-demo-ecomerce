@@ -26,8 +26,6 @@ const ProductDetail = lazy(
   () => import("@/pages/public/productDetails/ProductDetails"),
 );
 
-const SearchPages = lazy(() => import("@/pages/public/products/SearchProduct"));
-
 const FavoriteProducts = lazy(
   () => import("@/pages/customer/FavoriteProducts"),
 );
@@ -110,7 +108,6 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/products" element={<ProductsPages />} />
-              <Route path="/search" element={<SearchPages />} />
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/my-cart" element={<ShoppingCartPages />} />
               <Route path="/checkout" element={<CheckoutPages />} />
