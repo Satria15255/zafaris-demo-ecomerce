@@ -3,7 +3,7 @@ import {
     PiFacebookLogoBold,
     PiPhoneBold,
 } from "react-icons/pi";
-import brandLogo from "@/assets/logo/brandLogo.png";
+import brandLogo from "@/assets/logo/brandLogo.webp";
 import visa from "@/assets/logo/visa.svg";
 import mastercard from "@/assets/logo/mastercard.svg";
 

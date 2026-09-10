@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
-import brandLogo from "@/assets/logo/brandLogo.png";
+import brandLogo from "@/assets/logo/brandLogo.webp";
 import SidebarMobile from "./SidebarMobile";
 import SearchBar from "@/features/search/components/SearchBar";
 import { IoHeartOutline } from "react-icons/io5";
