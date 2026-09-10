@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register } from "@/features/auth/services/authService";
-import background from "@/assets/heroSection/hero12.jpg";
+import background from "@/assets/heroSection/hero12.webp";
 import { IoIosArrowBack } from "react-icons/io";
 
 const Register = () => {
