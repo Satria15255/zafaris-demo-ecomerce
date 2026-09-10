@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
-import brandLogo from "@/assets/logo/brandLogo.webp";
+import brandLogo1 from "@/assets/logo/brandLogo(1).webp";
+import brandLogo2 from "@/assets/logo/brandLogo.webp";
 import SidebarMobile from "./SidebarMobile";
 import SearchBar from "@/features/search/components/SearchBar";
 import { IoHeartOutline } from "react-icons/io5";
@@ -55,15 +56,22 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     >
                         <FaBars />
                     </button>
-                    <div onClick={() => navigate("/")}>
+                    <picture
+                        onClick={() => navigate("/")}
+                        className="hidden md:block w-40 lg:w-50 h-auto"
+                    >
+                        <source
+                            media="(max-width: 640px)"
+                            srcSet={brandLogo1}
+                            className=""
+                        />
                         <img
-                            src={brandLogo}
+                            src={brandLogo2}
                             alt="Brand Logo"
                             width="862"
                             height="116"
-                            className="hidden md:block w-40 lg:w-50 h-auto"
                         />
-                    </div>
+                    </picture>
                 </div>
                 <div className="flex justify-center w-full px-4 lg:w-3/5">
                     <SearchBar />

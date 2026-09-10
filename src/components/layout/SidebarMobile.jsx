@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { PiUserCircle } from "react-icons/pi";
 import { useAuth } from "@/context/AuthContext";
-import brandLogo from "@/assets/logo/brandLogo.png";
+import brandLogo1 from "@/assets/logo/brandLogo(1).webp";
+import brandLogo2 from "@/assets/logo/brandLogo.webp";
 
 const SidebarMobile = ({ onClose }) => {
     const { user, logout } = useAuth();
@@ -19,18 +20,22 @@ const SidebarMobile = ({ onClose }) => {
         >
             <div className="w-1/2 h-screen bg-white p-5 flex flex-col ">
                 {/* Logos */}
-                <div
+                <picture
                     onClick={() => navigate("/")}
-                    className="cursor-pointer mb-6"
+                    className=" w-40 lg:w-50 h-auto"
                 >
+                    <source
+                        media="(max-width: 640px)"
+                        srcSet={brandLogo1}
+                        className=""
+                    />
                     <img
-                        src={brandLogo}
+                        src={brandLogo2}
                         alt="Brand Logo"
                         width="862"
                         height="116"
-                        className="w-40 h-auto"
                     />
-                </div>
+                </picture>
                 {/* User Validation */}
                 <div>
                     {user && (

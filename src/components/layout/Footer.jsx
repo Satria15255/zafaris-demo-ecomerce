@@ -3,7 +3,8 @@ import {
     PiFacebookLogoBold,
     PiPhoneBold,
 } from "react-icons/pi";
-import brandLogo from "@/assets/logo/brandLogo.webp";
+import brandLogo1 from "@/assets/logo/brandLogo(1).webp";
+import brandLogo2 from "@/assets/logo/brandLogo.webp";
 import visa from "@/assets/logo/visa.svg";
 import mastercard from "@/assets/logo/mastercard.svg";
 
@@ -12,15 +13,22 @@ const Footer = () => {
         <div className="flex flex-col bg-gray-100 justify-center h-auto font-montserrat">
             <div className="flex flex-col md:flex-row justify-around gap-4 px-2 md:px-7 py-6 md:py-12 ">
                 <div className="flex flex-col  gap-5">
-                    <div>
+                    <picture
+                        onClick={() => navigate("/")}
+                        className=" w-40 lg:w-50 h-auto"
+                    >
+                        <source
+                            media="(max-width: 640px)"
+                            srcSet={brandLogo1}
+                            className=""
+                        />
                         <img
-                            src={brandLogo}
+                            src={brandLogo2}
                             alt="Brand Logo"
                             width="862"
                             height="116"
-                            className="w-40 lg:w-60 h-auto"
                         />
-                    </div>
+                    </picture>
                     <div>
                         <p className="text-[10px] max-w-xs lg:text-xs ">
                             From casual looks to streetwear, every pair is
