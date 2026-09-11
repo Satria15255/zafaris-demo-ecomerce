@@ -5,6 +5,7 @@ import { getAllProducts } from "@/features/products/services/productService";
 import { FcApproval } from "react-icons/fc";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "@/components/common/Loader";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 const SuccesTransaction = () => {
     const [latestOrder, setlatestOrder] = useState([]);
@@ -249,9 +250,11 @@ const SuccesTransaction = () => {
                     You Might Like
                 </h2>
                 <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
-                    {recommended.map((product) => (
-                        <ProductCard key={product._id} product={product} />
-                    ))}
+                    <LazyMotion features={domAnimation}>
+                        {recommended.map((product) => (
+                            <ProductCard key={product._id} product={product} />
+                        ))}
+                    </LazyMotion>
                 </div>
             </aside>
         </main>

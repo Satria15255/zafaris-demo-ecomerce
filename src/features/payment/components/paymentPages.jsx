@@ -11,6 +11,7 @@ import Loader from "@/components/common/Loader";
 
 import visa from "@/assets/logo/visa.svg";
 import mastercard from "@/assets/logo/mastercard.svg";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 import { FaCcMastercard, FaCcVisa } from "react-icons/fa";
 
@@ -365,9 +366,11 @@ const PaymentPages = () => {
                     You Might Like
                 </h2>
                 <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
-                    {recommended.map((product) => (
-                        <ProductCard key={product._id} product={product} />
-                    ))}
+                    <LazyMotion features={domAnimation}>
+                        {recommended.map((product) => (
+                            <ProductCard key={product._id} product={product} />
+                        ))}
+                    </LazyMotion>
                 </div>
             </aside>
         </main>

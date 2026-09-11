@@ -5,6 +5,8 @@ import { getAllProducts } from "@/features/products/services/productService";
 import { FcApproval, FcOk } from "react-icons/fc";
 import { formatDate } from "@/utils/FormatedDate";
 import { useNavigate, useParams } from "react-router-dom";
+import { LazyMotion, domAnimation } from "framer-motion";
+
 import Loader from "@/components/common/Loader";
 
 const SuccesTransaction = () => {
@@ -262,9 +264,11 @@ const SuccesTransaction = () => {
                     You Might Like
                 </p>
                 <div className="grid grid-cols-2 items-center md:grid-cols-4 gap-3">
-                    {recommended.map((product) => (
-                        <ProductCard key={product._id} product={product} />
-                    ))}
+                    <LazyMotion features={domAnimation}>
+                        {recommended.map((product) => (
+                            <ProductCard key={product._id} product={product} />
+                        ))}
+                    </LazyMotion>
                 </div>
             </aside>
         </main>

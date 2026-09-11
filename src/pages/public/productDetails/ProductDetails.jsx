@@ -11,6 +11,8 @@ import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import { useFavorite } from "@/context/FavoriteContext";
 import { IoHeartOutline } from "react-icons/io5";
+import { LazyMotion, domAnimation } from "framer-motion";
+
 import Loader from "@/components/common/Loader";
 import ProductCard from "@/features/products/components/ProductCard";
 import CallAction from "@/pages/public/home/sections/Discount";
@@ -99,10 +101,11 @@ function ProductModal() {
     if (loading) {
         return <Loader />;
     }
+    console.log(recommended);
 
     return (
         <main className="w-full flex justify-center">
-            <div className="md:mt-16 pt-12 bg-white rounded-lg w-full h-full md:h-auto flex-col items-center overflow-y-auto xl:max-w-7xl px-4">
+            <div className="md:mt-16 pt-12 bg-white rounded-lg w-full  flex-col items-center  xl:max-w-7xl px-4">
                 <article className="relative flex flex-col md:flex-row justify-center  ">
                     <div className="w-full h-full flex justify-center">
                         <img
@@ -252,20 +255,25 @@ function ProductModal() {
                     </p>
                 </section>
 
-                <section className="mt-8 w-full">
+                <section
+                    className="mt-8 w-full 
+                        xl:max-w-7xl"
+                >
                     <p className="text-xl lg:text-2xl font-semibold pb-4">
                         Might You Like:
                     </p>
-                    <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-2 ">
-                        {recommended.map((product) => (
-                            <ProductCard
-                                key={product._id}
-                                productDetails={() =>
-                                    navigate(`/product/${product._id}`)
-                                }
-                                product={product}
-                            />
-                        ))}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:mt-2 lg:mt-4 w-full p-2 ">
+                        <LazyMotion features={domAnimation}>
+                            {recommended.map((product) => (
+                                <ProductCard
+                                    key={product._id}
+                                    productDetails={() =>
+                                        navigate(`/product/${product._id}`)
+                                    }
+                                    product={product}
+                                />
+                            ))}
+                        </LazyMotion>
                     </div>
                 </section>
 
