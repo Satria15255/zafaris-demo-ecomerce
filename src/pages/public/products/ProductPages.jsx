@@ -12,7 +12,7 @@ import FilterSidebar from "@/features/products/components/FilterSidebar";
 import Loader from "@/components/common/Loader";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
-import { TbMoodSadSquint } from "react-icons/tb";
+import { TbMoodSadSquint, TbAdjustmentsHorizontal } from "react-icons/tb";
 
 function ProductPages({ onAddToCart, onOpenModal }) {
     const [products, setProducts] = useState([]);
@@ -146,6 +146,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
             };
         });
     }, [searchParams]);
+
     // Function Products Pagination
     useEffect(() => {
         setCurrentPages(1);
@@ -166,18 +167,18 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     }
 
     return (
-        <main className="md:mt-16 p-1 md:p-2">
+        <main className="md:mt-16 p-1 md:p-2 flex flex-col items-center">
             <header
                 style={{ backgroundImage: `url(${bgProductPages})` }}
-                className="z-0 flex flex-col justify-center lg:justify-center  items-center h-[25vh] lg:h-[40vh] bg-center bg-cover rounded-lg md:rounded-3xl mt-12 mb-2 md:mb-4"
+                className="z-0 flex flex-col justify-center lg:justify-center w-full items-center h-[25vh] lg:h-[40vh] bg-center bg-cover rounded-lg md:rounded-3xl mt-12 mb-2 md:mb-4"
             >
                 <h1 className="text-4xl md:text-8xl font-bold text-white">
                     Find Our Products
                 </h1>
             </header>
             {/* Product Section */}
-            <section className="flex justify-center ">
-                <div className="flex flex-col justify-center md:flex-row  w-full lg:max-w-4/5  px-2">
+            <section className="flex justify-center w-full xl:max-w-7xl ">
+                <div className="flex flex-col justify-center md:flex-row  w-full   px-2">
                     <aside className="lg:w-1/5">
                         {/* Sidebar Filter Left*/}
                         <FilterSidebar
@@ -189,14 +190,21 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                     </aside>
                     <div className="flex flex-col w-full">
                         {/* Filter Mobile Version */}
-                        <section className=" w-full flex justify-center gap-3 mb-2 mt-2 mr-2">
+                        <section className=" w-full flex items-center justify-between lg:justify-end gap-3 mb-2 mt-2 mr-2">
+                            <p className="text-md">
+                                {filteredProducts?.length}{" "}
+                                <span className="text-gray-500 text-sm font-semibold">
+                                    Products{" "}
+                                </span>
+                            </p>
                             <button
                                 onClick={() => setFilterOpen(true)}
-                                className="flex lg:hidden px-3 items-center text-sm  border border-gray-300 rounded-lg "
+                                className="flex lg:hidden py-1 px-3 gap-1 text-sm  border border-gray-300 rounded-xl "
                             >
                                 <span className="flex items-center">
-                                    <MdFilterList />
+                                    <TbAdjustmentsHorizontal />
                                 </span>
+                                Filter
                             </button>
                         </section>
 

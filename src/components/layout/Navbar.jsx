@@ -42,11 +42,11 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-20 border-b font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 md:h-auto  w-full md:w-full flex flex-col justify-center transition-all duration-500 ease-in-out
+            className={`fixed top-0 z-20 border-b font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
   ${scrolled ? " shadow-md  bg-white" : "bg-white"}`}
         >
             {/* Top Section */}
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center w-full xl:max-w-7xl">
                 <div className="flex justify-center items-center">
                     {/* Hamburger icon */}
                     <button
@@ -123,7 +123,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 </div>
             </div>
             {/* Bottom Section */}
-            <div>
+            <div className="flex justify-start w-full xl:max-w-7xl">
                 <div className=" gap-7 hidden md:flex justify-start font-semibold text-xs lg:text-md mt-5 items-center">
                     <p
                         onClick={() => navigate("/products")}

@@ -73,30 +73,30 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                 </div>
             </div>
             <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-2 lg:justify-center">
-                <div className="h-10 md:h-12 flex items-center">
-                    <p className="text-sm  md:text-[15px] lg:text-xl xl:text-md">
+                <div className="h-10 md:h-12">
+                    <p className="text-sm  md:text-[15px] lg:text-lg  font-ysabeau">
                         {" "}
                         {product.name}
                     </p>
                 </div>
 
-                <div className="flex justify-between items-center ">
+                <div className="flex justify-between  items-center ">
                     <div className="flex h-[40px] items-center justify-center font-montserrat">
                         {isDiscount ? (
-                            <div className="flex flex-col lg:flex-row gap-2 justify-center items-center">
-                                <p className=" text-sm lg:text-lg xl:text-md line-through">
+                            <div className="flex flex-col xl:flex-row gap-1 items-start">
+                                <p className=" text-sm lg:text-lg xl:text-sm line-through">
                                     ${product.price.toFixed(2)}
                                 </p>
-                                <p className="text-sm lg:text-lg xl:text-md text-yellow-600 font-bold">
+                                <p className="text-sm lg:text-lg xl:text-sm text-yellow-600 font-bold">
                                     ${discountPrice.toFixed(2)}
                                 </p>
                             </div>
                         ) : (
-                            <>
-                                <p className="text-sm lg:text-lg xl:text-md text-yellow-600 font-bold">
+                            <div>
+                                <p className="text-sm lg:text-lg xl:text-sm text-yellow-600 font-bold">
                                     ${product.price.toFixed(2)}
                                 </p>
-                            </>
+                            </div>
                         )}
                     </div>
                     <div className="flex gap-1 lg:gap-2">
