@@ -54,7 +54,7 @@ export const CartProvider = ({ children }) => {
         }
         try {
             const res = await addToCart(product._id, 1, size);
-            await fetchCart();
+            fetchCart();
             resetVoucher();
             toast.success("Product added to cart");
         } catch (err) {

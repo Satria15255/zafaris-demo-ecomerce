@@ -7,6 +7,7 @@ import {
     getLatestProducts,
     getAllProducts,
 } from "@/features/products/services/productService";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 const FavoritesPage = () => {
     const [products, setProducts] = useState([]);
@@ -37,7 +38,8 @@ const FavoritesPage = () => {
 
     console.log(recomennded);
 
-    console.log(products);
+    console.log(favorites);
+
     if (loadingFavorites) {
         return <p>Loading...</p>;
     }
@@ -51,8 +53,8 @@ const FavoritesPage = () => {
                     </p>
                 </header>
 
-                <section className="">
-                    {favorites.length <= 0 ? (
+                <section className="min-h-screen">
+                    {favorites.length < 1 ? (
                         <div className="flex flex-col min-h-120 items-center justify-center gap-4 font-ysabeau mt-12">
                             <div className="text-gray-700 text-8xl">
                                 <RiEmotionUnhappyLine />
@@ -70,12 +72,17 @@ const FavoritesPage = () => {
                         </div>
                     ) : (
                         <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            {favorites.map((product) => (
-                                <ProductCard
-                                    key={product._id}
-                                    product={product}
-                                />
-                            ))}
+                            <LazyMotion features={domAnimation}>
+                                {favorites.map((product) => (
+                                    <ProductCard
+                                        key={product._id}
+                                        product={product}
+                                        productDetails={() =>
+                                            navigate(`/product/${product._id}`)
+                                        }
+                                    />
+                                ))}
+                            </LazyMotion>
                         </section>
                     )}
                 </section>
@@ -85,9 +92,14 @@ const FavoritesPage = () => {
                         You Might Like
                     </h2>
                     <div className="grid grid-cols-2 place-items-center md:grid-cols-4 gap-3">
-                        {recomennded.map((product) => (
-                            <ProductCard key={product._id} product={product} />
-                        ))}
+                        <LazyMotion features={domAnimation}>
+                            {recomennded.map((product) => (
+                                <ProductCard
+                                    key={product._id}
+                                    product={product}
+                                />
+                            ))}
+                        </LazyMotion>
                     </div>
                 </aside>
             </div>
