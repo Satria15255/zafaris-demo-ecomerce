@@ -6,7 +6,7 @@ import {
     removeFavorite,
 } from "@/features/favorite/services/favoriteService";
 import { useAuth } from "./AuthContext";
-
+import { useNavigate } from "react-router-dom";
 const FavoriteContext = createContext();
 
 export const FavoriteProvider = ({ children }) => {
@@ -14,6 +14,7 @@ export const FavoriteProvider = ({ children }) => {
 
     const [favorites, setFavorites] = useState([]);
     const [loadingFavorites, setLoadingFavorites] = useState(false);
+    const navigate = useNavigate();
 
     const fetchFavorites = async () => {
         try {
@@ -54,6 +55,9 @@ export const FavoriteProvider = ({ children }) => {
     };
 
     const toggleFavorite = async (productId) => {
+        if (!user) {
+            navigate("/login");
+        }
         if (isFavorite(productId)) {
             await handleRemoveFavorite(productId);
         } else {

@@ -46,7 +46,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
   ${scrolled ? " shadow-md  bg-white" : "bg-white"}`}
         >
             {/* Top Section */}
-            <div className="flex justify-between items-center w-full xl:max-w-7xl">
+            <div className="flex justify-between items-center w-full  ">
                 <div className="flex justify-center items-center">
                     {/* Hamburger icon */}
                     <button
@@ -123,7 +123,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 </div>
             </div>
             {/* Bottom Section */}
-            <div className="flex justify-start w-full xl:max-w-7xl">
+            <div className="flex justify-start w-full ">
                 <div className=" gap-7 hidden md:flex justify-start font-semibold text-xs lg:text-md mt-5 items-center">
                     <p
                         onClick={() => navigate("/products")}

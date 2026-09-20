@@ -8,11 +8,13 @@ import {
 import { useProductModal } from "@/context/ProductModalContext";
 import { useFavorite } from "@/context/FavoriteContext";
 import { optimizeCloudinaryImage } from "@/helper/optimizeCloudinaryImage";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard({ product, productDetails, openModal, productModal }) {
     const { discountPercent, discountPrice } = product;
     const { openProductModal } = useProductModal();
     const { isFavorite, toggleFavorite } = useFavorite();
+    const navigate = useNavigate();
 
     const favorite = isFavorite(product._id);
 
