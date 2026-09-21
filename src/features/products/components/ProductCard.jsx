@@ -33,7 +33,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                 amount: 0.2,
             }}
             key={product.id}
-            className="relative flex flex-col justify-center w-full h-auto md:rounded-5 lg:rounded-xl mt-2 "
+            className="relative flex flex-col justify-center bg-white w-full h-auto md:rounded-5 lg:rounded-xl mt-2 "
         >
             <div className="w-full h-auto">
                 <img

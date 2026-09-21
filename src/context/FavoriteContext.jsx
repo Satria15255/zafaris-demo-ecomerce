@@ -8,6 +8,7 @@ import {
 import { useAuth } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
 const FavoriteContext = createContext();
+import { toast } from "react-toastify";
 
 export const FavoriteProvider = ({ children }) => {
     const { user } = useAuth();
@@ -57,11 +58,12 @@ export const FavoriteProvider = ({ children }) => {
     const toggleFavorite = async (productId) => {
         if (!user) {
             navigate("/login");
-        }
-        if (isFavorite(productId)) {
+        } else if (isFavorite(productId)) {
             await handleRemoveFavorite(productId);
+            toast.success("Product Removed from favorites");
         } else {
             await handleAddFavorite(productId);
+            toast.success("Product added to favorites");
         }
     };
 

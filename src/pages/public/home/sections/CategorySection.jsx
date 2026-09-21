@@ -49,7 +49,7 @@ const CategoryCollection = () => {
             </header>
 
             {/*Desktop Ver*/}
-            <section className="hidden xl:max-w-7xl md:flex flex-col gap-2 md:flex-row justify-around lg:mt-4">
+            <section className="hidden   md:flex flex-col gap-2 md:flex-row justify-around lg:mt-4">
                 {collection.map((c) => (
                     <article className="w-50 md:w-1/4 lg:w-80">
                         <div className="overflow-hidden">

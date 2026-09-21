@@ -7,13 +7,15 @@ import CategoryCollection from "@/pages/public/home/sections/CategorySection";
 
 const HomePages = () => {
 	return (
-		<main className="flex flex-col items-center overflow-hidden">
-			<Hero />
-			<BestSeller />
-			<DiscountSection />
-			<NewArrival />
-			<CallAction />
-			<CategoryCollection />
+		<main className="flex flex-col items-center  overflow-hidden">
+			<div className="w-full xl:max-w-4/5">
+				<Hero />
+				<BestSeller />
+				<DiscountSection />
+				<NewArrival />
+				<CallAction />
+				<CategoryCollection />
+			</div>
 		</main>
 	);
 };

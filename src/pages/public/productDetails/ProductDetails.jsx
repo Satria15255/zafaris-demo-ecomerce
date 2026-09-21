@@ -111,7 +111,7 @@ function ProductModal() {
                         <img
                             src={product.image}
                             alt={product.name}
-                            className="w-full lg:w-4/5 h-full object-cover flex justify-center items-center rounded-md mt-2"
+                            className="w-full  h-full object-cover flex justify-center items-center rounded-md mt-2"
                         />
                     </div>
 
@@ -214,13 +214,20 @@ function ProductModal() {
                             </div>
                         </section>
 
-                        <div className=" flex gap-4 justify-arround ">
+                        <div className=" flex gap-4 justify- items-center ">
+                            <button
+                                aria-label="Add product to favorite list"
+                                onClick={() => toggleFavorite(product._id)}
+                                className={`p-3 rounded-full border border-gray-200 text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
+                            >
+                                <IoHeartOutline />
+                            </button>
                             <button
                                 aria-label="Add Product to Cart"
                                 onClick={() =>
                                     handleAddToCart(product, selectedSize)
                                 }
-                                className="mt-2 flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition"
+                                className=" flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition"
                             >
                                 Add to Cart <FaCartPlus />
                             </button>
@@ -229,18 +236,9 @@ function ProductModal() {
                                 onClick={() => {
                                     handleChekoutNow();
                                 }}
-                                className="mt-2 w-full px-2 py-3 bg-white border  hover:text-white rounded-md hover:bg-black transition"
+                                className=" w-full px-2 py-3 bg-white border  hover:text-white rounded-md hover:bg-black transition"
                             >
                                 Chekout
-                            </button>
-                        </div>
-                        <div className="absolute top-2 right-2 duration-200 flex justify-start  ">
-                            <button
-                                aria-label="Add product to favorite list"
-                                onClick={() => toggleFavorite(product._id)}
-                                className={`p-3 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
-                            >
-                                <IoHeartOutline />
                             </button>
                         </div>
                     </div>

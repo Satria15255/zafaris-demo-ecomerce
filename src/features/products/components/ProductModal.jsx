@@ -85,15 +85,6 @@ const ProductModal = ({ product, closeModal }) => {
 							alt={product?.name}
 							className="rounded-xl"
 						/>
-						<div className="absolute top-2 right-2 duration-200 flex justify-start  ">
-							<button
-								aria-label="Add product to favorite list"
-								onClick={() => toggleFavorite(product._id)}
-								className={`p-3 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
-							>
-								<IoHeartOutline />
-							</button>
-						</div>
 					</div>
 					<div className="flex flex-col justify-between md:px-2 font-ysabeau">
 						<p className="text-3xl">{product.name}</p>
@@ -172,13 +163,26 @@ const ProductModal = ({ product, closeModal }) => {
 									</div>
 								)}
 							</div>
-							<div className=" flex gap-4 justify-arround text-sm">
+							<div className=" flex gap-3 justify-arround items-center text-sm">
+								<div className=" top-2 right-2 duration-200 flex justify-start  ">
+									<button
+										aria-label="Add product to favorite list"
+										onClick={() => {
+											toggleFavorite(product._id);
+											closeModal();
+										}}
+										className={`p-3 rounded-full border border-gray-200 text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
+									>
+										<IoHeartOutline />
+									</button>
+								</div>
+
 								<button
 									aria-label="Add product to cart"
 									onClick={() =>
 										handleAddToCart(product, selectedSize)
 									}
-									className="mt-2 flex gap-2 items-center justify-center w-full px-2 py-3 bg-white border border-gray-500 hover:text-white rounded-md hover:bg-black transition"
+									className=" flex gap-2 items-center justify-center w-full px-2 py-3 bg-white border border-gray-500 hover:text-white rounded-md hover:bg-black transition"
 								>
 									Add to Cart <FaCartPlus />
 								</button>
@@ -188,7 +192,7 @@ const ProductModal = ({ product, closeModal }) => {
 										handleChekoutNow();
 										// closed();
 									}}
-									className="mt-2 flex gap-2 items-center justify-center w-full px-2 py-3 border border-gray-500 bg-black text-white hover:text-black rounded-md hover:bg-white transition"
+									className="flex gap-2 items-center justify-center w-full px-2 py-3 border border-gray-500 bg-black text-white hover:text-black rounded-md hover:bg-white transition"
 								>
 									Chekout <FaArrowRightLong />
 								</button>

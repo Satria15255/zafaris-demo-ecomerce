@@ -5,7 +5,7 @@ const OnSale = () => {
     const navigate = useNavigate();
     return (
         <main className=" mt-6 flex justify-center w-full h-auto">
-            <div className="w-100 md:w-full xl:max-w-7xl h-50 md:h-60 lg:h-80 flex  bg-[#0C0C0C] ">
+            <div className="w-100 md:w-full h-50 md:h-60 lg:h-80 flex  bg-[#0C0C0C] ">
                 <picture className="w-2/5">
                     <source
                         media="(max-width: 640px)"
