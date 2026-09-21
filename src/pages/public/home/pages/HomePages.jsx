@@ -1,4 +1,5 @@
 import Hero from "@/pages/public/home/sections/Hero";
+import Discover from "@/pages/public/home/sections/Discover";
 import CallAction from "@/pages/public/home/sections/CallAction";
 import BestSeller from "@/pages/public/home/sections/BestSeller";
 import DiscountSection from "@/pages/public/home/sections/Discount";
@@ -10,6 +11,7 @@ const HomePages = () => {
 		<main className="flex flex-col items-center  overflow-hidden">
 			<div className="w-full xl:max-w-4/5">
 				<Hero />
+				<Discover />
 				<BestSeller />
 				<DiscountSection />
 				<NewArrival />
