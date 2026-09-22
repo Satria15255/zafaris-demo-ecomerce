@@ -8,14 +8,14 @@ import { useAuth } from "@/context/AuthContext";
 import brandLogo1 from "@/assets/logo/brandLogo(1).webp";
 import brandLogo2 from "@/assets/logo/brandLogo.webp";
 import SidebarMobile from "./SidebarMobile";
-import SearchBar from "@/features/search/components/SearchBar";
+import SearchModal from "@/features/search/components/SearchModal";
 import { IoHeartOutline, IoSearchOutline, IoBagOutline } from "react-icons/io5";
 import { LuUserRound } from "react-icons/lu";
 
 function Navbar({ handleOpenCart, onToggleSidebar }) {
     const [scrolled, setScrolled] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
     const { cart } = useCart();
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -47,8 +47,8 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
   ${scrolled ? " border-b border-gray-400   " : ""}`}
         >
             {/* Top Section */}
-            <div className="flex justify-between items-center w-full  ">
-                <div className="flex justify-center items-center">
+            <div className="grid grid-cols-3 items-center w-full  xl:px-6">
+                <div className="flex items-center w-full">
                     {/* Hamburger icon */}
                     <button
                         aria-label="Open navigation menu"
@@ -74,56 +74,48 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         />
                     </picture>
                 </div>
-                <div className="flex justify-center items-center w-full ">
-                    <div className=" gap-7 hidden md:flex justify-start font-light text-xs lg:text-sm items-center">
-                        <p
-                            onClick={() => navigate("/")}
-                            className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                        >
-                            HOME
-                        </p>
-                        <p
-                            onClick={() => navigate("/products")}
-                            className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                        >
-                            RUNNING
-                        </p>
-                        <p
-                            onClick={() => navigate("/products")}
-                            className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                        >
-                            BASKETBALL
-                        </p>
-                        <p
-                            onClick={() => navigate("/products")}
-                            className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                        >
-                            SNEAKERS
-                        </p>
-                        <p
-                            onClick={() => navigate("/products")}
-                            className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                        >
-                            CASUAL
-                        </p>
-                        <p
-                            onClick={() => navigate("/products")}
-                            className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                        >
-                            FOOTBALL
-                        </p>
-                    </div>
+                <div className=" gap-7 hidden md:flex justify-start font-light text-xs lg:text-sm items-center w-full">
+                    <p
+                        onClick={() => navigate("/")}
+                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
+                    >
+                        HOME
+                    </p>
+                    <p
+                        onClick={() => navigate("/products")}
+                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
+                    >
+                        SHOP
+                    </p>
+                    <p
+                        onClick={() => navigate("/products")}
+                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
+                    >
+                        RUNNING
+                    </p>
+                    <p
+                        onClick={() => navigate("/products")}
+                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
+                    >
+                        BASKETBALL
+                    </p>
+                    <p
+                        onClick={() => navigate("/products")}
+                        className="cursor-pointer  hover:text-yellow-500 transition duration-100"
+                    >
+                        SNEAKERS
+                    </p>
+                    <p
+                        onClick={() => navigate("/products")}
+                        className="cursor-pointer  hover:text-yellow-500 transition duration-100"
+                    >
+                        CASUAL
+                    </p>
                 </div>
 
-                <div className="flex justify-center md:justify-end gap-3 md:gap-6 items-center">
-                    <div className="flex justify-center items-center">
-                        <button
-                            aria-label="Open favorites"
-                            onClick={handleFavoriteNav}
-                            className="text-2xl hover:text-yellow-500 transition duration-100"
-                        >
-                            <IoSearchOutline />
-                        </button>
+                <div className="flex justify-end gap-3 md:gap-6 items-center w-full">
+                    <div className="flex justify-center items-center w-full ">
+                        <SearchModal />
                     </div>
                     <div className="flex justify-center items-center">
                         <button
@@ -179,6 +171,9 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     user={user}
                     onClose={() => setIsSidebarOpen(false)}
                 />
+            )}
+            {isSearchOpen && (
+                <SearchModal onClose={() => setIsSearchOpen(false)} />
             )}
         </div>
     );

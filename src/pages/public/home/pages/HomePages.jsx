@@ -15,8 +15,8 @@ const HomePages = () => {
 				<BestSeller />
 				<DiscountSection />
 				<NewArrival />
-				<CallAction />
 				<CategoryCollection />
+				<CallAction />
 			</div>
 		</main>
 	);

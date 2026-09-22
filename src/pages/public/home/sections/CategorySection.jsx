@@ -37,7 +37,7 @@ const CategoryCollection = () => {
     const navigate = useNavigate();
 
     return (
-        <main className="h-auto py-12 px-2 lg:px-4 w-full flex flex-col items-center ">
+        <main className="h-auto py-12 px-2  w-full flex flex-col items-center ">
             {/* Headline */}
             <header className="text-center py-2">
                 <h2 className="text-lg lg:text-3xl font-semibold">
@@ -51,7 +51,7 @@ const CategoryCollection = () => {
             {/*Desktop Ver*/}
             <section className="hidden   md:flex flex-col gap-2 md:flex-row justify-around lg:mt-4">
                 {collection.map((c) => (
-                    <article className="w-50 md:w-1/4 lg:w-80">
+                    <article className="w-50 md:w-1/4 ">
                         <div className="overflow-hidden">
                             <img
                                 src={c.image}
@@ -67,7 +67,7 @@ const CategoryCollection = () => {
                             <p className="text-sm lg:text-lg font-semibold">
                                 {c.title}
                             </p>
-                            <p className="text-xs lg:text-sm text-gray-500">
+                            <p className="text-xs lg:text-sm text-gray-500 max-w-sm">
                                 {c.desc}
                             </p>
                             <button

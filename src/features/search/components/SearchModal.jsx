@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { IoIosSearch } from "react-icons/io";
 
-const SearchBar = () => {
+const SearchModal = ({ onClose }) => {
 	const [query, setQuery] = useState("");
 
 	const navigate = useNavigate();
@@ -31,16 +32,21 @@ const SearchBar = () => {
 	};
 
 	return (
-		<form onSubmit={handleSearch} className="w-full">
-			<input
-				type="text"
-				value={query}
-				onChange={(e) => setQuery(e.target.value)}
-				placeholder="Search Products..."
-				className="w-full border border-gray-300 px-2 rounded-2xl font-ysabeau py-1"
-			/>
-		</form>
+		<main className="w-full flex">
+			<form onSubmit={handleSearch} className="w-full">
+				<input
+					type="text"
+					value={query}
+					onChange={(e) => setQuery(e.target.value)}
+					placeholder="Search Products..."
+					className="w-full border border-gray-300 px-2 rounded-l-xl font-ysabeau py-2"
+				/>
+			</form>
+			<button className="p-3 rounded-r-xl bg-[#0C0C0C] text-white">
+				<IoIosSearch />
+			</button>
+		</main>
 	);
 };
 
-export default SearchBar;
+export default SearchModal;

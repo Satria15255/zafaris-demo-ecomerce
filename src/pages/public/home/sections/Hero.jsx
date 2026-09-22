@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getLatestProducts } from "@/features/products/services/productService";
 import heroMobile from "@/assets/heroSection/heroBackground(1).webp";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { optimizeCloudinaryImage } from "@/helper/optimizeCloudinaryImage";
 
 const Hero = () => {
     const navigate = useNavigate();
@@ -89,8 +90,25 @@ const Hero = () => {
                 <div className="flex justify-center">
                     <div className="w-full relative">
                         <img
-                            src={newProduct?.image}
-                            alt="product.name"
+                            src={optimizeCloudinaryImage(
+                                newProduct?.image,
+                                500,
+                            )}
+                            alt={newProduct?.name}
+                            srcSet={`
+            ${optimizeCloudinaryImage(newProduct?.image, 300)} 300w,
+            ${optimizeCloudinaryImage(newProduct?.image, 500)} 500w,
+            ${optimizeCloudinaryImage(newProduct?.image, 700)} 700w
+        `}
+                            sizes="
+            (max-width: 640px) 50vw,
+            (max-width: 1024px) 33vw,
+            25vw
+        "
+                            width="500"
+                            height="500"
+                            loading="lazy"
+                            decoding="async"
                             className="w-4/5 m-6"
                         />
                         <div className="bg-[#0C0C0C] text-sm text-white top-1 right-0 mb-6 mr-16 p-2 absolute flex justify-center items-center w-40">

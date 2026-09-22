@@ -44,33 +44,37 @@ const FilterSidebar = ({ categories, size, filter, setFilter }) => {
             ))}
           </div>
         </div>
+
         <div className="w-full">
-          <button
-            className={`flex items-center gap-1 md:text-sm lg:text-lg font-semibold rounded-xl w-full text-left py-2  hover:shadow-lg hover:pl-1 transition-all duration-300 ease-in-out
-              ${filter.latest ? " border shadow-md pl-1" : "hover:text-yellow-500"}`}
-            onClick={() =>
-              setFilter((prev) => ({ ...prev, latest: !prev.latest }))
-            }
-          >
-            <span>
-              <MdAutoAwesome />
-            </span>
-            New Arrival
-          </button>
-        </div>
-        <div className="w-full">
-          <button
-            className={`flex items-center gap-1 md:text-sm lg:text-lg font-semibold rounded-xl w-full text-left py-2  hover:shadow-lg hover:pl-1 transition-all duration-300 ease-in-out
-              ${filter.discount ? "border shadow-md pl-1" : "hover:text-yellow-500"}`}
-            onClick={() =>
-              setFilter((prev) => ({ ...prev, discount: !prev.discount }))
-            }
-          >
-            <span>
-              <MdSell />
-            </span>
-            Discount Now!
-          </button>
+          <p className="flex items-center justify-between md:text-sm lg:text-lg rounded-xl w-full text-left py-2 flex justify-between items-center text-left font-semibold w-full ">
+            Other
+          </p>
+          <div className="pl-4 py-2">
+            <button
+              className={`flex items-center gap-1 md:text-sm lg:text-lg font-semibold  rounded-xl w-full text-left py-2  hover:shadow-lg hover:pl-1 transition-all duration-300 ease-in-out
+              ${filter.latest ? "text-[#0C0C0C]  shadow-md pl-1" : "hover:text-yellow-500 text-gray-500"}`}
+              onClick={() =>
+                setFilter((prev) => ({ ...prev, latest: !prev.latest }))
+              }
+            >
+              <span>
+                <MdAutoAwesome />
+              </span>
+              New Arrival
+            </button>
+            <button
+              className={`flex items-center gap-1 md:text-sm lg:text-lg font-semibold rounded-xl w-full text-left py-2  hover:shadow-lg hover:pl-1 transition-all duration-300 ease-in-out
+              ${filter.discount ? "text-[#0C0C0C]  shadow-md pl-1" : "hover:text-yellow-500 text-gray-500"}`}
+              onClick={() =>
+                setFilter((prev) => ({ ...prev, discount: !prev.discount }))
+              }
+            >
+              <span>
+                <MdSell />
+              </span>
+              Discount Now!
+            </button>
+          </div>
         </div>
       </div>
     </div>
