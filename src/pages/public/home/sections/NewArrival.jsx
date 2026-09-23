@@ -54,7 +54,7 @@ function ProductList() {
                         gap-2
                         md:mt-2
                         lg:mt-4
-                        xl:max-w-7xl
+                        
                         w-full
                         p-2
                     "

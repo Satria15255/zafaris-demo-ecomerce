@@ -33,9 +33,9 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                 amount: 0.2,
             }}
             key={product.id}
-            className="relative flex flex-col justify-center w-full h-auto md:rounded-5 lg:rounded-xl mt-2 "
+            className=" flex flex-col justify-center  w-full h-auto md:rounded-5 lg:rounded-xl mt-2 bg-white rounded-xl"
         >
-            <div className="w-full h-auto">
+            <div className="w-full h-auto relative">
                 <img
                     src={optimizeCloudinaryImage(product.image, 500)}
                     alt={product.name}
@@ -53,37 +53,58 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                     height="500"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-auto object-cover rounded-md md:rounded-xl md:rounded-bottom-5 object-center"
+                    className="w-full h-auto object-cover rounded-lg md:rounded-xl md:rounded-bottom-5 object-center"
                 />
                 <div>
                     {product.isBestSeller === true && (
                         <div>
-                            <p className="absolute top-2 left-2 bg-yellow-600 text-white text-xs xl:text-sm font-ysabeau px-2 xl:px-4 xl:py-2 py-1 rounded-xl">
+                            <p className="absolute top-2 left-2 bg-[#0C0C0C] text-white text-xs xl:text-sm font-ysabeau px-2 xl:px-4 xl:py-2 py-1 rounded-xl">
                                 Best Seller
                             </p>
                         </div>
                     )}
-                </div>
-                <div className="absolute top-0 right-0 p-2 duration-200 flex justify-start  ">
-                    <button
-                        aria-label="Add product to favorite list"
-                        onClick={() => toggleFavorite(product._id)}
-                        className={`p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
-                    >
-                        <IoHeartOutline />
-                    </button>
+                    <div className="absolute inset-0 flex justify-center items-end translate-y-1 opacity-0 hover:translate-y-0 hover:opacity-100 transition duration-200 ">
+                        <div className="mb-3 flex gap-3  ">
+                            <button
+                                aria-label="Add product to favorite list"
+                                onClick={() => toggleFavorite(product._id)}
+                                className={`p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : " text-[#0C0C0C]"}`}
+                            >
+                                <IoHeartOutline />
+                            </button>
+                            <button
+                                aria-label="See Product Detail"
+                                onClick={() => productDetails(product)}
+                                className="p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200  text-[#0C0C0C]"
+                            >
+                                <IoSearchOutline />
+                            </button>
+                            <button
+                                aria-label="Open product modal"
+                                onClick={() => openProductModal(product)}
+                                className="p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200  text-[#0C0C0C]"
+                            >
+                                <IoBagHandleOutline />
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-2 lg:justify-center">
-                <div className="h-10 md:h-12">
-                    <p className="text-sm  md:text-[15px] lg:text-lg  font-ysabeau">
+                <div>
+                    <p className="text-xs font-light">
+                        {product.brand} / {product.category}
+                    </p>
+                </div>
+                <div className="h-7">
+                    <p className="text-sm  md:text-[15px] lg:text-sm  font-ysabeau font-bold">
                         {" "}
                         {product.name}
                     </p>
                 </div>
 
                 <div className="flex justify-between  items-center ">
-                    <div className="flex h-[40px] items-center justify-center font-montserrat">
+                    <div className="flex  items-center justify-center font-montserrat">
                         {isDiscount ? (
                             <div className="flex flex-col xl:flex-row gap-1 items-start">
                                 <p className=" text-sm lg:text-lg xl:text-sm line-through">
@@ -101,22 +122,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                             </div>
                         )}
                     </div>
-                    <div className="flex gap-1 lg:gap-2">
-                        <button
-                            aria-label="See Product Detail"
-                            onClick={() => productDetails(product)}
-                            className="p-3 rounded-full text-lg md:text-sm lg:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200"
-                        >
-                            <IoSearchOutline />
-                        </button>
-                        <button
-                            aria-label="Open product modal"
-                            onClick={() => openProductModal(product)}
-                            className="p-3 rounded-full text-lg md:text-sm lg:text-xl text-white bg-[#0C0C0C] shadow-xl border border-gray-100 hover:text-[#0C0C0C] hover:bg-white transition duration-200"
-                        >
-                            <IoBagHandleOutline />
-                        </button>
-                    </div>
+                    <div className="flex gap-1 lg:gap-2"></div>
                 </div>
             </div>
         </m.article>
