@@ -47,8 +47,8 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
   ${scrolled ? " border-b border-gray-400   " : ""}`}
         >
             {/* Top Section */}
-            <div className="flex  md:grid md:grid-cols-2 lg:grid-cols-3 items-center w-full  xl:px-6">
-                <div className="md:flex items-center md:w-full">
+            <div className="flex  justify-between items-center w-full  xl:px-6">
+                <div className="md:flex items-center md:w-2/4">
                     {/* Hamburger icon */}
                     <button
                         aria-label="Open navigation menu"
@@ -74,7 +74,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         />
                     </picture>
                 </div>
-                <div className=" gap-7 hidden lg:flex justify-start font-light text-xs lg:text-sm items-center w-full">
+                <div className=" gap-7 hidden lg:flex  font-light text-xs lg:text-sm items-center w-full">
                     <p
                         onClick={() => navigate("/")}
                         className="cursor-pointer hover:text-yellow-500 transition duration-100"
@@ -149,7 +149,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                                 className="relative flex items-center text-2xl gap-2 hidden md:flex hover:text-yellow-500 transition duration-100"
                             >
                                 <LuUserRound />{" "}
-                                <span className="hidden lg:block">
+                                <span className="hidden lg:flex w-30 text-sm">
                                     Hi {user.name}
                                 </span>
                             </button>

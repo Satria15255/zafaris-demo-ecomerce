@@ -6,7 +6,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 const Discover = () => {
 	return (
 		<div className="h-auto py-16">
-			<div className="grid grid-cols-2 gap-4">
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 				<div className="relative h-80">
 					<img
 						src={runningImage}
@@ -21,7 +21,7 @@ const Discover = () => {
 							<h1 className="text-3xl text-white">
 								Explore the <br /> Running collection
 							</h1>
-							<button className="flex items-center justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/4">
+							<button className="flex items-center justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4">
 								Shop Now <FaArrowRightLong />
 							</button>
 						</div>
@@ -41,7 +41,7 @@ const Discover = () => {
 							<h1 className="text-3xl text-white">
 								Check out today's <br /> Discounted products.
 							</h1>
-							<button className="flex items-center justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/4">
+							<button className="flex items-center justify-center font-semibold gap-2 py-2 px-4 bg-white text-[#0C0C0C] w-1/2 md:w-1/4">
 								Shop Now <FaArrowRightLong />
 							</button>
 						</div>

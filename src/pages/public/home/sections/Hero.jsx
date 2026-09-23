@@ -31,21 +31,20 @@ const Hero = () => {
 
     return (
         <section className="pt-15 px-2 md:px-4 md:pt-12 xl:pt-15 bg-white md:mt-17 w-full  h-full xl:h-auto">
-            <div className="grid grid-cols-2 text-black gap-4">
-                <div className="flex flex-col items-start p-5 justify-center space-y-4">
-                    <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 text-black gap-4">
+                <div className="flex flex-col items-start p-5 justify-center space-y-2 md:space-y-4">
+                    <div className="flex flex-col gap-2">
                         <div className="flex gap-4 items-center">
                             <div className="bg-gray-400 p-1 rounded-full"></div>
-
-                            <p className="text-[6px] md:text-sm font-montserrat t ">
+                            <p className="text-md md:text-sm font-montserrat t ">
                                 NEW ARRIVAL
                             </p>
                         </div>
-                        <h1 className="text-2xl md:text-5xl lg:text-7xl xl:text-7xl font-montserrat  ">
+                        <h1 className="text-5xl md:text-5xl lg:text-7xl xl:text-7xl font-montserrat  ">
                             Find Your <br /> Perfect Shoes
                         </h1>
                     </div>
-                    <p className="text-[6px] leading-tight py-2 max-w-sm md:text-sm lg:text-sm  font-light">
+                    <p className="text-sm leading-tight py-2 max-w-sm md:text-sm lg:text-sm  font-light">
                         Crafted for performance, engineered for silence.
                         Discover sculptural footwear and contemporary
                         silhouettes curated from global avant-garde ateliers.
@@ -54,14 +53,14 @@ const Hero = () => {
                         <button
                             aria-label="Shop Now"
                             onClick={() => navigate("/products")}
-                            className="bg-black w-1/3 md:px-5 cursor-pointer md:h-10  text-[6px] md:text-[8px] lg:text-sm font-semibold text-white hover:border border-[#0C0C0C] hover:text-[#0C0C0C] hover:bg-transparent transition duration-300"
+                            className="bg-black w-1/3 md:w-1/3 md:px-5 cursor-pointer  h-10  text-xs lg:text-sm font-semibold text-white hover:border border-[#0C0C0C] hover:text-[#0C0C0C] hover:bg-transparent transition duration-300"
                         >
                             SHOP NOW
                         </button>
                         <button
                             aria-label="Explore Products"
                             onClick={() => navigate("/products")}
-                            className="bg-transparent  flex  cursor-pointer items-center justify-center gap-3  md:px-5  md:h-10 text-[6px] md:text-[7px] lg:text-sm  border-transparent hover:underline  transition duration-300"
+                            className="bg-transparent  flex  cursor-pointer items-center justify-center gap-3  md:px-5  h-10 text-xs lg:text-sm  border-transparent hover:underline  transition duration-300"
                         >
                             EXPLORE COLLECTION <FaArrowRightLong />
                         </button>
@@ -87,7 +86,8 @@ const Hero = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-center">
+
+                <div className="flex justify-center items-center">
                     <div className="w-full relative">
                         <img
                             src={newProduct?.image}
@@ -96,14 +96,14 @@ const Hero = () => {
                             height="500"
                             loading="lazy"
                             decoding="async"
-                            className="w-4/5 m-6"
+                            className="w-full  p-4"
                         />
-                        <div className="bg-[#0C0C0C] text-sm text-white top-1 right-0 mb-6 mr-16 p-2 absolute flex justify-center items-center w-40">
+                        <div className="bg-[#0C0C0C] text-sm lg:text-md text-white top-1 right-0 mb-6  p-2 absolute flex justify-center items-center w-40">
                             <div>
                                 <p>NEW PRODUCT</p>
                             </div>
                         </div>
-                        <div className="bg-white bottom-1 mt-6 p-2 absolute flex justify-between items-center w-100 border border-gray-200">
+                        <div className="bg-white bottom-1 left-0 mt-6 p-2 absolute flex justify-between items-center w-70 lg:w-100 border border-gray-200">
                             <div className="flex items-center gap-3">
                                 <div className="bg-gray-400 p-1 rounded-full"></div>
                                 <div className="font-ysabeau">
