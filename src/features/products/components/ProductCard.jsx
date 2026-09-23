@@ -33,7 +33,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                 amount: 0.2,
             }}
             key={product.id}
-            className=" flex flex-col justify-center bg-white w-full h-auto md:rounded-5 lg:rounded-xl mt-2 "
+            className=" flex flex-col justify-center  w-full h-auto md:rounded-5 lg:rounded-xl mt-2 "
         >
             <div className="w-full h-auto relative">
                 <img
@@ -68,21 +68,21 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                             <button
                                 aria-label="Add product to favorite list"
                                 onClick={() => toggleFavorite(product._id)}
-                                className={`p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : "bg-white text-[#0C0C0C]"}`}
+                                className={`p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 ${favorite ? "bg-black text-white" : " text-[#0C0C0C]"}`}
                             >
                                 <IoHeartOutline />
                             </button>
                             <button
                                 aria-label="See Product Detail"
                                 onClick={() => productDetails(product)}
-                                className="p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 bg-white text-[#0C0C0C]"
+                                className="p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200  text-[#0C0C0C]"
                             >
                                 <IoSearchOutline />
                             </button>
                             <button
                                 aria-label="Open product modal"
                                 onClick={() => openProductModal(product)}
-                                className="p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200 bg-white text-[#0C0C0C]"
+                                className="p-2 rounded-full  text-lg lg:text-xl shadow-lg hover:bg-[#0C0C0C] hover:text-white transition duration-200  text-[#0C0C0C]"
                             >
                                 <IoBagHandleOutline />
                             </button>
@@ -96,7 +96,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                         {product.brand} / {product.category}
                     </p>
                 </div>
-                <div className="">
+                <div className="h-7">
                     <p className="text-sm  md:text-[15px] lg:text-sm  font-ysabeau font-bold">
                         {" "}
                         {product.name}

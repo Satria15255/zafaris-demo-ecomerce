@@ -47,8 +47,8 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
   ${scrolled ? " border-b border-gray-400   " : ""}`}
         >
             {/* Top Section */}
-            <div className="grid grid-cols-3 items-center w-full  xl:px-6">
-                <div className="flex items-center w-full">
+            <div className="flex  md:grid md:grid-cols-2 lg:grid-cols-3 items-center w-full  xl:px-6">
+                <div className="md:flex items-center md:w-full">
                     {/* Hamburger icon */}
                     <button
                         aria-label="Open navigation menu"
@@ -74,7 +74,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         />
                     </picture>
                 </div>
-                <div className=" gap-7 hidden md:flex justify-start font-light text-xs lg:text-sm items-center w-full">
+                <div className=" gap-7 hidden lg:flex justify-start font-light text-xs lg:text-sm items-center w-full">
                     <p
                         onClick={() => navigate("/")}
                         className="cursor-pointer hover:text-yellow-500 transition duration-100"
@@ -113,7 +113,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     </p>
                 </div>
 
-                <div className="flex justify-end gap-3 md:gap-6 items-center w-full">
+                <div className="flex justify-end gap-3 lg:gap-6 items-center w-full px-2">
                     <div className="flex justify-center items-center w-full ">
                         <SearchModal />
                     </div>
@@ -146,10 +146,12 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <button
                                 aria-label="User Profile"
                                 onClick={onToggleSidebar}
-                                className="relative flex items-center md:text-xs lg:text-md gap-2 hidden md:flex px-2 hover:text-yellow-500 transition duration-100"
+                                className="relative flex items-center text-2xl gap-2 hidden md:flex hover:text-yellow-500 transition duration-100"
                             >
-                                <LuUserRound size={30} />{" "}
-                                <span>Hi {user.name}</span>
+                                <LuUserRound />{" "}
+                                <span className="hidden lg:block">
+                                    Hi {user.name}
+                                </span>
                             </button>
                         ) : (
                             <button

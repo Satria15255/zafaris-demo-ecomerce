@@ -90,21 +90,8 @@ const Hero = () => {
                 <div className="flex justify-center">
                     <div className="w-full relative">
                         <img
-                            src={optimizeCloudinaryImage(
-                                newProduct?.image,
-                                500,
-                            )}
+                            src={newProduct?.image}
                             alt={newProduct?.name}
-                            srcSet={`
-            ${optimizeCloudinaryImage(newProduct?.image, 300)} 300w,
-            ${optimizeCloudinaryImage(newProduct?.image, 500)} 500w,
-            ${optimizeCloudinaryImage(newProduct?.image, 700)} 700w
-        `}
-                            sizes="
-            (max-width: 640px) 50vw,
-            (max-width: 1024px) 33vw,
-            25vw
-        "
                             width="500"
                             height="500"
                             loading="lazy"
