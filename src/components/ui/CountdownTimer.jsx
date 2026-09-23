@@ -68,9 +68,11 @@ function CountdownTimer({ expiresAt, onExpire }) {
 function TimeBox({ value, label }) {
   return (
     <div className="min-w-[40px] text-center">
-      <p className="text-3xl font-semibold tabular-nums text-white">{value}</p>
+      <p className="text-lg lg:text-3xl font-semibold tabular-nums text-white">
+        {value}
+      </p>
 
-      <span className="mt-1 block text-sm tracking-[0.25em] text-neutral-500">
+      <span className="mt-1 block text-xs tracking-[0.25em] text-neutral-500">
         {label}
       </span>
     </div>

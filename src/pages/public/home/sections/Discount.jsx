@@ -65,30 +65,30 @@ const OnSale = () => {
                     </button>
                 </header>
             </div>*/}
-            <div className="flex w-full h-90 border border-gray-200 bg-[#FBEFDD]">
-                <div className="w-4/6 flex">
-                    <div className="bg-[#0C0C0C] w-1/2 p-4 h-full flex flex-col justify-around">
+            <div className="flex flex-col md:flex-row w-full h-auto md:h-90   bg-[#ffff]">
+                <div className="w-full md:w-full grid grid-col-1 md:grid-cols-2">
+                    <div className="bg-[#1C1C1A] w-full  p-4 h-100 md:h-80 lg:h-full flex flex-col justify-around">
                         <div className=" flex flex-col justify-center ">
-                            <p className="flex gap-4 text-[#D2A14A] items-center">
+                            <p className="flex text-sm md:text-xs lg:text-sm gap-4 text-[#D2A14A] items-center">
                                 <div className="flex">
                                     <TfiLayoutLineSolid />
                                     <TfiLayoutLineSolid />
                                 </div>
                                 24H DISCOUNT
                             </p>
-                            <h1 className="text-white text-6xl font-serif">
+                            <h1 className="text-white text-5xl md:text-4xl lg:text-6xl font-serif">
                                 DAILY{" "}
                                 <span className="text-[#D2A14A]">DROP</span>
                             </h1>
-                            <p className="text-white text-xl font-serif">
+                            <p className="text-white text-sm md:text-xs lg::text-xl font-serif">
                                 Selected for today, Gone tomorrow
                             </p>
                         </div>
                         <div>
-                            <p className=" font-light text-white">
+                            <p className="text-sm md:text-xs lg:text-sm font-light text-white">
                                 NEXT DROP IN
                             </p>
-                            <div className="flex gap-3 mt-2">
+                            <div className="flex flex-col lg:flex-row gap-3 mt-2">
                                 <div>
                                     <CountdownTimer
                                         expiresAt={mainProduct?.expiresAt}
@@ -98,15 +98,15 @@ const OnSale = () => {
                                         className="w-full"
                                     />
                                 </div>
-                                <div className="w-1/2 flex items-center">
-                                    <button className="w-full flex items-center font-semibold justify-center gap-3 py-5 bg-[#D2A14A] rounded-lg text-white text-sm">
+                                <div className="w-full lg:w-1/2 flex items-center">
+                                    <button className="w-full flex items-center font-semibold justify-center gap-3 py-5 bg-[#D2A14A] rounded-lg text-white text-sm md:text-xs lg:text-sm">
                                         SHOP THE DROP <FaArrowRightLong />
                                     </button>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <p className="flex gap-4 text-white items-center">
+                            <p className="flex text-sm md:text-xs lg:text-sm gap-4 text-white items-center">
                                 <div className="flex text-[#D2A14A]">
                                     <TfiLayoutLineSolid />
                                     <TfiLayoutLineSolid />
@@ -116,12 +116,12 @@ const OnSale = () => {
                         </div>
                     </div>
                     <div
-                        className="bg-white w-1/2 flex  justify-between h-auto bg-center bg-cover  p-6"
+                        className="bg-[#FBFAF7] w-full h-100 lg:h-auto flex  justify-between bg-center bg-cover  p-6"
                         style={{
                             backgroundImage: `url(${mainProduct?.productId?.image})`,
                         }}
                     >
-                        <div className="pt-7">
+                        <div className="pt-7 w-full h-full">
                             <p className="text-lg font-bold">
                                 {mainProduct?.productId?.name}
                             </p>
@@ -143,47 +143,6 @@ const OnSale = () => {
                                 -{mainProduct?.discountPercent}%
                             </p>
                         </div>
-                    </div>
-                </div>
-
-                <div className="w-2/6 flex flex-col h-full p-6">
-                    <div className="flex justify-start">
-                        <p className="font-light font-semibold font-ysabeau">
-                            MORE TODAY
-                        </p>
-                    </div>
-                    <div className="flex h-4/5 justify-center h-full">
-                        <LazyMotion features={domAnimation}>
-                            <Swiper
-                                modules={[Pagination, Autoplay]}
-                                slidesPerView={2}
-                                slidesPerGroup={2}
-                                autoplay={{ delay: 4000 }}
-                                spaceBetween={8}
-                                pagination={{
-                                    el: ".swiper-pagination",
-                                    clickable: true,
-                                }}
-                            >
-                                {otherProduct.map((product) => (
-                                    <SwiperSlide
-                                        key={product._id}
-                                        className="pb-6 p-2"
-                                    >
-                                        <ProductCard
-                                            product={product.productId}
-                                            productDetails={() =>
-                                                navigate(
-                                                    `/product/${product.productId._id}`,
-                                                )
-                                            }
-                                        />
-                                    </SwiperSlide>
-                                ))}
-
-                                <div className="swiper-pagination" />
-                            </Swiper>
-                        </LazyMotion>
                     </div>
                 </div>
             </div>

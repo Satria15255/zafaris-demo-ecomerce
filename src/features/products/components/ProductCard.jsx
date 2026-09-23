@@ -33,7 +33,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                 amount: 0.2,
             }}
             key={product.id}
-            className=" flex flex-col justify-center  w-full h-auto md:rounded-5 lg:rounded-xl mt-2 "
+            className=" flex flex-col justify-center  w-full h-auto md:rounded-5 lg:rounded-xl mt-2 bg-white rounded-xl"
         >
             <div className="w-full h-auto relative">
                 <img
@@ -53,7 +53,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                     height="500"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-auto object-cover rounded-md md:rounded-xl md:rounded-bottom-5 object-center"
+                    className="w-full h-auto object-cover rounded-lg md:rounded-xl md:rounded-bottom-5 object-center"
                 />
                 <div>
                     {product.isBestSeller === true && (
