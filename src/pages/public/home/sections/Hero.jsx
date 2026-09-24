@@ -88,7 +88,7 @@ const Hero = () => {
                 </div>
 
                 <div className="flex justify-center items-center">
-                    <div className="w-full relative">
+                    <div className="w-full p-5 relative">
                         <img
                             src={newProduct?.image}
                             alt={newProduct?.name}
@@ -96,14 +96,14 @@ const Hero = () => {
                             height="500"
                             loading="lazy"
                             decoding="async"
-                            className="w-full  p-4"
+                            className="w-full bg-[#FBFAF7] p-4"
                         />
-                        <div className="bg-[#0C0C0C] text-sm lg:text-md text-white top-1 right-0 mb-6  p-2 absolute flex justify-center items-center w-40">
+                        <div className="bg-[#0C0C0C] text-sm lg:text-md xl:text-lg text-white top-0 right-0 mb-7 p-2 absolute flex justify-center items-center w-40 xl:w-50">
                             <div>
                                 <p>NEW PRODUCT</p>
                             </div>
                         </div>
-                        <div className="bg-white bottom-1 left-0 mt-6 p-2 absolute flex justify-between items-center w-70 lg:w-100 border border-gray-200">
+                        <div className="bg-white bottom-0 left-0 mt-6 p-2 absolute flex justify-between items-center w-70 lg:w-100 border border-gray-200">
                             <div className="flex items-center gap-3">
                                 <div className="bg-gray-400 p-1 rounded-full"></div>
                                 <div className="font-ysabeau">
@@ -113,7 +113,7 @@ const Hero = () => {
                                                 `/product/${newProduct._id}`,
                                             )
                                         }
-                                        className="text-sm  font-semibold cursor-pointer"
+                                        className="text-sm xl:text-lg font-semibold cursor-pointer"
                                     >
                                         {newProduct?.name}
                                     </p>
@@ -123,7 +123,7 @@ const Hero = () => {
                                     </p>
                                 </div>
                             </div>
-                            <p className="font-semibold">
+                            <p className="font-semibold text-sm xl:text-lg">
                                 ${newProduct?.price.toFixed(2)}
                             </p>
                         </div>

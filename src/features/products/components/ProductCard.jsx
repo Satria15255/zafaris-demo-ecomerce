@@ -33,9 +33,9 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                 amount: 0.2,
             }}
             key={product.id}
-            className=" flex flex-col justify-center  w-full h-auto md:rounded-5 lg:rounded-xl mt-2 bg-white rounded-xl"
+            className=" flex flex-col justify-center  w-full h-auto md:rounded-5 lg:rounded-xl mt-2  rounded-xl"
         >
-            <div className="w-full h-auto relative">
+            <div className="w-full h-auto relative ">
                 <img
                     src={optimizeCloudinaryImage(product.image, 500)}
                     alt={product.name}
@@ -53,7 +53,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                     height="500"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-auto object-cover rounded-lg md:rounded-xl md:rounded-bottom-5 object-center"
+                    className="w-full h-auto object-cover bg-[#FBFAF7] p-2 rounded-lg md:rounded-xl md:rounded-bottom-5 object-center"
                 />
                 <div>
                     {product.isBestSeller === true && (
@@ -90,6 +90,7 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                     </div>
                 </div>
             </div>
+
             <div className="mt-2 p-2 flex flex-col  space-y-2 md:space-y-2 lg:justify-center">
                 <div>
                     <p className="text-xs font-light">
