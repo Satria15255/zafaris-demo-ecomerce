@@ -36,7 +36,7 @@ const ShoppingCart = () => {
 	};
 
 	return (
-		<main className="h-auto md:mt-16 md:pt-16 py-4 flex flex-col justify-center items-center justify-center">
+		<main className="h-auto mt-16 md:pt-16 py-4 flex flex-col justify-center items-center justify-center">
 			<header className="text-center py-10">
 				<p className="text-4xl font-montserrat">Your Shopping Cart</p>
 			</header>

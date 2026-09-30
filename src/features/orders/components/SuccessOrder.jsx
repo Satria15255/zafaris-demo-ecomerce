@@ -40,11 +40,11 @@ const SuccesTransaction = () => {
     }
 
     return (
-        <main className="mt-8 md:mt-16 xl:pt-16 p-2 md:p-4 flex flex-col items-center  ">
+        <main className="mt-12 md:mt-16 xl:pt-16 p-2 md:p-4 flex flex-col items-center  ">
             {latestOrder ? (
                 <section className="mb-8 p-4 flex flex-col gap-4 rounded-lg w-full max-w-6xl">
                     <div className="flex flex-col gap-3 items-center">
-                        <p className="text-6xl  md:text-8xl">
+                        <p className="text-8xl">
                             <FcApproval />
                         </p>
                         <p className="text-lg md:text-3xl font-semibold md:pb-6 text-center text-green-600 font-montserrat">

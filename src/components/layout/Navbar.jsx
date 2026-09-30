@@ -41,6 +41,14 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
         }
     };
 
+    const handleViewCart = () => {
+        if (!user) {
+            navigate("/login");
+        } else {
+            navigate("/my-cart");
+        }
+    };
+
     return (
         <div
             className={`fixed top-0 z-20 border-b  bg-white font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
@@ -130,7 +138,19 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <button
                             aria-label={`Open shopping cart, ${totalItems} items`}
                             onClick={handleOpenCart}
-                            className="relative text-2xl  hover:text-yellow-500 transition duration-100"
+                            className="hidden md:block relative text-2xl  hover:text-yellow-500 transition duration-100"
+                        >
+                            <IoBagOutline />
+                            {totalItems > 0 && (
+                                <span className="absolute top-2 right-4 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                                    <p>{totalItems}</p>
+                                </span>
+                            )}
+                        </button>
+                        <button
+                            aria-label={`Open shopping cart, ${totalItems} items`}
+                            onClick={handleViewCart}
+                            className="relative md:hidden text-2xl  hover:text-yellow-500 transition duration-100"
                         >
                             <IoBagOutline />
                             {totalItems > 0 && (

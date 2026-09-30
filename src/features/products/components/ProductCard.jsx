@@ -63,7 +63,11 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                             </p>
                         </div>
                     )}
-                    <div className="absolute inset-0 flex justify-center items-end translate-y-1 opacity-0 hover:translate-y-0 hover:opacity-100 transition duration-200 ">
+                    <div
+                        className="absolute lg:hidden inset-0"
+                        onClick={() => productDetails(product)}
+                    ></div>
+                    <div className="hidden lg:absolute inset-0 flex justify-center items-end translate-y-1 opacity-0 hover:translate-y-0 hover:opacity-100 transition duration-200 ">
                         <div className="mb-3 flex gap-3  ">
                             <button
                                 aria-label="Add product to favorite list"

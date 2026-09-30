@@ -115,7 +115,7 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
                     console.log("Buttonn Clicked");
                     navigate(`/paymentOrder/${order._id}`);
                   }}
-                  disabled={order.paymentStatus === "Expired"}
+                  disabled={order.paymentStatus == "Expired"}
                   className="text-xs md:text-md lg:text-lg border border-gray-300 w-1/4 md:w-1/5 px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50  disabled:cursor-not-allowed
     disabled:hover:bg-transparent
     disabled:hover:text-current"
