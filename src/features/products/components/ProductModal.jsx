@@ -18,10 +18,6 @@ const ProductModal = ({ product, closeModal }) => {
 	const { user } = useAuth();
 	const navigate = useNavigate();
 
-	// PRODUCT STOCK INFORMATION
-	const productSize = product?.variants?.map((stock) => stock.size);
-	console.log(productSize);
-
 	const currentVariant = product?.variants?.find(
 		(v) => v.size === selectedSize,
 	);
@@ -113,23 +109,30 @@ const ProductModal = ({ product, closeModal }) => {
 							</p>
 							<div className="mt-3 lg:mt-6 flex flex-col gap-5">
 								<div className="flex flex-wrap gap-3">
-									{productSize?.length > 0 ? (
-										productSize.map((size) => (
+									{product?.variants?.length > 0 ? (
+										product.variants.map((variant) => (
 											<button
-												aria-label="Product Size Option"
-												key={size}
+												aria-label={`Select size ${variant.size}`}
+												key={variant.size}
 												type="button"
+												disabled={variant.stock === 0}
 												onClick={() =>
-													setSelectedSize(size)
+													setSelectedSize(
+														variant.size,
+													)
 												}
-												className={`px-3 py-2 text-xs border border-gray-300 rounded-md transition 
+												className={`
+                    px-3 py-2 text-xs border rounded-md transition
                     ${
-						selectedSize === size
-							? "bg-black text-white border-gray-300"
-							: "bg-white hover:bg-gray-100"
-					}`}
+						variant.stock === 0
+							? "border-gray-200 bg-gray-100 text-gray-300 line-through cursor-not-allowed"
+							: selectedSize === variant.size
+								? "bg-black text-white border-black"
+								: "bg-white border-gray-300 hover:bg-gray-100"
+					}
+                `}
 											>
-												{size}
+												{variant.size}
 											</button>
 										))
 									) : (
@@ -138,15 +141,14 @@ const ProductModal = ({ product, closeModal }) => {
 										</p>
 									)}
 								</div>
-
 								{!selectedSize ? (
-									<p className="text-red-500 text-sm mt-2">
+									<p className="text-red-500 text-sm mt-5">
 										Please select a size
 									</p>
 								) : (
 									<div>
 										{currentVariant?.stock <= 3 ? (
-											<p className="text-red-500 text-sm mt-2">
+											<p className="text-red-500 text-sm mt-5">
 												<span>
 													{currentVariant?.stock}
 												</span>{" "}

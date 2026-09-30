@@ -12,6 +12,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useFavorite } from "@/context/FavoriteContext";
 import { IoHeartOutline } from "react-icons/io5";
 import { LazyMotion, domAnimation } from "framer-motion";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 import Loader from "@/components/common/Loader";
 import ProductCard from "@/features/products/components/ProductCard";
@@ -189,13 +190,13 @@ function ProductModal() {
                                 </div>
 
                                 {!selectedSize ? (
-                                    <p className="text-red-500 text-sm mt-2">
+                                    <p className="text-red-500 text-sm mt-5">
                                         Please select a size
                                     </p>
                                 ) : (
                                     <div>
                                         {currentVariant?.stock <= 3 ? (
-                                            <p className="text-red-500 text-sm mt-2">
+                                            <p className="text-red-500 text-sm mt-5">
                                                 <span>
                                                     {currentVariant?.stock}
                                                 </span>{" "}
@@ -222,24 +223,47 @@ function ProductModal() {
                             >
                                 <IoHeartOutline />
                             </button>
-                            <button
-                                aria-label="Add Product to Cart"
-                                onClick={() =>
-                                    handleAddToCart(product, selectedSize)
-                                }
-                                className=" flex gap-2 items-center justify-center w-full px-2 py-3 border bg-black text-white hover:text-black rounded-md hover:bg-white transition"
-                            >
-                                Add to Cart <FaCartPlus />
-                            </button>
-                            <button
-                                aria-label="Buy product instan"
-                                onClick={() => {
-                                    handleChekoutNow();
-                                }}
-                                className=" w-full px-2 py-3 bg-white border  hover:text-white rounded-md hover:bg-black transition"
-                            >
-                                Chekout
-                            </button>
+                            {currentVariant?.stock > 0 ? (
+                                <div className=" flex gap-2 w-full items-center">
+                                    <button
+                                        aria-label="Add product to cart"
+                                        onClick={() =>
+                                            handleAddToCart(
+                                                product,
+                                                selectedSize,
+                                            )
+                                        }
+                                        className=" flex gap-2 items-center justify-center w-full px-2 py-3 bg-white border border-gray-500 hover:text-white rounded-md hover:bg-black transition"
+                                    >
+                                        Add to Cart <FaCartPlus />
+                                    </button>
+                                    <button
+                                        aria-label="Buy Product Instan"
+                                        onClick={() => {
+                                            handleChekoutNow();
+                                            // closed();
+                                        }}
+                                        className="flex gap-2 items-center justify-center w-full px-2 py-3 border border-gray-500 bg-black text-white hover:text-black rounded-md hover:bg-white transition"
+                                    >
+                                        Chekout <FaArrowRightLong />
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="flex gap-2 w-full items-center">
+                                    <button
+                                        aria-label="Add product to cart"
+                                        className=" flex gap-2 items-center justify-center w-full px-2 py-3 border border-gray-500 bg-gray-300 text-white   rounded-md "
+                                    >
+                                        Add to Cart <FaCartPlus />
+                                    </button>
+                                    <button
+                                        aria-label="Buy Product Instan"
+                                        className="flex gap-2 items-center justify-center w-full px-2 py-3 border border-gray-500 bg-gray-300 text-white   rounded-md "
+                                    >
+                                        Chekout <FaArrowRightLong />
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </article>

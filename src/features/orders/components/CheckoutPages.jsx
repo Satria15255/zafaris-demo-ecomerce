@@ -106,6 +106,7 @@ const CheckoutPage = () => {
             }
         } catch (error) {
             console.error("Failed to submit order:", error);
+            console.log(error);
             alert("Transaction failed");
         }
     };
