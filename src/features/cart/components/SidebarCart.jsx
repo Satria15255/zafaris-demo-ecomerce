@@ -241,7 +241,7 @@ const SidebarCart = ({ closeSidebarCart }) => {
                                                 },
                                             });
 
-                                            closeShoppingCart();
+                                            closeSidebarCart();
                                         }}
                                         className="text-lg flex justify-center items-center mt-3 w-full h-12 border bg-black text-white border-black  hover:text-black hover:bg-white transition duration-300 rounded-md"
                                     >
