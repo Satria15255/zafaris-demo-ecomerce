@@ -15,21 +15,25 @@ const collection = [
         image: `${basketballCollection}`,
         title: "Basketball Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        url: "Basketball",
     },
     {
         image: `${runningCollection}`,
         title: "Running Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        url: "Running",
     },
     {
         image: `${sneakersCollection}`,
         title: "Sneakers Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        url: "Sneakers",
     },
     {
         image: `${casualCollection}`,
         title: "Casual Collection",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tempore itaque facere.",
+        url: "Casual",
     },
 ];
 
@@ -71,7 +75,9 @@ const CategoryCollection = () => {
                                 {c.desc}
                             </p>
                             <button
-                                onClick={() => navigate("/products")}
+                                onClick={() =>
+                                    navigate(`/products?category=${c.url}`)
+                                }
                                 className="underline cursor-pointer pb-7 text-gray-600 hover:text-[#0C0C0C] transition duration-200 text-xs lg:text-sm font-semibold"
                             >
                                 SHOP NOW

@@ -1,7 +1,15 @@
 import React from "react";
 import { MdAutoAwesome, MdOutlineExpandMore, MdSell } from "react-icons/md";
+import { IoReload } from "react-icons/io5";
 
-const FilterSidebar = ({ categories, size, filter, setFilter }) => {
+const FilterSidebar = ({
+  categories,
+  size,
+  filter,
+  setFilter,
+  handleApplyFilter,
+  handleResetFilter,
+}) => {
   return (
     <div>
       <div className="lg:flex hidden flex-col md:w-full space-y-2 pr-3">
@@ -75,6 +83,21 @@ const FilterSidebar = ({ categories, size, filter, setFilter }) => {
               Discount Now!
             </button>
           </div>
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={handleResetFilter}
+            className="w-1/3 border border-gray-300 p-3 flex items-center justify-center rounded-lg"
+          >
+            <IoReload />
+          </button>
+
+          <button
+            onClick={handleApplyFilter}
+            className="w-2/3 bg-[#0C0C0C] text-white py-3 rounded-lg"
+          >
+            Apply Filter
+          </button>
         </div>
       </div>
     </div>

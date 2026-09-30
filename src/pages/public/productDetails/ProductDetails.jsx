@@ -53,10 +53,6 @@ function ProductModal() {
         fetchProduct();
     }, [id]);
 
-    // PRODUCT STOCK INFORMATION
-    const productSize = product?.variants?.map((stock) => stock.size);
-    console.log(productSize);
-
     const currentVariant = product?.variants?.find(
         (v) => v.size === selectedSize,
     );
@@ -64,6 +60,20 @@ function ProductModal() {
 
     // DISCOUNT VALIDATION
     const isDiscount = product.discountPercent > 0;
+
+    const handleAddCart = () => {
+        if (!selectedSize) {
+            toast.warning("Please select a size");
+            return;
+        }
+
+        if (!currentVariant || currentVariant.stock <= 0) {
+            toast.error("Selected size is out of stock");
+            return;
+        }
+
+        handleAddToCart(product, selectedSize);
+    };
 
     // HANDLE CHECKOUT
     const handleChekoutNow = () => {
@@ -76,27 +86,32 @@ function ProductModal() {
                 toast.warning("Please select a size before adding to cart.");
                 return;
             }
+
+            if (!currentVariant || currentVariant.stock <= 0) {
+                toast.error("Selected size is out of stock");
+                return;
+            }
+
+            const finalPrice =
+                product.discountPercent > 0
+                    ? product.price -
+                      (product.price * product.discountPercent) / 100
+                    : product.price;
+
+            const selectedItem = {
+                id: product._id,
+                name: product.name,
+                image: product.image,
+                size: selectedSize,
+                quantity: 1,
+                finalPrice,
+                discountPercent: product.discountPercent,
+            };
+
+            navigate("/checkout", { state: { checkoutItems: [selectedItem] } });
         } catch (error) {
             console.log(error);
         }
-
-        const finalPrice =
-            product.discountPercent > 0
-                ? product.price -
-                  (product.price * product.discountPercent) / 100
-                : product.price;
-
-        const selectedItem = {
-            id: product._id,
-            name: product.name,
-            image: product.image,
-            size: selectedSize,
-            quantity: 1,
-            finalPrice,
-            discountPercent: product.discountPercent,
-        };
-
-        navigate("/checkout", { state: { checkoutItems: [selectedItem] } });
     };
 
     if (loading) {
@@ -163,23 +178,30 @@ function ProductModal() {
                             </p>
                             <div className="mt-3 lg:mt-6 flex flex-col gap-5">
                                 <div className="flex flex-wrap gap-3">
-                                    {productSize.length > 0 ? (
-                                        productSize.map((size) => (
+                                    {product?.variants?.length > 0 ? (
+                                        product.variants.map((variant) => (
                                             <button
-                                                aria-label="Product Size Option"
-                                                key={size}
+                                                aria-label={`Select size ${variant.size}`}
+                                                key={variant.size}
                                                 type="button"
+                                                disabled={variant.stock === 0}
                                                 onClick={() =>
-                                                    setSelectedSize(size)
+                                                    setSelectedSize(
+                                                        variant.size,
+                                                    )
                                                 }
-                                                className={`px-4 py-2 border rounded-md transition 
+                                                className={`
+                    px-3 py-2 text-xs border rounded-md transition
                     ${
-                        selectedSize === size
-                            ? "bg-black text-white border-black"
-                            : "bg-white hover:bg-gray-100"
-                    }`}
+                        variant.stock === 0
+                            ? "border-gray-200 bg-gray-100 text-gray-300 line-through cursor-not-allowed"
+                            : selectedSize === variant.size
+                              ? "bg-black text-white border-black"
+                              : "bg-white border-gray-300 hover:bg-gray-100"
+                    }
+                `}
                                             >
-                                                {size}
+                                                {variant.size}
                                             </button>
                                         ))
                                     ) : (
@@ -188,9 +210,8 @@ function ProductModal() {
                                         </p>
                                     )}
                                 </div>
-
                                 {!selectedSize ? (
-                                    <p className="text-red-500 text-sm mt-5">
+                                    <p className="text-gray-500 text-sm mt-5">
                                         Please select a size
                                     </p>
                                 ) : (
@@ -223,47 +244,26 @@ function ProductModal() {
                             >
                                 <IoHeartOutline />
                             </button>
-                            {currentVariant?.stock > 0 ? (
-                                <div className=" flex gap-2 w-full items-center">
-                                    <button
-                                        aria-label="Add product to cart"
-                                        onClick={() =>
-                                            handleAddToCart(
-                                                product,
-                                                selectedSize,
-                                            )
-                                        }
-                                        className=" flex gap-2 items-center justify-center w-full px-2 py-3 bg-white border border-gray-500 hover:text-white rounded-md hover:bg-black transition"
-                                    >
-                                        Add to Cart <FaCartPlus />
-                                    </button>
-                                    <button
-                                        aria-label="Buy Product Instan"
-                                        onClick={() => {
-                                            handleChekoutNow();
-                                            // closed();
-                                        }}
-                                        className="flex gap-2 items-center justify-center w-full px-2 py-3 border border-gray-500 bg-black text-white hover:text-black rounded-md hover:bg-white transition"
-                                    >
-                                        Chekout <FaArrowRightLong />
-                                    </button>
-                                </div>
-                            ) : (
-                                <div className="flex gap-2 w-full items-center">
-                                    <button
-                                        aria-label="Add product to cart"
-                                        className=" flex gap-2 items-center justify-center w-full px-2 py-3 border border-gray-500 bg-gray-300 text-white   rounded-md "
-                                    >
-                                        Add to Cart <FaCartPlus />
-                                    </button>
-                                    <button
-                                        aria-label="Buy Product Instan"
-                                        className="flex gap-2 items-center justify-center w-full px-2 py-3 border border-gray-500 bg-gray-300 text-white   rounded-md "
-                                    >
-                                        Chekout <FaArrowRightLong />
-                                    </button>
-                                </div>
-                            )}
+
+                            <div className=" flex gap-2 w-full items-center">
+                                <button
+                                    aria-label="Add product to cart"
+                                    onClick={handleAddCart}
+                                    className=" flex gap-2 items-center justify-center w-full px-2 py-3 bg-white border border-gray-500 hover:text-white rounded-md hover:bg-black transition"
+                                >
+                                    Add to Cart <FaCartPlus />
+                                </button>
+                                <button
+                                    aria-label="Buy Product Instan"
+                                    onClick={() => {
+                                        handleChekoutNow();
+                                        // closed();
+                                    }}
+                                    className="flex gap-2 items-center justify-center w-full px-2 py-3 border border-gray-500 bg-black text-white hover:text-black rounded-md hover:bg-white transition"
+                                >
+                                    Chekout <FaArrowRightLong />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </article>

@@ -26,6 +26,20 @@ const ProductModal = ({ product, closeModal }) => {
 	// DISCOUNT VALIDATION
 	const isDiscount = product.discountPercent > 0;
 
+	const handleAddCart = () => {
+		if (!selectedSize) {
+			toast.warning("Please select a size");
+			return;
+		}
+
+		if (!currentVariant || currentVariant.stock <= 0) {
+			toast.error("Selected size is out of stock");
+			return;
+		}
+
+		handleAddToCart(product, selectedSize);
+	};
+
 	// HANDLE CHECKOUT
 	const handleChekoutNow = () => {
 		try {
@@ -38,28 +52,33 @@ const ProductModal = ({ product, closeModal }) => {
 				toast.warning("Please select a size before adding to cart.");
 				return;
 			}
+
+			if (!currentVariant || currentVariant.stock <= 0) {
+				toast.error("Selected size is out of stock");
+				return;
+			}
+
+			const finalPrice =
+				product.discountPercent > 0
+					? product.price -
+						(product.price * product.discountPercent) / 100
+					: product.price;
+
+			const selectedItem = {
+				id: product._id,
+				name: product.name,
+				image: product.image,
+				size: selectedSize,
+				quantity: 1,
+				finalPrice,
+				discountPercent: product.discountPercent,
+			};
+
+			navigate("/checkout", { state: { checkoutItems: [selectedItem] } });
+			closeModal();
 		} catch (error) {
 			console.log(error);
 		}
-
-		const finalPrice =
-			product.discountPercent > 0
-				? product.price -
-					(product.price * product.discountPercent) / 100
-				: product.price;
-
-		const selectedItem = {
-			id: product._id,
-			name: product.name,
-			image: product.image,
-			size: selectedSize,
-			quantity: 1,
-			finalPrice,
-			discountPercent: product.discountPercent,
-		};
-
-		navigate("/checkout", { state: { checkoutItems: [selectedItem] } });
-		closeModal();
 	};
 	console.log(product);
 	return (
@@ -142,7 +161,7 @@ const ProductModal = ({ product, closeModal }) => {
 									)}
 								</div>
 								{!selectedSize ? (
-									<p className="text-red-500 text-sm mt-5">
+									<p className="text-gray-500 text-sm mt-5">
 										Please select a size
 									</p>
 								) : (
@@ -181,9 +200,7 @@ const ProductModal = ({ product, closeModal }) => {
 
 								<button
 									aria-label="Add product to cart"
-									onClick={() =>
-										handleAddToCart(product, selectedSize)
-									}
+									onClick={handleAddCart}
 									className=" flex gap-2 items-center justify-center w-full px-2 py-3 bg-white border border-gray-500 hover:text-white rounded-md hover:bg-black transition"
 								>
 									Add to Cart <FaCartPlus />

@@ -21,18 +21,23 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     const [currentPages, setCurrentPages] = useState(1);
     const [loading, setLoading] = useState(true);
     const [filterOpen, setFilterOpen] = useState(false);
-    const [filter, setFilter] = useState({
-        category: "All",
-        size: "All",
-        latest: false,
-        discount: false,
-    });
     const productsPerPage = 12;
     const categories = ["All", "Basketball", "Sneakers", "Running", "Casual"];
     const size = ["All", 38, 39, 40, 41, 42, 43, 44];
     const navigate = useNavigate();
-    const [searchParams] = useSearchParams();
+    const defaultFilter = {
+        category: "All",
+        size: "All",
+        discount: false,
+        latest: false,
+    };
+    const [draftFilter, setDraftFilter] = useState(defaultFilter);
+    const [appliedFilter, setAppliedFilter] = useState(defaultFilter);
+    const [searchParams, setSearchParams] = useSearchParams();
     const searchQuery = searchParams.get("search") || "";
+    const discountQuery = searchParams.get("discount") === "true";
+    const latestQuery = searchParams.get("latest") === "true";
+    const categoryQuery = searchParams.get("category") || "All";
 
     const normalizeDiscount = (discount) => {
         return {
@@ -90,19 +95,19 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     }, [fetchProductsData]);
 
     const filterProducts = () => {
-        const source = filter.discount
+        const source = appliedFilter.discount
             ? discountProducts
-            : filter.latest
+            : appliedFilter.latest
               ? latestProducts
               : products || [];
         return source.filter((products) => {
             const matchCategory =
-                filter.category === "All" ||
-                products.category === filter.category;
+                appliedFilter.category === "All" ||
+                products.category === appliedFilter.category;
             const matchSize =
-                filter.size === "All" ||
+                appliedFilter.size === "All" ||
                 (Array.isArray(products.sizes) &&
-                    products.sizes.includes(Number(filter.size)));
+                    products.sizes.includes(Number(appliedFilter.size)));
             const matchSearch =
                 searchQuery.trim() === "" ||
                 products.name
@@ -135,7 +140,7 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     useEffect(() => {
         const search = searchParams.get("search") || "";
 
-        setFilter((prev) => {
+        setAppliedFilter((prev) => {
             if (prev.search === search) {
                 return prev;
             }
@@ -147,14 +152,25 @@ function ProductPages({ onAddToCart, onOpenModal }) {
         });
     }, [searchParams]);
 
+    useEffect(() => {
+        const filterFromUrl = {
+            category: searchParams.get("category") || "All",
+            size: searchParams.get("size") || "All",
+            latest: searchParams.get("latest") === "true",
+            discount: searchParams.get("discount") === "true",
+        };
+
+        setDraftFilter(filterFromUrl);
+        setAppliedFilter(filterFromUrl);
+    }, [searchParams]);
     // Function Products Pagination
     useEffect(() => {
         setCurrentPages(1);
     }, [
-        filter.category,
-        filter.size,
-        filter.latest,
-        filter.discount,
+        appliedFilter.category,
+        appliedFilter.size,
+        appliedFilter.latest,
+        appliedFilter.discount,
         searchQuery,
     ]);
     const indexOfLast = currentPages * productsPerPage;
@@ -165,6 +181,50 @@ function ProductPages({ onAddToCart, onOpenModal }) {
     if (loading) {
         return <Loader />;
     }
+
+    const handleApplyFilter = () => {
+        setAppliedFilter(draftFilter);
+        setCurrentPages(1);
+
+        const params = new URLSearchParams();
+
+        if (draftFilter.category !== "All") {
+            params.set("category", draftFilter.category);
+        }
+
+        if (draftFilter.size !== "All") {
+            params.set("size", draftFilter.size);
+        }
+
+        if (draftFilter.latest) {
+            params.set("latest", "true");
+        }
+
+        if (draftFilter.discount) {
+            params.set("discount", "true");
+        }
+
+        if (searchQuery) {
+            params.set("search", searchQuery);
+        }
+
+        setSearchParams(params);
+    };
+
+    const handleResetFilter = () => {
+        const resetFilter = {
+            category: "All",
+            size: "All",
+            latest: false,
+            discount: false,
+        };
+
+        setDraftFilter(resetFilter);
+        setAppliedFilter(resetFilter);
+
+        setSearchParams({});
+        setCurrentPages(1);
+    };
 
     return (
         <main className="md:mt-16 p-1 md:p-2 flex flex-col items-center">
@@ -184,8 +244,10 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                         <FilterSidebar
                             categories={categories}
                             size={size}
-                            filter={filter}
-                            setFilter={setFilter}
+                            filter={draftFilter}
+                            setFilter={setDraftFilter}
+                            handleApplyFilter={handleApplyFilter}
+                            handleResetFilter={handleResetFilter}
                         />
                     </aside>
                     <div className="flex flex-col w-full">
@@ -295,9 +357,11 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                         open={filterOpen}
                         onClose={() => setFilterOpen(false)}
                         categories={categories}
-                        sizes={size}
-                        currentFilter={filter}
-                        onApply={(newFilter) => setFilter(newFilter)}
+                        size={size}
+                        filter={draftFilter}
+                        setFilter={setDraftFilter}
+                        handleApplyFilter={handleApplyFilter}
+                        handleResetFilter={handleResetFilter}
                     />
                 )}
             </section>
