@@ -93,6 +93,10 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
               {order.paymentMethod}
             </p>
             <p className="flex justify-between">
+              <p>Payment Method: </p>
+              {order.paymentStatus}
+            </p>
+            <p className="flex justify-between">
               <p>Order Time:</p>
               {new Date(order.createdAt).toLocaleString()}
             </p>
@@ -109,33 +113,41 @@ const orderDetails = ({ order, handleCancel, handleConfirm }) => {
               >
                 Cancel
               </button>
-              {order.status === "Pending" ? (
-                <button
-                  onClick={() => {
-                    console.log("Buttonn Clicked");
-                    navigate(`/paymentOrder/${order._id}`);
-                  }}
-                  disabled={order.paymentStatus == "Expired"}
-                  className="text-xs md:text-md lg:text-lg border border-gray-300 w-1/4 md:w-1/5 px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50  disabled:cursor-not-allowed
-    disabled:hover:bg-transparent
-    disabled:hover:text-current"
-                >
-                  Pay Now
+              {order.paymentStatus === "Expired" ? (
+                <button className="text-xs md:text-md lg:text-lg border border-gray-300 w-1/4 md:w-1/5 px-1 py-1 text-gray-500  bg-transparent cursor-not-allowed rounded-md font-semibold">
+                  Expired
                 </button>
               ) : (
-                <button
-                  onClick={() => {
-                    console.log("Buttonn Clicked");
-                    handleConfirm(order._id);
-                  }}
-                  disabled={order.status !== "Delivered"}
-                  className="text-xs md:text-md lg:text-lg border border-gray-300 w-1/4 md:w-1/5 px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50 
+                <div>
+                  {order.status === "Pending" ? (
+                    <button
+                      onClick={() => {
+                        console.log("Buttonn Clicked");
+                        navigate(`/paymentOrder/${order._id}`);
+                      }}
+                      disabled={order.paymentStatus == "Expired"}
+                      className="text-xs md:text-md lg:text-lg border border-gray-300 w-1/4 md:w-1/5 px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50  disabled:cursor-not-allowed
+    disabled:hover:bg-transparent
+    disabled:hover:text-current"
+                    >
+                      Pay Now
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        console.log("Buttonn Clicked");
+                        handleConfirm(order._id);
+                      }}
+                      disabled={order.status !== "Delivered"}
+                      className="text-xs md:text-md lg:text-lg border border-gray-300 w-1/4 md:w-1/5 px-1 py-1 rounded-md font-semibold hover:bg-gray-900 hover:text-white transition duration-300 disabled:opacity-50 
     disabled:cursor-not-allowed
     disabled:hover:bg-transparent
     disabled:hover:text-current"
-                >
-                  Submitted
-                </button>
+                    >
+                      Submitted
+                    </button>
+                  )}
+                </div>
               )}
             </div>
           </div>

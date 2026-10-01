@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register } from "@/features/auth/services/authService";
-import background from "@/assets/heroSection/hero12.webp";
+import background from "@/assets/heroSection/dicountmaget.webp";
 import { IoIosArrowBack } from "react-icons/io";
 
 const Register = () => {
@@ -96,7 +96,7 @@ const Register = () => {
                                 onClick={() => {
                                     navigate("/login");
                                 }}
-                                className="text-gray-900 text-center hover:underline mb-3 text-xs md:text-sm"
+                                className="text-gray-900 text-center text-xs md:text-sm  hover:underline font-bold cursor-pointer"
                             >
                                 Login
                             </p>

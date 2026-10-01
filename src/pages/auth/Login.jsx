@@ -5,7 +5,7 @@ import { login } from "@/features/auth/services/authService";
 import { useAuth } from "@/context/AuthContext";
 import { IoIosArrowBack } from "react-icons/io";
 
-import background from "@/assets/heroSection/hero2.webp";
+import background from "@/assets/heroSection/discountpages_-_Copy_1200x800.webp";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -97,7 +97,7 @@ const Login = () => {
                                 onClick={() => {
                                     navigate("/register");
                                 }}
-                                className="text-gray-900 text-center text-xs md:text-sm mb-3 hover:underline font-bold"
+                                className="text-gray-900 text-center text-xs md:text-sm  hover:underline font-bold cursor-pointer"
                             >
                                 Create Account
                             </p>
