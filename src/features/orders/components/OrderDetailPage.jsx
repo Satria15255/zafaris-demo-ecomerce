@@ -6,10 +6,11 @@ import { FcApproval, FcOk } from "react-icons/fc";
 import { formatDate } from "@/utils/FormatedDate";
 import { useNavigate, useParams } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
+import OrderStatusBadge from "@/components/ui/PaymentStatusBadge";
 
 import Loader from "@/components/common/Loader";
 
-const SuccesTransaction = () => {
+const OrderDetailPage = () => {
     const [latestOrder, setlatestOrder] = useState([]);
     const [recommended, setRecommended] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -48,28 +49,6 @@ const SuccesTransaction = () => {
         <main className="mt-8 md:mt-17 xl:pt-16 p-2 md:p-4 flex flex-col items-center">
             {latestOrder ? (
                 <div className="mb-8 p-4 flex flex-col w-full   justify-center rounded-lg max-w-7xl">
-                    <header className="flex flex-col justify-center items-center pt-4">
-                        <div className="bg-green-100 p-6 rounded-full">
-                            <div className="bg-green-200 p-6 rounded-full">
-                                <p className="text-8xl">
-                                    <FcOk />
-                                </p>
-                            </div>
-                        </div>
-                        <p className="text-4xl font-bold font-ysabeau pb-3 text-green-600">
-                            Thank You
-                        </p>
-                        {cashOnDeliveryPayment ? (
-                            <p className="text-xl text-center font-ysabeau  pb-6  ">
-                                Your order has been processed
-                            </p>
-                        ) : (
-                            <p className="text-xl text-center font-ysabeau pb-6  ">
-                                Your payment was successful and your order is
-                                being processed.
-                            </p>
-                        )}
-                    </header>
                     {/* Purchase Details */}
                     <section className="flex flex-col justify-center w-full">
                         {/* Product Details\ */}
@@ -277,4 +256,4 @@ const SuccesTransaction = () => {
     );
 };
 
-export default SuccesTransaction;
+export default OrderDetailPage;
