@@ -81,6 +81,8 @@ const SidebarCart = lazy(
 );
 const SidebarProfile = lazy(() => import("@/components/layout/SidebarProfile"));
 
+const NotFound = lazy(() => import("@/pages/notfound/NotFound"));
+
 function App() {
   // UI State
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -140,6 +142,8 @@ function App() {
             <Route path="/admin/all-orders" element={<AdminOrder />} />
             <Route path="/admin/user" element={<AdminUserList />} />
           </Route>
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
 
