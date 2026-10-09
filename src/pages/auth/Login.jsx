@@ -79,9 +79,6 @@ const Login = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
 
-                            <p className="font-semibold py-4">
-                                Forget Password?
-                            </p>
                             <button
                                 type="submit"
                                 className="text-sm md:text-lg border border-black bg-gray-900 text-white hover:text-black hover:bg-white transition duration-100 font-bold px-4 py-2 rounded-2xl"
