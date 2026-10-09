@@ -39,15 +39,20 @@ const SidebarMobile = ({ onClose }) => {
                 {/* User Validation */}
                 <div>
                     {user && (
-                        <p className="relative flex flex-col items-center gap-2 flex px-2 hover:text-yellow-500 transition duration-100">
+                        <div className="relative flex py-4 justify-start items-center gap-1 flex  hover:text-yellow-500 transition duration-100">
                             <PiUserCircle size={40} />{" "}
-                            <span className="text-left">{user.name}</span>
-                        </p>
+                            <div className="flex flex-col gap-1">
+                                <p className="text-sm">{user.name}</p>
+                                <p className="text-xs text-gray-500">
+                                    {user.email}
+                                </p>
+                            </div>
+                        </div>
                     )}
                 </div>
                 {/* Sidebar Menu */}
                 <div className="">
-                    <div className="flex flex-col font-semibold text-sm ">
+                    <div className="flex flex-col  text-sm ">
                         <p
                             onClick={() => navigate("/")}
                             className="cursor-pointer hover:text-yellow-500 transition duration-100 py-4 border-t border-gray-300"
@@ -98,12 +103,10 @@ const SidebarMobile = ({ onClose }) => {
                         {user ? (
                             <>
                                 <p
-                                    onClick={() =>
-                                        navigate("/dashboard?tab=profile")
-                                    }
+                                    onClick={() => navigate("/my-favorite")}
                                     className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
-                                    PROFILE
+                                    Favorite
                                 </p>
                                 <p
                                     onClick={() =>
@@ -111,7 +114,7 @@ const SidebarMobile = ({ onClose }) => {
                                     }
                                     className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
-                                    MY ORDERS
+                                    My Orders
                                 </p>
                             </>
                         ) : (
@@ -140,13 +143,13 @@ const SidebarMobile = ({ onClose }) => {
                                     }
                                     className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
-                                    SETTINGS
+                                    Settings
                                 </p>
                                 <p
                                     onClick={handleLogout}
-                                    className="cursor-pointer py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
+                                    className="cursor-pointer text-red-500 py-4 border-t border-gray-300 hover:text-yellow-500 transition duration-100"
                                 >
-                                    LOGOUT
+                                    Logout
                                 </p>
                             </>
                         )}
