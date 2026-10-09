@@ -60,34 +60,38 @@ const SidebarMobile = ({ onClose }) => {
                             </p>
                             <div className="pl-2 flex flex-col gap-4 mt-4">
                                 <p
-                                    onClick={() => navigate("/products")}
+                                    onClick={() =>
+                                        navigate("/products?category=Running")
+                                    }
                                     className="cursor-pointer hover:text-yellow-500 transition duration-100"
                                 >
                                     Running
                                 </p>
                                 <p
-                                    onClick={() => navigate("/products")}
+                                    onClick={() =>
+                                        navigate(
+                                            "/products?category=Basketball",
+                                        )
+                                    }
                                     className="cursor-pointer hover:text-yellow-500 transition duration-100"
                                 >
                                     Basketball
                                 </p>
                                 <p
-                                    onClick={() => navigate("/products")}
+                                    onClick={() =>
+                                        navigate("/products?category=Sneakers")
+                                    }
                                     className="cursor-pointer  hover:text-yellow-500 transition duration-100"
                                 >
                                     Sneakers
                                 </p>
                                 <p
-                                    onClick={() => navigate("/products")}
+                                    onClick={() =>
+                                        navigate("/products?category=Casual")
+                                    }
                                     className="cursor-pointer  hover:text-yellow-500 transition duration-100"
                                 >
                                     Casual
-                                </p>
-                                <p
-                                    onClick={() => navigate("/products")}
-                                    className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                                >
-                                    Footbal
                                 </p>
                             </div>
                         </div>

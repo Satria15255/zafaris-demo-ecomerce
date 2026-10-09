@@ -49,6 +49,14 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
         }
     };
 
+    const handleNavigate = (path) => {
+        if (!user) {
+            navigate("/login");
+        } else {
+            navigate(path);
+        }
+    };
+
     return (
         <div
             className={`fixed top-0 z-20 border-b  bg-white font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
@@ -96,25 +104,27 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         SHOP
                     </p>
                     <p
-                        onClick={() => navigate("/products")}
+                        onClick={() => navigate(`/products?category=Running`)}
                         className="cursor-pointer hover:text-yellow-500 transition duration-100"
                     >
                         RUNNING
                     </p>
                     <p
-                        onClick={() => navigate("/products")}
+                        onClick={() =>
+                            navigate(`/products?category=Basketball`)
+                        }
                         className="cursor-pointer hover:text-yellow-500 transition duration-100"
                     >
                         BASKETBALL
                     </p>
                     <p
-                        onClick={() => navigate("/products")}
+                        onClick={() => navigate(`/products?category=Sneakers`)}
                         className="cursor-pointer  hover:text-yellow-500 transition duration-100"
                     >
                         SNEAKERS
                     </p>
                     <p
-                        onClick={() => navigate("/products")}
+                        onClick={() => navigate(`/products?category=Casual`)}
                         className="cursor-pointer  hover:text-yellow-500 transition duration-100"
                     >
                         CASUAL
@@ -125,7 +135,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     <div className="flex justify-center items-center w-full ">
                         <SearchModal />
                     </div>
-                    <div className="flex justify-center items-center">
+                    <div className="hidden lg:flex justify-center items-center">
                         <button
                             aria-label="Open favorites"
                             onClick={handleFavoriteNav}
@@ -138,11 +148,11 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <button
                             aria-label={`Open shopping cart, ${totalItems} items`}
                             onClick={handleOpenCart}
-                            className="hidden md:block relative text-2xl  hover:text-yellow-500 transition duration-100"
+                            className="hidden md:block relative text-2xl p-2 hover:text-yellow-500 transition duration-100"
                         >
                             <IoBagOutline />
                             {totalItems > 0 && (
-                                <span className="absolute top-2 right-4 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                                <span className="absolute top-0 right-0 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
                                     <p>{totalItems}</p>
                                 </span>
                             )}
@@ -150,14 +160,26 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <button
                             aria-label={`Open shopping cart, ${totalItems} items`}
                             onClick={handleViewCart}
-                            className="relative md:hidden text-2xl  hover:text-yellow-500 transition duration-100"
+                            className="relative md:hidden text-2xl p-2 hover:text-yellow-500 transition duration-100"
                         >
                             <IoBagOutline />
                             {totalItems > 0 && (
-                                <span className="absolute top-2 right-4 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                                <span className="absolute top-0 right-0 bg-red-500 text-white bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
                                     <p>{totalItems}</p>
                                 </span>
                             )}
+                        </button>
+                    </div>
+                    <div className=" flex md:hidden justify-center items-center">
+                        <button
+                            aria-label="Login Navigation"
+                            onClick={() =>
+                                handleNavigate("/dashboard?tab=profile")
+                            }
+                            className="text-2xl md:hidden hover:text-yellow-500 transition duration-100"
+                        >
+                            {" "}
+                            <LuUserRound />
                         </button>
                     </div>
 
@@ -166,10 +188,10 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <button
                                 aria-label="User Profile"
                                 onClick={onToggleSidebar}
-                                className="relative flex items-center text-2xl gap-2 hidden md:flex hover:text-yellow-500 transition duration-100"
+                                className="relative  items-center text-2xl gap-2 hidden md:flex hover:text-yellow-500 transition duration-100"
                             >
                                 <LuUserRound />{" "}
-                                <span className="hidden lg:flex w-30 text-sm">
+                                <span className="hidden lg:flex w-30 text-left text-sm">
                                     Hi {user.name}
                                 </span>
                             </button>

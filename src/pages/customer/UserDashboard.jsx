@@ -25,7 +25,6 @@ const UserDashboard = () => {
         toast.success("Logout Successfully");
     };
 
-    console.log(user);
     return (
         <main className="flex justify-center bg-[#FAFAFA] w-full">
             <div className="flex w-full max-w-7xl lg:min-h-screen pt-16 lg:mt-13">
