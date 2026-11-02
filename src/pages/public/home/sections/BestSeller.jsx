@@ -28,17 +28,15 @@ const Bestseller = () => {
     }, []);
 
     return (
-        <main className="mb-6 lg:mb-12 flex flex-col items-center w-full">
-            <header className="flex  justify-between w-full px-2 md:px-7 items-center py-4 ">
-                <p className="text-sm md:text-lg lg:text-2xl font-montserrat font-semibold border-b border-yellow-600 py-2">
-                    Best Deals
+        <main className="mb-6 lg:mb-12  pt-16 mt-15  flex flex-col items-center w-full h-full">
+            <header className="text-center py-2 space-y-2">
+                <h2 className="text-lg lg:text-3xl font-semibold">
+                    Best-Selling Products
+                </h2>
+                <p className="text-sm  text-gray-500">
+                    The most frequently chosen collection, with quality that has
+                    earned trust.
                 </p>
-                <button
-                    onClick={() => navigate("/products")}
-                    className="text-sm lg:text-lg text-gray-700 font-ysabeau border-b my-2"
-                >
-                    View Collection
-                </button>
             </header>
             <section className="w-full">
                 <LazyMotion features={domAnimation}>

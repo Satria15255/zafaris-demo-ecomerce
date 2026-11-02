@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import discountImage from "@/assets/discountImage(1).webp";
 import { getDiscountProducts } from "@/features/products/services/productService";
 import MobileBestSeller from "@/features/bestSeller/components/MobileBestSeller";
 import CountdownTimer from "@/components/ui/CountdownTimer";
@@ -10,6 +9,7 @@ import ProductCard from "@/features/products/components/ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { LazyMotion, domAnimation } from "framer-motion";
+import Discover from "./Discover";
 
 const OnSale = () => {
     const [product, setProduct] = useState([]);
@@ -32,8 +32,43 @@ const OnSale = () => {
 
     const navigate = useNavigate();
     return (
-        <main className=" mt-6 flex justify-center w-full h-auto">
-            <div className="flex flex-col md:flex-row w-full h-auto md:h-90   bg-[#ffff]">
+        <main className=" flex mt-6 gap-5 max-h-screen justify-center w-full h-auto">
+            <div className="relative w-full h-full">
+                <img
+                    src="/homeSection/discountImage2.jpg"
+                    alt=""
+                    className="w-full max-h-150 object-center object-cover "
+                />
+                <div className="bg-black/40  absolute inset-0">
+                    <div className="text-white flex h-full flex-col items-center justify-center gap-4">
+                        <span className="text-sm">LIMITED TIME OFFER</span>
+                        <h1 className="text-5xl">A Better Time to Step Up.</h1>
+                        <p className="text-sm max-w-lg text-center">
+                            Discover your next favorite pair with exclusive
+                            prices. Don't miss out on our limited-time
+                            selection.
+                        </p>
+                        <CountdownTimer
+                            expiresAt={mainProduct?.expiresAt}
+                            onExpire={() => {
+                                console.log("Discount expired");
+                            }}
+                            className="w-120"
+                        />
+                        <button className="text-lg pb-3 hover:underline transition duration-300 ">
+                            EXPLORE NOW
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
+};
+
+export default OnSale;
+
+{
+    /*<div className="flex flex-col md:flex-row w-full h-auto md:h-90   bg-[#ffff]">
                 <div className="w-full md:w-full grid grid-col-1 md:grid-cols-2">
                     <div className="bg-[#1C1C1A] w-full  p-4 h-100 md:h-80 lg:h-full flex flex-col justify-around">
                         <div className=" flex flex-col justify-center ">
@@ -118,9 +153,5 @@ const OnSale = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-    );
-};
-
-export default OnSale;
+            </div>*/
+}

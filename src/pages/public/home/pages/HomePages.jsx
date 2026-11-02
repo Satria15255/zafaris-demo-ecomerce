@@ -1,23 +1,22 @@
 import Hero from "@/pages/public/home/sections/Hero";
-import Discover from "@/pages/public/home/sections/Discover";
 import CallAction from "@/pages/public/home/sections/CallAction";
 import BestSeller from "@/pages/public/home/sections/BestSeller";
 import DiscountSection from "@/pages/public/home/sections/Discount";
 import NewArrival from "@/pages/public/home/sections/NewArrival";
 import CategoryCollection from "@/pages/public/home/sections/CategorySection";
+import Discover from "@/pages/public/home/sections/Discover";
+import Subs from "@/pages/public/home/sections/Subs";
 
 const HomePages = () => {
 	return (
-		<main className="flex flex-col items-center  overflow-hidden">
-			<div className="w-full xl:max-w-4/5">
-				<Hero />
-				<Discover />
-				<BestSeller />
-				<DiscountSection />
-				<NewArrival />
-				<CategoryCollection />
-				<CallAction />
-			</div>
+		<main className="flex flex-col items-center gap-5 overflow-hidden">
+			<Hero />
+			<CategoryCollection />
+			<BestSeller />
+			<DiscountSection />
+			<NewArrival />
+			<Discover />
+			<Subs />{" "}
 		</main>
 	);
 };

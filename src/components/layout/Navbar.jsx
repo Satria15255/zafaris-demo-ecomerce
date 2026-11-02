@@ -59,11 +59,16 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
 
     return (
         <div
-            className={`fixed top-0 z-20 border-b  bg-white font-ysabeau border-gray-200 md:pb-5  md:px-4 py-3 md:py-4 lg:py-7 md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
-  ${scrolled ? " border-b border-gray-400   " : ""}`}
+            className={`fixed top-0 z-20  bg-white md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
+  ${scrolled ? " shadow-xl  " : ""}`}
         >
+            <div className="w-full py-2 flex justify-center items-center border-b border-gray-300">
+                <p className="text-sm ">
+                    FREE SHIPPING ON ALL ORDERS OVER $100
+                </p>
+            </div>
             {/* Top Section */}
-            <div className="flex  justify-between items-center w-full  xl:px-6">
+            <div className="flex  justify-between items-center w-full md:px-4 xl:px-6 py-4">
                 <div className="md:flex items-center md:w-2/4">
                     {/* Hamburger icon */}
                     <button
