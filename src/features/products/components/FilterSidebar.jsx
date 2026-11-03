@@ -1,107 +1,11 @@
-import React from "react";
-import { MdAutoAwesome, MdOutlineExpandMore, MdSell } from "react-icons/md";
-import { IoReload } from "react-icons/io5";
+import FilterForm from "./FilterForm";
 
-const FilterSidebar = ({
-  categories,
-  size,
-  filter,
-  setFilter,
-  handleApplyFilter,
-  handleResetFilter,
-}) => {
+export default function FilterSidebar({ searchParams, onApply }) {
   return (
-    <div>
-      <div className="lg:flex hidden flex-col md:w-full space-y-2 pr-3">
-        <div className="">
-          <p className="flex  md:text-sm lg:text-lg items-center justify-between rounded-xl w-full text-left py-2 text-lg rounded-md text-left font-semibold">
-            Category
-          </p>
-          <div className="py-2 flex md:flex-col pl-4 text-left space-y-2 ">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                value={cat}
-                onClick={() =>
-                  setFilter((prev) => ({ ...prev, category: cat }))
-                }
-                className={`flex items-center justify-start py-2 text-[9px] md:text-sm lg:text-lg text-left text-gray-500 font-semibold px-2 cursor-pointer rounded-xl transition-all transition-discrete duration-300 ease-in-out
-                ${filter.category === cat ? "text-yellow-500 bg-gray-100 shadow-md" : "hover:text-yellow-500"}`}
-              >
-                - {cat}
-              </button>
-            ))}
-          </div>
-        </div>
+    <aside className="w-full pr-6">
+      <h2 className="mb-6 text-lg font-semibold">Filter Products</h2>
 
-        <div className="">
-          <p className="flex items-center justify-between md:text-sm lg:text-lg rounded-xl w-full text-left py-2 flex justify-between items-center text-left font-semibold w-full ">
-            Size{" "}
-          </p>
-          <div className="pl-4 py-2 grid grid-cols-4 ">
-            {size.map((size) => (
-              <button
-                key={size}
-                value={size}
-                onClick={() => setFilter((prev) => ({ ...prev, size: size }))}
-                className={`flex items-center justify-center w-[6vh] h-[6vh] rounded-xl transition text-[9px] md:text-sm text-gray-500 font-bold cursor-pointer transition-all duration-300 ease-in-out
-                ${filter.size === size ? "text-yellow-500 bg-gray-100 shadow-md" : "hover:text-yellow-500"}`}
-              >
-                {size}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="w-full">
-          <p className="flex items-center justify-between md:text-sm lg:text-lg rounded-xl w-full text-left py-2 flex justify-between items-center text-left font-semibold w-full ">
-            Other
-          </p>
-          <div className="pl-4 py-2">
-            <button
-              className={`flex items-center gap-1 md:text-sm lg:text-lg font-semibold  rounded-xl w-full text-left py-2  hover:shadow-lg hover:pl-1 transition-all duration-300 ease-in-out
-              ${filter.latest ? "text-[#0C0C0C]  shadow-md pl-1" : "hover:text-yellow-500 text-gray-500"}`}
-              onClick={() =>
-                setFilter((prev) => ({ ...prev, latest: !prev.latest }))
-              }
-            >
-              <span>
-                <MdAutoAwesome />
-              </span>
-              New Arrival
-            </button>
-            <button
-              className={`flex items-center gap-1 md:text-sm lg:text-lg font-semibold rounded-xl w-full text-left py-2  hover:shadow-lg hover:pl-1 transition-all duration-300 ease-in-out
-              ${filter.discount ? "text-[#0C0C0C]  shadow-md pl-1" : "hover:text-yellow-500 text-gray-500"}`}
-              onClick={() =>
-                setFilter((prev) => ({ ...prev, discount: !prev.discount }))
-              }
-            >
-              <span>
-                <MdSell />
-              </span>
-              Discount Now!
-            </button>
-          </div>
-        </div>
-        <div className="flex gap-2">
-          <button
-            onClick={handleResetFilter}
-            className="w-1/3 border border-gray-300 p-3 flex items-center justify-center rounded-lg"
-          >
-            <IoReload />
-          </button>
-
-          <button
-            onClick={handleApplyFilter}
-            className="w-2/3 bg-[#0C0C0C] text-white py-3 rounded-lg"
-          >
-            Apply Filter
-          </button>
-        </div>
-      </div>
-    </div>
+      <FilterForm searchParams={searchParams} onApply={onApply} />
+    </aside>
   );
-};
-
-export default FilterSidebar;
+}

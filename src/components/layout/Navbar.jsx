@@ -62,8 +62,8 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
             className={`fixed top-0 z-20  bg-white md:h-auto  w-full md:w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out
   ${scrolled ? " shadow-xl  " : ""}`}
         >
-            <div className="w-full py-2 flex justify-center items-center border-b border-gray-300">
-                <p className="text-sm ">
+            <div className="w-full py-2 bg-black flex justify-center items-center border-b border-gray-300">
+                <p className="text-sm text-white">
                     FREE SHIPPING ON ALL ORDERS OVER $100
                 </p>
             </div>
@@ -78,22 +78,12 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                     >
                         <FaBars />
                     </button>
-                    <picture
+                    <div
                         onClick={() => navigate("/")}
                         className="hidden md:block w-40 lg:w-50 h-auto"
                     >
-                        <source
-                            media="(max-width: 640px)"
-                            srcSet={brandLogo1}
-                            className=""
-                        />
-                        <img
-                            src={brandLogo2}
-                            alt="Brand Logo"
-                            width="862"
-                            height="116"
-                        />
-                    </picture>
+                        <h1 className="text-3xl font-semibold">ZAFARIS</h1>
+                    </div>
                 </div>
                 <div className=" gap-7 hidden lg:flex  font-light text-xs lg:text-sm items-center w-full">
                     <p

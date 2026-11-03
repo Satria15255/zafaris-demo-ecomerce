@@ -13,221 +13,97 @@ import Loader from "@/components/common/Loader";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { TbMoodSadSquint, TbAdjustmentsHorizontal } from "react-icons/tb";
+import { createFilterParams } from "@/constants/filterOption";
 
-function ProductPages({ onAddToCart, onOpenModal }) {
+const ProductPages = ({ onAddToCart, onOpenModal }) => {
     const [products, setProducts] = useState([]);
-    const [latestProducts, setLatestProducts] = useState([]);
-    const [discountProducts, setDiscountProducts] = useState([]);
     const [currentPages, setCurrentPages] = useState(1);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
     const [filterOpen, setFilterOpen] = useState(false);
-    const productsPerPage = 12;
-    const categories = ["All", "Basketball", "Sneakers", "Running", "Casual"];
-    const size = ["All", 38, 39, 40, 41, 42, 43, 44];
+
     const navigate = useNavigate();
-    const defaultFilter = {
-        category: "All",
-        size: "All",
-        discount: false,
-        latest: false,
-    };
-    const [draftFilter, setDraftFilter] = useState(defaultFilter);
-    const [appliedFilter, setAppliedFilter] = useState(defaultFilter);
+
     const [searchParams, setSearchParams] = useSearchParams();
-    const searchQuery = searchParams.get("search") || "";
-    const discountQuery = searchParams.get("discount") === "true";
-    const latestQuery = searchParams.get("latest") === "true";
-    const categoryQuery = searchParams.get("category") || "All";
+    const queryString = searchParams.toString();
 
-    const normalizeDiscount = (discount) => {
-        return {
-            ...discount.productId,
-            price: Number(discount.productId.price),
-            isDiscount: true,
-            discountPercent: Number(discount.discountPercent),
-            discountPrice: Number(discount.discountPrice),
-            expiresAt: discount.expiresAt,
-        };
-    };
+    const productsPerPage = 12;
 
-    const fetchProductsData = useCallback(async () => {
-        try {
-            setLoading(true);
-
-            const [allProductsRes, latestProductsRes, discountProductsRes] =
-                await Promise.all([
-                    getAllProducts(),
-                    getLatestProducts(),
-                    getDiscountProducts(),
-                ]);
-
-            // All Products
-            setProducts(allProductsRes.data);
-
-            // Latest Products
-            setLatestProducts(latestProductsRes.data);
-
-            // Normalize Discount Products
-            const normalizedDiscounts =
-                discountProductsRes.data.map(normalizeDiscount);
-
-            setDiscountProducts(normalizedDiscounts);
-
-            // Merge Discount Into Products
-            setProducts((prev) =>
-                prev.map((p) => {
-                    const found = normalizedDiscounts.find(
-                        (d) => d._id === p._id,
-                    );
-
-                    return found ? found : p;
-                }),
-            );
-        } catch (err) {
-            console.log(err);
-        } finally {
-            setLoading(false);
-        }
-    }, []);
-
+    // Fetch products berdasarkan applied filters di URL
     useEffect(() => {
-        fetchProductsData();
-    }, [fetchProductsData]);
+        let active = true;
 
-    const filterProducts = () => {
-        const source = appliedFilter.discount
-            ? discountProducts
-            : appliedFilter.latest
-              ? latestProducts
-              : products || [];
-        return source.filter((products) => {
-            const matchCategory =
-                appliedFilter.category === "All" ||
-                products.category === appliedFilter.category;
-            const matchSize =
-                appliedFilter.size === "All" ||
-                (Array.isArray(products.sizes) &&
-                    products.sizes.includes(Number(appliedFilter.size)));
-            const matchSearch =
-                searchQuery.trim() === "" ||
-                products.name
-                    .toLowerCase()
-                    .includes(searchQuery.toLocaleLowerCase());
-            return matchCategory && matchSize && matchSearch;
-        });
-    };
-    const filteredProducts = filterProducts();
+        const fetchProducts = async () => {
+            try {
+                setLoading(true);
+                setError("");
 
-    const handleProductSearch = (value) => {
-        setFilter((prev) => ({
-            ...prev,
-            search: value,
-        }));
+                const response = await getAllProducts(queryString);
 
-        const params = new URLSearchParams(searchParams);
+                if (active) {
+                    setProducts(response.data);
+                }
+            } catch (err) {
+                console.error("Failed fetching products:", err);
 
-        if (value.trim()) {
-            params.set("search", value);
-        } else {
-            params.delete("search");
-        }
-
-        setSearchParams(params, {
-            replace: true,
-        });
-    };
-
-    useEffect(() => {
-        const search = searchParams.get("search") || "";
-
-        setAppliedFilter((prev) => {
-            if (prev.search === search) {
-                return prev;
+                if (active) {
+                    setProducts([]);
+                    setError("Failed to load products.");
+                }
+            } finally {
+                if (active) {
+                    setLoading(false);
+                }
             }
-
-            return {
-                ...prev,
-                search,
-            };
-        });
-    }, [searchParams]);
-
-    useEffect(() => {
-        const filterFromUrl = {
-            category: searchParams.get("category") || "All",
-            size: searchParams.get("size") || "All",
-            latest: searchParams.get("latest") === "true",
-            discount: searchParams.get("discount") === "true",
         };
 
-        setDraftFilter(filterFromUrl);
-        setAppliedFilter(filterFromUrl);
-    }, [searchParams]);
-    // Function Products Pagination
+        fetchProducts();
+
+        // Mencegah response request lama menimpa data terbaru
+        return () => {
+            active = false;
+        };
+    }, [queryString]);
+
+    // Reset pagination ketika filter/search berubah
     useEffect(() => {
         setCurrentPages(1);
-    }, [
-        appliedFilter.category,
-        appliedFilter.size,
-        appliedFilter.latest,
-        appliedFilter.discount,
-        searchQuery,
-    ]);
-    const indexOfLast = currentPages * productsPerPage;
-    const indexOfFirst = indexOfLast - productsPerPage;
-    const currentProducts = filteredProducts.slice(indexOfFirst, indexOfLast);
-    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    }, [queryString]);
 
-    if (loading) {
-        return <Loader />;
-    }
-
-    const handleApplyFilter = () => {
-        setAppliedFilter(draftFilter);
-        setCurrentPages(1);
-
-        const params = new URLSearchParams();
-
-        if (draftFilter.category !== "All") {
-            params.set("category", draftFilter.category);
-        }
-
-        if (draftFilter.size !== "All") {
-            params.set("size", draftFilter.size);
-        }
-
-        if (draftFilter.latest) {
-            params.set("latest", "true");
-        }
-
-        if (draftFilter.discount) {
-            params.set("discount", "true");
-        }
-
-        if (searchQuery) {
-            params.set("search", searchQuery);
-        }
+    // Dipakai oleh sidebar maupun mobile filter
+    const handleApplyFilter = (newFilters) => {
+        const params = createFilterParams(searchParams, newFilters);
 
         setSearchParams(params);
-    };
-
-    const handleResetFilter = () => {
-        const resetFilter = {
-            category: "All",
-            size: "All",
-            latest: false,
-            discount: false,
-        };
-
-        setDraftFilter(resetFilter);
-        setAppliedFilter(resetFilter);
-
-        setSearchParams({});
         setCurrentPages(1);
+        setFilterOpen(false);
     };
+
+    // Backend sudah menjalankan filtering
+    const filteredProducts = products;
+
+    const totalPages = Math.max(
+        1,
+        Math.ceil(filteredProducts.length / productsPerPage),
+    );
+
+    const indexOfLast = currentPages * productsPerPage;
+    const indexOfFirst = indexOfLast - productsPerPage;
+
+    const currentProducts = filteredProducts.slice(indexOfFirst, indexOfLast);
+
+    if (error) {
+        return (
+            <main className="flex min-h-screen items-center justify-center">
+                <p role="alert" className="text-neutral-600">
+                    {error}
+                </p>
+            </main>
+        );
+    }
 
     return (
-        <main className="md:mt-16 p-1 md:p-2 flex flex-col items-center">
+        <main className="mt-16 p-1 md:p-2 flex flex-col items-center">
             <header
                 style={{ backgroundImage: `url(${bgProductPages})` }}
                 className="z-0 flex flex-col justify-center lg:justify-center w-full items-center h-[25vh] lg:h-[40vh] bg-center bg-cover rounded-lg md:rounded-3xl mt-12 mb-2 md:mb-4"
@@ -239,15 +115,11 @@ function ProductPages({ onAddToCart, onOpenModal }) {
             {/* Product Section */}
             <section className="flex justify-center w-full xl:max-w-7xl ">
                 <div className="flex flex-col justify-center md:flex-row  w-full   px-2">
-                    <aside className="lg:w-1/5">
+                    <aside className="lg:w-1/5 hidden md:block">
                         {/* Sidebar Filter Left*/}
                         <FilterSidebar
-                            categories={categories}
-                            size={size}
-                            filter={draftFilter}
-                            setFilter={setDraftFilter}
-                            handleApplyFilter={handleApplyFilter}
-                            handleResetFilter={handleResetFilter}
+                            searchParams={searchParams}
+                            onApply={handleApplyFilter}
                         />
                     </aside>
                     <div className="flex flex-col w-full">
@@ -272,43 +144,48 @@ function ProductPages({ onAddToCart, onOpenModal }) {
 
                         {/* Products Section */}
                         <section className="flex flex-col justify-between w-full  min-h-[100vh]">
-                            <LazyMotion features={domAnimation}>
-                                {currentProducts.length > 0 ? (
-                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                                        {currentProducts.map((product) => (
-                                            <div key={product.id}>
-                                                <ProductCard
-                                                    product={product}
-                                                    productDetails={() =>
-                                                        navigate(
-                                                            `/product/${product._id}`,
-                                                        )
-                                                    }
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    <div className="flex flex-col min-h-screen items-center justify-center gap-4 font-ysabeau">
-                                        <div className="text-gray-700 text-8xl">
-                                            <TbMoodSadSquint />
+                            {loading ? (
+                                <Loader />
+                            ) : (
+                                <LazyMotion features={domAnimation}>
+                                    {currentProducts.length > 0 ? (
+                                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                            {currentProducts.map((product) => (
+                                                <div key={product.id}>
+                                                    <ProductCard
+                                                        product={product}
+                                                        productDetails={() =>
+                                                            navigate(
+                                                                `/product/${product._id}`,
+                                                            )
+                                                        }
+                                                    />
+                                                </div>
+                                            ))}
                                         </div>
-                                        <p className="text-center  max-w-3/5 text-xl lg:text-3xl lg:max-w-2/5 text-gray-600">
-                                            Oops, sorry—it looks like the
-                                            product you're looking for isn't
-                                            available...
-                                        </p>
-                                        <button
-                                            onClick={() =>
-                                                navigate("/products")
-                                            }
-                                            className="px-4 py-2 border border-gray-200 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] transition duration-200 font-semibold rounded-lg"
-                                        >
-                                            Continue Shopping
-                                        </button>
-                                    </div>
-                                )}
-                            </LazyMotion>
+                                    ) : (
+                                        <div className="flex flex-col min-h-screen items-center justify-center gap-4 font-ysabeau">
+                                            <div className="text-gray-700 text-8xl">
+                                                <TbMoodSadSquint />
+                                            </div>
+                                            <p className="text-center  max-w-3/5 text-xl lg:text-3xl lg:max-w-2/5 text-gray-600">
+                                                Oops, sorry—it looks like the
+                                                product you're looking for isn't
+                                                available...
+                                            </p>
+                                            <button
+                                                onClick={() =>
+                                                    navigate("/products")
+                                                }
+                                                className="px-4 py-2 border border-gray-200 bg-[#0C0C0C] text-white hover:bg-white hover:text-[#0C0C0C] transition duration-200 font-semibold rounded-lg"
+                                            >
+                                                Continue Shopping
+                                            </button>
+                                        </div>
+                                    )}
+                                </LazyMotion>
+                            )}
+
                             <nav
                                 aria-label="Product Pagination"
                                 className="flex justify-between w-full py-4"
@@ -354,19 +231,14 @@ function ProductPages({ onAddToCart, onOpenModal }) {
                 </div>
                 {filterOpen && (
                     <FilterMobile
-                        open={filterOpen}
+                        searchParams={searchParams}
+                        onApply={handleApplyFilter}
                         onClose={() => setFilterOpen(false)}
-                        categories={categories}
-                        size={size}
-                        filter={draftFilter}
-                        setFilter={setDraftFilter}
-                        handleApplyFilter={handleApplyFilter}
-                        handleResetFilter={handleResetFilter}
                     />
                 )}
             </section>
         </main>
     );
-}
+};
 
 export default ProductPages;
