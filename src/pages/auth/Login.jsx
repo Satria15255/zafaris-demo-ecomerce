@@ -4,8 +4,7 @@ import { toast } from "react-toastify";
 import { login } from "@/features/auth/services/authService";
 import { useAuth } from "@/context/AuthContext";
 import { IoIosArrowBack } from "react-icons/io";
-
-import background from "@/assets/heroSection/discountpages_-_Copy_1200x800.webp";
+import runningImage from "@/assets/heroSection/discountImage.webp";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -31,7 +30,7 @@ const Login = () => {
     return (
         <main
             className="fixed inset-0 z-50 bg-cover bg-center"
-            style={{ backgroundImage: `url(${background})` }}
+            style={{ backgroundImage: `url(${runningImage})` }}
         >
             <div className="md:inset-0 flex h-screen">
                 <div className="w-full md:w-1/2 lg:w-2/5 h-screen flex flex-col justify-around items-center bg-white rounded-xl p-1 md:p-4 ">
