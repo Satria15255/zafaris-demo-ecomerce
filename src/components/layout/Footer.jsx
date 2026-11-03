@@ -13,22 +13,9 @@ const Footer = () => {
         <div className="flex flex-col bg-gray-100 justify-center items-center h-auto font-montserrat ">
             <div className="flex flex-col md:flex-row justify-between gap-4 px-2 md:px-7 xl:px-6 py-6 md:py-12 w-full ">
                 <div className="flex flex-col  gap-5">
-                    <picture
-                        onClick={() => navigate("/")}
-                        className=" w-40 lg:w-50 h-auto"
-                    >
-                        <source
-                            media="(max-width: 640px)"
-                            srcSet={brandLogo1}
-                            className=""
-                        />
-                        <img
-                            src={brandLogo2}
-                            alt="Brand Logo"
-                            width="862"
-                            height="116"
-                        />
-                    </picture>
+                    <div onClick={() => navigate("/")}>
+                        <h1 className="text-3xl ">ZAFARIS</h1>
+                    </div>
                     <div>
                         <p className="text-[10px] max-w-xs lg:text-xs ">
                             From casual looks to streetwear, every pair is

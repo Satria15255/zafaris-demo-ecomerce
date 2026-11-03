@@ -38,7 +38,7 @@ const Bestseller = () => {
                     earned trust.
                 </p>
             </header>
-            <section className="w-full">
+            <section className="w-full 2xl:max-w-4/5">
                 <LazyMotion features={domAnimation}>
                     {isMobile ? (
                         <MobileBestSeller

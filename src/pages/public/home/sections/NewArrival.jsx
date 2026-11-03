@@ -57,6 +57,7 @@ function ProductList() {
                         
                         w-full
                         p-2
+                        2xl:max-w-4/5
                     "
                 >
                     {loading

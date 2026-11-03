@@ -94,3 +94,18 @@ code {
   line-height: 135%;
   background: var(--code-bg);
 }
+
+.hero-swiper {
+  /* Panah navigasi jadi putih */
+  --swiper-navigation-color: #fff;
+  --swiper-navigation-size: 28px;
+
+  /* Pagination jadi garis */
+  --swiper-pagination-color: #fff;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-inactive-opacity: 0.4;
+  --swiper-pagination-bullet-width: 40px;
+  --swiper-pagination-bullet-height: 3px;
+  --swiper-pagination-bullet-border-radius: 0;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+}

@@ -39,10 +39,12 @@ const OnSale = () => {
                     alt=""
                     className="w-full max-h-150 object-center object-cover "
                 />
-                <div className="bg-black/40  absolute inset-0">
+                <div className="bg-black/40  absolute inset-0 p-4">
                     <div className="text-white flex h-full flex-col items-center justify-center gap-4">
                         <span className="text-sm">LIMITED TIME OFFER</span>
-                        <h1 className="text-5xl">A Better Time to Step Up.</h1>
+                        <h1 className="text-5xl text-center">
+                            A Better Time to Step Up.
+                        </h1>
                         <p className="text-sm max-w-lg text-center">
                             Discover your next favorite pair with exclusive
                             prices. Don't miss out on our limited-time

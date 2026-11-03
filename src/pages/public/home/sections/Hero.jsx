@@ -1,59 +1,78 @@
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getLatestProducts } from "@/features/products/services/productService";
 import heroMobile from "@/assets/heroSection/heroBackground(1).webp";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { optimizeCloudinaryImage } from "@/helper/optimizeCloudinaryImage";
+import { useEffect } from "react";
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay, Pagination, EffectFade } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 const Hero = () => {
-    const navigate = useNavigate();
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const slides = [
+        {
+            src: "/homeSection/heroImage.webp",
+            label: "Uncompromising Style",
+            title: "A Curated Collection of Footwear for Those Who Care About Quality and Detail.",
+            text: "Each pair is crafted from select materials with a timeless design. Step out with confidence, wherever you go, in shoes built to last.",
+        },
+        {
+            src: "/homeSection/heroImage2.webp",
+            label: "Now Running",
+            title: "The newcomer—a running collection for those who expect more from every step.",
+            text: "Introducing the Running Collection, where performance meets craftsmanship. Select materials, a secure fit, and a clean design that goes the distance.",
+        },
+    ];
 
-    const fetchProducts = async () => {
-        try {
-            const res = await getLatestProducts();
-            console.log(res.data);
-            setProducts(res.data);
-            console.log(products);
-        } catch (err) {
-            console.err("Failed to fetch products:", err);
-        }
-    };
-
+    // Preload + decode semua gambar hero di awal
     useEffect(() => {
-        fetchProducts();
+        slides.forEach(({ src }) => {
+            const img = new Image();
+            img.src = src;
+            img.decode?.().catch(() => {});
+        });
     }, []);
 
-    const newProduct = products[0];
-
-    console.log(newProduct);
-
     return (
-        <section className="py-15 md:py-16  bg-white md:mt-12 w-full  h-screen ">
-            <div className="relative">
-                <img
-                    src="/homeSection/discountImage.webp"
-                    alt=""
-                    className="h-screen w-full object-center object-cover"
-                />
-                <div className="absolute inset-0 flex flex-col justify-center items-center gap-4 text-white bg-black/50">
-                    <span className="text-sm">Uncompromising Style</span>
-                    <h1 className="text-4xl text-center">
-                        A Curated Collection of Footwear for Those <br /> Who
-                        Care About Quality and Detail.
-                    </h1>
-                    <p className="max-w-lg text-sm text-center">
-                        Each pair is crafted from select materials with a
-                        timeless design. Step out with confidence, wherever you
-                        go, in shoes built to last.
-                    </p>
-                    <button className="py-3 px-12 text-sm bg-black text-white border border-black hover:bg-transparent hover:text-white hover:border-white">
-                        Shop Now
-                    </button>
-                </div>
-            </div>
-        </section>
+        <main className=" bg-white pt-16 md:mt-12 w-full h-auto lg:h-screen ">
+            <Swiper
+                modules={[Pagination, Autoplay]}
+                spaceBetween={16}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+                autoplay={{ delay: 5000, disableOnInteraction: false }}
+                loop
+                className="hero-swiper h-150 lg:h-full w-full"
+            >
+                {slides.map((slide, i) => (
+                    <SwiperSlide key={slide.src} className="relative">
+                        <img
+                            src={slide.src}
+                            alt={slide.label}
+                            loading="eager"
+                            fetchPriority={i === 0 ? "high" : "auto"}
+                            className="h-full w-full object-cover object-center"
+                        />
+                        <div className="absolute inset-0 flex flex-col justify-center items-center gap-4 px-6 text-white bg-black/70">
+                            <span className="text-xs lg:text-sm">
+                                {slide.label}
+                            </span>
+                            <h1 className="max-w-3xl text-xl lg:text-2xl md:text-4xl text-center">
+                                {slide.title}
+                            </h1>
+                            <p className="max-w-lg text-xs lg:text-sm text-center">
+                                {slide.text}
+                            </p>
+                            <button className="py-3 px-12 text-xs lg:text-sm border border-white hover:bg-white hover:text-black transition duration-300">
+                                Shop Now
+                            </button>
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </main>
     );
 };
 
