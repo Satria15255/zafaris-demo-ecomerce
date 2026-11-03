@@ -30,8 +30,37 @@ const Hero = () => {
     console.log(newProduct);
 
     return (
-        <section className="pt-15 px-2 md:px-4 md:pt-12 xl:pt-15 bg-white md:mt-17 w-full  h-full xl:h-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 text-black gap-4">
+        <section className="py-15 md:py-16  bg-white md:mt-12 w-full  h-screen ">
+            <div className="relative">
+                <img
+                    src="/homeSection/discountImage.webp"
+                    alt=""
+                    className="h-screen w-full object-center object-cover"
+                />
+                <div className="absolute inset-0 flex flex-col justify-center items-center gap-4 text-white bg-black/50">
+                    <span className="text-sm">Uncompromising Style</span>
+                    <h1 className="text-4xl text-center">
+                        A Curated Collection of Footwear for Those <br /> Who
+                        Care About Quality and Detail.
+                    </h1>
+                    <p className="max-w-lg text-sm text-center">
+                        Each pair is crafted from select materials with a
+                        timeless design. Step out with confidence, wherever you
+                        go, in shoes built to last.
+                    </p>
+                    <button className="py-3 px-12 text-sm bg-black text-white border border-black hover:bg-transparent hover:text-white hover:border-white">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Hero;
+
+{
+    /*<div className="grid grid-cols-1 md:grid-cols-2 text-black gap-4">
                 <div className="flex flex-col items-start p-5 justify-center space-y-2 md:space-y-4">
                     <div className="flex flex-col gap-2">
                         <div className="flex gap-4 items-center">
@@ -129,9 +158,5 @@ const Hero = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    );
-};
-
-export default Hero;
+            </div>*/
+}

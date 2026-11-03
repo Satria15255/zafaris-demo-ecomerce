@@ -41,22 +41,25 @@ const CategoryCollection = () => {
     const navigate = useNavigate();
 
     return (
-        <main className="h-auto py-12 px-2  w-full flex flex-col items-center ">
+        <main className="h-auto pt-16 mt-15  w-full flex flex-col items-center ">
             {/* Headline */}
-            <header className="text-center py-2">
+            <header className="text-center py-2 space-y-2">
                 <h2 className="text-lg lg:text-3xl font-semibold">
-                    Featured Collection
+                    Explore the Collection
                 </h2>
-                <p className="text-sm lg:text-lg text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur.
+                <p className="text-sm  text-gray-500">
+                    From casual to sporty, find the perfect pair.
                 </p>
             </header>
 
             {/*Desktop Ver*/}
-            <section className="hidden   md:flex flex-col gap-2 md:flex-row justify-around lg:mt-4">
+            <section className="flex-col gap-2 grid grid-cols-4 w-full justify-around px-4 lg:mt-4">
                 {collection.map((c) => (
-                    <article className="w-50 md:w-1/4 ">
-                        <div className="overflow-hidden">
+                    <article
+                        onClick={() => navigate(`/products?category=${c.url}`)}
+                        className="w-full"
+                    >
+                        <div className="relative   aspect-square w-full">
                             <img
                                 src={c.image}
                                 alt={c.title}
@@ -64,31 +67,23 @@ const CategoryCollection = () => {
                                 decoding="async"
                                 width="432"
                                 height="756"
-                                className="hover:scale-110 transition duration-300"
+                                className=" w-full aspect-square object-bottom object-cover "
                             />
+                            <span className="absolute bg-white top-2 right-2 w-7 h-7 flex items-center justify-center text-sm rounded-full">
+                                12
+                            </span>
                         </div>
                         <div className="flex flex-col items-start gap-5 mt-6">
                             <p className="text-sm lg:text-lg font-semibold">
                                 {c.title}
                             </p>
-                            <p className="text-xs lg:text-sm text-gray-500 max-w-sm">
-                                {c.desc}
-                            </p>
-                            <button
-                                onClick={() =>
-                                    navigate(`/products?category=${c.url}`)
-                                }
-                                className="underline cursor-pointer pb-7 text-gray-600 hover:text-[#0C0C0C] transition duration-200 text-xs lg:text-sm font-semibold"
-                            >
-                                SHOP NOW
-                            </button>
                         </div>
                     </article>
                 ))}
             </section>
 
             {/* Mobile Ver */}
-            <section className="md:hidden h-auto py-12 px-4 w-full overflow-hidden">
+            <section className="md:hidden h-auto py-12   w-full overflow-hidden">
                 <Swiper
                     modules={[Pagination, Autoplay]}
                     slidesPerView={1}
@@ -104,7 +99,7 @@ const CategoryCollection = () => {
                         <SwiperSlide key={index}>
                             <article
                                 onClick={() => navigate("/products")}
-                                className="w-85"
+                                className="w-90"
                             >
                                 <div className="overflow-hidden">
                                     <img

@@ -53,12 +53,12 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                     height="500"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-auto object-cover bg-[#FBFAF7] p-2 rounded-lg md:rounded-xl md:rounded-bottom-5 object-center"
+                    className="w-full h-auto object-cover bg-[#FBFAF7] p-2  object-center"
                 />
                 <div>
                     {product.isBestSeller === true && (
                         <div>
-                            <p className="absolute top-2 left-2 bg-[#0C0C0C] text-white text-xs xl:text-sm font-ysabeau px-2 xl:px-4 xl:py-2 py-1 rounded-xl">
+                            <p className="absolute top-2 left-2 bg-[#0C0C0C] text-white text-xs xl:text-sm font-ysabeau px-2 xl:px-4 xl:py-2 py-1 rounded-sm">
                                 Best Seller
                             </p>
                         </div>
@@ -115,13 +115,13 @@ function ProductCard({ product, productDetails, openModal, productModal }) {
                                 <p className=" text-sm lg:text-lg xl:text-sm line-through">
                                     ${product.price.toFixed(2)}
                                 </p>
-                                <p className="text-sm lg:text-lg xl:text-sm text-yellow-600 font-bold">
+                                <p className="text-sm lg:text-lg xl:text-sm   ">
                                     ${discountPrice.toFixed(2)}
                                 </p>
                             </div>
                         ) : (
                             <div>
-                                <p className="text-sm lg:text-lg xl:text-sm text-yellow-600 font-bold">
+                                <p className="text-sm lg:text-lg xl:text-sm   ">
                                     ${product.price.toFixed(2)}
                                 </p>
                             </div>
