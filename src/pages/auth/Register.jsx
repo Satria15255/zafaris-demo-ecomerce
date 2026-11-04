@@ -29,7 +29,7 @@ const Register = () => {
             style={{ backgroundImage: `url(${background})` }}
         >
             <div className="inset-0  flex h-screen">
-                <div className="w-full md:w-1/2 lg:w-2/5 h-screen flex flex-col justify-around bg-white rounded-xl p-1 md:p-4 ">
+                <div className="w-full md:w-1/2 lg:w-2/5 h-screen flex flex-col justify-around bg-white rounded-xl p-1 2xl:p-4 ">
                     <div className="w-full flex justify-start p-4 ">
                         <button
                             onClick={() => navigate("/")}
@@ -38,7 +38,7 @@ const Register = () => {
                             <IoIosArrowBack />
                         </button>
                     </div>
-                    <div className="flex flex-col gap-2 justify-around items-center h-full gap-5 pb-4 px-7">
+                    <div className="flex flex-col gap-2 justify-around items-center h-full gap-3 2xl:gap-5 pb-4 px-7">
                         <div className="flex flex-col gap-2">
                             <p className="text-lg md:text-2xl xl:text-4xl text-center font-bold mb-2 md:mb-4">
                                 Get Started Now!

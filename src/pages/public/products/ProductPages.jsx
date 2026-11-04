@@ -103,13 +103,10 @@ const ProductPages = ({ onAddToCart, onOpenModal }) => {
     }
 
     return (
-        <main className="mt-16 p-1 md:p-2 flex flex-col items-center">
-            <header
-                style={{ backgroundImage: `url(${bgProductPages})` }}
-                className="z-0 flex flex-col justify-center lg:justify-center w-full items-center h-[25vh] lg:h-[40vh] bg-center bg-cover rounded-lg md:rounded-3xl mt-12 mb-2 md:mb-4"
-            >
-                <h1 className="text-4xl md:text-8xl font-bold text-white">
-                    Find Our Products
+        <main className="mt-16 2xl:pt-12 p-1 md:p-2 flex flex-col items-center">
+            <header className="z-0 flex flex-col bg-gray-100 justify-center lg:justify-center w-full items-center h-[20vh] lg:h-[30vh] bg-center bg-cover  mt-12 mb-2 md:mb-4">
+                <h1 className="text-md md:text-2xl  font-semibold ">
+                    Home / Products
                 </h1>
             </header>
             {/* Product Section */}

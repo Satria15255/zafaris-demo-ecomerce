@@ -59,6 +59,7 @@ const PaymentSuccessPages = lazy(
 
 // CUSTOMER
 const UserDashboard = lazy(() => import("@/pages/customer/UserDashboard"));
+const MyAccountPages = lazy(() => import("@/pages/customer/MyAccountPages"));
 
 // ADMIN
 const AdminLayout = lazy(() => import("@/layout/AdminLayout"));
@@ -123,6 +124,8 @@ function App() {
               path="/payment-success/:id"
               element={<PaymentSuccessPages />}
             />
+            <Route path="/my-account" element={<MyAccountPages />} />
+
             <Route path="/my-favorite" element={<FavoriteProducts />} />
             <Route path="/dashboard" element={<UserDashboard />} />
           </Route>

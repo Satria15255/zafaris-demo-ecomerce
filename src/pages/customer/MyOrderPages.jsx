@@ -83,10 +83,10 @@ const OrderPages = () => {
     }
 
     return (
-        <section className="p-5">
+        <section className="lg:p-5">
             <div>
                 {/* Filter Orders */}
-                <nav className="flex md:justify-around gap-3 pb-6 border-b border-gray-400 md:w-full overflow-x-auto px-2">
+                <nav className="flex  gap-2 pb-6 border-b border-gray-200 md:w-full overflow-x-auto px-2">
                     {ordersStatus.map((ord) => (
                         <button
                             key={ord}
@@ -97,11 +97,11 @@ const OrderPages = () => {
                                 }))
                             }
                             className={`
-                               flex-shrink-0 whitespace-nowrap h-10 lg:h-12 px-6  lg:px-7 text-sm rounded-3xl border border-gray-300 hover:bg-black hover:text-white transition duration-300
+                               flex-shrink-0 whitespace-nowrap h-10 lg:h-12 px-6  lg:px-7 text-sm hover:border-b  transition duration-300
                             ${
                                 filter.status === ord
-                                    ? "bg-black text-white"
-                                    : "bg-white text-black"
+                                    ? "border-b text-black"
+                                    : " text-gray-400"
                             }
                         `}
                         >

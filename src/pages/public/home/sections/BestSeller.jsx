@@ -28,7 +28,7 @@ const Bestseller = () => {
     }, []);
 
     return (
-        <main className="mb-6 lg:mb-12  pt-16 mt-15  flex flex-col items-center w-full h-full">
+        <main className=" lg:mb-12 pt-8 xl:pt-16 mt-15  flex flex-col items-center w-full h-full">
             <header className="text-center py-2 space-y-2">
                 <h2 className="text-lg lg:text-3xl font-semibold">
                     Best-Selling Products

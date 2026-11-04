@@ -41,7 +41,7 @@ const CategoryCollection = () => {
     const navigate = useNavigate();
 
     return (
-        <main className="h-auto pt-16  w-full flex flex-col items-center ">
+        <main className="h-auto pt-8 xl:pt-16  w-full flex flex-col items-center ">
             {/* Headline */}
             <header className="text-center py-2 space-y-2">
                 <h2 className="text-lg lg:text-3xl font-semibold">
@@ -53,13 +53,13 @@ const CategoryCollection = () => {
             </header>
 
             {/*Desktop Ver*/}
-            <section className="flex-col gap-2 grid grid-cols-2 md:grid-cols-4 w-full justify-around px-4 lg:mt-4 2xl:max-w-4/5">
+            <section className="flex-col gap-4 grid grid-cols-2 md:grid-cols-4 w-full justify-around px-4 lg:mt-4 2xl:max-w-4/5">
                 {collection.map((c) => (
                     <article
                         onClick={() => navigate(`/products?category=${c.url}`)}
-                        className="w-full"
+                        className="w-full flex flex-col gap-1"
                     >
-                        <div className="relative   aspect-square w-full">
+                        <div className="relative aspect-square w-full">
                             <img
                                 src={c.image}
                                 alt={c.title}
@@ -73,7 +73,7 @@ const CategoryCollection = () => {
                                 12 Items
                             </span>
                         </div>
-                        <div className="flex flex-col items-start gap-5 mt-6">
+                        <div className="flex flex-col items-start gap-5 ">
                             <p className="text-sm lg:text-lg font-semibold">
                                 {c.title}
                             </p>

@@ -27,57 +27,48 @@ const UserDashboard = () => {
 
     return (
         <main className="flex justify-center bg-[#FAFAFA] w-full">
-            <div className="flex w-full max-w-7xl lg:min-h-screen pt-16 lg:mt-13">
+            <div className="flex w-full xl:max-w-4/5 lg:min-h-screen pt-16 mt-10 lg:mt-16">
                 {/* Sidebar */}
-                <aside className="hidden w-1/4 md:flex flex-col items-start p-3 gap-3 border-r border-gray-300">
-                    <div className="pb-5 border-b w-full">
-                        <p className="text-lg">Hello {user?.name}</p>
-                    </div>
-                    <nav className="w-full space-y-4">
-                        <button
-                            className={`w-full rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "profile" ? "bg-black text-white" : ""}`}
-                            onClick={() => setSearchParams({ tab: "profile" })}
-                        >
-                            <FaUserCircle size={20} />
-                            Profile
-                        </button>
-                        <button
-                            className={`w-full  rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "my-orders" ? "bg-black text-white" : ""}`}
-                            onClick={() =>
-                                setSearchParams({ tab: "my-orders" })
-                            }
-                        >
-                            <FaShoppingBag size={20} />
-                            My Orders
-                        </button>
-                        <button
-                            className={`w-full  rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "addresses" ? "bg-black text-white" : ""}`}
-                            onClick={() =>
-                                setSearchParams({ tab: "addresses" })
-                            }
-                        >
-                            <FaMapLocationDot size={20} />
-                            My Address
-                        </button>
-                        <button
-                            className={`w-full  rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-black hover:text-white transition duration-200 ${tab === "change-password" ? "bg-black text-white" : ""}`}
-                            onClick={() =>
-                                setSearchParams({ tab: "change-password" })
-                            }
-                        >
-                            <FaLockOpen size={20} />
-                            Change Password
-                        </button>
-                        <button
-                            className={`w-full rounded-3xl text-left flex gap-3 items-center p-3 hover:bg-red-500 hover:text-white transition duration-200`}
-                            onClick={handleLogout}
-                        >
-                            <FaSignOutAlt size={20} /> Logout
-                        </button>
-                    </nav>
+                <aside className="hidden w-1/4 md:flex flex-col space-y-2 pt-8 px-3 border-r border-gray-300">
+                    <button
+                        className={`w-full rounded-lg text-left flex gap-3   items-center p-3 hover:bg-gray-200  transition duration-200 ${tab === "profile" ? "bg-gray-200 " : ""}`}
+                        onClick={() => setSearchParams({ tab: "profile" })}
+                    >
+                        <FaUserCircle size={20} />
+                        Profile
+                    </button>
+                    <button
+                        className={`w-full  rounded-lg text-left flex gap-3   items-center p-3 hover:bg-gray-200 transition duration-200 ${tab === "my-orders" ? "bg-gray-200" : ""}`}
+                        onClick={() => setSearchParams({ tab: "my-orders" })}
+                    >
+                        <FaShoppingBag size={20} />
+                        My Orders
+                    </button>
+                    <button
+                        className={`w-full rounded-lg text-left flex gap-3   items-center p-3 hover:bg-gray-200 transition duration-200 ${tab === "addresses" ? "bg-gray-200" : ""}`}
+                        onClick={() => setSearchParams({ tab: "addresses" })}
+                    >
+                        <FaMapLocationDot size={20} />
+                        My Address
+                    </button>
+                    <button
+                        className={`w-full rounded-lg text-left flex gap-3   items-center p-3 hover:bg-gray-200 transition duration-200 ${tab === "change-password" ? "bg-gray-200" : ""}`}
+                        onClick={() =>
+                            setSearchParams({ tab: "change-password" })
+                        }
+                    >
+                        <FaLockOpen size={20} />
+                        Change Password
+                    </button>
+                    <button
+                        className={`w-full rounded-lg text-left flex gap-3 items-center p-3 hover:bg-red-500 hover:text-white transition duration-200`}
+                        onClick={handleLogout}
+                    >
+                        <FaSignOutAlt size={20} /> Logout
+                    </button>
                 </aside>
                 {/* Main Content */}
-                <section className="ml-auto w-full h-auto bg-[#FAFAFA]">
+                <section className="ml-auto pt-3 w-full min-h-screen bg-[#FAFAFA]">
                     {tab === "profile" && <ProfilePage />}
                     {tab === "my-orders" && <MyOrdersPage />}
                     {tab === "addresses" && <AddressPage />}

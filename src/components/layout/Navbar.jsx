@@ -11,6 +11,7 @@ import SidebarMobile from "./SidebarMobile";
 import SearchModal from "@/features/search/components/SearchModal";
 import { IoHeartOutline, IoSearchOutline, IoBagOutline } from "react-icons/io5";
 import { LuUserRound } from "react-icons/lu";
+import NavbarDropdown from "./NavbarDropdown";
 
 function Navbar({ handleOpenCart, onToggleSidebar }) {
     const [scrolled, setScrolled] = useState(false);
@@ -68,7 +69,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 </p>
             </div>
             {/* Top Section */}
-            <div className="flex  justify-between items-center w-full md:px-4 xl:px-6 py-4">
+            <div className="flex  justify-between items-center w-full md:px-4 xl:px-6 py-3">
                 <div className="md:flex items-center md:w-2/4">
                     {/* Hamburger icon */}
                     <button
@@ -88,42 +89,17 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                 <div className=" gap-7 hidden lg:flex  font-light text-xs lg:text-sm items-center w-full">
                     <p
                         onClick={() => navigate("/")}
-                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
+                        className="cursor-pointer lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3"
                     >
                         HOME
                     </p>
                     <p
                         onClick={() => navigate("/products")}
-                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
+                        className="cursor-pointer lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3"
                     >
                         SHOP
                     </p>
-                    <p
-                        onClick={() => navigate(`/products?category=Running`)}
-                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                    >
-                        RUNNING
-                    </p>
-                    <p
-                        onClick={() =>
-                            navigate(`/products?category=Basketball`)
-                        }
-                        className="cursor-pointer hover:text-yellow-500 transition duration-100"
-                    >
-                        BASKETBALL
-                    </p>
-                    <p
-                        onClick={() => navigate(`/products?category=Sneakers`)}
-                        className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                    >
-                        SNEAKERS
-                    </p>
-                    <p
-                        onClick={() => navigate(`/products?category=Casual`)}
-                        className="cursor-pointer  hover:text-yellow-500 transition duration-100"
-                    >
-                        CASUAL
-                    </p>
+                    <NavbarDropdown />
                 </div>
 
                 <div className="flex justify-end gap-3 lg:gap-6 items-center w-full px-2">
@@ -134,7 +110,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <button
                             aria-label="Open favorites"
                             onClick={handleFavoriteNav}
-                            className="text-2xl hover:text-yellow-500 transition duration-100"
+                            className="text-2xl lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3"
                         >
                             <IoHeartOutline />
                         </button>
@@ -143,7 +119,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <button
                             aria-label={`Open shopping cart, ${totalItems} items`}
                             onClick={handleOpenCart}
-                            className="hidden md:block relative text-2xl p-2 hover:text-yellow-500 transition duration-100"
+                            className="hidden md:block relative text-2xl p-2 lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3"
                         >
                             <IoBagOutline />
                             {totalItems > 0 && (
@@ -155,7 +131,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                         <button
                             aria-label={`Open shopping cart, ${totalItems} items`}
                             onClick={handleViewCart}
-                            className="relative md:hidden text-2xl p-2 hover:text-yellow-500 transition duration-100"
+                            className="relative md:hidden text-2xl p-2 lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3"
                         >
                             <IoBagOutline />
                             {totalItems > 0 && (
@@ -183,7 +159,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <button
                                 aria-label="User Profile"
                                 onClick={onToggleSidebar}
-                                className="relative  items-center text-2xl gap-2 hidden md:flex hover:text-yellow-500 transition duration-100"
+                                className="relative  items-center text-2xl gap-2 hidden md:flex lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3"
                             >
                                 <LuUserRound />{" "}
                                 <span className="hidden lg:flex w-30 text-left text-sm">
@@ -194,7 +170,7 @@ function Navbar({ handleOpenCart, onToggleSidebar }) {
                             <button
                                 aria-label="Login Navigation"
                                 onClick={() => navigate("/login")}
-                                className="text-2xl hover:text-yellow-500 transition duration-100"
+                                className="text-2xl lg:border-b lg:border-transparent hover:border-black transition duration-300 lg:pb-3 lg:pt-3"
                             >
                                 {" "}
                                 <LuUserRound />

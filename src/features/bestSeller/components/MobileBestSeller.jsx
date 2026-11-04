@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 
 const MobileBestSeller = ({ products, navigate }) => {
 	return (
-		<div className="w-100 h-auto pb-4 px-2 overflow-hidden">
+		<div className="w-full h-auto pb-4 px-2 overflow-hidden">
 			<Swiper
 				modules={[Pagination, Autoplay]}
 				slidesPerView={2}
@@ -19,9 +19,10 @@ const MobileBestSeller = ({ products, navigate }) => {
 					el: ".swiper-pagination",
 					clickable: true,
 				}}
+				className="product-swiper"
 			>
 				{products.map((product) => (
-					<SwiperSlide key={product._id} className="pb-6 p-2">
+					<SwiperSlide key={product._id} className="pb-12 p-2">
 						<ProductCard
 							product={product}
 							productDetails={() =>

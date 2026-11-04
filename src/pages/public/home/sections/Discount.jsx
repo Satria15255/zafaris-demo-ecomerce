@@ -27,8 +27,6 @@ const OnSale = () => {
     }, []);
     const mainProduct = product[0];
     const otherProduct = product.slice(1, -1);
-    console.log(mainProduct);
-    console.log(otherProduct);
 
     const navigate = useNavigate();
     return (
@@ -57,7 +55,10 @@ const OnSale = () => {
                             }}
                             className="w-120"
                         />
-                        <button className="text-lg pb-3 hover:underline transition duration-300 ">
+                        <button
+                            onClick={() => navigate("/products?discount=true")}
+                            className="text-lg pb-3 hover:underline transition duration-300 "
+                        >
                             EXPLORE NOW
                         </button>
                     </div>
