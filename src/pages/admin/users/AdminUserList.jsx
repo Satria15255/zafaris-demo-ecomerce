@@ -41,9 +41,7 @@ const AdminUserList = () => {
 
   const handleDetail = async (userId) => {
     try {
-      const res = await getUserTransactions(userId);
       setSelectedUser(userId);
-      setTransactions(res.data);
       setIsModalOpen(true);
     } catch (err) {
       console.error(err);
