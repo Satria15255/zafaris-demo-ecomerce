@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OrdersTable from "@/features/admin/orders/components/OrdersTable";
-import OrdersDetails from "@/features/admin/orders/components/OrdersDetails";
+import OrdersDetails from "./OrdersDetails";
 import { toast } from "react-toastify";
 import { getOrdersSummary } from "@/features/admin/dashboard/services/adminDashboardService";
 import { getAllTransactions } from "@/features/admin/orders/services/adminOrderService";
@@ -324,7 +324,7 @@ const AdminOrders = () => {
 
       {selectedOrder && (
         <OrdersDetails
-          order={selectedOrder}
+          orders={selectedOrder}
           onClose={closeModal}
           onStatusChange={handleStatusChange}
         />

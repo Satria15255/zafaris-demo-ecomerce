@@ -21,7 +21,10 @@ const ProductsEditForm = ({ product, onClose, onSucces }) => {
   const [variants, setVariants] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const standardSizes = ["38", "39", "40", "41", "42", "43", "44"];
-  const normalizeSize = (size) => size.trim().toUpperCase();
+  const normalizeSize = (size) =>
+    String(size ?? "")
+      .trim()
+      .toUpperCase();
   const [image, setImage] = useState(null);
 
   const id = product._id;
@@ -40,8 +43,8 @@ const ProductsEditForm = ({ product, onClose, onSucces }) => {
 
       setVariants(
         (product.variants ?? []).map((v) => ({
-          id: crypto.randomUUID,
-          size: v.size,
+          id: crypto.randomUUID(),
+          size: String(v.size),
           stock: String(v.stock),
         })),
       );
@@ -73,13 +76,13 @@ const ProductsEditForm = ({ product, onClose, onSucces }) => {
     const newVariant = {
       // ID for react
       id: crypto.randomUUID(),
-      size,
+      size: String(size),
       stock: "",
     };
 
     setVariants((prev) => {
       const alreadyExists =
-        size &&
+        normalizeSize(size) &&
         prev.some(
           (variant) => normalizeSize(variant.size) === normalizeSize(size),
         );
@@ -123,11 +126,14 @@ const ProductsEditForm = ({ product, onClose, onSucces }) => {
     }
 
     const invalidVariant = variants.some((variant) => {
+      const size = Number(variant.size);
       const stock = Number(variant.stock);
 
       return (
-        !variant.size.trim() ||
-        variant.stock.trim() === "" ||
+        normalizeSize(variant.size) === "" ||
+        !Number.isFinite(size) ||
+        size <= 0 ||
+        String(variant.stock).trim() === "" ||
         !Number.isInteger(stock) ||
         stock < 0
       );
@@ -138,19 +144,17 @@ const ProductsEditForm = ({ product, onClose, onSucces }) => {
       return;
     }
 
-    const normalizedSizes = variants.map((variant) =>
-      normalizeSize(variant.size),
-    );
+    const variantPayload = variants.map((variant) => ({
+      size: Number(normalizeSize(variant.size)),
+      stock: Number(variant.stock),
+    }));
 
-    if (new Set(normalizedSizes).size !== normalizedSizes.length) {
+    if (
+      new Set(variantPayload.map((v) => v.size)).size !== variantPayload.length
+    ) {
       toast.error("Size tidak boleh duplikat.");
       return;
     }
-
-    const variantPayload = variants.map((variant) => ({
-      size: normalizeSize(variant.size),
-      stock: Number(variant.stock),
-    }));
 
     const formData = new FormData();
 
@@ -165,7 +169,7 @@ const ProductsEditForm = ({ product, onClose, onSucces }) => {
     try {
       await updateProduct(id, formData);
       toast.success("Product success updated");
-      navigate("/admin/product");
+      onClose();
       onSucces?.();
     } catch (err) {
       console.error("Upload failed", err);
@@ -285,7 +289,9 @@ const ProductsEditForm = ({ product, onClose, onSucces }) => {
                       <div className="flex flex-wrap gap-2">
                         {standardSizes.map((size) => {
                           const alreadyAdded = variants.some(
-                            (variant) => normalizeSize(variant.size) === size,
+                            (variant) =>
+                              normalizeSize(variant.size) ===
+                              normalizeSize(size),
                           );
 
                           return (
@@ -342,7 +348,9 @@ const ProductsEditForm = ({ product, onClose, onSucces }) => {
                             </span>
 
                             <input
-                              type="text"
+                              type="number"
+                              min="1"
+                              step="0.5"
                               value={variant.size}
                               onChange={(e) =>
                                 handleVariantChange(
@@ -351,7 +359,7 @@ const ProductsEditForm = ({ product, onClose, onSucces }) => {
                                   e.target.value.toUpperCase(),
                                 )
                               }
-                              placeholder="e.g. XL"
+                              placeholder="e.g. 40"
                               required
                               className="w-full rounded-lg bg-[#ECF0FF] p-3 text-sm"
                             />

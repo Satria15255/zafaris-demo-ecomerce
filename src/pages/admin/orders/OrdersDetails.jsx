@@ -1,0 +1,156 @@
+import React from "react";
+import { getUserTransaction } from "@/features/admin/orders/services/adminOrderService";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { formatDate } from "@/utils/FormatedDate";
+import OrderStatusBadge from "@/components/ui/OrderStatusBadge";
+import PaymentStatusBadge from "@/components/ui/PaymentStatusBadge";
+import ProductOrderTable from "./orderDetails/ProductOrderTable";
+import CustInformation from "./orderDetails/CustInformation";
+import CostSummary from "./orderDetails/CostSummary";
+import ShippingDetail from "./orderDetails/ShippingDetail";
+import StatusHistory from "./orderDetails/StatusHistory";
+import UpdateStatus from "./orderDetails/UpdateStatus";
+import { FaArrowLeft } from "react-icons/fa";
+
+const OrdersDetails = ({ orders, onClose, onStatusChange }) => {
+  console.log(orders);
+  const [order, setOrder] = useState([]);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  const id = orders._id;
+  const fetchOrder = async () => {
+    try {
+      setLoading(true);
+      const res = await getUserTransaction(id);
+      setOrder(res.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchOrder();
+  }, [id]);
+
+  console.log(order);
+
+  if (loading) {
+    return <p>Wait a minute....</p>;
+  }
+
+  if (!order) return null;
+
+  const user = order || {};
+  const items = order.products || [];
+
+  const orderDate = () => {
+    if (!order.createdAt) {
+      return null;
+    } else {
+      return formatDate(order.createdAt);
+    }
+  };
+
+  const orderStats = [
+    {
+      title: "Order Status",
+      inf: <OrderStatusBadge status={order.status} />,
+    },
+    {
+      title: "Payment Status",
+      inf: <PaymentStatusBadge status={order.paymentStatus} />,
+    },
+    {
+      title: "Payment Method",
+      inf: `${order.paymentMethod}`,
+    },
+    {
+      title: "Total Amount",
+      inf: `$${order.finalPrice}`,
+    },
+  ];
+
+  return (
+    <main className="fixed z-100 inset-0 bg-black/40 p-8 flex justify-center">
+      <div className="bg-white w-full max-w-4/5 max-h-[90vh] overflow-y-auto rounded-lg p-5">
+        <header>
+          <div className="w-full flex justify-between items-center">
+            <span className="text-xs">Dashboard / All-order / {order._id}</span>
+
+            <button
+              onClick={onClose}
+              className="bg-gray-800 text-white flex gap-3 items-center px-4 py-2 rounded hover:bg-gray-600"
+            >
+              <FaArrowLeft />
+              Back to Orders
+            </button>
+          </div>
+          <div className="flex w-full justify-between items-center">
+            <h1 className="text-2xl font-bold">Order Details</h1>
+            <p className="text-sm text-gray-500">
+              Placed On {formatDate(order.createdAt)}
+            </p>
+          </div>
+          <div className="flex space-x-4 justify-center items-center">
+            {orderStats.map((o) => (
+              <div className="w-1/4 h-auto bg-white py-6 px-2 flex items-center justify-center gap-5 rounded-xl border border-gray-300 ">
+                <div className="w-full flex flex-col">
+                  <p className="text-sm text-gray-600">{o.title}</p>
+                  <p className="text-xl font-bold">{o.inf}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </header>
+
+        <div className="flex gap-4 w-full">
+          <div className="w-4/7 space-y-4">
+            <section className="w-full space-y-2">
+              <p className="mt-2 text-xl font-bold">Ordered Products:</p>
+              <ProductOrderTable
+                items={order.products || []}
+                totalPrice={order.totalPrice}
+              />
+            </section>
+            <section className="w-full space-y-2">
+              <p className="mt-2 text-xl font-bold">Cost Summary:</p>
+              <CostSummary details={order} />
+            </section>
+            <section className="w-full space-y-2">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold text-slate-900">
+                  Status History
+                </h2>
+                <button
+                  type="button"
+                  className="text-sm font-semibold uppercase tracking-wider text-slate-500 transition-colors hover:text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+                >
+                  Audit Log
+                </button>
+              </div>
+              <StatusHistory details={order} />
+            </section>
+          </div>
+          <div className="w-3/7 space-y-4">
+            <section className="w-full space-y-2">
+              <p className="mt-2 text-xl font-bold">Customer Information:</p>
+              <CustInformation details={user} />
+            </section>
+            <section className="w-full space-y-2">
+              <p className="mt-2 text-xl font-bold">Shipping Detail:</p>
+              <ShippingDetail details={order} />
+            </section>
+            <section className="w-full space-y-2">
+              <UpdateStatus details={order} />
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default OrdersDetails;

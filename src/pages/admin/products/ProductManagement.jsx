@@ -65,15 +65,8 @@ const ProductManagement = () => {
     fetchProducts();
   }, []);
 
-  const handleDelete = async (id) => {
-    try {
-      if (!window.confirm("Are you sure want to delete this product?")) return;
-      await deleteProduct(id);
-      toast.success("Product deleted!");
-      fetchProducts();
-    } catch (err) {
-      toast.error("Failed delete product");
-    }
+  const handleProductDeleted = (id) => {
+    setProducts((prev) => prev.filter((p) => p._id !== id));
   };
 
   const handleUploadSuccess = () => {
@@ -183,7 +176,7 @@ const ProductManagement = () => {
         <ProductsTable
           products={currentProducts}
           onEdit={(product) => setEditingProduct(product)}
-          onDelete={handleDelete}
+          onDelete={handleProductDeleted}
           search={filter.search}
           onChange={(e) =>
             setFilter((prev) => ({
